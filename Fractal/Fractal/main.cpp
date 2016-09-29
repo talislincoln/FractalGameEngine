@@ -4,10 +4,10 @@
 using namespace fractal;
 
 int main() {
-	fmath::vec2 a(2, 3);
-	fmath::vec2 b(3, 4);
+	fmath::vec3 a(2, 3, 3);
+	fmath::vec3 b(3, 4, 3);
 
-	std::cout << " test " << a.x + b.x << std::endl;
+	std::cout << " test " << a + b << std::endl;
 
 	getchar();
 
