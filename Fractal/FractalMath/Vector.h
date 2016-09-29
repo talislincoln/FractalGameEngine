@@ -11,8 +11,15 @@ namespace fractal {
 			float x, y;
 
 			vec2(float x, float y) {
+				load(x, y);
+			}
+			inline void load(const float x, const float y) {
 				this->x = x;
 				this->y = y;
+			}
+			inline vec2& operator= (const vec3& other) {
+				load(other.x, other.y);
+				return *this;
 			}
 		};
 
@@ -27,6 +34,9 @@ namespace fractal {
 			}
 			inline vec3(const vec3& v) {
 				load(v.x, v.y, v.z);
+			}
+			inline vec3(const vec2& xy, float z) {
+				load(xy.x, xy.y, z);
 			}
 
 			inline void load(const float x, const float y, const float z) {
