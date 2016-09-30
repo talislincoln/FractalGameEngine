@@ -7,19 +7,21 @@ namespace fractal {
 #ifndef VERY_SMALL
 #define VERY_SMALL 1.0e-7f
 #endif
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
+#ifndef DEGREES_TO_RADIANS
+#define DEGREES_TO_RADIANS (M_PI / 180.0f)
+#endif	
 		struct vec2 {
 			float x, y;
 
-			vec2(float x, float y) {
+			inline vec2(const float x, const float y) {
 				load(x, y);
 			}
 			inline void load(const float x, const float y) {
 				this->x = x;
 				this->y = y;
-			}
-			inline vec2& operator= (const vec3& other) {
-				load(other.x, other.y);
-				return *this;
 			}
 		};
 
