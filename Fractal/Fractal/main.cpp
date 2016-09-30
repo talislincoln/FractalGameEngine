@@ -2,6 +2,7 @@
 #include <FractalMath\Vector.h>
 #include <FractalMath\Matrix.h>
 
+
 using namespace fractal;
 
 int main() {
