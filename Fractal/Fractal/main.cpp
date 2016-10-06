@@ -6,8 +6,8 @@
 using namespace fractal;
 
 int main() {
-	fmath::vec3 a(2,5,1);
-	fmath::vec3 b(3, 4, 3);
+	fmath::Vector3 a(2,5,1);
+	fmath::Vector3 b(3, 4, 3);
 	fmath::Matrix4 projectionMatrix;
 	projectionMatrix = fmath::Matrix4::rotate(30, 1,0,0) * fmath::Matrix4::translate(2,4,5) * fmath::Matrix4::scale(2,2,2);
 	std::cout << fmath::Matrix4::rotate(30, 1, 0, 0);

@@ -123,12 +123,12 @@ namespace fractal {
 			}
 
 			/// Multiply a Vec4 by this matrix and return the resulting vector
-			inline vec4 operator* (const vec4& v) const {
+			inline Vector4 operator* (const Vector4& v) const {
 				float x = v.x * m[0] + v.y * m[4] + v.z * m[8] + v.w * m[12];
 				float y = v.x * m[1] + v.y * m[5] + v.z * m[9] + v.w * m[13];
 				float z = v.x * m[2] + v.y * m[6] + v.z * m[10] + v.w * m[14];
 				float w = v.x * m[3] + v.y * m[7] + v.z * m[11] + v.w * m[15];
-				return vec4(x, y, z, w);
+				return Vector4(x, y, z, w);
 			}
 
 			inline friend std::ostream& operator<<(std::ostream& stream, const Matrix4& Matrix) {
@@ -169,7 +169,7 @@ namespace fractal {
 				const float atX_, const float atY_, const float atZ_,
 				const float upX_, const float upY_, const float upZ_);
 
-			static Matrix4 lookAt(const vec3& eye, const vec3& at, const vec3& up);
+			static Matrix4 lookAt(const Vector3& eye, const Vector3& at, const Vector3& up);
 
 			static Matrix4 transpose(const Matrix4 &m);
 
