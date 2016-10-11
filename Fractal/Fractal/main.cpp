@@ -2,21 +2,11 @@
 #include <FractalMath\Vector.h>
 #include <FractalMath\Matrix.h>
 
-<<<<<<< HEAD
 //> const, define = all upper case ex: PI, RADIUS_TO_DEGEE
 //> Class = all first letter of all words upper case  ex: MyClass
 //> function = first letter lower case, the rest of the first letter upper case ex: void myName() {}
 //> private = m_myPrivate. <-- that set up
 //> public =  first letter lower case, the rest of the first letter upper case ex : int myInt;
-
-
-using namespace fractal;
-
-int main() {
-
-	fmath::vec3 a(2,5,1);
-	fmath::vec3 b(3, 4, 3);
-=======
 #include <SDL\SDL.h>
 #include <GL\glew.h>
 
@@ -25,9 +15,8 @@ using namespace fractal;
 int main(int argc, char* argv[]) {
 	fmath::Vector3 a(2,5,1);
 	fmath::Vector3 b(3, 4, 3);
->>>>>>> origin/master
 	fmath::Matrix4 projectionMatrix;
-	projectionMatrix = fmath::Matrix4::rotate(30, 1,0,0) * fmath::Matrix4::translate(2,4,5) * fmath::Matrix4::scale(2,2,2);
+	fmath::Matrix4 projectionMatrix = fmath::Matrix4::rotate(30, 1,0,0) * fmath::Matrix4::translate(2,4,5) * fmath::Matrix4::scale(2,2,2);
 	std::cout << fmath::Matrix4::rotate(30, 1, 0, 0);
 	std::cout << fmath::Matrix4::translate(2, 4, 5);
 	std::cout << fmath::Matrix4::scale(2, 2, 2);
