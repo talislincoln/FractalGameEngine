@@ -18,7 +18,7 @@ namespace fractal {
 		}
 
 		//change this to a vec4 and use the right overloaded functions
-		struct Sphere : public vec3 {
+		struct Sphere : public Vector3 {
 			float r;
 			Sphere(float s = 0.0f) { x = s; y = s; z = s; r = s; }
 
@@ -32,7 +32,7 @@ namespace fractal {
 		};
 
 		//change this implementation to a vec4 and use the proper overloaded functions
-		struct Plane : public vec3 {
+		struct Plane : public Vector3 {
 			float d;
 
 			/// Here's a set of constructors
@@ -57,12 +57,12 @@ namespace fractal {
 			}
 
 			//normalized equation of a plane
-			inline Plane(const vec3& v0, const vec3& v1, const vec3& v2) {
-				vec3 a = v1 - v0;
-				vec3 b = v2 - v0;
+			inline Plane(const Vector3& v0, const Vector3& v1, const Vector3& v2) {
+				Vector3 a = v1 - v0;
+				Vector3 b = v2 - v0;
 
 				//make a cross product
-				vec3 n = vec3(a.y * b.z - a.z * b.y,
+				Vector3 n = Vector3(a.y * b.z - a.z * b.y,
 					a.z * b.x - a.x * b.z,
 					a.x * b.y - a.y * b.x);
 				float magnitude = float(sqrt(n.x * n.x + n.y * n.y + n.z * n.z));

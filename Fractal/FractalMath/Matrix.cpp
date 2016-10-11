@@ -1,13 +1,12 @@
 #include "Vector.h"
 #include "Matrix.h"
 
-
 namespace fractal {
 	namespace fmath {
 		///Tested Feb 2 2013 SSF
 		Matrix4 Matrix4::rotate(float degrees_, float x_, float y_, float z_) {
 			float cosang, sinang, cosm;
-			vec3 rotAxis(x_, y_, z_);
+			Vector3 rotAxis(x_, y_, z_);
 			rotAxis.normalize();
 			degrees_ *= DEGREES_TO_RADIANS;
 			cosang = cos(degrees_);
@@ -161,18 +160,16 @@ namespace fractal {
 			float atX, float atY, float atZ,
 			float upX, float upY, float upZ) {
 
-
-
-			vec3 at(atX, atY, atZ);
-			vec3 up(upX, upY, upZ);
-			vec3 eye(eyeX, eyeY, eyeZ);
+			Vector3 at(atX, atY, atZ);
+			Vector3 up(upX, upY, upZ);
+			Vector3 eye(eyeX, eyeY, eyeZ);
 
 			Matrix4 result;
 
-			vec3 forward = (at - eye);
+			Vector3 forward = (at - eye);
 			forward.normalize();
 			up.normalize();
-			vec3 side = (forward.cross(up));
+			Vector3 side = (forward.cross(up));
 			side.normalize();
 			up = side.cross( forward);
 
@@ -199,7 +196,7 @@ namespace fractal {
 			return result;
 		}
 
-		Matrix4 Matrix4::lookAt(const vec3& eye, const vec3& at, const vec3& up) {
+		Matrix4 Matrix4::lookAt(const Vector3& eye, const Vector3& at, const Vector3& up) {
 			return lookAt(eye.x, eye.y, eye.z, at.x, at.y, at.z, up.x, up.y, up.z);
 		}
 
