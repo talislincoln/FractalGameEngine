@@ -279,8 +279,5 @@ namespace fractal {
 			inline operator float* () { return static_cast<float*>(&m[0]); }
 			inline operator const float* () const { return static_cast<const float*>(&m[0]); }
 		};
-
-
-
 	}
 }
