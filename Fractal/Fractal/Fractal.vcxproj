@@ -73,7 +73,7 @@
     <IncludePath>$(SolutionDir)\;$(SolutionDir)deps\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)bin/;$(SolutionDir)deps/lib/;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)bin$(ProjectName)inter\</IntDir>
+    <IntDir>$(SolutionDir)bin\$(ProjectName)inter\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)/;$(IncludePath)</IncludePath>
