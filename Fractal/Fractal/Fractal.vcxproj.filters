@@ -13,10 +13,108 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{71cc049f-7b87-4dda-bd44-745d2e884f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\defines">
+      <UniqueIdentifier>{126e04ac-bf9b-478d-8536-2ccc86d30599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\systems">
+      <UniqueIdentifier>{93ad8362-bbe6-4377-a67d-9bdbae88a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\systems\manager">
+      <UniqueIdentifier>{350e66df-dbbd-4108-a800-f3c8d0d0eaca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\helpers">
+      <UniqueIdentifier>{4e2a99e4-96f0-41e5-9405-08b3c91c8e64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\game">
+      <UniqueIdentifier>{6b53edcd-6221-44dd-951a-e0106c9a2f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{65d89ac0-915a-45b0-859c-31755de2c259}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\systems\System.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helpers\Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\manager\SystemFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\game\AbstractGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helpers\Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\manager\SystemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interfaces\IDrawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\defines\SystemType.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\manager\SystemFactory.h">
+      <Filter>Header Files\core\systems\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\System.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines\deletemacros.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\Singleton.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Engine.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\ObjectCounter.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\game\AbstractGame.h">
+      <Filter>Header Files\core\game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\Manager.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\manager\SystemManager.h">
+      <Filter>Header Files\core\systems\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interfaces\IDrawable.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Window.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Input.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines\InputStateType.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

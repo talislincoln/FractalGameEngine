@@ -2,8 +2,7 @@
 #include <FractalMath\Vector.h>
 #include <FractalMath\Matrix.h>
 
-#include <SDL\SDL.h>
-#include <GL\glew.h>
+#include "core\systems\Engine.h"
 
 using namespace fractal;
 
@@ -23,13 +22,13 @@ int main(int argc, char* argv[]) {
 
 	//test of sdl
 
-	SDL_Init(SDL_INIT_EVERYTHING);
+	/*SDL_Init(SDL_INIT_EVERYTHING);
 	//set it to use "two" windows making the game smoother
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
 	Uint32 flags = SDL_WINDOW_OPENGL;
-	flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+	//flags |= SDL_WINDOW_FULLSCREEN;
 
 	SDL_Window* window = SDL_CreateWindow("test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, flags);
 	SDL_GLContext glContext = SDL_GL_CreateContext(window);
@@ -63,6 +62,10 @@ int main(int argc, char* argv[]) {
 	//end of sdl test
 
 
+	getchar();*/
+
+	fractal::fcore::Engine* engine = new fractal::fcore::Engine();
+	engine->run();
 	getchar();
 
 	return 0;

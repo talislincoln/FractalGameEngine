@@ -17,7 +17,7 @@ namespace fractal {
 		struct Vector2 {
 			float x, y;
 
-			inline Vector2(const float x, const float y) {
+			inline Vector2(float x = 0.0f, float y = 0.0f) {
 				load(x, y);
 			}
 			inline void load(const float x, const float y) {

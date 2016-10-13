@@ -70,8 +70,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)/;$(SolutionDir)deps/include/;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Debug/;$(SolutionDir)deps/lib/;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\;$(SolutionDir)deps\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)bin/;$(SolutionDir)deps/lib/;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin$(ProjectName)inter\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)/;$(IncludePath)</IncludePath>
@@ -82,7 +84,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Fractal/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>FractalMath.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -126,6 +128,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\core\game\AbstractGame.cpp" />
+    <ClCompile Include="src\core\systems\Engine.cpp" />
+    <ClCompile Include="src\core\systems\Input.cpp" />
+    <ClCompile Include="src\core\systems\manager\SystemFactory.cpp" />
+    <ClCompile Include="src\core\systems\manager\SystemManager.cpp" />
+    <ClCompile Include="src\core\systems\System.cpp" />
+    <ClCompile Include="src\core\systems\Window.cpp" />
+    <ClCompile Include="src\helpers\Manager.cpp" />
+    <ClCompile Include="src\helpers\Singleton.cpp" />
+    <ClCompile Include="src\interfaces\IDrawable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\core\game\AbstractGame.h" />
+    <ClInclude Include="include\core\systems\Engine.h" />
+    <ClInclude Include="include\core\systems\Input.h" />
+    <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
+    <ClInclude Include="include\core\systems\manager\SystemManager.h" />
+    <ClInclude Include="include\core\systems\System.h" />
+    <ClInclude Include="include\core\systems\Window.h" />
+    <ClInclude Include="include\defines\deletemacros.h" />
+    <ClInclude Include="include\defines\InputStateType.h" />
+    <ClInclude Include="include\defines\SystemType.h" />
+    <ClInclude Include="include\helpers\Manager.h" />
+    <ClInclude Include="include\helpers\ObjectCounter.h" />
+    <ClInclude Include="include\helpers\Singleton.h" />
+    <ClInclude Include="include\interfaces\IDrawable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

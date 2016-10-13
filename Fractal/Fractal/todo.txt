@@ -1,0 +1,17 @@
+Create a config file
+
+change the return function that has int to be some sort of define numbers to express sucess of kinds of error
+- exemple: #define SUCESS 1
+	     : #define FAIL_INIT -1
+and so on...
+
+the idea of drawable systems are system that will need a beginDraw and endDraw method
+for now the only system that has the draw method is the window, but the goal is to have
+the window class only to have the informatins about the window and something else to draw whatever is in it
+
+one drawable system to be the hud
+- maybe this system will have slots to put images to be skills
+- another slot to be the health and mana bar (or sphere)
+
+improve the input system
+- create custom number referent to the sdl key numbers (so we don't have to include the whole sdl library)
