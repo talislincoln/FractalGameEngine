@@ -62,12 +62,14 @@ namespace fractal {
 				z += other.z;
 				return *this;
 			}
+
 			inline Vector3& subtract(const Vector3& other) {
 				x -= other.x;
 				y -= other.y;
 				z -= other.z;
 				return *this;
 			}
+
 			inline Vector3& multiply(const Vector3& other) {
 				x *= other.x;
 				y *= other.y;
@@ -117,7 +119,7 @@ namespace fractal {
 			}
 			inline Vector3& operator/=(const float s) {
 
-				//only checks if division by zero in debug mode
+			//only checks if division by zero in debug mode
 			#ifdef _DEBUG 
 				if (std::fabs(s) < VERY_SMALL) {
 					std::string errorMsg("Divide by nearly zero! ");

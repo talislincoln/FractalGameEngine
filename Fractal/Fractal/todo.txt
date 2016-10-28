@@ -15,3 +15,6 @@ one drawable system to be the hud
 
 improve the input system
 - create custom number referent to the sdl key numbers (so we don't have to include the whole sdl library)
+
+take another look about the 'move' semanthics in c++ (move constructor)
+- since c++11 there's a new kind of operator called && that is used to pass values when making a copy is not needed	

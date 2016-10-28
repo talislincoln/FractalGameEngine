@@ -28,7 +28,6 @@ namespace fractal {
 				this->z = z;
 			}
 
-
 			inline const Point3 operator+(const Point3& other) const {
 				return Point3(x + other.x, y + other.y, z + other.z);
 			}
