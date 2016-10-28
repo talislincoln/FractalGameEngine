@@ -1,6 +1,10 @@
 #ifndef _FMATH_H
 #define _FMATH_H
+
+#ifndef _VECTOR_H
 #include "Vector.h"
+#endif // !_VECTOR_H
+
 #include <cmath>
 
 namespace fractal {
@@ -42,10 +46,13 @@ namespace fractal {
 				z = s;
 				d = s;
 			}
+
 			inline Plane(float x, float y, float z, float d) {
-				this->x = x;
-				this->y = y;
-				this->z = z;
+				Vector3 normalized(x, y, z);
+				normalized.normalize();
+				this->x = normalized.x;
+				this->y = normalized.y;
+				this->z = normalized.z;
 				this->d = d;
 			}
 
@@ -56,27 +63,66 @@ namespace fractal {
 				d = v.d;
 			}
 
-			//normalized equation of a plane
-			inline Plane(const Vector3& v0, const Vector3& v1, const Vector3& v2) {
-				Vector3 a = v1 - v0;
-				Vector3 b = v2 - v0;
+			inline Plane(const Vector3& normal, const Point3& point) {
+				Vector3 normalized = normal;
+				normalized.normalize();
+				this->x = normalized.x;
+				this->y = normalized.y;
+				this->z = normalized.z;
+				this->d = -(normal.x * point.x + normal.y * point.y + normal.z * point.z);
+			}
+
+			inline Plane(const Vector3& normal, float d) {
+				Vector3 normalized = normal;
+				normalized.normalize();
+				this->x = normalized.x;
+				this->y = normalized.y;
+				this->z = normalized.z;
+				this->d = d;
+			}
+
+			/**
+			Construct a normalized plane using 3 points.
+			This constructor creates two vectors from the points passed as argument:
+			<code>v1 = p1 - p0;</code> and <code>v2 = p2 - p0;</code>.
+			Then, the normal of the plane is calculated by the cross product between <code>v1</code> and <code>v2</code>.
+			*/
+			inline Plane(const Point3& p0, const Point3& p1, const Point3& p2) {
+				Vector3 a = p1 - p0;
+				Vector3 b = p2 - p0;
 
 				//make a cross product
 				Vector3 n = Vector3(a.y * b.z - a.z * b.y,
 					a.z * b.x - a.x * b.z,
 					a.x * b.y - a.y * b.x);
-				float magnitude = float(sqrt(n.x * n.x + n.y * n.y + n.z * n.z));
+
+				n.normalize();
 
 				//normalized plane
-				Plane(x / magnitude, y / magnitude, z / magnitude, a.x * b.x + a.y * b.y + a.z * b.z);
+				load(n.x, n.y, n.z, -n.dot(p2));
 			}
 
-			inline void normalize() {
-				float a = sqrt(x*x + y*y + z*z);
-				x /= a;
-				y /= a;
-				z /= a;
-				d /= a;
+			/**
+			Construct a normalized plane using 2 <code>Vector3</code> and a point.
+			The normal of the plane is calculated by the cross product between <code>v1</code> and <code>v2</code>.
+			*/
+			inline Plane(const Vector3& a, const Vector3& b, const Point3& p) {
+
+				//make a cross product
+				Vector3 n = Vector3(a.y * b.z - a.z * b.y,
+					a.z * b.x - a.x * b.z,
+					a.x * b.y - a.y * b.x);
+				n.normalize();
+
+				//normalized plane
+				load(n.x, n.y, n.z, -n.dot(p));
+			}
+
+			inline void load(float x, float y, float z, float d) {
+				this->x = x;
+				this->y = y;
+				this->z = z;
+				this->d = d;
 			}
 		};
 	}

@@ -1,12 +1,13 @@
 #ifndef _VECTOR_H
 #define _VECTOR_H
 
-#include <iostream>
+#ifndef _POINT_H
+#include "Point.h"
+#endif // !_POINT_H
+
 namespace fractal {
 	namespace fmath {
-#ifndef VERY_SMALL
-#define VERY_SMALL 1.0e-7f
-#endif
+
 #ifndef M_PI
 #define M_PI 3.14159265358979323846f
 #endif
@@ -27,10 +28,7 @@ namespace fractal {
 		};
 
 		///Structure that defines a Vector 3 (x, y, z)
-		struct Vector3 {
-			float x; ///< x coordinate of the vector
-			float y; ///< y coordinate of the vector
-			float z; ///< z coordinate of the vector
+		struct Vector3 : Point3 {
 
 			/**
 			\brief Default and scalar constructor.
@@ -38,6 +36,10 @@ namespace fractal {
 			If a number is not provided, zero (0.0) is set as default.
 			\param s number to be set for all coordinates of the vector
 			*/
+			inline Vector3(const Point3& p) {
+				load(p.x, p.y, p.z);
+			}
+
 			inline Vector3(float s = float(0.0)) {
 				load(s, s, s);
 			}
@@ -52,12 +54,6 @@ namespace fractal {
 
 			inline Vector3(const Vector2& xy, float z) {
 				load(xy.x, xy.y, z);
-			}
-
-			inline void load(const float x, const float y, const float z) {
-				this->x = x;
-				this->y = y;
-				this->z = z;
 			}
 
 			inline Vector3& add(const Vector3& other) {
@@ -102,46 +98,12 @@ namespace fractal {
 				return float(sqrt(x * x + y * y + z * z));
 			}
 
-
-			inline Vector3& operator= (const Vector3& other) {
-				load(other.x, other.y, other.z);
-				return *this;
-			}
-
 			inline const Vector3 operator - () const {
 				return Vector3(-x, -y, -z);
 			}
 
-			inline const Vector3 operator+(const Vector3& other) const {
-				return Vector3(x + other.x, y + other.y, z + other.z);
-			}
-
-			inline const Vector3 operator-(const Vector3& other) const {
-				return Vector3(x - other.x, y - other.y, z - other.z);
-			}
-
-			inline const Vector3 operator*(const Vector3& other) const {
-				return Vector3(x * other.x, y * other.y, z * other.z);
-			}
-
-			inline const Vector3 operator*(const float s) const {
-				return Vector3(s*x, s*y, s*z);
-			}
-
 			inline friend const Vector3 operator*(const float s, const Vector3& other) {
 				return other * s;
-			}
-
-			inline const Vector3 operator/(const float s) const {
-				#ifdef _DEBUG
-				if (fabs(s) < VERY_SMALL) {
-					std::string errorMsg("Divide by nearly zero! ");
-					throw errorMsg;
-				}
-				#endif
-
-				float r = 1.0f / s;
-				return *this * r;
 			}
 
 			inline Vector3& operator+=(const Vector3& other) {
@@ -184,18 +146,10 @@ namespace fractal {
 			inline operator const float* () const {
 				return static_cast<const float*>(&x);
 			}
+
 			inline operator float* () {
 				return static_cast<float*>(&x);
 			}
-
-			inline friend std::ostream& operator<<(std::ostream& stream, const Vector3& vector) {
-				stream << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
-
-				return stream;
-			}
-
-			private:
-
 		};
 
 		///Structure that defines a Vector 4, inherits from Vector 3
@@ -231,11 +185,13 @@ namespace fractal {
 				w += other.w;
 				return *this;
 			}
+
 			inline Vector4& subtract(const Vector4& other) {
 				Vector3::subtract(other);
 				w -= other.w;
 				return *this;
 			}
+
 			inline Vector4& multiply(const Vector4& other) {
 				Vector3::multiply(other);
 				w *= other.w;

@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>

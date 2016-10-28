@@ -150,9 +150,9 @@ namespace fractal {
 
 		Matrix4 Matrix4::scale(float x_, float y_, float z_) {
 			return Matrix4(x_, 0.0f, 0.0f, 0.0f,
-				0.0f, y_, 0.0f, 0.0f,
-				0.0f, 0.0f, z_, 0.0f,
-				0.0f, 0.0f, 0.0f, 1.0f);
+							0.0f, y_, 0.0f, 0.0f,
+							0.0f, 0.0f, z_, 0.0f,
+							0.0f, 0.0f, 0.0f, 1.0f);
 		}
 
 		///Tested Feb 1 2013 SSF
