@@ -56,27 +56,6 @@ namespace fractal {
 				load(xy.x, xy.y, z);
 			}
 
-			inline Vector3& add(const Vector3& other) {
-				x += other.x;
-				y += other.y;
-				z += other.z;
-				return *this;
-			}
-
-			inline Vector3& subtract(const Vector3& other) {
-				x -= other.x;
-				y -= other.y;
-				z -= other.z;
-				return *this;
-			}
-
-			inline Vector3& multiply(const Vector3& other) {
-				x *= other.x;
-				y *= other.y;
-				z *= other.z;
-				return *this;
-			}
-
 			inline float dot(const Vector3& other) const {
 				return x * other.x + y * other.y + z * other.z;
 			}
@@ -85,6 +64,7 @@ namespace fractal {
 					z * other.x - x * other.z,
 					x * other.y - y * other.x);
 			}
+
 			inline Vector3& normalize() {
 				const float magnitude = this->magnitude();
 			#ifdef _DEBUG 
@@ -93,51 +73,27 @@ namespace fractal {
 					throw errorMsg;
 				}
 			#endif
-
-				return *this /= magnitude;
+				*this /= magnitude;
+				return *this;
 			}
+
+			inline const Vector3 getNormilizedVector() const {
+				const float magnitude = this->magnitude();
+				#ifdef _DEBUG 
+				if (magnitude < VERY_SMALL) {
+					std::string errorMsg("Divide by nearly zero! ");
+					throw errorMsg;
+				}
+				#endif
+				return Vector3(*this / magnitude);
+			}
+
+
 			inline const float magnitude() const {
 				return float(sqrt(x * x + y * y + z * z));
 			}
 
-			inline const Vector3 operator - () const {
-				return Vector3(-x, -y, -z);
-			}
-
-			inline friend const Vector3 operator*(const float s, const Vector3& other) {
-				return other * s;
-			}
-
-			inline Vector3& operator+=(const Vector3& other) {
-				return add(other);
-			}
-			inline Vector3& operator-=(const Vector3& other) {
-				return subtract(other);
-			}
-			inline Vector3& operator*=(const Vector3& other) {
-				return multiply(other);
-			}
-			inline Vector3& operator/=(const float s) {
-
-			//only checks if division by zero in debug mode
-			#ifdef _DEBUG 
-				if (std::fabs(s) < VERY_SMALL) {
-					std::string errorMsg("Divide by nearly zero! ");
-					throw errorMsg;
-				}
-			#endif
-				float r = 1.0f / s;
-				*this *= r;
-				return *this;
-			}
-
-			inline bool operator==(const Vector3& other) const {
-				return x == other.x && y == other.y && z == other.z;
-			}
-			inline bool operator!=(const Vector3& other) const {
-				return x != other.x || y != other.y || z != other.z;
-			}
-
+			
 			inline const float operator [] (int index) const {
 				return *(&x + index);
 			}
@@ -145,13 +101,6 @@ namespace fractal {
 				return *(&x + index);
 			}
 
-			inline operator const float* () const {
-				return static_cast<const float*>(&x);
-			}
-
-			inline operator float* () {
-				return static_cast<float*>(&x);
-			}
 		};
 
 		///Structure that defines a Vector 4, inherits from Vector 3

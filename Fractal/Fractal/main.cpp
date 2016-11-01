@@ -32,10 +32,12 @@ int main(int argc, char* argv[]) {
 	fmath::Point3 p2(0.0f, 0.0f, 1.0f);
 	p = p2;
 
-	p = a.normalize();
+	//p = a.normalize();
 	b = p2;
 
 	std::cout << " point " << p << std::endl;
+	std::cout << " a " << a.normalize() << std::endl;
+
 	std::cout << " a " << a << std::endl;
 	
 	Plane plane1(1, 2, 3, 4);

@@ -47,8 +47,8 @@ namespace fractal {
 					// TODO create a custom event type for mouse motion since there's none
 					m_oldMousePosition.x = m_currentMousePosition.x;
 					m_oldMousePosition.y = m_currentMousePosition.y;
-					m_currentMousePosition.x = evnt.motion.x;
-					m_currentMousePosition.y = evnt.motion.y;
+					m_currentMousePosition.x = (float)evnt.motion.x;
+					m_currentMousePosition.y = (float)evnt.motion.y;
 
 					//printf("mouse %d,%d\n", m_currentMousePosition.x, m_currentMousePosition.y);
 					//_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);

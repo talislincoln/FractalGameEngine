@@ -34,6 +34,9 @@
     <Filter Include="Header Files\interfaces">
       <UniqueIdentifier>{65d89ac0-915a-45b0-859c-31755de2c259}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\core\graphics">
+      <UniqueIdentifier>{0233882a-c5e9-4ee4-b149-24904b818354}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
