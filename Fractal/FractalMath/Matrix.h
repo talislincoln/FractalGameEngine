@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>	/// Needed for the printf statement, could have used cin and cout but I have issues.  
 #include "Vector.h"
-
 namespace fractal {
 	namespace fmath {
 		/// These are the default vectors of the eye (camera) according to OpenGL and the right hand rule
@@ -130,7 +129,6 @@ namespace fractal {
 				float w = v.x * m[3] + v.y * m[7] + v.z * m[11] + v.w * m[15];
 				return Vector4(x, y, z, w);
 			}
-
 			inline friend std::ostream& operator<<(std::ostream& stream, const Matrix4& Matrix) {
 				stream << "|" << Matrix[0] << "  " << Matrix[4] << "  " << Matrix[8] << "  " << Matrix[12] << "| \n"
 					<< "|" << Matrix[1] << "  " << Matrix[5] << "  " << Matrix[9] << "  " << Matrix[13] << "| \n"
@@ -156,7 +154,9 @@ namespace fractal {
 
 			static Matrix4 rotate(const float degrees_, const float x_, const float y_, const float z_);
 			static Matrix4 translate(const float x_, const float y_, const float z_);
+			static Matrix4 translate(const Vector3 v);
 			static Matrix4 scale(const float x_, const float y_, const float z_);
+			static Matrix4 scale(Vector3 s);
 			static Matrix4 perspective(const float fovy_, const float aspect_, const float zNear_, const float zFar_);
 			static Matrix4 viewportNDC(const int width_, const int height_);
 			static Matrix4 orthographic(const float xMin_, const float xMax_,

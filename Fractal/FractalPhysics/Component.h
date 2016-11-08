@@ -2,15 +2,12 @@
 #include "Object.h"
 
 namespace fractal {
-	class Component : public Object
+	class Component
 	{
 	public:
 		Component();
 		virtual ~Component();
 
-	protected:
-		Object* parent;
-		void setParent(Object *p);
 	};
 
 }

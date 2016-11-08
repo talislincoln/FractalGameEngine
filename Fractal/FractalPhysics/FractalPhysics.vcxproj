@@ -115,11 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Body.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Body.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Transform.cpp" />

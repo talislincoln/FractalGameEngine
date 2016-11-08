@@ -27,6 +27,11 @@ namespace fractal {
 				this->y = y;
 				this->z = z;
 			}
+			inline void load(float x = 0) {
+				this->x = x;
+				this->y = x;
+				this->z = x;
+			}
 
 
 			inline Point3& add(const Point3& other) {

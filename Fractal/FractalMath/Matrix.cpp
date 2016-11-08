@@ -147,12 +147,25 @@ namespace fractal {
 				0.0f, 0.0f, 1.0f, 0.0f,
 				x_, y_, z_, 1.0f);
 		}
+		Matrix4 Matrix4::translate(Vector3 v) {
+			return Matrix4(1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, 1.0f, 0.0f,
+				v.x, v.y, v.z, 1.0f);
+		}
 
 		Matrix4 Matrix4::scale(float x_, float y_, float z_) {
 			return Matrix4(x_, 0.0f, 0.0f, 0.0f,
 							0.0f, y_, 0.0f, 0.0f,
 							0.0f, 0.0f, z_, 0.0f,
 							0.0f, 0.0f, 0.0f, 1.0f);
+		}
+
+		Matrix4 Matrix4::scale(Vector3 s) {
+			return Matrix4(s.x, 0.0f, 0.0f, 0.0f,
+				0.0f, s.y, 0.0f, 0.0f,
+				0.0f, 0.0f, s.z, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f);
 		}
 
 		///Tested Feb 1 2013 SSF

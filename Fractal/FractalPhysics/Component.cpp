@@ -11,8 +11,5 @@ namespace fractal {
 	Component::~Component()
 	{
 	}
-	void Component::setParent(Object *p) {
-		*this->parent = *p;
-	}
 
 }

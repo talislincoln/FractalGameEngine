@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Transform.h"
 namespace fractal {
 
 	class Object

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <FractalMath\Math.h>
-#include <FractalMath\Matrix.h>
-
+#include <FractalMath\Quaternion.h>
+#include <FractalPhysics\Transform.h>
 #include "core\systems\Engine.h"
 
 //> const, define = all upper case ex: PI, RADIUS_TO_DEGEE
@@ -15,13 +15,24 @@ int main(int argc, char* argv[]) {
 	using namespace fmath;
 
 	fmath::Vector3 a(2,5,1);
-	fmath::Vector3 b(3, 4, 3);
-	fmath::Matrix4 projectionMatrix = fmath::Matrix4::rotate(30, 1,0,0) * fmath::Matrix4::translate(2,4,5) * fmath::Matrix4::scale(2,2,2);
-	std::cout << fmath::Matrix4::rotate(30, 1, 0, 0);
-	std::cout << fmath::Matrix4::translate(2, 4, 5);
-	std::cout << fmath::Matrix4::scale(2, 2, 2);
-	std::cout << projectionMatrix;
+	fmath::Vector3 b(3,2,5);
+
+	fmath::Vector3 c(1);
+	fmath::Vector3 d(1);
+	fmath::Matrix4 projectionMatrix = fmath::Matrix4::scale(a) * fmath::Matrix4::rotate(30, 1, 0, 0)* fmath::Matrix4::translate(2,4,5);
+	fmath::Matrix4 projectionMatrix2 = fmath::Matrix4::scale(b)*fmath::Matrix4::rotate(30, 0, 1, 0)  * fmath::Matrix4::translate(3,-4,-2) ;
+	Transform tx1 = Transform(Vector3(2, 4, 5), Quaternion(30, Vector3(1, 0, 0)), a);
+	Transform tx2 = Transform(Vector3(3, -4, -2), Quaternion(30, Vector3(0, 1, 0)), b);
 	projectionMatrix.print();
+	tx2.GetTransformM4().print();
+	projectionMatrix =projectionMatrix * projectionMatrix2;
+	tx1 = tx1 * tx2;
+	tx1.GetTransformM4().print();
+	projectionMatrix.print();
+	c = tx1 * c;
+	d = projectionMatrix * d;
+	std::cout << c;
+	std::cout << d;
 
 	std::cout << " test " << a + b << std::endl;
 	std::cout << " test " << a.dot(b) << std::endl;
