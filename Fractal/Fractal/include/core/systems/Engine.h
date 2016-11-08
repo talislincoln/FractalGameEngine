@@ -5,12 +5,9 @@ namespace fractal {
 	namespace fcore {
 		class AbstractGame;
 
-		
 		class Engine
 		{
 		public:
-			Engine();
-
 			Engine(AbstractGame* game);
 			~Engine();
 

@@ -1,6 +1,7 @@
 #include "core\systems\manager\SystemFactory.h"
 #include "core\systems\Window.h"
 #include "core\systems\Input.h"
+#include "core\systems\Logic.h"
 
 namespace fractal {
 	namespace fcore {
@@ -17,7 +18,7 @@ namespace fractal {
 			{
 				case SystemType::WINDOW_SYSTEM: return new Window();
 				case SystemType::INPUT_SYSTEM: return new Input();
-			//case SystemType::LOGIC_SYSTEM: return new Logic();
+				case SystemType::LOGIC_SYSTEM: return new Logic();
 			//case SystemType::TIMER_SYSTEM: return new MainTimer();
 			//case SystemType::GRAPHICS_SYSTEM: return new Graphics();
 			}

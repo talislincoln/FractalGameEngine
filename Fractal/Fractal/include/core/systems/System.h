@@ -26,7 +26,7 @@ namespace fractal {
 
 		private:
 			SystemType m_systemType;
-			bool m_active;
+			bool m_isActive;
 		};
 	}
 }

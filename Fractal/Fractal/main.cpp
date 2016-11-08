@@ -3,6 +3,7 @@
 #include <FractalMath\Matrix.h>
 
 #include "core\systems\Engine.h"
+#include "MyGame.h"
 
 //> const, define = all upper case ex: PI, RADIUS_TO_DEGEE
 //> Class = all first letter of all words upper case  ex: MyClass
@@ -16,6 +17,11 @@ int main(int argc, char* argv[]) {
 
 	fmath::Vector3 a(2,5,1);
 	fmath::Vector3 b(3, 4, 3);
+	Vector3 c = a + b;
+	Point3 pp(2, 5, 1);
+	Point3 pp2(3, 4, 4);
+	c = pp + pp2;
+	std::cout << " a + b " << c << std::endl;
 	fmath::Matrix4 projectionMatrix = fmath::Matrix4::rotate(30, 1,0,0) * fmath::Matrix4::translate(2,4,5) * fmath::Matrix4::scale(2,2,2);
 	std::cout << fmath::Matrix4::rotate(30, 1, 0, 0);
 	std::cout << fmath::Matrix4::translate(2, 4, 5);
@@ -44,11 +50,13 @@ int main(int argc, char* argv[]) {
 	Plane plane2(2, 4, 6, 5);
 	if (plane1 == plane2) {
 
-	std::cout << "p = p ? " ;
+		std::cout << "p = p ? " ;
 	}
 
-	fractal::fcore::Engine* engine = new fractal::fcore::Engine();
+	fractal::fcore::Engine* engine = new fractal::fcore::Engine(new MyGame());
 	engine->run();
+	delete engine;
+
 	getchar();
 
 	return 0;

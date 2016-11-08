@@ -72,27 +72,27 @@ namespace fractal {
 				}
 			}
 
-			for (InputBinding* binding : m_bindings) {
-				switch (binding->inputStateType)
+			for (InputBinding binding : m_bindings) {
+				switch (binding.inputStateType)
 				{
 				case InputStateType::DOWN:
-					if (isKeyDown(binding->keyID)) {
-						binding->execute();
+					if (isKeyDown(binding.keyID)) {
+						binding.execute();
 					}
 					break;
 				case InputStateType::UP:
-					if (isKeyUp(binding->keyID)) {
-						binding->execute();
+					if (isKeyUp(binding.keyID)) {
+						binding.execute();
 					}
 					break;
 				case InputStateType::PRESSED:
-					if (wasKeyPressed(binding->keyID)) {
-						binding->execute();
+					if (wasKeyPressed(binding.keyID)) {
+						binding.execute();
 					}
 					break;
 				case InputStateType::RELEASED:
-					if (wasKeyReleased(binding->keyID)) {
-						binding->execute();
+					if (wasKeyReleased(binding.keyID)) {
+						binding.execute();
 					}
 					break;
 				default:
@@ -102,17 +102,12 @@ namespace fractal {
 		}
 
 		bool Input::shutdown() {
-			//need to double check this
-			for (InputBinding* biding : m_bindings)
-			{
-				SafeDelete(biding);
-			}
 
 			m_bindings.clear();
 			return true;
 		}
 
-		void Input::bindInput(InputBinding* binding) {
+		void Input::bindInput(InputBinding binding) {
 			m_bindings.push_back(binding);
 		}
 
@@ -121,11 +116,7 @@ namespace fractal {
 		}
 
 		fmath::Vector2 Input::getMouseMovement() const {
-			fmath::Vector2 deltaMouse;
-			deltaMouse.x = m_currentMousePosition.x - m_oldMousePosition.x;
-			deltaMouse.y = m_currentMousePosition.y - m_oldMousePosition.y;
-
-			return deltaMouse;
+			return fmath::Vector2(m_currentMousePosition.x - m_oldMousePosition.x, m_currentMousePosition.y - m_oldMousePosition.y);
 		}
 
 		bool Input::isKeyDown(unsigned int keyID) const {

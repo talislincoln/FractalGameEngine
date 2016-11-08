@@ -1,9 +1,7 @@
 #ifndef _SYSTEMFACTORY_H
 #define _SYSTEMFACTORY_H
 
-#ifndef _SYSTEMTYPE_H
 #include "defines\SystemType.h"
-#endif
 
 namespace fractal {
 	namespace fcore {
