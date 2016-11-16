@@ -17,17 +17,16 @@ the parameters will hardcode for now, the idea is to read them all from a config
 
 namespace fractal {
 	namespace fcore {
-		class Window : public System, public IDrawable {
+		class Window : public System {
 		public:
-
 			Window();
 			virtual ~Window();
 
 			virtual bool initialize();
 			virtual void update();
-			virtual void draw();
 			virtual bool shutdown();
 
+			inline SDL_Window* getSDLWindow() { return m_Window; }
 
 		private:
 			int m_width; ///< Window width

@@ -10,7 +10,7 @@ namespace fractal {
 		class System;
 
 		/** 
-		
+		Class responsible to create the possible systems for the engine.
 		*/
 		class SystemFactory
 		{
@@ -18,6 +18,7 @@ namespace fractal {
 			SystemFactory();
 			~SystemFactory();
 
+			///Returns a new System based on the specified type
 			System* createSystem(SystemType type);
 		};
 	}

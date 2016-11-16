@@ -39,6 +39,7 @@ namespace fractal {
 			//cast the new created system to check if it is a drawable system
 			if (dynamic_cast<IDrawable*>(system) != nullptr)
 				this->m_drawableSystems.push_back(system);
+
 			this->m_systems.push_back(system);
 
 			return system;
@@ -74,7 +75,9 @@ namespace fractal {
 				SafeDelete(system);
 			}
 
+			//clear the space allocated for the systems array
 			this->m_systems.clear();
+
 			//all drawable systems have already been deleted because they're in the system vector as well
 			this->m_drawableSystems.clear();
 

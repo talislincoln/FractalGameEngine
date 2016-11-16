@@ -18,8 +18,6 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			virtual void setupInput(fcore::Input* input);
-
 			void setScene(Scene* scene);
 			Scene* getScene() const;
 			void setParent(GameObject* parent);

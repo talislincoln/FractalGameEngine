@@ -71,11 +71,6 @@ namespace fractal {
 			return true;
 		}
 
-		void GameObject::setupInput(fcore::Input* input)
-		{
-
-		}
-
 		void GameObject::setScene(Scene* scene)
 		{
 			this->m_currentScene = scene;

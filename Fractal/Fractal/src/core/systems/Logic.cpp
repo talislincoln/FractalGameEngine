@@ -11,11 +11,11 @@ namespace fractal {
 			System(SystemType::LOGIC_SYSTEM),
 			m_game(nullptr)
 		{
-
+			//empty
 		}
 
 		Logic::~Logic() {
-
+			//empty
 		}
 
 		bool Logic::initialize() {

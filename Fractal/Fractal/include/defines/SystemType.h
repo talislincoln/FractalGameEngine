@@ -8,7 +8,8 @@ namespace fractal {
 		INPUT_SYSTEM,
 		GRAPHICS_SYSTEM,
 		TIMER_SYSTEM,
-		LOGIC_SYSTEM
+		LOGIC_SYSTEM,
+		PHYSICS_SYSTEM
 	};
 }
 

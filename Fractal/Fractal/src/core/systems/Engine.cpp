@@ -3,6 +3,7 @@
 #include "core\systems\System.h"
 #include "core\systems\Window.h"
 #include "core\systems\Logic.h"
+#include "core\systems\Graphics.h"
 
 #include "core\systems\manager\SystemManager.h"
 #include "scene\SceneManager.h"
@@ -91,11 +92,11 @@ namespace fractal {
 			Logic* logic = dynamic_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
 			if (logic == nullptr)
 				return 0;
-			/*MainTimer* timer = dynamic_cast<MainTimer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
-			if (timer == nullptr)
-				return FALSE;
 			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			if (graphics == nullptr)
+				return 0;
+			/*MainTimer* timer = dynamic_cast<MainTimer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
+			if (timer == nullptr)
 				return FALSE;
 			*/
 
@@ -103,12 +104,12 @@ namespace fractal {
 				return 0;// error
 			if (!input->initialize())
 				return 0;
+			if (!graphics->initialize())
+				return 0;
 
 			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
 
 			/*if (!timer->initialize())
-				return FALSE;
-			if (!graphics->initialize())
 				return FALSE;
 
 			*/

@@ -1,6 +1,10 @@
 #ifndef _ABSTRACTGAME_H
 #define _ABSTRACTGAME_H
 
+/**
+Abstract interface to define a game.
+*/
+
 namespace fractal {
 	namespace fcore {
 		class AbstractGame
