@@ -251,3 +251,5 @@ paket-files/
 .idea/
 *.sln.iml
 Fractal/FractalMath/TQuaternion.h
+Fractal/FractalMath/FractalMath.vcxproj.filters
+Fractal/FractalMath/FractalMath.vcxproj.filters
