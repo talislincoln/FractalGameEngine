@@ -1,5 +1,6 @@
 #ifndef _PHYSICS_WORLD_H
 #define _PHYSICS_WORLD_H
+/*
 #include <Fractal\include\core\systems\System.h>
 #include <Fractal\include\defines\SystemType.h>
 namespace fractal {
@@ -13,5 +14,5 @@ namespace fractal {
 	};
 
 }
-
+*/
 #endif // !_PHYSICS_WORLD_H

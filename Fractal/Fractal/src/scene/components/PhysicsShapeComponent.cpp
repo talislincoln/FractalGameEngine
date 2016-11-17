@@ -1,4 +1,4 @@
-#include "PhysicsShapeComponent.h"
+#include "scene/components/PhysicsShapeComponent.h"
 
 
 
@@ -25,7 +25,7 @@ namespace fractal {
 		{
 		}
 		bool PhysicsShapeComponent::shutdown() {
-
+			return true;
 		}
 	}
 }

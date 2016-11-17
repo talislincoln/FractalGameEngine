@@ -7,12 +7,6 @@
 namespace fractal {
 	namespace fphysics {
 
-		struct massData
-		{
-			fmath::Matrix3 inertia;
-			fmath::Vector3 center;
-			float mass;
-		};
 		class PhysicsShape
 		{
 			public :

@@ -3,21 +3,15 @@
 #include <Fractal\include\scene\GameObject.h>
 #include <Fractal\include\scene\Component.h>
 #include <FractalMath\Matrix.h>
-#include "AABB.h"
-#include "Transform.h"
-#include "PhysicsShape.h"
-#include "PhysicsDefine.h"
+#include <FractalPhysics\AABB.h>
+#include <FractalPhysics\Transform.h>
+#include <FractalPhysics\PhysicsShape.h>
+#include <FractalPhysics\PhysicsDefine.h>
 #include "PhysicsBodyComponent.h"
 #include <vector>
 namespace fractal {
 	namespace fphysics {
 		class PhysicsBodyComponent;
-		struct massData
-		{
-			fmath::Matrix3 inertia;
-			fmath::Vector3 center;
-			float mass;
-		};
 		class PhysicsShapeComponent : public fscene::Component
 		{
 		public:

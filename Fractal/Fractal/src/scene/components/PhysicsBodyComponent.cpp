@@ -1,4 +1,4 @@
-#include "PhysicsBodyComponent.h"
+#include "scene/components/PhysicsBodyComponent.h"
 
 namespace fractal {
 	namespace fphysics {
@@ -33,7 +33,7 @@ namespace fractal {
 
 		}
 		bool PhysicsBodyComponent::shutdown() {
-
+			return true;
 		}
 
 		void PhysicsBodyComponent::calculateMassData() {

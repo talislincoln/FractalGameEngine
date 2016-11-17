@@ -3,9 +3,9 @@
 
 #include <Fractal\include\scene\Component.h>
 #include <FractalMath\Quaternion.h>
-#include "Transform.h"
-#include "PhysicsDefine.h"
-#include "AABB.h"
+#include <FractalPhysics\Transform.h>
+#include <FractalPhysics\PhysicsDefine.h>
+#include <FractalPhysics\AABB.h>
 namespace fractal {
 	namespace fphysics {
 		struct DefaultBody;

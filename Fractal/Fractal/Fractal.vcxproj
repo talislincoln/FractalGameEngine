@@ -87,7 +87,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Fractal/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>FractalMath.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FractalMath.lib;FractalPhysics.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -145,6 +145,8 @@
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
     <ClCompile Include="src\scene\Component.cpp" />
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
+    <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp" />
+    <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
     <ClCompile Include="src\scene\Object.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
@@ -177,6 +179,8 @@
     <ClInclude Include="include\interfaces\IDrawable.h" />
     <ClInclude Include="include\scene\Component.h" />
     <ClInclude Include="include\scene\components\MeshComponent.h" />
+    <ClInclude Include="include\scene\components\PhysicsBodyComponent.h" />
+    <ClInclude Include="include\scene\components\PhysicsShapeComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
     <ClInclude Include="include\scene\Object.h" />
     <ClInclude Include="include\scene\Scene.h" />

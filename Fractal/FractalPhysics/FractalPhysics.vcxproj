@@ -25,7 +25,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -119,22 +119,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AABB.h" />
-    <ClInclude Include="PhysicsBodyComponent.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="PhysicsDefine.h" />
     <ClInclude Include="PhysicsMath.h" />
     <ClInclude Include="PhysicsWorld.h" />
     <ClInclude Include="PhysicsShape.h" />
-    <ClInclude Include="PhysicsShapeComponent.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AABB.cpp" />
-    <ClCompile Include="PhysicsBodyComponent.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="PhysicsWorld.cpp" />
     <ClCompile Include="PhysicsShape.cpp" />
-    <ClCompile Include="PhysicsShapeComponent.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
