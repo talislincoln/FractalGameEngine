@@ -63,6 +63,9 @@ namespace fractal {
 					z * other.x - x * other.z,
 					x * other.y - y * other.x);
 			}
+			inline const Vector3 inverse() const{
+				return Vector3(1.0f / x, 1.0f/y, 1.0f/z);
+			}
 
 			inline Vector3& normalize() {
 				const float magnitude = this->magnitude();

@@ -1,4 +1,3 @@
-#include "Vector.h"
 #include "Matrix.h"
 
 namespace fractal {
@@ -147,7 +146,7 @@ namespace fractal {
 				0.0f, 0.0f, 1.0f, 0.0f,
 				x_, y_, z_, 1.0f);
 		}
-		Matrix4 Matrix4::translate(Vector3 v) {
+		Matrix4 Matrix4::translate(const Vector3& v) {
 			return Matrix4(1.0f, 0.0f, 0.0f, 0.0f,
 				0.0f, 1.0f, 0.0f, 0.0f,
 				0.0f, 0.0f, 1.0f, 0.0f,
@@ -156,16 +155,16 @@ namespace fractal {
 
 		Matrix4 Matrix4::scale(float x_, float y_, float z_) {
 			return Matrix4(x_, 0.0f, 0.0f, 0.0f,
-							0.0f, y_, 0.0f, 0.0f,
-							0.0f, 0.0f, z_, 0.0f,
-							0.0f, 0.0f, 0.0f, 1.0f);
+				0.0f, y_, 0.0f, 0.0f,
+				0.0f, 0.0f, z_, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f);
 		}
 
-		Matrix4 Matrix4::scale(Vector3 s) {
+		Matrix4 Matrix4::scale(const Vector3& s) {
 			return Matrix4(s.x, 0.0f, 0.0f, 0.0f,
-				0.0f, s.y, 0.0f, 0.0f,
-				0.0f, 0.0f, s.z, 0.0f,
-				0.0f, 0.0f, 0.0f, 1.0f);
+							0.0f, s.y, 0.0f, 0.0f,
+							0.0f, 0.0f, s.z, 0.0f,
+							0.0f, 0.0f, 0.0f, 1.0f);
 		}
 
 		///Tested Feb 1 2013 SSF
@@ -184,7 +183,7 @@ namespace fractal {
 			up.normalize();
 			Vector3 side = (forward.cross(up));
 			side.normalize();
-			up = side.cross( forward);
+			up = side.cross(forward);
 
 			result[0] = side.x;
 			result[1] = side.y;
@@ -254,6 +253,47 @@ namespace fractal {
 #endif
 			determinate = 1.0f / determinate;
 			for (int i = 0; i < 16; i++) {
+				inverseM[i] *= determinate;
+			}
+			return inverseM;
+		}
+
+		Matrix3 Matrix3::outerProduct(const Vector3 &u, const Vector3 &v) {
+			return Matrix3(u.x * v.x, u.x * v.y, u.x * v.z,
+						u.y * v.x, u.y * v.y, u.y * v.z,
+						u.z * v.x, u.z * v.y, u.z * v.z);
+		}
+
+		Matrix3 Matrix3::transpose(const Matrix3 &m) {
+			return Matrix3(m[0 * 3], m[0 * 3 + 1], m[0 * 3 + 2],
+				m[1 * 3], m[1 * 3 + 1], m[1 * 3 + 2],
+				m[2 * 3], m[2 * 3 + 1], m[2 * 3 + 2]);
+		}
+		Matrix3 Matrix3::inverse(const Matrix3 &m) {
+
+			Matrix3 inverseM;
+			float determinate;
+
+			/*0*/inverseM[0] = m[4] * m[8] - m[5] * m[7];
+			/*1*/inverseM[3] = m[2] * m[7] - m[1] * m[8];
+			/*2*/inverseM[6] = m[1] * m[5] - m[2] * m[4];
+			/*3*/inverseM[1] = m[5] * m[6] - m[3] * m[8];
+			/*4*/inverseM[4] = m[0] * m[8] - m[2] * m[6];
+			/*5*/inverseM[7] = m[2] * m[3] - m[0] * m[5];
+			/*6*/inverseM[2] = m[3] * m[7] - m[4] * m[6];
+			/*7*/inverseM[5] = m[1] * m[6] - m[0] * m[7];
+			/*8*/inverseM[8] = m[0] * m[4] - m[1] * m[3];
+
+			determinate = m[0] * inverseM[0] + m[1] * inverseM[3] + m[2] * inverseM[6];
+			printf("%f   \n", determinate);
+#ifdef _DEBUG  /// If in debug mode let's worry about divide by zero or nearly zero!!! 
+			if (fabs(determinate) < VERY_SMALL) {
+				std::string errorMsg("Divide by nearly zero in Matrix4::inverse!");
+				throw errorMsg;
+			}
+#endif
+			determinate = 1.0f / determinate;
+			for (int i = 0; i < 9; i++) {
 				inverseM[i] *= determinate;
 			}
 			return inverseM;

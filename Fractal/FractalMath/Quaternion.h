@@ -32,6 +32,10 @@ namespace fractal {
 				load(cos(angle / 2.0f), sin(angle / 2.0f)*n.x, sin(angle / 2.0f)*n.y, sin(angle / 2.0f)*n.z);
 			}
 
+			inline Quaternion(const Vector4& n) {
+				//angle *= DEGREES_TO_RADIANS; ///
+				load(cos(n.w / 2.0f), sin(n.w / 2.0f)*n.x, sin(n.w / 2.0f)*n.y, sin(n.w / 2.0f)*n.z);
+			}
 
 			/// A copy constructor
 			inline Quaternion(const Quaternion& q) {
@@ -54,13 +58,16 @@ namespace fractal {
 				Vector3 ijk(w*q + q.w * (*this) + this->cross(q));
 				return Quaternion(w * q.w - this->dot(q), ijk.x, ijk.y, ijk.z);
 			}
-			inline const Quaternion& scaleQuaternion (const Vector3& scale) const {
+			inline const Quaternion operator / (const float f) const {
+				return Quaternion(w / f, x / f, y / f, z / f);
+			}
+			/*inline const Quaternion& scaleQuaternion (const Vector3& scale) const {
 				Quaternion t(w, x, y, z);
 				t.x *= scale.x;
 				t.y *= scale.y;
 				t.z *= scale.z;
 				return *this;
-			}
+			}*/
 			/// Multiply a quaternion by a Vector3 - using the right-hand rule 
 			inline const Quaternion operator * (const Vector4& v) const {
 				Vector3 ijk(w*v + v.w * (*this) + this->cross(v));
@@ -72,6 +79,10 @@ namespace fractal {
 				return Quaternion(w, -x, -y, -z);
 			}
 
+			inline const Quaternion inverse() const {
+
+				return Quaternion(w, -x, -y, -z) / (w * w) + (x * x) + (y * y) + (z * z);
+			}
 			inline Vector3 rotate(const Vector3& v) const {
 				/// This is the standard way q*v*q^-1
 				///return Vector3( (*this) * v * (*this).conjugate());
@@ -81,7 +92,15 @@ namespace fractal {
 				return v + v2 * (2.0f * w) + this->cross(v2) * 2.0f;
 			}
 
+			inline const float quaternionDot(Quaternion& q_) const{ 
+				return (w * q_.w + x * q_.x + y * q_.y + z * q_.z);
+			}
+			inline const Matrix3 toMatrix3() const {
 
+				return Matrix3((1.0f - 2.0f*y*y - 2.0f*z*z), (2.0f*x*y + 2.0f * z*w), (2.0f*x*z - 2.0f*y*w),
+					(2.0f*x*y - 2.0f*z*w), (1.0f - 2.0f*x*x - 2.0f*z*z), (2 * y*z + 2 * x*w),
+					(2.0f*x*z + 2.0f*y*w), (2.0f*y*z - 2 * x*w), (1.0f - 2.0f*x*x - 2.0f*y*y));
+			}
 			inline const Matrix4 toMatrix() const {
 				/// This is the fastest way I know...
 				return Matrix4((1.0f - 2.0f*y*y - 2.0f*z*z), (2.0f*x*y + 2.0f * z*w), (2.0f*x*z - 2.0f*y*w), 0.0f,

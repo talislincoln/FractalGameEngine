@@ -136,11 +136,7 @@
     <ClInclude Include="Math.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Point.h" />
-<<<<<<< HEAD
     <ClInclude Include="Quaternion.h" />
-=======
-    <ClInclude Include="TQuaternion.h" />
->>>>>>> origin/master
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
