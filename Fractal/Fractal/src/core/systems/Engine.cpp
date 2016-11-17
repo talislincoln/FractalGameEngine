@@ -2,17 +2,18 @@
 #include "core\systems\Engine.h"
 #include "core\systems\System.h"
 #include "core\systems\Window.h"
+#include "core\systems\Logic.h"
+#include "core\systems\Graphics.h"
+
 #include "core\systems\manager\SystemManager.h"
+#include "scene\SceneManager.h"
+
 #include "helpers\Singleton.h"
 
 #include <iostream>
 
 namespace fractal {
 	namespace fcore {
-		Engine::Engine() :
-			m_isRunning(false)
-		{
-		}
 
 		Engine::Engine(AbstractGame* game) :
 			m_game(game), m_isRunning(false)
@@ -88,31 +89,34 @@ namespace fractal {
 			Input* input = dynamic_cast<Input*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
 			if (input == nullptr)
 				return 0;
+			Logic* logic = dynamic_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
+			if (logic == nullptr)
+				return 0;
+			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			if (graphics == nullptr)
+				return 0;
 			/*MainTimer* timer = dynamic_cast<MainTimer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
 			if (timer == nullptr)
 				return FALSE;
-			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
-			if (graphics == nullptr)
-				return FALSE;
-			Logic* logic = dynamic_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
-			if (logic == nullptr)
-				return FALSE;*/
+			*/
 
 			if (!window->initialize())
 				return 0;// error
 			if (!input->initialize())
 				return 0;
+			if (!graphics->initialize())
+				return 0;
 
-			input->bindInput(new InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
+			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
 
 			/*if (!timer->initialize())
 				return FALSE;
-			if (!graphics->initialize())
-				return FALSE;
 
-			logic->setGame(this->game);
+			*/
+
+			logic->setGame(this->m_game);
 			if (!logic->initialize())
-				return FALSE;*/
+				return 0;
 
 			printf("input suceeded initializing");
 
@@ -121,9 +125,7 @@ namespace fractal {
 
 		void Engine::draw()
 		{
-			
-			/*
-			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = dynamic_cast<Graphics*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			graphics->beginDraw();
 
 			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
@@ -133,15 +135,15 @@ namespace fractal {
 					drawable_system->draw();
 			}
 
-			graphics->endDraw();*/
+			graphics->endDraw();
 
-			//the draw call should be within the beginDraw and endDraw function from the graphics system
+			/*//the draw call should be within the beginDraw and endDraw function from the graphics system
 			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
 			{
 				IDrawable* drawable_system = dynamic_cast<IDrawable*>(system);
 				if (drawable_system->getCanDraw())
 					drawable_system->draw();
-			}
+			}*/
 		}
 
 		void Engine::update()
@@ -164,12 +166,13 @@ namespace fractal {
 
 			//Singleton<WorldSettings>::createInstance(); //this holds the informations to configure the engine/game
 			Singleton<SystemManager>::createInstance();
-			//Singleton<SceneManager>::createInstance();
+			Singleton<fscene::SceneManager>::createInstance();
 
 			//if (!Singleton<WorldSettings>::getInstance().initialize())
 			//	return false;
 			if (!Singleton<SystemManager>::getInstance().initialize())
 				return false;
+			//scene manager is initialized in the Logic class
 
 			return true;
 		}
@@ -177,14 +180,16 @@ namespace fractal {
 		bool Engine::destroyManagers()
 		{
 			using namespace fhelpers;
+			using namespace fscene;
 
 			if (!Singleton<SystemManager>::getInstance().shutdown())
 				return false;
+			// sceen manager is shut down in the Logic class
 			//if (!Singleton<WorldSettings>::getInstance().shutdown())
 			//	return false;
 
-			//Singleton<SceneManager>::destroyInstance();
 			Singleton<SystemManager>::destroyInstance();
+			Singleton<SceneManager>::destroyInstance();
 			//Singleton<WorldSettings>::destroyInstance();
 
 			return true;

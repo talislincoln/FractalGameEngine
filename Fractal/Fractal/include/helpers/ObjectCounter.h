@@ -11,6 +11,7 @@ namespace fractal {
 			{
 				++objectAmount;
 			}
+
 			virtual ~ObjectCounter()
 			{
 				--objectAmount;

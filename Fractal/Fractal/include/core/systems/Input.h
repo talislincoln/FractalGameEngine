@@ -30,7 +30,11 @@ namespace fractal {
 			{
 				//empty
 			}
-			InputBinding operator= (const InputBinding& ref) = delete;
+			InputBinding operator= (const InputBinding& ref) {
+				this->keyID = ref.keyID;
+				this->callbackFunction = ref.callbackFunction;
+				this->inputStateType = ref.inputStateType;
+			}
 
 			void execute() {
 				callbackFunction();
@@ -52,7 +56,7 @@ namespace fractal {
 
 			//bool GetKey(unsigned int keyID);
 
-			void bindInput(InputBinding* binding);
+			void bindInput(InputBinding binding);
 
 			/**
 			\brief Get the mouse position.
@@ -74,7 +78,7 @@ namespace fractal {
 
 			std::unordered_map<unsigned int, bool> m_keyMap;
 			std::unordered_map<unsigned int, bool> m_previousKeyMap;
-			std::vector<InputBinding*> m_bindings;
+			std::vector<InputBinding> m_bindings;
 
 			fmath::Vector2 m_mouseCoordinates;
 

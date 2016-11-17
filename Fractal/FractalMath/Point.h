@@ -120,6 +120,7 @@ namespace fractal {
 			inline bool operator==(const Point3& other) const {
 				return x == other.x && y == other.y && z == other.z;
 			}
+
 			inline bool operator!=(const Point3& other) const {
 				return x != other.x || y != other.y || z != other.z;
 			}
@@ -131,6 +132,7 @@ namespace fractal {
 			inline operator float* () {
 				return static_cast<float*>(&x);
 			}
+
 			inline friend std::ostream& operator<<(std::ostream& stream, const Point3& point) {
 				stream << "(" << point.x << ", " << point.y << ", " << point.z << ")";
 

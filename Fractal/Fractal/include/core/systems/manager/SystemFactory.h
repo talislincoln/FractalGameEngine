@@ -1,9 +1,7 @@
 #ifndef _SYSTEMFACTORY_H
 #define _SYSTEMFACTORY_H
 
-#ifndef _SYSTEMTYPE_H
 #include "defines\SystemType.h"
-#endif
 
 namespace fractal {
 	namespace fcore {
@@ -12,7 +10,7 @@ namespace fractal {
 		class System;
 
 		/** 
-		
+		Class responsible to create the possible systems for the engine.
 		*/
 		class SystemFactory
 		{
@@ -20,6 +18,7 @@ namespace fractal {
 			SystemFactory();
 			~SystemFactory();
 
+			///Returns a new System based on the specified type
 			System* createSystem(SystemType type);
 		};
 	}

@@ -2,10 +2,8 @@
 #define _SYSTEMMANAGER_H
 
 #include "helpers\Manager.h"
-
-#ifndef _SYSTEMTYPE_H
 #include "defines\SystemType.h"
-#endif // !_SYSTEMTYPE_H
+#include "interfaces\IDrawable.h"
 
 #ifndef _VECTOR
 #include<vector>
