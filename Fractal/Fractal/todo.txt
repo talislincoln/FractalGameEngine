@@ -5,6 +5,11 @@ Create a render Manager
 Craete a camera Manager for the scene
 -------------------------------------------
 
+-------------- GameObject ---------------------
+create a function to get the rootParent for a gameObject
+create a function to get all components of a type from all parents (physics)
+-----------------------------------------------
+
 create a timer system
 
 define a world settings class that will hold all application properties

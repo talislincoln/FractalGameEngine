@@ -5,12 +5,6 @@
 
 #include <GL\glew.h>
 #include <iostream>
-GLfloat vertices[] = {
-	// Positions         // Colors
-	0.5f, -0.5f, 0.0f,     // Bottom Right
-	-0.5f, -0.5f, 0.0f,    // Bottom Left
-	0.0f,  0.5f, 0.0f,    // Top 
-};
 
 namespace fractal {
 	namespace fcore {
@@ -53,18 +47,7 @@ namespace fractal {
 			//getting opengl current version 
 			std::printf("*** OpenGL Version: %s ***\n", glGetString(GL_VERSION));
 
-			//const int size = mesh->getVertices().size() * 3;
-			
-			//vertices = { 0 , 0, 0, 0, 500, 0, 500, 500, 0 };
-
-			/*int counter = 0;
-			
-			for (unsigned int i = 0; i < mesh->getVertices().size(); i++) {
-				vertices[counter++] = mesh->getVertices()[i].position.x;
-				vertices[counter++] = mesh->getVertices()[i].position.y;
-				vertices[counter++] = mesh->getVertices()[i].position.z;
-			}*/
-
+			// **** COMPILING SHADERS
 
 			// Vertex shader
 			GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -104,17 +87,7 @@ namespace fractal {
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
 
-			glGenVertexArrays(1, &VAO);
-			glBindVertexArray(VAO);
-			
-			glGenBuffers(1, &VBO);
-			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-			glEnableVertexAttribArray(0);
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			glBindVertexArray(0);
+			// ***** ENDING SHADER COMPILATION
 
 			glFrontFace(GL_CW);
 			glCullFace(GL_BACK);
@@ -125,6 +98,9 @@ namespace fractal {
 
 			glEnable(GL_FRAMEBUFFER_SRGB);
 
+			
+
+
 			return true;
 		}
 
@@ -132,17 +108,7 @@ namespace fractal {
 			//empty
 		}
 
-		void Graphics::draw() {
-			glClearDepth(1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			glUseProgram(shaderProgram);
-			glBindVertexArray(VAO);
-			//int indices[3] = { 0,1,2 };			//glDrawArrays(GL_TRIANGLES, 0, 3);
-			//glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, indices);
-			glDrawArrays(GL_TRIANGLES, 0, 3);
-			glBindVertexArray(0);
-			
+		void Graphics::draw() {			
 			
 			SDL_GL_SwapWindow(m_window->getSDLWindow());
 		}
@@ -152,11 +118,14 @@ namespace fractal {
 		}
 
 		void Graphics::beginDraw() {
+			glUseProgram(shaderProgram);
 
+			glClearDepth(1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
 		void Graphics::endDraw() {
-
+			
 		}
 	}
 }

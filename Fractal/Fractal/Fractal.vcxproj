@@ -147,12 +147,9 @@
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
     <ClCompile Include="src\scene\Object.cpp" />
-    <ClCompile Include="src\scene\PolygonShape.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\scene\SceneManager.cpp" />
     <ClCompile Include="src\scene\SceneObject.cpp" />
-    <ClCompile Include="src\scene\Shape.cpp" />
-    <ClCompile Include="src\scene\ShapeComponent.cpp" />
     <ClCompile Include="src\scene\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,12 +179,9 @@
     <ClInclude Include="include\scene\components\MeshComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
     <ClInclude Include="include\scene\Object.h" />
-    <ClInclude Include="include\scene\PolygonShape.h" />
     <ClInclude Include="include\scene\Scene.h" />
     <ClInclude Include="include\scene\SceneManager.h" />
     <ClInclude Include="include\scene\SceneObject.h" />
-    <ClInclude Include="include\scene\Shape.h" />
-    <ClInclude Include="include\scene\ShapeComponent.h" />
     <ClInclude Include="include\scene\TransformComponent.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />

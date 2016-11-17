@@ -125,9 +125,7 @@ namespace fractal {
 
 		void Engine::draw()
 		{
-			
-			/*
-			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = dynamic_cast<Graphics*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			graphics->beginDraw();
 
 			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
@@ -137,15 +135,15 @@ namespace fractal {
 					drawable_system->draw();
 			}
 
-			graphics->endDraw();*/
+			graphics->endDraw();
 
-			//the draw call should be within the beginDraw and endDraw function from the graphics system
+			/*//the draw call should be within the beginDraw and endDraw function from the graphics system
 			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
 			{
 				IDrawable* drawable_system = dynamic_cast<IDrawable*>(system);
 				if (drawable_system->getCanDraw())
 					drawable_system->draw();
-			}
+			}*/
 		}
 
 		void Engine::update()

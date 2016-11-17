@@ -28,8 +28,6 @@ namespace fractal {
 				if (obj->isInitialized())
 					continue;
 
-				obj->setupInput(input);
-
 				if (!obj->initialize())
 					return false;
 			}

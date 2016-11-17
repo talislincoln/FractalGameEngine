@@ -15,16 +15,11 @@ namespace fractal {
 			Mesh(std::vector<fgraphics::Vertex> vertices);
 			virtual ~Mesh();
 
-			//void draw();
-
 			inline const std::vector<fgraphics::Vertex> getVertices() const {
 				return m_vertices;
 			}
 
 		private:
-			//vao
-			//vbo
-			//size
 			std::vector<fgraphics::Vertex> m_vertices;
 		};
 	}
