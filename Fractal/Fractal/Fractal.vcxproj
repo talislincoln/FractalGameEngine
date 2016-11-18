@@ -151,6 +151,7 @@
     <ClCompile Include="src\scene\SceneManager.cpp" />
     <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\TransformComponent.cpp" />
+    <ClCompile Include="src\utils\IOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />
@@ -183,6 +184,7 @@
     <ClInclude Include="include\scene\SceneManager.h" />
     <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\TransformComponent.h" />
+    <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />
   </ItemGroup>
