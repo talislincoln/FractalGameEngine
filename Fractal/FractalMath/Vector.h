@@ -55,7 +55,6 @@ namespace fractal {
 			inline Vector3(const Vector2& xy, float z) {
 				load(xy.x, xy.y, z);
 			}
-
 			inline float dot(const Vector3& other) const {
 				return x * other.x + y * other.y + z * other.z;
 			}
@@ -63,6 +62,9 @@ namespace fractal {
 				return Vector3(y * other.z - z * other.y,
 					z * other.x - x * other.z,
 					x * other.y - y * other.x);
+			}
+			inline const Vector3 inverse() const{
+				return Vector3(1.0f / x, 1.0f/y, 1.0f/z);
 			}
 
 			inline Vector3& normalize() {
@@ -118,12 +120,14 @@ namespace fractal {
 				load(x, y, z, w);
 			}
 
+			inline Vector4(const Vector4& other) {
+				load(other.x, other.y, other.z, other.w);
+			}
 			inline Vector4(const Vector3& other) {
 				load(other.x, other.y, other.z, 1.0f);
 			}
-
-			inline Vector4(const Vector4& other) {
-				load(other.x, other.y, other.z, other.w);
+			inline Vector4(const Point3& other) {
+				load(other.x, other.y, other.z, 1.0f);
 			}
 
 			inline void load(const float x, const float y, const float z, const float w) {
