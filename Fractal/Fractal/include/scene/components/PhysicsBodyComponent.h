@@ -74,6 +74,7 @@ namespace fractal {
 			//void synchronizeProxies();
 
 			friend class PhysicsShapeComponent;
+			friend class PhysicsWorld;
 
 		};
 	}

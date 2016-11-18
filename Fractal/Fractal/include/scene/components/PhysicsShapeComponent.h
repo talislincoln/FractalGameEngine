@@ -24,7 +24,7 @@ namespace fractal {
 			PhysicsShape* shape;
 			const fscene::GameObject* parent;
 			PhysicsBodyComponent* body;
-
+			friend class PhysicsWorld;
 		};
 	}
 }
