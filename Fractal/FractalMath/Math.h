@@ -125,6 +125,33 @@ namespace fractal {
 				this->d = d;
 			}
 		};
+
+		inline int getMax(const int x, const int y){
+			if (x > y)
+				return x;
+			return y;
+		}
+		inline float getMax(const float x, const float y) {
+			if (x > y)
+				return x;
+			return y;
+		}
+		inline float getMin(const float x, const float y) {
+			if (x < y)
+				return x;
+			return y;
+		}
+		inline int getMin(const int x, const int y) {
+			if (x < y)
+				return x;
+			return y;
+		}
+		inline Point3 getMax(Point3 x, Point3 y) {
+			return Point3(getMax(x.x, y.x), getMax(x.y, y.y), getMax(x.z, y.z));
+		}
+		inline Point3 getMin(Point3 x, Point3 y) {
+			return Point3(getMin(x.x, y.x), getMin(x.y, y.y), getMin(x.z, y.z));
+		}
 	}
 }
 

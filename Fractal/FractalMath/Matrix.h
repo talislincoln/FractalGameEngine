@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _MATRIX_H
+#define _MATRIX_H
 #include <iostream>	/// Needed for the printf statement, could have used cin and cout but I have issues.  
 #include "Vector.h"
 
@@ -130,7 +131,6 @@ namespace fractal {
 				float w = v.x * m[3] + v.y * m[7] + v.z * m[11] + v.w * m[15];
 				return Vector4(x, y, z, w);
 			}
-
 			inline friend std::ostream& operator<<(std::ostream& stream, const Matrix4& Matrix) {
 				stream << "|" << Matrix[0] << "  " << Matrix[4] << "  " << Matrix[8] << "  " << Matrix[12] << "| \n"
 					<< "|" << Matrix[1] << "  " << Matrix[5] << "  " << Matrix[9] << "  " << Matrix[13] << "| \n"
@@ -156,7 +156,9 @@ namespace fractal {
 
 			static Matrix4 rotate(const float degrees_, const float x_, const float y_, const float z_);
 			static Matrix4 translate(const float x_, const float y_, const float z_);
+			static Matrix4 translate(const Vector3& v);
 			static Matrix4 scale(const float x_, const float y_, const float z_);
+			static Matrix4 scale(const Vector3& s);
 			static Matrix4 perspective(const float fovy_, const float aspect_, const float zNear_, const float zFar_);
 			static Matrix4 viewportNDC(const int width_, const int height_);
 			static Matrix4 orthographic(const float xMin_, const float xMax_,
@@ -218,6 +220,56 @@ namespace fractal {
 				return *this;
 			}
 
+			inline Matrix3 operator + (const Matrix3 &m_) const {
+				return Matrix3(m[0] + m_.m[0], m[1] + m_.m[1], m[2] + m_.m[2],
+					m[3] + m_.m[3], m[4] + m_.m[4], m[5] + m_.m[5],
+					m[6] + m_.m[6], m[7] + m_.m[7], m[8] + m_.m[8]);
+			}
+			inline Matrix3 operator * (const float f) const {
+				return Matrix3(m[0] *f, m[1] * f, m[2] * f,
+					m[3] * f, m[4] * f, m[5] * f,
+					m[6] * f, m[7] * f, m[8] * f);
+			}
+			inline Matrix3& operator *= (const float f) {
+				*this = *this * f;
+				return *this;
+			}
+			inline Matrix3& operator *= (const Matrix3 &m_) {
+				*this = *this * m_;
+				return *this;
+			}
+			inline Matrix3& operator += (const Matrix3 &m_) {
+				*this = *this + m_;
+				return *this;
+			}
+			inline Vector3 operator * (const Vector3 v) const {
+				float x = v.x * m[0] + v.y * m[3] + v.z * m[6];
+				float y = v.x * m[1] + v.y * m[4] + v.z * m[7];
+				float z = v.x * m[2] + v.y * m[5] + v.z * m[8];
+				return Vector3(x, y, z);
+			}
+			inline Matrix3 operator * (const Matrix3& m_) const {
+				return Matrix3(m[0] * m_[0] + m[3] * m_[1] + m[6] * m_[2],
+					m[1] * m_[0] + m[4] * m_[1] + m[7] * m_[2],
+					m[2] * m_[0] + m[5] * m_[1] + m[8] * m_[2],
+					m[0] * m_[3] + m[3] * m_[4] + m[6] * m_[5],
+					m[1] * m_[3] + m[4] * m_[4] + m[7] * m_[5],
+					m[2] * m_[3] + m[5] * m_[4] + m[8] * m_[5],
+					m[0] * m_[6] + m[3] * m_[7] + m[6] * m_[8],
+					m[1] * m_[6] + m[4] * m_[7] + m[7] * m_[8],
+					m[2] * m_[6] + m[5] * m_[7] + m[8] * m_[8]
+				);
+			}
+			inline Matrix3 operator - (const Matrix3 &m_) const {
+				return Matrix3(m[0] - m_.m[0], m[1] - m_.m[1], m[2] - m_.m[2],
+					m[3] - m_.m[3], m[4] - m_.m[4], m[5] - m_.m[5],
+					m[6] - m_.m[6], m[7] - m_.m[7], m[8] - m_.m[8]);
+			}
+
+			inline Matrix3& operator -= (const Matrix3 &m_){
+				*this = *this - m_;
+				return *this;
+			}
 			/// 
 			inline Matrix3(const Matrix4 &m_) {
 				this->m[0] = m_[0]; this->m[1] = m_[1]; this->m[2] = m_[2];
@@ -225,10 +277,9 @@ namespace fractal {
 				this->m[6] = m_[8]; this->m[7] = m_[9]; this->m[8] = m_[10];
 			}
 
-
-
 			/// Constuctors
-			inline Matrix3(float xx, float yx, float zx,
+			
+ 			inline Matrix3(float xx, float yx, float zx,
 				float xy, float yy, float zy,
 				float xz, float yz, float zz) {
 				m[0] = xx;   m[3] = xy;   m[6] = xz;
@@ -249,7 +300,22 @@ namespace fractal {
 
 				}
 			}
-
+			inline Matrix3(const float x, const float y, const float z) {
+				m[0] = x;   m[3] = 0;   m[6] = 0;
+				m[1] = 0;   m[4] = y;   m[7] = 0;
+				m[2] = 0;   m[5] = 0;   m[8] = z;
+			}
+			inline void freezeRotate(const bool x, const bool y, const bool z) {
+				if (x) {
+					m[0] = 0;   m[3] = 0;   m[6] = 0;
+				}
+				if (y) {
+					m[1] = 0;   m[4] = 0;   m[7] = 0;
+				}
+				if (z) {
+					m[2] = 0;   m[5] = 0;   m[8] = 0;
+				}
+			}
 
 			/// Creates the identity matrix
 			inline void loadIdentity() {
@@ -275,9 +341,18 @@ namespace fractal {
 					m[2], m[5], m[8]);
 			}
 
+
+
 			/// These allow me convert from type Matrix to const float * without issues
 			inline operator float* () { return static_cast<float*>(&m[0]); }
 			inline operator const float* () const { return static_cast<const float*>(&m[0]); }
+
+
+			///static function;
+			static Matrix3 outerProduct(const Vector3 &u, const Vector3 &v);
+			static Matrix3 transpose(const Matrix3 &m);
+			static Matrix3 inverse(const Matrix3 &m);
 		};
 	}
 }
+#endif
