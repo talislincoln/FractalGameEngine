@@ -26,6 +26,11 @@ namespace fractal {
 
 			GLuint m_vbo;
 			GLuint m_vao;
+			//window dimensions
+			const GLuint WIDTH = 800;
+			const GLuint HEIGHT = 600;
+			std::vector<fgraphics::Vertex> vertices;
+			std::vector<fgraphics::Vertex> vertices2;
 
 			/*const GLchar* vertexShaderSource = "#version 330 core\n"
 				"layout (location = 0) in vec3 position;\n"
