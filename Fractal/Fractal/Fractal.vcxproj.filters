@@ -117,6 +117,9 @@
     <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\systems\PhysicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />
@@ -213,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\scene\components\PhysicsShapeComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\PhysicsWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

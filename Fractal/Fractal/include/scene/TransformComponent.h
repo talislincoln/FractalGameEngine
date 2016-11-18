@@ -3,7 +3,7 @@
 
 #include "Component.h"
 
-#include <FractalMath\Vector.h>
+#include <FractalMath\Quaternion.h>
 
 namespace fractal {
 	namespace fscene {
@@ -19,15 +19,15 @@ namespace fractal {
 
 			void translate(const fmath::Vector3& translation);
 			void scale(const fmath::Vector3& scale);
-			void rotate(float rotation);
+			void rotate(const fmath::Quaternion rotation);
 
 			void setPosition(const fmath::Vector3& position);
 			void setScale(const fmath::Vector3& scale);
-			void setRotation(float angle);
+			void setRotation(const fmath::Quaternion angle);
 
 			const fmath::Vector3& getPosition() const;
 			const fmath::Vector3& getScale() const;
-			float getRotation() const;
+			const fmath::Quaternion& getRotation() const;
 
 			//const Matrix2D& getWorldMatrix() const;
 
@@ -36,7 +36,7 @@ namespace fractal {
 
 			fmath::Vector3 m_position;
 			fmath::Vector3 m_scaling;
-			float m_rotation;
+			fmath::Quaternion m_rotation;
 
 			//Matrix2D world_matrix;
 		};

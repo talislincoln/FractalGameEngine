@@ -15,42 +15,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Box.h">
+    <ClInclude Include="include\shapes\PhysicsBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AABB.h">
+    <ClInclude Include="include\collision\AABBCollision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsWorld.h">
+    <ClInclude Include="include\collision\AABB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsMath.h">
+    <ClInclude Include="include\shapes\PhysicsShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="include\PhysicsDefine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsShape.h">
+    <ClInclude Include="include\PhysicsMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsDefine.h">
+    <ClInclude Include="include\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PhysicsBody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Box.cpp">
+    <ClCompile Include="src\shapes\PhysicsBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AABB.cpp">
+    <ClCompile Include="src\collision\AABBCollision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsWorld.cpp">
+    <ClCompile Include="src\collision\AABB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
+    <ClCompile Include="src\shapes\PhysicsShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsShape.cpp">
+    <ClCompile Include="src\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsBody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

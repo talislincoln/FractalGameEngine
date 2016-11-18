@@ -3,24 +3,20 @@
 #include <vector>
 #include "core\systems\System.h"
 #include "scene\Component.h"
-#include <FractalPhysics\PhysicsShape.h>
-#include <FractalPhysics\PhysicsMath.h>
+#include <FractalPhysics\include\shapes\PhysicsShape.h>
+#include <FractalPhysics\include\PhysicsMath.h>
 namespace fractal {
 	namespace fcore {
 
 		class PhysicsWorld : public System
 		{
 		public:
-			PhysicsWorld();
+			PhysicsWorld(const float gravity = float(9.8));
 			virtual ~PhysicsWorld();
-
-		private:
 
 			std::vector<fscene::Component> colliderList;
 			std::vector<fscene::Component> bodyList;
 
-			friend class PhysicsBodyComponent;
-			friend class PhysicsShapeComponent;
 		};
 	}
 }

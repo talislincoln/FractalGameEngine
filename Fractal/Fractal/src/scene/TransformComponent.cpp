@@ -8,7 +8,7 @@ namespace fractal {
 			m_isDirty(false),
 			m_position(),
 			m_scaling(),
-			m_rotation(0.0f)
+			m_rotation()
 		{
 
 		}
@@ -64,8 +64,8 @@ namespace fractal {
 			}
 		}
 
-		void TransformComponent::rotate(float rotation) {
-			setRotation(getRotation() + rotation);
+		void TransformComponent::rotate(const fmath::Quaternion rotation) {
+			setRotation(getRotation() * rotation);
 
 			for (GameObject* obj : getParent()->getChilderen())
 			{
@@ -87,9 +87,9 @@ namespace fractal {
 			this->m_scaling = scale;
 		}
 
-		void TransformComponent::setRotation(float angle) {
+		void TransformComponent::setRotation(const fmath::Quaternion q) {
 			this->m_isDirty = true;
-			this->m_rotation = angle;
+			this->m_rotation = q;
 		}
 
 		const fmath::Vector3& TransformComponent::getPosition() const {
@@ -100,7 +100,7 @@ namespace fractal {
 			return this->m_scaling;
 		}
 
-		float TransformComponent::getRotation() const {
+		const fmath::Quaternion& TransformComponent::getRotation() const {
 			return this->m_rotation;
 		}
 	}

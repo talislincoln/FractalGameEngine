@@ -2,7 +2,7 @@
 
 namespace fractal {
 	namespace fcore {
-		PhysicsWorld::PhysicsWorld() :
+		PhysicsWorld::PhysicsWorld(float gravity) :
 			System(SystemType::PHYSICS_SYSTEM) {
 		}
 	}

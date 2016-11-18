@@ -1,13 +1,13 @@
 #include "scene/components/PhysicsShapeComponent.h"
 
-
+#include "scene\components\PhysicsBodyComponent.h"
 
 namespace fractal {
 	namespace fphysics {
 		PhysicsShapeComponent::PhysicsShapeComponent(PhysicsShape* shapeDef)
 		{
 			parent = this->getParent();
-			body = parent->getComponent<PhysicsBodyComponent>();
+			body = parent->getComponent<PhysicsBodyComponent>()->body;
 			shape = shapeDef;
 			//shape->localPosition = parent->getTranform(); todo list.
 			if (body == nullptr) {

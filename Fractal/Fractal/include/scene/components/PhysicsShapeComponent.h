@@ -3,11 +3,11 @@
 #include <Fractal\include\scene\GameObject.h>
 #include <Fractal\include\scene\Component.h>
 #include <FractalMath\Matrix.h>
-#include <FractalPhysics\AABB.h>
-#include <FractalPhysics\Transform.h>
-#include <FractalPhysics\PhysicsShape.h>
-#include <FractalPhysics\PhysicsDefine.h>
-#include "PhysicsBodyComponent.h"
+#include <FractalPhysics\include\collision\AABB.h>
+#include <FractalPhysics\include\Transform.h>
+#include <FractalPhysics\include\shapes\PhysicsShape.h>
+#include <FractalPhysics\include\PhysicsDefine.h>
+#include <FractalPhysics\include\PhysicsBody.h>
 #include <vector>
 namespace fractal {
 	namespace fphysics {
@@ -23,7 +23,7 @@ namespace fractal {
 			//PhysicsShapeComponent* next;
 			PhysicsShape* shape;
 			const fscene::GameObject* parent;
-			PhysicsBodyComponent* body;
+			PhysicsBody* body;
 			friend class PhysicsWorld;
 		};
 	}
