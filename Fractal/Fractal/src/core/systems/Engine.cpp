@@ -77,12 +77,14 @@ namespace fractal {
 
 		int Engine::initialize()
 		{
+			//Init the managers (Scene and System manager)
 			if (!createManagers())
 				return -1;
 
 			using namespace fhelpers;
 
-			//check for errors
+			//Create instances for the different types of system
+			//and check if the system is null after creation
 			Window* window = dynamic_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
 			if (window == nullptr)
 				return 0; //error
@@ -106,6 +108,7 @@ namespace fractal {
 				return 0;
 			if (!graphics->initialize())
 				return 0;
+
 
 			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
 
