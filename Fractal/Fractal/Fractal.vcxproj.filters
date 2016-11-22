@@ -90,9 +90,6 @@
     <ClCompile Include="src\core\systems\Logic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\TransformComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\scene\SceneObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -115,7 +112,14 @@
     <ClCompile Include="src\utils\IOManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="src\scene\components\TransformComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\CameraObject.cpp">
+=======
     <ClCompile Include="src\graphics\Program.cpp">
+<<<<<<< HEAD
 =======
     <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp">
       <Filter>Source Files</Filter>
@@ -125,6 +129,9 @@
     </ClCompile>
     <ClCompile Include="src\core\systems\PhysicsWorld.cpp">
 >>>>>>> Physics
+=======
+>>>>>>> 6fe301cba5492d555a373f29826774d79152a65d
+>>>>>>> 4ddeaaf5b0fc83dece6a1470052fe2f102cfd689
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,9 +201,6 @@
     <ClInclude Include="include\core\systems\Logic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\scene\TransformComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\scene\SceneObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -225,6 +229,17 @@
     <ClInclude Include="include\utils\IOManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="include\scene\components\TransformComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\manager\CameraManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\CameraObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+=======
     <ClInclude Include="include\graphics\Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -236,6 +251,7 @@
     <Image Include="res\images\wooden.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+<<<<<<< HEAD
 =======
     <ClInclude Include="include\scene\components\PhysicsBodyComponent.h">
       <Filter>Header Files</Filter>
@@ -247,5 +263,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
 >>>>>>> Physics
+=======
+>>>>>>> 6fe301cba5492d555a373f29826774d79152a65d
+>>>>>>> 4ddeaaf5b0fc83dece6a1470052fe2f102cfd689
   </ItemGroup>
 </Project>

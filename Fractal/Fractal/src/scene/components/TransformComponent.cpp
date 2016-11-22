@@ -1,4 +1,4 @@
-#include "scene\TransformComponent.h"
+#include "scene\components\TransformComponent.h"
 #include "scene\GameObject.h"
 
 namespace fractal {
@@ -10,7 +10,7 @@ namespace fractal {
 			m_scaling(),
 			m_rotation()
 		{
-
+			//empty
 		}
 
 		TransformComponent::~TransformComponent() {

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <FractalMath\Math.h>
 #include <FractalMath\Matrix.h>
-#include <FractalMath\TQuaternion.h>
+#include <FractalMath\Quaternion.h>
 
 #include "core\systems\Engine.h"
 #include "MyGame.h"
@@ -33,8 +33,8 @@ void quaternionTest() {
 	using namespace fractal;
 	using namespace fmath;
 
-	TQuaternion q1(0.237f, 0.06f, -0.257f, -0.935);
-	TQuaternion q2(-0.752f, 0.286f, 0.374f, 0.459);
+	Quaternion q1(0.237f, 0.06f, -0.257f, -0.935);
+	Quaternion q2(-0.752f, 0.286f, 0.374f, 0.459);
 
 	std::cout << "qdot " << q1.dot(q2) << std::endl;
 	std::cout << "qmag " << q1.magnitude() << std::endl;

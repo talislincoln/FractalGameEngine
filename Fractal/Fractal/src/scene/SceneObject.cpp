@@ -1,6 +1,6 @@
 #include "scene\SceneObject.h"
 
-#include "scene\TransformComponent.h"
+#include "scene\components\TransformComponent.h"
 
 namespace fractal {
 	namespace fscene {
@@ -8,11 +8,11 @@ namespace fractal {
 			GameObject("name"),
 			m_transform(new TransformComponent())
 		{
-
+			//empty
 		}
 
 		SceneObject::~SceneObject() {
-
+			//empty
 		}
 
 		bool SceneObject::initialize() {
