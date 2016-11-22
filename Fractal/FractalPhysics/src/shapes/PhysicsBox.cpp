@@ -1,14 +1,15 @@
-#include "Box.h"
+#include "shapes\PhysicsBox.h"
 
 namespace fractal {
 	namespace fphysics {
-		Box::Box(Vector3 boxVector) :
+		using namespace fmath;
+		PhysicsBox::PhysicsBox(Vector3 boxVector) :
 			PhysicsShape() {
 			this->boxVector = boxVector;
 			shape = BOX;
 		}
 
-		void Box::calMass(massData* md) const {
+		void PhysicsBox::calMass(massData* md) const {
 
 			float ex2 = float(4.0) * boxVector.x * boxVector.x;
 			float ey2 = float(4.0) * boxVector.y * boxVector.y;
@@ -29,7 +30,7 @@ namespace fractal {
 			md->inertia = I;
 			md->mass = mass;
 		}
-		void Box::setAABB(const Transform& tx, AABB* aabb) {
+		void PhysicsBox::setAABB(const Transform& tx, AABB* aabb) {
 
 			Transform world = tx * (*localPosition);
 

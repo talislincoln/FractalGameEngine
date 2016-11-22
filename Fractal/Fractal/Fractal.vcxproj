@@ -137,6 +137,7 @@
     <ClCompile Include="src\core\systems\Logic.cpp" />
     <ClCompile Include="src\core\systems\manager\SystemFactory.cpp" />
     <ClCompile Include="src\core\systems\manager\SystemManager.cpp" />
+    <ClCompile Include="src\core\systems\PhysicsWorld.cpp" />
     <ClCompile Include="src\core\systems\System.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
     <ClCompile Include="src\graphics\Mesh.cpp" />
@@ -146,6 +147,8 @@
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
     <ClCompile Include="src\scene\Component.cpp" />
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
+    <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp" />
+    <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
     <ClCompile Include="src\scene\Object.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
@@ -167,6 +170,7 @@
     <ClInclude Include="include\core\systems\Logic.h" />
     <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
     <ClInclude Include="include\core\systems\manager\SystemManager.h" />
+    <ClInclude Include="include\core\systems\PhysicsWorld.h" />
     <ClInclude Include="include\core\systems\System.h" />
     <ClInclude Include="include\core\systems\Window.h" />
     <ClInclude Include="include\defines\Colour.h" />
@@ -182,6 +186,8 @@
     <ClInclude Include="include\interfaces\IDrawable.h" />
     <ClInclude Include="include\scene\Component.h" />
     <ClInclude Include="include\scene\components\MeshComponent.h" />
+    <ClInclude Include="include\scene\components\PhysicsBodyComponent.h" />
+    <ClInclude Include="include\scene\components\PhysicsShapeComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
     <ClInclude Include="include\scene\Object.h" />
     <ClInclude Include="include\scene\Scene.h" />

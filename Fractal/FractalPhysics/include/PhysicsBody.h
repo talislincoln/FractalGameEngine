@@ -1,28 +1,19 @@
-#ifndef _PHYSICS_BODY_COMPONENT
-#define _PHYSICS_BODY_COMPONENT
-
-#include <Fractal\include\scene\Component.h>
+#ifndef _PHYSICS_BODY
+#define _PHYSICS_BODY
+#include "collision\AABB.h"
 #include <FractalMath\Quaternion.h>
 #include "Transform.h"
-#include "PhysicsDefine.h"
-#include "AABB.h"
 namespace fractal {
 	namespace fphysics {
-		struct DefaultBody;
-		//class defaultBox;
-		//struct Box;
-		class PhysicsBodyComponent :
-			public fscene::Component
-		{
+
+		class PhysicsBody {
+
 		public:
-			PhysicsBodyComponent();
-			virtual ~PhysicsBodyComponent();
-			bool initialize();
-			void update();
-			bool shutdown();
-		private:
-			const fscene::GameObject* parent;
+			PhysicsBody();
 			//m_flages
+			void getParentTransform();
+		private:
+
 			enum
 			{
 				AWAKE = 0x001,
@@ -74,9 +65,10 @@ namespace fractal {
 			//void synchronizeProxies();
 
 			friend class PhysicsShapeComponent;
-
+			friend class PhysicsWorld;
 		};
+
 	}
 }
 
-#endif // !_BODY_COMPONENT
+#endif // !_PHYSICS_BODY

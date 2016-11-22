@@ -111,10 +111,20 @@
     <ClCompile Include="src\graphics\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\utils\IOManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Program.cpp">
+=======
+    <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\PhysicsWorld.cpp">
+>>>>>>> Physics
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -211,6 +221,7 @@
     <ClInclude Include="include\graphics\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="include\utils\IOManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -225,5 +236,16 @@
     <Image Include="res\images\wooden.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+=======
+    <ClInclude Include="include\scene\components\PhysicsBodyComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\components\PhysicsShapeComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\PhysicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> Physics
   </ItemGroup>
 </Project>
