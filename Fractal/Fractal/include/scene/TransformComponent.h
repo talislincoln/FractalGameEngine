@@ -29,7 +29,7 @@ namespace fractal {
 			const fmath::Vector3& getScale() const;
 			const fmath::Quaternion& getRotation() const;
 
-			//const Matrix2D& getWorldMatrix() const;
+			const fmath::Matrix4& getWorldMatrix() const;
 
 		private:
 			bool m_isDirty;
@@ -38,7 +38,7 @@ namespace fractal {
 			fmath::Vector3 m_scaling;
 			fmath::Quaternion m_rotation;
 
-			//Matrix2D world_matrix;
+			fmath::Matrix4 world_matrix;
 		};
 	}
 }

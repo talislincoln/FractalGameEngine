@@ -25,11 +25,9 @@ namespace fractal {
 			if (!this->m_isDirty)
 				return;
 
-			/*Matrix2D mat_translation = Matrix2D::createTranslationMatrix(this->position);
-			Matrix2D mat_scale = Matrix2D::createScalingMatrix(this->scaling);
-			Matrix2D mat_rotation = Matrix2D::createRotationMatrix(this->rotation);
-
-			this->world_matrix = mat_scale*mat_rotation*mat_translation;*/
+			this->world_matrix = fmath::Matrix4::scale(this->m_scaling) *
+				(this->m_rotation.toMatrix) *  
+				fmath::Matrix4::translate(this->m_position);
 
 			this->m_isDirty = false;
 		}
@@ -102,6 +100,10 @@ namespace fractal {
 
 		const fmath::Quaternion& TransformComponent::getRotation() const {
 			return this->m_rotation;
+		}
+
+		const fmath::Matrix4& TransformComponent::getWorldMatrix() const {
+			return this->world_matrix;
 		}
 	}
 }
