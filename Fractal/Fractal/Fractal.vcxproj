@@ -143,6 +143,7 @@
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
+    <ClCompile Include="src\scene\CameraObject.cpp" />
     <ClCompile Include="src\scene\Component.cpp" />
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
@@ -150,7 +151,7 @@
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\scene\SceneManager.cpp" />
     <ClCompile Include="src\scene\SceneObject.cpp" />
-    <ClCompile Include="src\scene\TransformComponent.cpp" />
+    <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="include\core\systems\Graphics.h" />
     <ClInclude Include="include\core\systems\Input.h" />
     <ClInclude Include="include\core\systems\Logic.h" />
+    <ClInclude Include="include\core\systems\manager\CameraManager.h" />
     <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
     <ClInclude Include="include\core\systems\manager\SystemManager.h" />
     <ClInclude Include="include\core\systems\System.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="include\helpers\ObjectCounter.h" />
     <ClInclude Include="include\helpers\Singleton.h" />
     <ClInclude Include="include\interfaces\IDrawable.h" />
+    <ClInclude Include="include\scene\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />
     <ClInclude Include="include\scene\components\MeshComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
@@ -183,7 +186,7 @@
     <ClInclude Include="include\scene\Scene.h" />
     <ClInclude Include="include\scene\SceneManager.h" />
     <ClInclude Include="include\scene\SceneObject.h" />
-    <ClInclude Include="include\scene\TransformComponent.h" />
+    <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />

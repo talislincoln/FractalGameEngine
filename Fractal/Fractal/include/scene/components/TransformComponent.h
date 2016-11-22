@@ -1,7 +1,7 @@
 #ifndef _TRANSFORMCOMPONENT_H
 #define _TRANSFORMCOMPONENT_H
 
-#include "Component.h"
+#include "scene\Component.h"
 
 #include <FractalMath\Vector.h>
 
