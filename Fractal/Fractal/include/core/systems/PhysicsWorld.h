@@ -14,6 +14,8 @@ namespace fractal {
 			PhysicsWorld(const float gravity = float(9.8));
 			virtual ~PhysicsWorld();
 
+
+			float m_gravity;
 			std::vector<fscene::Component> colliderList;
 			std::vector<fscene::Component> bodyList;
 
