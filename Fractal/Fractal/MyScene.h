@@ -16,8 +16,7 @@ public:
 	virtual void setupInput(fractal::fcore::Input* input);
 
 private:
-	fractal::fscene::SceneObject* m_mesh;
-	fractal::fscene::SceneObject* m_mesh2;
+	fractal::fscene::SceneObject* cubeAttributes;
 
 	inline void testInput() {
 		std::printf("input hit\n");

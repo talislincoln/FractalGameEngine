@@ -111,15 +111,21 @@
     <ClCompile Include="src\utils\IOManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\scene\components\TransformComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scene\CameraObject.cpp">
+=======
+    <ClCompile Include="src\graphics\Program.cpp">
+>>>>>>> 6fe301cba5492d555a373f29826774d79152a65d
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />
+    <Text Include="res\shaders\vertexShader.txt" />
+    <Text Include="res\shaders\fragmentShader.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\defines\SystemType.h">
@@ -209,6 +215,7 @@
     <ClInclude Include="include\utils\IOManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="include\scene\components\TransformComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -218,5 +225,18 @@
     <ClInclude Include="include\scene\CameraObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="include\graphics\Program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\images\awesome.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\images\wooden.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+>>>>>>> 6fe301cba5492d555a373f29826774d79152a65d
   </ItemGroup>
 </Project>
