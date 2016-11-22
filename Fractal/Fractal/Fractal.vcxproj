@@ -87,7 +87,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Fractal/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>FractalMath.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FractalMath.lib;FractalPhysics.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>

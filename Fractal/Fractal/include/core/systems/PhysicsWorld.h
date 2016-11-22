@@ -12,7 +12,9 @@ namespace fractal {
 		{
 		public:
 			PhysicsWorld(const float gravity = float(9.8));
-			virtual ~PhysicsWorld();
+			virtual ~PhysicsWorld() {
+
+			}
 
 
 			float m_gravity;

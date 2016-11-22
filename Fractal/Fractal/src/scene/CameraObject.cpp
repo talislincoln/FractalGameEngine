@@ -11,24 +11,24 @@ namespace fractal {
 
 		}
 
-		bool initialize() {
+		bool Camera::initialize() {
+			return true;
+		}
+
+		void Camera::update() {
 
 		}
 
-		void update() {
-
+		bool Camera::shutdown() {
+			return true;
 		}
 
-		bool shutdown() {
-
-		}
-
-		CameraComponent* getCamera() const {
-
+		/*CameraComponent* getCamera() const {
+			return new CameraComponent();
 		}
 
 		TransformComponent* getTransform() const {
-
-		}
+			return nullptr;
+		}*/
 	}
 }

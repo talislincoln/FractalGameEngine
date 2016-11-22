@@ -19,8 +19,8 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			CameraComponent* getCamera() const;
-			TransformComponent* getTransform() const;
+			//CameraComponent* getCamera() const;
+			//TransformComponent* getTransform() const;
 
 		private:
 			CameraComponent* camera;

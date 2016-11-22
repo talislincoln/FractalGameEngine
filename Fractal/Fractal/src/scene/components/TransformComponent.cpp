@@ -26,7 +26,7 @@ namespace fractal {
 				return;
 
 			this->world_matrix = fmath::Matrix4::scale(this->m_scaling) *
-				(this->m_rotation.toMatrix) *  
+				(this->m_rotation.toMatrix()) *  
 				fmath::Matrix4::translate(this->m_position);
 
 			this->m_isDirty = false;
