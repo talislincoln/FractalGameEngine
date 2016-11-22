@@ -118,7 +118,7 @@ namespace fractal {
 			if (!logic->initialize())
 				return 0;
 
-			printf("input suceeded initializing");
+			printf("input succeeded initializing");
 
 			return 1; //true
 		}

@@ -17,7 +17,6 @@ public:
 
 private:
 	fractal::fscene::SceneObject* cubeAttributes;
-	fractal::fscene::SceneObject* cubePositions;
 
 	inline void testInput() {
 		std::printf("input hit\n");

@@ -87,7 +87,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Fractal/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>FractalMath.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FractalMath.lib;SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -140,6 +140,7 @@
     <ClCompile Include="src\core\systems\System.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
     <ClCompile Include="src\graphics\Mesh.cpp" />
+    <ClCompile Include="src\graphics\Program.cpp" />
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
@@ -154,6 +155,8 @@
     <ClCompile Include="src\utils\IOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="res\shaders\fragmentShader.txt" />
+    <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +174,7 @@
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
+    <ClInclude Include="include\graphics\Program.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
@@ -187,6 +191,10 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\images\awesome.png" />
+    <Image Include="res\images\wooden.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
