@@ -1,0 +1,9 @@
+#version 330 core
+
+in vec3 hOurColour;
+
+out vec4 hColour;
+
+void main(){
+	hColour = vec4(hOurColour, 1.0f);
+}

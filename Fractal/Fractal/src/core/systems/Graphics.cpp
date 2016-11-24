@@ -88,7 +88,7 @@ namespace fractal {
 			glDeleteShader(fragmentShader);
 			// ***** ENDING SHADER COMPILATION
 
-			glFrontFace(GL_CW);
+			glFrontFace(GL_CW); //;w; vertices need to be created in clock wise order or else the normals will make the images render the oppsite direction
 			glCullFace(GL_BACK);
 			glEnable(GL_CULL_FACE);
 			glEnable(GL_DEPTH_TEST);

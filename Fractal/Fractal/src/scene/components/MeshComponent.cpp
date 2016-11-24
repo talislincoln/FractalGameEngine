@@ -19,31 +19,19 @@ namespace fractal {
 			//m_ourProgram.linkShaders();
 			//;w; getting the vertices
 			vertices = mesh->getVertices(); //;w; cube attributes
-			//vertices2 = mesh->getIndices();
-			GLuint indices[] = {
-				0, 1, 3, // First Triangle
-				1, 2, 3  // Second Triangle
-			};
 			//generating array and buffer
 			glGenVertexArrays(1, &m_vao);
 			glGenBuffers(1, &m_vbo); //;w; generates 1+ buffers objects, returned to access buffer object
-			glGenBuffers(1, &m_ebo);
 
 			glBindVertexArray(m_vao);
 
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(fgraphics::Vertex), &vertices[0], GL_STATIC_DRAW); //;w; copies user-defined data into currently bound buffer
-
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 			//;w; position attributes
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 			glEnableVertexAttribArray(0);
-			//;w; colour attribute
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-			glEnableVertexAttribArray(1);
 			//;w; texcoord attribute
-			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)(7 * sizeof(GLfloat)));
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(4 * sizeof(GLfloat)));
 			glEnableVertexAttribArray(2);
 			//;w; unbinds to prevent weird bugs
 			//glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -102,7 +90,7 @@ namespace fractal {
 		void MeshComponent::draw() {
 			//;w; clear colour buffer
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			//;w; shader
 			m_ourProgram->use();
 			//;w; bind texture
@@ -113,16 +101,24 @@ namespace fractal {
 			glBindTexture(GL_TEXTURE_2D, m_texture2);
 			glUniform1i(glGetUniformLocation(m_ourProgram->getProgramID(), "ourTexture2"), 1);
 			//;w; transformations
-			Matrix4 transform;
-			transform = Matrix4::translate(Vector3(0.5f, -0.5f, 0.0f));
-			transform = Matrix4::rotate(SDL_GetTicks() * 0.05, 0.0f, 0.0f, 1.0f);
-			//;w; get matrix uniform location and set matrix
-			GLint transformLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "transform");
-			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, transform);
+			Matrix4 m_model;
+			Matrix4 m_view;
+			Matrix4 m_projection;
+			m_model = Matrix4::rotate(SDL_GetTicks() * 0.1, 0.5f, 1.0f, 0.0f);
+			m_view = Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f));
+			m_projection = Matrix4::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
+			//;w; get matrix uniform location
+			m_modelLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "model");
+			m_viewLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "view");
+			m_projLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "projection");
+			//pass to shaders
+			glUniformMatrix4fv(m_modelLoc, 1, GL_FALSE, m_model);
+			glUniformMatrix4fv(m_viewLoc, 1, GL_FALSE, m_view);
+			glUniformMatrix4fv(m_projLoc, 1, GL_FALSE, m_projection);
 			//;w; draw container
 			glBindVertexArray(m_vao);
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-			//glDrawArrays(GL_TRIANGLES, 0, 3);
+			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+			glDrawArrays(GL_TRIANGLES, 0, 36);
 			//unbinding vertex array
 			glBindVertexArray(0);
 		}
@@ -135,7 +131,7 @@ namespace fractal {
 			//cleaning/deleting the buffers and array within the gpu
 			glDeleteVertexArrays(1, &m_vao);
 			glDeleteBuffers(1, &m_vbo);
-			glDeleteBuffers(1, &m_ebo);
+			//glDeleteBuffers(1, &m_ebo);
 			return true;
 		}
 	}

@@ -1,0 +1,11 @@
+#version 330 core
+
+layout (location = 0) in vec3 hPosition;
+layout (location = 1) in vec3 hColour;
+
+out vec3 hOurColour;
+
+void main(){
+	gl_Position = vec4(hPosition, 1.0f);
+	hOurColour = hColour;
+}

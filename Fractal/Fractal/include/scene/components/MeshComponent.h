@@ -42,6 +42,9 @@ namespace fractal {
 			int IMG_WIDTH, IMG_HEIGHT;
 			unsigned char* m_image;
 			//;w; other
+			GLint m_modelLoc;
+			GLint m_viewLoc;
+			GLint m_projLoc;
 		};
 	}
 }

@@ -122,6 +122,8 @@
     <Text Include="todo.txt" />
     <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="res\shaders\fragmentShader.txt" />
+    <Text Include="res\shaders\HUDVert.txt" />
+    <Text Include="res\shaders\HUDFrag.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\defines\SystemType.h">
