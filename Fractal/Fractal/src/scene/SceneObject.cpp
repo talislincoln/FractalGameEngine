@@ -1,6 +1,6 @@
 #include "scene\SceneObject.h"
 
-#include "scene\TransformComponent.h"
+#include "scene\components\TransformComponent.h"
 
 namespace fractal {
 	namespace fscene {
@@ -8,11 +8,11 @@ namespace fractal {
 			GameObject("name"),
 			m_transform(new TransformComponent())
 		{
-
+			//empty
 		}
 
 		SceneObject::~SceneObject() {
-
+			//empty
 		}
 
 		bool SceneObject::initialize() {
@@ -61,7 +61,7 @@ namespace fractal {
 					drawable_obj->draw();
 			}
 
-			for (GameObject* obj : getChilderen())
+			for (GameObject* obj : getChildren())
 			{
 				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
 				if (drawable_obj == nullptr)

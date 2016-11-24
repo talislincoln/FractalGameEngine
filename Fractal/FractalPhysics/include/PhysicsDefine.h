@@ -15,6 +15,13 @@ namespace fractal {
 			DYNAMICBODY,
 			KINEMATICBODY
 		};
+
+		struct massData
+		{
+			fmath::Matrix3 inertia;
+			fmath::Vector3 center;
+			float mass;
+		};
 	}
 }
 #endif // !_SHAPE

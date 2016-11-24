@@ -2,6 +2,7 @@
 
 #include "scene\Scene.h"
 #include "scene\SceneObject.h"
+#include "scene\objects\FreeCamera.h"
 
 class MyScene : public fractal::fscene::Scene
 {
@@ -17,6 +18,7 @@ public:
 
 private:
 	fractal::fscene::SceneObject* cubeAttributes;
+	fractal::fscene::FreeCamera* camera;
 
 	inline void testInput() {
 		std::printf("input hit\n");

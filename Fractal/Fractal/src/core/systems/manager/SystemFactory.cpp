@@ -9,6 +9,7 @@ namespace fractal {
 		SystemFactory::SystemFactory()
 		{
 		}
+
 		SystemFactory::~SystemFactory()
 		{
 		}
@@ -21,8 +22,8 @@ namespace fractal {
 				case SystemType::INPUT_SYSTEM: return new Input();
 				case SystemType::LOGIC_SYSTEM: return new Logic();
 				case SystemType::GRAPHICS_SYSTEM: return new Graphics();
-			//case SystemType::TIMER_SYSTEM: return new MainTimer();
-					//case SystemType::PHYSICS_SYSTEM: return new Physics();
+				//case SystemType::TIMER_SYSTEM: return new MainTimer();
+				//case SystemType::PHYSICS_SYSTEM: return new Physics();
 			}
 
 			return nullptr;

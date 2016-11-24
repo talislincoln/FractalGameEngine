@@ -1,18 +1,29 @@
 #version 330 core
-
 layout (location = 0) in vec3 position;
+<<<<<<< HEAD
 //layout (location = 1) in vec3 colour;
 layout (location = 2) in vec2 texCoord;
 
 //out vec3 ourColour;
+=======
+layout (location = 2) in vec2 texCoord;
+
+>>>>>>> cf713e4a3c30344503d29a0d1a72dd9547f90b71
 out vec2 TexCoord;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+<<<<<<< HEAD
 void main(){
 	gl_Position = projection * view * model * vec4(position, 1.0f);
 	//ourColour = colour;
 	TexCoord = vec2(texCoord.x, 1.0 - texCoord.y);
+=======
+void main()
+{
+    gl_Position = projection * view * model * vec4(position, 1.0f);
+    TexCoord = vec2(texCoord.x, 1.0 - texCoord.y);
+>>>>>>> cf713e4a3c30344503d29a0d1a72dd9547f90b71
 }

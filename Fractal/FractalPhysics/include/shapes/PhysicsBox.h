@@ -1,16 +1,16 @@
-#ifndef _BOX_H
-#define _BOX_H
+#ifndef _PHYSICS_BOX_H
+#define _PHYSICS_BOX_H
 
 #include <FractalMath\Vector.h>
 #include "Transform.h"
-#include "AABB.h"
+#include "collision\AABB.h"
 #include "PhysicsShape.h"
 namespace fractal {
 	namespace fphysics {
 
 
-		class Box : public PhysicsShape {
-			Box(fmath::Vector3 boxVector = Vector3(1));
+		class PhysicsBox : public PhysicsShape {
+			PhysicsBox(fmath::Vector3 boxVector = Vector3(1));
 			fmath::Vector3 boxVector; // from center of mass
 
 			void calMass(massData* md) const;

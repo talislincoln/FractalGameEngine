@@ -91,7 +91,7 @@ namespace fractal {
 			return this->m_parent;
 		}
 
-		std::vector<GameObject*> GameObject::getChilderen() const
+		std::vector<GameObject*> GameObject::getChildren() const
 		{
 			return this->m_children;
 		}

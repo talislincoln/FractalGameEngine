@@ -2,7 +2,10 @@
 #define _SCENEMANAGER_H
 
 #include "helpers\Manager.h"
+#include "helpers\Singleton.h"
 #include "interfaces\IDrawable.h"
+
+#include "core\systems\manager\CameraManager.h"
 
 #include <string>
 
@@ -11,9 +14,9 @@
 #endif // !_VECTOR
 
 
-
 namespace fractal
 {
+	using namespace fcore;
 	namespace fscene {
 		class Scene;
 
@@ -37,9 +40,11 @@ namespace fractal
 			template<typename T>
 			void setupManager()
 			{
+				using namespace fhelpers;
+				using namespace fcore;
 				if (Singleton<T>::hasInstance())
 				{
-					Singleton<Logger>::getInstance().log(_T("Check if we can keep data that will be used in a different scene aswell, so not all data need to be unloaded."), LOGTYPE_TODO);
+					//Singleton<Logger>::getInstance().log(_T("Check if we can keep data that will be used in a different scene aswell, so not all data need to be unloaded."), LOGTYPE_TODO);
 					Singleton<T>::getInstance().shutdown();
 				}
 				else Singleton<T>::createInstance();
@@ -49,6 +54,8 @@ namespace fractal
 			template<typename T>
 			void destroyManager()
 			{
+				using namespace fhelpers;
+				using namespace fcore;
 				Singleton<T>::getInstance().shutdown();
 				Singleton<T>::destroyInstance();
 			}

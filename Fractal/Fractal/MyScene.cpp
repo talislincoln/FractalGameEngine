@@ -2,9 +2,14 @@
 #include "core\systems\Input.h"
 #include "graphics\Vertex.h"
 #include "scene\components\MeshComponent.h"
+#include "scene\components\TransformComponent.h"
+
+#include <FractalMath\Vector.h>
 
 MyScene::MyScene() :
-	Scene("MyScene"), cubeAttributes(nullptr)//, indices(nullptr)
+	Scene("MyScene"), 
+	camera(nullptr),
+	cubeAttributes(nullptr)//, indices(nullptr)
 {
 }
 
@@ -17,6 +22,13 @@ bool MyScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
+
+	this->camera = new FreeCamera("Main Camera");
+	camera->getTransform()->setPosition(Vector3(0));
+	
+	//addGameObject(this->camera);
+
+
 	//;w; setting the points and other attributes
 	std::vector<Vertex> vertices;
 	//;w; side 1
@@ -84,6 +96,7 @@ bool MyScene::initialize() {
 	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
 	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
+<<<<<<< HEAD
 	//;w; side 6 
 	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
@@ -101,6 +114,50 @@ bool MyScene::initialize() {
 	cubeAttributes = new SceneObject("cubeAttributes");
 	cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
 	addGameObject(cubeAttributes);
+=======
+	////;w; side 2
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
+	////;w; side 3
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
+	////;w; side 4
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	////;w; side 5
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
+	////;w; side 6
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
+	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
+	//cubeAttributes = new SceneObject("cubeAttributes");
+	//;w; 
+	//cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
+	camera->addComponent(new MeshComponent(new Mesh(vertices)));
+	//;w; 
+	//addGameObject(cubeAttributes);
+	addGameObject(this->camera);
+>>>>>>> cf713e4a3c30344503d29a0d1a72dd9547f90b71
 
 	return Scene::initialize();
 }
@@ -114,6 +171,5 @@ bool MyScene::shutdown() {
 }
 
 void MyScene::setupInput(fractal::fcore::Input* input) {
-	input->bindInput(fractal::fcore::InputBinding('a', std::bind(&MyScene::testInput, this), fractal::InputStateType::PRESSED));
-	input->bindInput(fractal::fcore::InputBinding('a', std::bind(&MyScene::testInput2, this), fractal::InputStateType::RELEASED));
+	camera->setupInput(input);
 }

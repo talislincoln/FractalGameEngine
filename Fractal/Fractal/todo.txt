@@ -3,18 +3,21 @@ Create a config file
 -------------- URGENT ---------------------
 Create a render Manager 
 Craete a camera Manager for the scene
+Create a Debug/Logger system
+Create a timer system
 -------------------------------------------
 
 -------------- GameObject ---------------------
 create a function to get the rootParent for a gameObject
 create a function to get all components of a type from all parents (physics)
 create layers
+add transform component for every game object
 get transform function
 -----------------------------------------------
 
-create a timer system
-
 create a shader manager as a dicitionary (maybe?)
+
+create a Manager for managing all managers.
 
 define a world settings class that will hold all application properties
 - window width and height and if its full screen or not
@@ -40,6 +43,10 @@ improve the input system
 
 take another look about the 'move' semanthics in c++ (move constructor)
 - since c++11 there's a new kind of operator called Class(Class&& c) that is used to pass values when making a copy is not needed	
+
+need to change some of the Matrix4 functions
+- some of them passes a matrix as parameter, but that matrix should be the actual matrix that is calling the function
+   -> a solution is either convert the function to static or don't use the parameter anymore.
 
 (for the physics engine)
 have a physics settings file that defines gravity and any other information we may need to hold

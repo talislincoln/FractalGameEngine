@@ -155,6 +155,7 @@ namespace fractal {
 
 
 			static Matrix4 rotate(const float degrees_, const float x_, const float y_, const float z_);
+			static Matrix4 rotate(float degrees_, const Vector3& v);
 			static Matrix4 translate(const float x_, const float y_, const float z_);
 			static Matrix4 translate(const Vector3& v);
 			static Matrix4 scale(const float x_, const float y_, const float z_);
@@ -285,7 +286,6 @@ namespace fractal {
 				m[0] = xx;   m[3] = xy;   m[6] = xz;
 				m[1] = yx;   m[4] = yy;   m[7] = yz;
 				m[2] = zx;   m[5] = zy;   m[8] = zz;
-
 			}
 
 			/// Create the unit matrix probably the most common way of initializing a matrix
@@ -297,7 +297,6 @@ namespace fractal {
 					m[0] = d;   m[3] = d;   m[6] = d;
 					m[1] = d;   m[4] = d;   m[7] = d;
 					m[2] = d;   m[5] = d;   m[8] = d;
-
 				}
 			}
 			inline Matrix3(const float x, const float y, const float z) {
@@ -322,7 +321,6 @@ namespace fractal {
 				m[0] = 1.0f;   m[3] = 0.0f;   m[6] = 0.0f;
 				m[1] = 0.0f;   m[4] = 1.0f;   m[7] = 0.0f;
 				m[2] = 0.0f;   m[5] = 0.0f;   m[8] = 1.0f;
-
 			}
 
 

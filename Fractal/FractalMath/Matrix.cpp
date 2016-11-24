@@ -34,6 +34,36 @@ namespace fractal {
 			return m;
 		}
 
+		Matrix4 Matrix4::rotate(float degrees_, const Vector3& v) {
+			float cosang, sinang, cosm;
+			Vector3 rotAxis(v);
+			rotAxis.normalize();
+			degrees_ *= DEGREES_TO_RADIANS;
+			cosang = cos(degrees_);
+			sinang = sin(degrees_);
+			cosm = (1.0f - cosang);
+
+			Matrix4 m;
+
+			m[0] = (rotAxis.x * rotAxis.x * cosm) + cosang;
+			m[1] = (rotAxis.x * rotAxis.y * cosm) + (rotAxis.z * sinang);
+			m[2] = (rotAxis.x * rotAxis.z * cosm) - (rotAxis.y * sinang);
+			m[3] = 0.0;
+			m[4] = (rotAxis.x * rotAxis.y * cosm) - (rotAxis.z * sinang);
+			m[5] = (rotAxis.y * rotAxis.y * cosm) + cosang;
+			m[6] = (rotAxis.y * rotAxis.z * cosm) + (rotAxis.x * sinang);
+			m[7] = 0.0;
+			m[8] = (rotAxis.x * rotAxis.z * cosm) + (rotAxis.y * sinang);
+			m[9] = (rotAxis.y * rotAxis.z * cosm) - (rotAxis.x * sinang);
+			m[10] = (rotAxis.z * rotAxis.z * cosm) + cosang;
+			m[11] = 0.0;
+			m[12] = 0.0;
+			m[13] = 0.0;
+			m[14] = 0.0;
+			m[15] = 1.0;
+
+			return m;
+		}
 		/// As derived in GAME331 
 		Matrix4 Matrix4::perspective(const float fovy_, const float aspect_, const float zNear_, const float zFar_) {
 			float cot = 1.0f / tan(fovy_* 0.5f * DEGREES_TO_RADIANS);

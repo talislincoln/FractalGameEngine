@@ -1,18 +1,12 @@
 #ifndef _PHYSICS_SHAPE
 #define _PHYSICS_SHAPE
 #include <FractalMath\Matrix.h>
-#include "AABB.h"
-#include "Transform.h"
-#include "PhysicsDefine.h"
+#include <FractalPhysics\include\collision\AABB.h>
+#include <FractalPhysics\include\Transform.h>
+#include <FractalPhysics\include\PhysicsDefine.h>
 namespace fractal {
 	namespace fphysics {
 
-		struct massData
-		{
-			fmath::Matrix3 inertia;
-			fmath::Vector3 center;
-			float mass;
-		};
 		class PhysicsShape
 		{
 			public :
