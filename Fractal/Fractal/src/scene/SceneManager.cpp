@@ -1,6 +1,7 @@
 #include "scene\SceneManager.h"
 #include "scene\Scene.h"
 #include "defines\deletemacros.h"
+#include "helpers\Singleton.h"
 
 #ifndef _ALGORITHM_
 #include <algorithm>
@@ -23,12 +24,12 @@ namespace fractal {
 		{
 			//define wheather or not we need those managers
 			//setupManager<Renderer>();
-			//setupManager<CameraManager>();
+			setupManager<CameraManager>();
 
 			if (!this->m_activeScene->isInitialized())
 			{
 				//this->m_activeScene->setRenderer(&Singleton<Renderer>::getInstance());
-				//this->m_activeScene->setCameraManager(&Singleton<CameraManager>::getInstance());
+				this->m_activeScene->setCameraManager(&fhelpers::Singleton<CameraManager>::getInstance());
 
 				if (!this->m_activeScene->initialize())
 					return false;
@@ -73,7 +74,7 @@ namespace fractal {
 			}
 
 			//destroyManager<Renderer>();
-			//destroyManager<CameraManager>();
+			destroyManager<CameraManager>();
 
 			return true;
 		}

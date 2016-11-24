@@ -8,10 +8,15 @@
 
 #include <vector>
 
-class Renderer;
-class CameraManager;
+
+
+
 
 namespace fractal {
+	namespace fcore {
+		class Renderer;
+		class CameraManager;
+	}
 	namespace fscene {
 		class Scene : public Object, public IDrawable//, public IInput
 		{
@@ -36,13 +41,13 @@ namespace fractal {
 
 			//void setRenderer(Renderer* renderer);
 			//Renderer* getRenderer() const;
-			//void setCameraManager(CameraManager* manager);
-			//CameraManager* getCameraManager() const;
+			void setCameraManager(fcore::CameraManager* manager);
+			fcore::CameraManager* getCameraManager() const;
 
 		private:
 
 			//Renderer* renderer;
-			//CameraManager* camera_manager;
+			fcore::CameraManager* m_cameraManager;
 			std::vector<GameObject*> m_objects;
 		};
 	}

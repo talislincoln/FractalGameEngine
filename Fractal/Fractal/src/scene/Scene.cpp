@@ -7,10 +7,10 @@
 
 namespace fractal {
 	namespace fscene {
-		Scene::Scene(const std::string& name)
-			:Object(name)
+		Scene::Scene(const std::string& name) :
+			Object(name),
+			m_cameraManager(nullptr)
 			//, renderer(nullptr)
-			//, camera_manager(nullptr)
 		{
 		}
 
@@ -34,6 +34,7 @@ namespace fractal {
 
 			return true;
 		}
+
 		void Scene::update()
 		{
 			for (GameObject* obj : this->m_objects)
@@ -42,6 +43,7 @@ namespace fractal {
 					obj->update();
 			}
 		}
+
 		void Scene::draw()
 		{
 			for (GameObject* obj : this->m_objects)
@@ -56,6 +58,7 @@ namespace fractal {
 					drawable_obj->draw();
 			}
 		}
+
 		bool Scene::shutdown()
 		{
 			for (GameObject* obj : this->m_objects)
@@ -97,6 +100,7 @@ namespace fractal {
 				object->setScene(this);
 			}
 		}
+
 		void Scene::removeGameObject(GameObject* object)
 		{
 			std::vector<GameObject*>::iterator it = std::find(this->m_objects.begin(), this->m_objects.end(), object);
@@ -105,6 +109,14 @@ namespace fractal {
 				this->m_objects.erase(it);
 				SafeDelete((*it));
 			}
+		}
+
+		void Scene::setCameraManager(fcore::CameraManager* manager) {
+			m_cameraManager = manager;
+		}
+
+		fcore::CameraManager* Scene::getCameraManager() const {
+			return m_cameraManager;
 		}
 	}
 }

@@ -33,8 +33,8 @@ void quaternionTest() {
 	using namespace fractal;
 	using namespace fmath;
 
-	Quaternion q1(0.237f, 0.06f, -0.257f, -0.935);
-	Quaternion q2(-0.752f, 0.286f, 0.374f, 0.459);
+	Quaternion q1(0.237f, 0.06f, -0.257f, -0.935f);
+	Quaternion q2(-0.752f, 0.286f, 0.374f, 0.459f);
 
 	std::cout << "qdot " << q1.dot(q2) << std::endl;
 	std::cout << "qmag " << q1.magnitude() << std::endl;

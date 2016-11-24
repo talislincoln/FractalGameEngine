@@ -23,7 +23,7 @@ namespace fractal {
 			void setParent(GameObject* parent);
 			GameObject* getParent() const;
 
-			std::vector<GameObject*> getChilderen() const;
+			std::vector<GameObject*> getChildren() const;
 
 			template <typename T> T* getComponent() const;
 			std::vector<Component*> getComponents() const;

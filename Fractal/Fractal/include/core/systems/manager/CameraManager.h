@@ -1,12 +1,14 @@
-#ifndef _CAMERAMANAGER_H
-#define _CAMERAMANAGer_H
+ #ifndef _CAMERAMANAGER_H
+#define _CAMERAMANAGER_H
 
 #include "helpers\Manager.h"
 
 #include <vector>
 
 namespace fractal {
-	class CameraObject;
+	namespace fscene {
+		class CameraObject;
+	}
 
 	namespace fcore {
 		class CameraManager : public Manager {
@@ -18,15 +20,15 @@ namespace fractal {
 			virtual bool shutdown();
 
 			void setActiveCamera(const std::string& name);
-			void setActiveCamera(CameraObject* camera);
+			void setActiveCamera(fscene::CameraObject* camera);
 
-			CameraObject* getActiveCamera() const;
+			fscene::CameraObject* getActiveCamera() const;
 
-			void addCamera(CameraObject* camera, bool setActive = true);
+			void addCamera(fscene::CameraObject* camera, bool setActive = true);
 
 		private:
-			std::vector<CameraObject*> m_cameras;
-			CameraObject* m_activeCamera;
+			std::vector<fscene::CameraObject*> m_cameras;
+			fscene::CameraObject* m_activeCamera;
 		};
 	}
 }

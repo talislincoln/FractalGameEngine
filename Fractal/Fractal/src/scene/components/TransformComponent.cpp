@@ -7,14 +7,14 @@ namespace fractal {
 			Component(name == "" ? "TransformComponent" : name),
 			m_isDirty(false),
 			m_position(),
-			m_scaling(),
+			m_scaling(1),
 			m_rotation()
 		{
-			//empty
+			m_worldMatrix.loadIdentity();
 		}
 
 		TransformComponent::~TransformComponent() {
-
+			//empty
 		}
 
 		bool TransformComponent::initialize() {
@@ -25,9 +25,9 @@ namespace fractal {
 			if (!this->m_isDirty)
 				return;
 
-			this->world_matrix = fmath::Matrix4::scale(this->m_scaling) *
-				(this->m_rotation.toMatrix()) *  
-				fmath::Matrix4::translate(this->m_position);
+			this->m_worldMatrix = fmath::Matrix4::scale(this->m_scaling) *
+									(this->m_rotation.toMatrix()) *  
+									fmath::Matrix4::translate(this->m_position);
 
 			this->m_isDirty = false;
 		}
@@ -39,7 +39,7 @@ namespace fractal {
 		void TransformComponent::translate(const fmath::Vector3& translation) {
 			setPosition(getPosition() + translation);
 
-			for (GameObject* obj : getParent()->getChilderen())
+			for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
 				if (!transform)
@@ -52,7 +52,7 @@ namespace fractal {
 		void TransformComponent::scale(const fmath::Vector3& scale) {
 			setScale(getScale() + scale);
 
-			for (GameObject* obj : getParent()->getChilderen())
+			for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
 				if (!transform)
@@ -65,7 +65,7 @@ namespace fractal {
 		void TransformComponent::rotate(const fmath::Quaternion rotation) {
 			setRotation(getRotation() * rotation);
 
-			for (GameObject* obj : getParent()->getChilderen())
+			for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
 				if (!transform)
@@ -73,37 +73,6 @@ namespace fractal {
 
 				transform->rotate(rotation);
 			}
-		}
-
-		void TransformComponent::setPosition(const fmath::Vector3& position) {
-			this->m_isDirty = true;
-			this->m_position = position;
-		}
-
-		void TransformComponent::setScale(const fmath::Vector3& scale) {
-			this->m_isDirty = true;
-			this->m_scaling = scale;
-		}
-
-		void TransformComponent::setRotation(const fmath::Quaternion q) {
-			this->m_isDirty = true;
-			this->m_rotation = q;
-		}
-
-		const fmath::Vector3& TransformComponent::getPosition() const {
-			return this->m_position;
-		}
-
-		const fmath::Vector3& TransformComponent::getScale() const {
-			return this->m_scaling;
-		}
-
-		const fmath::Quaternion& TransformComponent::getRotation() const {
-			return this->m_rotation;
-		}
-
-		const fmath::Matrix4& TransformComponent::getWorldMatrix() const {
-			return this->world_matrix;
 		}
 	}
 }

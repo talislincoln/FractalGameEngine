@@ -21,15 +21,38 @@ namespace fractal {
 			void scale(const fmath::Vector3& scale);
 			void rotate(const fmath::Quaternion rotation);
 
-			void setPosition(const fmath::Vector3& position);
-			void setScale(const fmath::Vector3& scale);
-			void setRotation(const fmath::Quaternion angle);
 
-			const fmath::Vector3& getPosition() const;
-			const fmath::Vector3& getScale() const;
-			const fmath::Quaternion& getRotation() const;
+			// ***** setters and getters ***** //
+			inline void setPosition(const fmath::Vector3& position) {
+				this->m_isDirty = true;
+				this->m_position = position;
+			}
 
-			const fmath::Matrix4& getWorldMatrix() const;
+			void setScale(const fmath::Vector3& scale) {
+				this->m_isDirty = true;
+				this->m_scaling = scale;
+			}
+
+			void setRotation(const fmath::Quaternion& angle) {
+				this->m_isDirty = true;
+				this->m_rotation = angle;
+			}
+
+			inline const fmath::Vector3& getPosition() const {
+				return m_position;
+			}
+			
+			inline const fmath::Vector3& getScale() const {
+				return m_scaling;
+			}
+
+			inline const fmath::Quaternion& getRotation() const {
+				return m_rotation;
+			}
+
+			inline const fmath::Matrix4& getWorldMatrix() const {
+				return m_worldMatrix;
+			}
 
 		private:
 			bool m_isDirty;
@@ -38,7 +61,7 @@ namespace fractal {
 			fmath::Vector3 m_scaling;
 			fmath::Quaternion m_rotation;
 
-			fmath::Matrix4 world_matrix;
+			fmath::Matrix4 m_worldMatrix;
 		};
 	}
 }

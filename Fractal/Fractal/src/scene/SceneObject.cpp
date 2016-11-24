@@ -61,7 +61,7 @@ namespace fractal {
 					drawable_obj->draw();
 			}
 
-			for (GameObject* obj : getChilderen())
+			for (GameObject* obj : getChildren())
 			{
 				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
 				if (drawable_obj == nullptr)
