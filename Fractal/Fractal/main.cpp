@@ -1,8 +1,7 @@
 #include <iostream>
 #include <FractalMath\Math.h>
-#include <FractalMath\Matrix.h>
 #include <FractalMath\Quaternion.h>
-
+#include <FractalPhysics\Transform.h>
 #include "core\systems\Engine.h"
 #include "MyGame.h"
 
@@ -12,52 +11,24 @@
 //> private = m_myPrivate. <-- that set up
 //> public =  first letter lower case, the rest of the first letter upper case ex : int myInt;
 
-void quaternionTest();
-
-void testMath();
-
 int main(int argc, char* argv[]) {
-	//quaternionTest();
-	//testMath();
-
-	fractal::fcore::Engine* engine = new fractal::fcore::Engine(new MyGame());
-	engine->run();
-	delete engine;
-
-	//getchar();
-
-	return 0;
-}
-
-void quaternionTest() {
 	using namespace fractal;
 	using namespace fmath;
 
-	Quaternion q1(0.237f, 0.06f, -0.257f, -0.935);
-	Quaternion q2(-0.752f, 0.286f, 0.374f, 0.459);
+	fmath::Vector3 a(2,5,1);
+	fmath::Vector3 b(3,2,5);
 
-	std::cout << "qdot " << q1.dot(q2) << std::endl;
-	std::cout << "qmag " << q1.magnitude() << std::endl;
-	std::cout << "qinv " << q1.inverse() << std::endl;
-}
-
-void testMath() {
-	using namespace fractal;
-	using namespace fmath;
-
-	fmath::Vector3 a(2, 5, 1);
-	fmath::Vector3 b(3, 4, 3);
-	Vector3 c = a + b;
-	Point3 pp(2, 5, 1);
-	Point3 pp2(3, 4, 4);
-	c = pp + pp2;
-	std::cout << " a + b " << c << std::endl;
-	fmath::Matrix4 projectionMatrix = fmath::Matrix4::rotate(30, 1, 0, 0) * fmath::Matrix4::translate(2, 4, 5) * fmath::Matrix4::scale(2, 2, 2);
-	std::cout << fmath::Matrix4::rotate(30, 1, 0, 0);
-	std::cout << fmath::Matrix4::translate(2, 4, 5);
-	std::cout << fmath::Matrix4::scale(2, 2, 2);
-	std::cout << projectionMatrix;
+	fmath::Vector3 c(1);
+	fmath::Vector3 d(1);
+	fmath::Matrix4 projectionMatrix = fmath::Matrix4::scale(a) * fmath::Matrix4::rotate(30, 1, 0, 0)* fmath::Matrix4::translate(2,4,5);
+	fmath::Matrix4 projectionMatrix2 = fmath::Matrix4::scale(b)*fmath::Matrix4::rotate(30, 0, 1, 0)  * fmath::Matrix4::translate(3,-4,-2) ;
+	Transform tx1 = Transform(Vector3(2, 4, 5), Quaternion(30, Vector3(1, 0, 0)), a);
+	Transform tx2 = Transform(Vector3(3, -4, -2), Quaternion(30, Vector3(0, 1, 0)), b);
 	projectionMatrix.print();
+	tx2.GetTransformM4().print();
+	projectionMatrix =projectionMatrix * projectionMatrix2;
+	tx1 = tx1 * tx2;
+	tx1.GetTransformM4().print();
 
 	std::cout << " test " << a + b << std::endl;
 	std::cout << " test " << a.dot(b) << std::endl;
@@ -75,13 +46,19 @@ void testMath() {
 	std::cout << " a " << a.normalize() << std::endl;
 
 	std::cout << " a " << a << std::endl;
-
-	quaternionTest();
-
+	
 	Plane plane1(1, 2, 3, 4);
 	Plane plane2(2, 4, 6, 5);
 	if (plane1 == plane2) {
 
-		std::cout << "p = p ? ";
+		std::cout << "p = p ? " ;
 	}
+
+	fractal::fcore::Engine* engine = new fractal::fcore::Engine(new MyGame());
+	engine->run();
+	delete engine;
+
+	getchar();
+
+	return 0;
 }

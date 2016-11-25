@@ -121,7 +121,6 @@
   <ItemGroup>
     <ClInclude Include="include\collision\AABB.h" />
     <ClInclude Include="include\collision\AABBCollision.h" />
-    <ClInclude Include="include\collision\Collider.h" />
     <ClInclude Include="include\PhysicsBody.h" />
     <ClInclude Include="include\shapes\PhysicsBox.h" />
     <ClInclude Include="include\PhysicsDefine.h" />
@@ -132,7 +131,6 @@
   <ItemGroup>
     <ClCompile Include="src\collision\AABB.cpp" />
     <ClCompile Include="src\collision\AABBCollision.cpp" />
-    <ClCompile Include="src\collision\Collider.cpp" />
     <ClCompile Include="src\PhysicsBody.cpp" />
     <ClCompile Include="src\shapes\PhysicsBox.cpp" />
     <ClCompile Include="src\shapes\PhysicsShape.cpp" />

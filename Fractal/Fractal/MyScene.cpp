@@ -4,7 +4,7 @@
 #include "scene\components\MeshComponent.h"
 
 MyScene::MyScene() :
-	Scene("MyScene"), cubeAttributes(nullptr)//, indices(nullptr)
+	Scene("MyScene"), m_mesh(nullptr), m_mesh2(nullptr)
 {
 }
 
@@ -17,61 +17,24 @@ bool MyScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	//;w; setting the points and other attributes
+
 	std::vector<Vertex> vertices;
-	//;w; side 1
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.0f)));
-	vertices.push_back(Vertex(Point3(1.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
 	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
 	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
 	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.0f)));
-	vertices.push_back(Vertex(Point3(1.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	////;w; side 2
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	////;w; side 3
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	////;w; side 4
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	////;w; side 5
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	////;w; side 6
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	//vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	cubeAttributes = new SceneObject("cubeAttributes");
-	//;w; 
-	cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
-	//;w; 
-	addGameObject(cubeAttributes);
+	m_mesh = new SceneObject("MyMesh");
+
+	std::vector<Vertex> vertices2;
+	vertices2.push_back(Vertex(Point3(0.0f, 0.5f, 0.0f)));
+	vertices2.push_back(Vertex(Point3(0.5f, 0.5f, 0.0f)));
+	vertices2.push_back(Vertex(Point3(0.5f, 0.0f, 0.0f)));
+	m_mesh2 = new SceneObject("MyMesh2");
+
+	m_mesh->addComponent(new MeshComponent(new Mesh(vertices)));
+	m_mesh2->addComponent(new MeshComponent(new Mesh(vertices2)));
+
+	addGameObject(m_mesh);
+	addGameObject(m_mesh2);
 
 	return Scene::initialize();
 }

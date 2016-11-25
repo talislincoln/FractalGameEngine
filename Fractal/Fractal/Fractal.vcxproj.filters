@@ -1,82 +1,225 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyGame.cpp" />
-    <ClCompile Include="MyScene.cpp" />
-    <ClCompile Include="src\core\game\AbstractGame.cpp" />
-    <ClCompile Include="src\core\systems\Engine.cpp" />
-    <ClCompile Include="src\core\systems\Graphics.cpp" />
-    <ClCompile Include="src\core\systems\Input.cpp" />
-    <ClCompile Include="src\core\systems\Logic.cpp" />
-    <ClCompile Include="src\core\systems\manager\SystemFactory.cpp" />
-    <ClCompile Include="src\core\systems\manager\SystemManager.cpp" />
-    <ClCompile Include="src\core\systems\PhysicsWorld.cpp" />
-    <ClCompile Include="src\core\systems\System.cpp" />
-    <ClCompile Include="src\core\systems\Window.cpp" />
-    <ClCompile Include="src\graphics\Mesh.cpp" />
-    <ClCompile Include="src\graphics\Program.cpp" />
-    <ClCompile Include="src\helpers\Manager.cpp" />
-    <ClCompile Include="src\helpers\Singleton.cpp" />
-    <ClCompile Include="src\interfaces\IDrawable.cpp" />
-    <ClCompile Include="src\scene\CameraObject.cpp" />
-    <ClCompile Include="src\scene\Component.cpp" />
-    <ClCompile Include="src\scene\components\MeshComponent.cpp" />
-    <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp" />
-    <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp" />
-    <ClCompile Include="src\scene\GameObject.cpp" />
-    <ClCompile Include="src\scene\Object.cpp" />
-    <ClCompile Include="src\scene\Scene.cpp" />
-    <ClCompile Include="src\scene\SceneManager.cpp" />
-    <ClCompile Include="src\scene\SceneObject.cpp" />
-    <ClCompile Include="src\scene\components\TransformComponent.cpp" />
-    <ClCompile Include="src\utils\IOManager.cpp" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{71cc049f-7b87-4dda-bd44-745d2e884f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\defines">
+      <UniqueIdentifier>{126e04ac-bf9b-478d-8536-2ccc86d30599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\systems">
+      <UniqueIdentifier>{93ad8362-bbe6-4377-a67d-9bdbae88a906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\systems\manager">
+      <UniqueIdentifier>{350e66df-dbbd-4108-a800-f3c8d0d0eaca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\helpers">
+      <UniqueIdentifier>{4e2a99e4-96f0-41e5-9405-08b3c91c8e64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\game">
+      <UniqueIdentifier>{6b53edcd-6221-44dd-951a-e0106c9a2f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{65d89ac0-915a-45b0-859c-31755de2c259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core\graphics">
+      <UniqueIdentifier>{0233882a-c5e9-4ee4-b149-24904b818354}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\core\game\AbstractGame.h" />
-    <ClInclude Include="include\core\systems\Engine.h" />
-    <ClInclude Include="include\core\systems\Graphics.h" />
-    <ClInclude Include="include\core\systems\Input.h" />
-    <ClInclude Include="include\core\systems\Logic.h" />
-    <ClInclude Include="include\core\systems\manager\CameraManager.h" />
-    <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
-    <ClInclude Include="include\core\systems\manager\SystemManager.h" />
-    <ClInclude Include="include\core\systems\PhysicsWorld.h" />
-    <ClInclude Include="include\core\systems\System.h" />
-    <ClInclude Include="include\core\systems\Window.h" />
-    <ClInclude Include="include\defines\Colour.h" />
-    <ClInclude Include="include\defines\deletemacros.h" />
-    <ClInclude Include="include\defines\InputStateType.h" />
-    <ClInclude Include="include\defines\SystemType.h" />
-    <ClInclude Include="include\graphics\Mesh.h" />
-    <ClInclude Include="include\graphics\Program.h" />
-    <ClInclude Include="include\graphics\Vertex.h" />
-    <ClInclude Include="include\helpers\Manager.h" />
-    <ClInclude Include="include\helpers\ObjectCounter.h" />
-    <ClInclude Include="include\helpers\Singleton.h" />
-    <ClInclude Include="include\interfaces\IDrawable.h" />
-    <ClInclude Include="include\scene\CameraObject.h" />
-    <ClInclude Include="include\scene\Component.h" />
-    <ClInclude Include="include\scene\components\MeshComponent.h" />
-    <ClInclude Include="include\scene\components\PhysicsBodyComponent.h" />
-    <ClInclude Include="include\scene\components\PhysicsShapeComponent.h" />
-    <ClInclude Include="include\scene\GameObject.h" />
-    <ClInclude Include="include\scene\Object.h" />
-    <ClInclude Include="include\scene\Scene.h" />
-    <ClInclude Include="include\scene\SceneManager.h" />
-    <ClInclude Include="include\scene\SceneObject.h" />
-    <ClInclude Include="include\scene\components\TransformComponent.h" />
-    <ClInclude Include="include\utils\IOManager.h" />
-    <ClInclude Include="MyGame.h" />
-    <ClInclude Include="MyScene.h" />
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\System.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helpers\Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\manager\SystemFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\game\AbstractGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helpers\Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\manager\SystemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interfaces\IDrawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Logic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\TransformComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\SceneObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\components\MeshComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\systems\PhysicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\images\awesome.png" />
-    <Image Include="res\images\wooden.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\defines\SystemType.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\manager\SystemFactory.h">
+      <Filter>Header Files\core\systems\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\System.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines\deletemacros.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\Singleton.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Engine.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\ObjectCounter.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\game\AbstractGame.h">
+      <Filter>Header Files\core\game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\Manager.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\manager\SystemManager.h">
+      <Filter>Header Files\core\systems\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interfaces\IDrawable.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Window.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Input.h">
+      <Filter>Header Files\core\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines\InputStateType.h">
+      <Filter>Header Files\defines</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Logic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\TransformComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\SceneObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\Graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\defines\Colour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\Vertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\components\MeshComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\graphics\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\components\PhysicsBodyComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\scene\components\PhysicsShapeComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\systems\PhysicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

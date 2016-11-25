@@ -74,6 +74,7 @@ namespace fractal {
 				return Quaternion(w * v.w - this->dot(v), ijk.x, ijk.y, ijk.z);
 			}
 
+
 			inline const Quaternion conjugate() const {
 				return Quaternion(w, -x, -y, -z);
 			}
@@ -82,7 +83,6 @@ namespace fractal {
 
 				return Quaternion(w, -x, -y, -z) / (w * w) + (x * x) + (y * y) + (z * z);
 			}
-
 			inline Vector3 rotate(const Vector3& v) const {
 				/// This is the standard way q*v*q^-1
 				///return Vector3( (*this) * v * (*this).conjugate());
@@ -95,14 +95,12 @@ namespace fractal {
 			inline const float quaternionDot(Quaternion& q_) const{ 
 				return (w * q_.w + x * q_.x + y * q_.y + z * q_.z);
 			}
-
 			inline const Matrix3 toMatrix3() const {
 
 				return Matrix3((1.0f - 2.0f*y*y - 2.0f*z*z), (2.0f*x*y + 2.0f * z*w), (2.0f*x*z - 2.0f*y*w),
 					(2.0f*x*y - 2.0f*z*w), (1.0f - 2.0f*x*x - 2.0f*z*z), (2 * y*z + 2 * x*w),
 					(2.0f*x*z + 2.0f*y*w), (2.0f*y*z - 2 * x*w), (1.0f - 2.0f*x*x - 2.0f*y*y));
 			}
-
 			inline const Matrix4 toMatrix() const {
 				/// This is the fastest way I know...
 				return Matrix4((1.0f - 2.0f*y*y - 2.0f*z*z), (2.0f*x*y + 2.0f * z*w), (2.0f*x*z - 2.0f*y*w), 0.0f,
@@ -144,11 +142,11 @@ namespace fractal {
 			inline float mag() {
 				return(sqrt((w * w) + (x * x) + (y * y) + (z * z)));
 			}
-
 			inline void print() {
 				printf("%f %f %f %f\n", w, x, y, z);
 			}
 		};
+
 	}
 }
 

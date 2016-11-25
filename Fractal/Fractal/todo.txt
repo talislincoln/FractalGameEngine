@@ -8,13 +8,9 @@ Craete a camera Manager for the scene
 -------------- GameObject ---------------------
 create a function to get the rootParent for a gameObject
 create a function to get all components of a type from all parents (physics)
-create layers
-get transform function
 -----------------------------------------------
 
 create a timer system
-
-create a shader manager as a dicitionary (maybe?)
 
 define a world settings class that will hold all application properties
 - window width and height and if its full screen or not
@@ -39,7 +35,7 @@ improve the input system
 - create custom number referent to the sdl key numbers (so we don't have to include the whole sdl library)
 
 take another look about the 'move' semanthics in c++ (move constructor)
-- since c++11 there's a new kind of operator called Class(Class&& c) that is used to pass values when making a copy is not needed	
+- since c++11 there's a new kind of operator called && that is used to pass values when making a copy is not needed	
 
 (for the physics engine)
 have a physics settings file that defines gravity and any other information we may need to hold

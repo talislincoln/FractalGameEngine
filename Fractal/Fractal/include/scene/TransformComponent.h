@@ -1,7 +1,7 @@
 #ifndef _TRANSFORMCOMPONENT_H
 #define _TRANSFORMCOMPONENT_H
 
-#include "scene\Component.h"
+#include "Component.h"
 
 #include <FractalMath\Quaternion.h>
 
@@ -29,7 +29,7 @@ namespace fractal {
 			const fmath::Vector3& getScale() const;
 			const fmath::Quaternion& getRotation() const;
 
-			const fmath::Matrix4& getWorldMatrix() const;
+			//const Matrix2D& getWorldMatrix() const;
 
 		private:
 			bool m_isDirty;
@@ -38,7 +38,7 @@ namespace fractal {
 			fmath::Vector3 m_scaling;
 			fmath::Quaternion m_rotation;
 
-			fmath::Matrix4 world_matrix;
+			//Matrix2D world_matrix;
 		};
 	}
 }

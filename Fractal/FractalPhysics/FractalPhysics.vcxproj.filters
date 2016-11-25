@@ -39,9 +39,6 @@
     <ClInclude Include="include\PhysicsBody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\collision\Collider.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\shapes\PhysicsBox.cpp">
@@ -60,9 +57,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\PhysicsBody.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\collision\Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
