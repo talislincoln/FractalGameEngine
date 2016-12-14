@@ -46,12 +46,6 @@ namespace fractal {
 
 			bool initialize();
 			bool shutdown();
-=======
-			PhysicsWorld(const float gravity = float(9.8));
-			virtual ~PhysicsWorld() {
-
-			}
->>>>>>> Patching physics conflicts
 
 			void simulation();
 			bool checkCollision();
