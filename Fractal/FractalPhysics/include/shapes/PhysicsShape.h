@@ -4,7 +4,9 @@
 #include <FractalPhysics\include\collision\AABB.h>
 #include <FractalPhysics\include\Transform.h>
 #include <FractalPhysics\include\PhysicsDefine.h>
+<<<<<<< HEAD
 #include <vector>
+=======
 namespace fractal {
 	namespace fphysics {
 
