@@ -1,29 +1,36 @@
 #ifndef _SHAPE_COMPONENT
 #define _SHAPE_COMPONENT
-#include <Fractal\include\scene\GameObject.h>
 #include <Fractal\include\scene\Component.h>
 #include <FractalMath\Matrix.h>
-#include <FractalPhysics\include\collision\AABB.h>
-#include <FractalPhysics\include\Transform.h>
 #include <FractalPhysics\include\shapes\PhysicsShape.h>
-#include <FractalPhysics\include\PhysicsDefine.h>
-#include <FractalPhysics\include\PhysicsBody.h>
+#include "core\systems\PhysicsWorld.h"
 #include <vector>
+#include "interfaces\IDrawable.h"
+#include "graphics\Vertex.h"
 namespace fractal {
+	namespace fscene {
+		class TransformComponent;
+	}
 	namespace fphysics {
 		class PhysicsBodyComponent;
-		class PhysicsShapeComponent : public fscene::Component
+
+		class PhysicsShapeComponent : public fscene::Component, public IDrawable
 		{
 		public:
-			PhysicsShapeComponent(PhysicsShape* shapeDef);
+			PhysicsShapeComponent::PhysicsShapeComponent(PhysicsShape* shapeDef, const std::string& name = "");
 			~PhysicsShapeComponent();
+			virtual bool initialize();
+			virtual void draw();
+			virtual void update();
+			virtual bool shutdown();
 
-			bool shutdown();
 		private:
-			//PhysicsShapeComponent* next;
+			std::vector<fgraphics::Vertex> vertices;
+			PhysicsBodyComponent* body;
+			fscene::TransformComponent* transform;
 			PhysicsShape* shape;
 			const fscene::GameObject* parent;
-			PhysicsBody* body;
+
 			friend class PhysicsWorld;
 		};
 	}

@@ -2,17 +2,21 @@
 #define _PHYSICS_BOX_H
 
 #include <FractalMath\Vector.h>
-#include "Transform.h"
-#include "collision\AABB.h"
+#include <FractalPhysics\include\collision\AABB.h>
+#include <FractalPhysics\include\Transform.h>
 #include "PhysicsShape.h"
 namespace fractal {
 	namespace fphysics {
 
 
 		class PhysicsBox : public PhysicsShape {
-			PhysicsBox(fmath::Vector3 boxVector = Vector3(1));
+		public:
+			PhysicsBox(const fmath::Vector3 boxVector = Vector3(0.1f));
 			fmath::Vector3 boxVector; // from center of mass
+			
+			
 
+			virtual std::vector<Point3>getVertices();
 			void calMass(massData* md) const;
 			void setAABB(const Transform& tx, AABB* aabb);
 		};

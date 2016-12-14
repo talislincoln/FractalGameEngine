@@ -18,9 +18,13 @@ namespace fractal {
 			inline const std::vector<fgraphics::Vertex> getVertices() const {
 				return m_vertices;
 			}
+			/*inline const GLuint getIndices() const {
+
+			}*/
 
 		private:
 			std::vector<fgraphics::Vertex> m_vertices;
+			GLuint indices[];
 		};
 	}
 }

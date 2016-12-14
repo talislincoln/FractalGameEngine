@@ -39,8 +39,8 @@ namespace fractal {
 			//void setCameraManager(CameraManager* manager);
 			//CameraManager* getCameraManager() const;
 
+			fcore::Input* input;
 		private:
-
 			//Renderer* renderer;
 			//CameraManager* camera_manager;
 			std::vector<GameObject*> m_objects;

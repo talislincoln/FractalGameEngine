@@ -12,7 +12,15 @@ namespace fractal {
 			~AABB();
 			fmath::Point3 max;
 			fmath::Point3 min;
+			inline AABB& operator = (const fphysics::AABB& other)
+			{
+				this->max = other.max;
+				this->min = other.min;
+				return *this;
+			}
+
 		};
+
 	}
 }
 

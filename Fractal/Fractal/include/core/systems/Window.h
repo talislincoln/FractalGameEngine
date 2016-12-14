@@ -8,8 +8,9 @@
 #include <SDL\SDL.h>
 
 #define WTITLE "Fractal GE"
-#define WWIDTH 600
-#define WHEIGHT 480
+//;w; changed them a little
+#define WWIDTH 800
+#define WHEIGHT 600
 
 /**
 the parameters will hardcode for now, the idea is to read them all from a configuration file

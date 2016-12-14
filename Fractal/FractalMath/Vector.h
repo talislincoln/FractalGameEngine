@@ -7,12 +7,14 @@
 
 namespace fractal {
 	namespace fmath {
-
+#ifndef MAX_FLOAT
+#define MAX_FLOAT FLT_MAX
+#endif // !MAX_FLOAT
 #ifndef M_PI
 #define M_PI 3.14159265358979323846f
 #endif
 #ifndef DEGREES_TO_RADIANS
-#define DEGREES_TO_RADIANS (M_PI / 180.0f)
+#define DEGREES_TO_RADIANS (float)(M_PI / 180.0f)
 #endif	
 		///Structure that defines a Vector 2 (x, y)
 		struct Vector2 {

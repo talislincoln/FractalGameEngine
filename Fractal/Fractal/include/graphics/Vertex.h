@@ -14,6 +14,7 @@ namespace fractal {
 			fmath::Point3 position;
 
 			Vertex(fmath::Point3 p) : position(p) {
+
 			}
 		};
 	}

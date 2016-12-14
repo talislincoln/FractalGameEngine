@@ -47,8 +47,8 @@ namespace fractal {
 			//getting opengl current version 
 			std::printf("*** OpenGL Version: %s ***\n", glGetString(GL_VERSION));
 
-			// **** COMPILING SHADERS
 
+			// **** COMPILING SHADERS
 			// Vertex shader
 			GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 			glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -86,7 +86,6 @@ namespace fractal {
 			}
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
-
 			// ***** ENDING SHADER COMPILATION
 
 			glFrontFace(GL_CW);
@@ -98,9 +97,6 @@ namespace fractal {
 
 			glEnable(GL_FRAMEBUFFER_SRGB);
 
-			
-
-
 			return true;
 		}
 
@@ -108,9 +104,8 @@ namespace fractal {
 			//empty
 		}
 
-		void Graphics::draw() {			
-			
-			SDL_GL_SwapWindow(m_window->getSDLWindow());
+		void Graphics::draw() {
+			// draw the list of mesh component
 		}
 
 		bool Graphics::shutdown() {
@@ -122,10 +117,16 @@ namespace fractal {
 
 			glClearDepth(1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
+			//get list of mesh need to be drawn
 		}
 
 		void Graphics::endDraw() {
-			
+			//glUseProgram(0);
+			SDL_GL_SwapWindow(m_window->getSDLWindow());
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace fractal {
 
 		bool Scene::initialize()
 		{
-			fcore::Input* input = dynamic_cast<fcore::Input*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
+			input = dynamic_cast<fcore::Input*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
 			this->setupInput(input);
 
 			for (GameObject* obj : this->m_objects)
@@ -31,7 +31,7 @@ namespace fractal {
 				if (!obj->initialize())
 					return false;
 			}
-
+			this->setInitialized();
 			return true;
 		}
 		void Scene::update()

@@ -3,7 +3,7 @@
 #include "core\systems\Input.h"
 #include "core\systems\Logic.h"
 #include "core\systems\Graphics.h"
-
+#include "core\systems\PhysicsWorld.h"
 namespace fractal {
 	namespace fcore {
 		SystemFactory::SystemFactory()
@@ -21,8 +21,8 @@ namespace fractal {
 				case SystemType::INPUT_SYSTEM: return new Input();
 				case SystemType::LOGIC_SYSTEM: return new Logic();
 				case SystemType::GRAPHICS_SYSTEM: return new Graphics();
+				case SystemType::PHYSICS_SYSTEM: return new fphysics::PhysicsWorld();
 			//case SystemType::TIMER_SYSTEM: return new MainTimer();
-					//case SystemType::PHYSICS_SYSTEM: return new Physics();
 			}
 
 			return nullptr;

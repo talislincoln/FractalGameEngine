@@ -11,13 +11,10 @@ namespace fractal {
 			AABBCollision();
 			~AABBCollision();
 
-			static inline bool isCollide(AABB& a,AABB& b) {
-				return(a.max.x > b.min.x &&
-					a.min.x < b.max.x &&
-					a.max.y > b.min.y &&
-					a.min.y < b.max.y &&
-					a.max.z > b.min.z &&
-					a.min.z < b.max.z);
+			static inline bool isCollide(const AABB& a,const AABB& b) {
+				return(a.max.x > b.min.x && a.min.x < b.max.x &&
+					a.max.y > b.min.y && a.min.y < b.max.y &&
+					a.max.z > b.min.z && a.min.z < b.max.z);
 			}
 			static inline bool isCollide(AABB& a, fmath::Point3 p) {
 				return(p.x > a.min.x && p.x < a.max.x &&

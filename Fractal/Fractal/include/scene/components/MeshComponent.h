@@ -5,9 +5,11 @@
 #include "defines\Colour.h"
 #include "scene\Component.h"
 #include "interfaces\IDrawable.h"
-
+#include "graphics\Program.h"
 namespace fractal {
 	namespace fscene {
+		class TransformComponent;
+		using namespace fmath;
 		class MeshComponent : public Component, public IDrawable {
 		public:
 			MeshComponent(fgraphics::Mesh* mesh);
@@ -23,23 +25,29 @@ namespace fractal {
 			}
 		private:
 			fgraphics::Mesh* m_mesh;
-
-			GLuint m_vbo;
+			//;w; window dimensions
+			const GLuint WIDTH = 800;
+			const GLuint HEIGHT = 600;
+			//;w; mesh vertices
+			std::vector<fgraphics::Vertex> vertices;
+			//;w; shaders
+			Shader* m_ourProgram;
+			Shader* m_cubeShader;
+			//;w; shader stuff
 			GLuint m_vao;
-
-			/*const GLchar* vertexShaderSource = "#version 330 core\n"
-				"layout (location = 0) in vec3 position;\n"
-				"void main()\n"
-				"{\n"
-				"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
-				"}\0";
-			const GLchar* fragmentShaderSource = "#version 330 core\n"
-				"out vec4 color;\n"
-				"void main()\n"
-				"{\n"
-				"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-				"}\n\0";
-			GLuint shaderProgram;*/
+			GLuint m_vbo;
+			GLuint m_ebo;
+			//;w; textures
+			GLuint m_texture1;
+			GLuint m_texture2;
+			int IMG_WIDTH, IMG_HEIGHT;
+			unsigned char* m_image;
+			//;w; getting uniforms from shaders
+			GLint m_modelLoc;
+			GLint m_viewLoc;
+			GLint m_projLoc;
+			TransformComponent* transform;
+			const GameObject* parent;
 		};
 	}
 }

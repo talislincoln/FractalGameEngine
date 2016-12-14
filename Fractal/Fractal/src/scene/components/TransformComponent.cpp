@@ -1,4 +1,4 @@
-#include "scene\TransformComponent.h"
+#include "scene\components\TransformComponent.h"
 #include "scene\GameObject.h"
 
 namespace fractal {
@@ -7,10 +7,11 @@ namespace fractal {
 			Component(name == "" ? "TransformComponent" : name),
 			m_isDirty(false),
 			m_position(),
-			m_scaling(),
-			m_rotation()
+			m_scaling(1),
+			m_rotation(),
+			m_physicsChanges(false)
 		{
-
+			//empty
 		}
 
 		TransformComponent::~TransformComponent() {
@@ -25,11 +26,9 @@ namespace fractal {
 			if (!this->m_isDirty)
 				return;
 
-			/*Matrix2D mat_translation = Matrix2D::createTranslationMatrix(this->position);
-			Matrix2D mat_scale = Matrix2D::createScalingMatrix(this->scaling);
-			Matrix2D mat_rotation = Matrix2D::createRotationMatrix(this->rotation);
-
-			this->world_matrix = mat_scale*mat_rotation*mat_translation;*/
+			this->world_matrix = fmath::Matrix4::scale(this->m_scaling) *
+				(this->m_rotation.toMatrix()) *  
+				fmath::Matrix4::translate(this->m_position);
 
 			this->m_isDirty = false;
 		}
@@ -39,6 +38,8 @@ namespace fractal {
 		}
 
 		void TransformComponent::translate(const fmath::Vector3& translation) {
+			this->m_isDirty = true;
+			this->m_physicsChanges = true;
 			setPosition(getPosition() + translation);
 
 			for (GameObject* obj : getParent()->getChilderen())
@@ -52,7 +53,7 @@ namespace fractal {
 		}
 
 		void TransformComponent::scale(const fmath::Vector3& scale) {
-			setScale(getScale() + scale);
+			setScale(getScale() * scale);
 
 			for (GameObject* obj : getParent()->getChilderen())
 			{
@@ -64,7 +65,7 @@ namespace fractal {
 			}
 		}
 
-		void TransformComponent::rotate(const fmath::Quaternion rotation) {
+		void TransformComponent::rotate(const fmath::Quaternion& rotation) {
 			setRotation(getRotation() * rotation);
 
 			for (GameObject* obj : getParent()->getChilderen())
@@ -79,16 +80,22 @@ namespace fractal {
 
 		void TransformComponent::setPosition(const fmath::Vector3& position) {
 			this->m_isDirty = true;
+			this->m_physicsChanges = true;
 			this->m_position = position;
+		}
+		void TransformComponent::setPosition(float x, float y, float z) {
+			setPosition(fmath::Vector3(x,y,z));
 		}
 
 		void TransformComponent::setScale(const fmath::Vector3& scale) {
 			this->m_isDirty = true;
+			this->m_physicsChanges = true;
 			this->m_scaling = scale;
 		}
 
 		void TransformComponent::setRotation(const fmath::Quaternion q) {
 			this->m_isDirty = true;
+			this->m_physicsChanges = true;
 			this->m_rotation = q;
 		}
 
@@ -102,6 +109,10 @@ namespace fractal {
 
 		const fmath::Quaternion& TransformComponent::getRotation() const {
 			return this->m_rotation;
+		}
+
+		const fmath::Matrix4& TransformComponent::getWorldMatrix() const {
+			return this->world_matrix;
 		}
 	}
 }

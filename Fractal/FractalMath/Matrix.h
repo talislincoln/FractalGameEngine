@@ -155,7 +155,7 @@ namespace fractal {
 
 
 			static Matrix4 rotate(const float degrees_, const float x_, const float y_, const float z_);
-			static Matrix4 rotate(const float degrees_, const Vector3& const v);
+			static Matrix4 rotate(const float degrees_, const Vector3& v);
 			static Matrix4 translate(const float x_, const float y_, const float z_);
 			static Matrix4 translate(const Vector3& v);
 			static Matrix4 scale(const float x_, const float y_, const float z_);

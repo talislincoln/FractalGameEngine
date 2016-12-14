@@ -8,6 +8,7 @@ namespace fractal {
 		DOWN,
 		UP,
 		MOUSE_MOTION,
+		MOUSE_CLICK
 	};
 }
 
