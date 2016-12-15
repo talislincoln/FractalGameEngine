@@ -9,6 +9,7 @@
     <ClCompile Include="src\core\systems\Graphics.cpp" />
     <ClCompile Include="src\core\systems\Input.cpp" />
     <ClCompile Include="src\core\systems\Logic.cpp" />
+    <ClCompile Include="src\core\systems\manager\CameraManager.cpp" />
     <ClCompile Include="src\core\systems\manager\SystemFactory.cpp" />
     <ClCompile Include="src\core\systems\manager\SystemManager.cpp" />
     <ClCompile Include="src\core\systems\PhysicsWorld.cpp" />
@@ -19,21 +20,20 @@
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
+    <ClCompile Include="src\scene\objects\CameraObject.cpp" />
     <ClCompile Include="src\scene\Component.cpp" />
+    <ClCompile Include="src\scene\components\CameraComponent.cpp" />
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
     <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp" />
     <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
     <ClCompile Include="src\scene\Object.cpp" />
+    <ClCompile Include="src\scene\objects\FreeCamera.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\scene\SceneManager.cpp" />
     <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
-    <ClCompile Include="src\scene\components\CameraComponent.cpp" />
-    <ClCompile Include="src\scene\objects\CameraObject.cpp" />
-    <ClCompile Include="src\core\systems\manager\CameraManager.cpp" />
-    <ClCompile Include="src\scene\objects\FreeCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -58,12 +58,15 @@
     <ClInclude Include="include\helpers\ObjectCounter.h" />
     <ClInclude Include="include\helpers\Singleton.h" />
     <ClInclude Include="include\interfaces\IDrawable.h" />
+    <ClInclude Include="include\scene\objects\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />
+    <ClInclude Include="include\scene\components\CameraComponent.h" />
     <ClInclude Include="include\scene\components\MeshComponent.h" />
     <ClInclude Include="include\scene\components\PhysicsBodyComponent.h" />
     <ClInclude Include="include\scene\components\PhysicsShapeComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
     <ClInclude Include="include\scene\Object.h" />
+    <ClInclude Include="include\scene\objects\FreeCamera.h" />
     <ClInclude Include="include\scene\Scene.h" />
     <ClInclude Include="include\scene\SceneManager.h" />
     <ClInclude Include="include\scene\SceneObject.h" />
@@ -71,120 +74,16 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />
-    <ClInclude Include="include\scene\components\CameraComponent.h" />
-    <ClInclude Include="include\scene\objects\CameraObject.h" />
-    <ClInclude Include="include\scene\objects\FreeCamera.h" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Text Include="todo.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\HUDVert.txt" />
-    <Text Include="res\shaders\HUDFrag.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\defines\SystemType.h">
-      <Filter>Header Files\defines</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\manager\SystemFactory.h">
-      <Filter>Header Files\core\systems\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\System.h">
-      <Filter>Header Files\core\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="include\defines\deletemacros.h">
-      <Filter>Header Files\defines</Filter>
-    </ClInclude>
-    <ClInclude Include="include\helpers\Singleton.h">
-      <Filter>Header Files\helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\Engine.h">
-      <Filter>Header Files\core\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="include\helpers\ObjectCounter.h">
-      <Filter>Header Files\helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\game\AbstractGame.h">
-      <Filter>Header Files\core\game</Filter>
-    </ClInclude>
-    <ClInclude Include="include\helpers\Manager.h">
-      <Filter>Header Files\helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\manager\SystemManager.h">
-      <Filter>Header Files\core\systems\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="include\interfaces\IDrawable.h">
-      <Filter>Header Files\interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\Window.h">
-      <Filter>Header Files\core\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\Input.h">
-      <Filter>Header Files\core\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="include\defines\InputStateType.h">
-      <Filter>Header Files\defines</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\SceneManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\Logic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\TransformComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\SceneObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\systems\Graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\defines\Colour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\graphics\Vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\scene\components\MeshComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\graphics\Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\utils\IOManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\graphics\Program.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-=======
     <Image Include="res\images\awesome.png" />
     <Image Include="res\images\wooden.jpg" />
->>>>>>> cf713e4a3c30344503d29a0d1a72dd9547f90b71
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\fragmentShader.txt" />
     <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
+    <Text Include="res\shaders\cubeVert.txt" />
+    <Text Include="res\shaders\cubeFrag.txt" />
   </ItemGroup>
 </Project>

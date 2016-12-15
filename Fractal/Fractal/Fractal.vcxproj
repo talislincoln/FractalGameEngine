@@ -162,9 +162,9 @@
     <ClCompile Include="src\utils\IOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="res\shaders\cubeFrag.txt" />
+    <Text Include="res\shaders\cubeVert.txt" />
     <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\HUDFrag.txt" />
-    <Text Include="res\shaders\HUDVert.txt" />
     <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
   </ItemGroup>

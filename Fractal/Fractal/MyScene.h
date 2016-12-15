@@ -18,7 +18,7 @@ public:
 
 private:
 	fractal::fscene::SceneObject* cubeAttributes;
-	fractal::fscene::FreeCamera* camera;
+	//fractal::fscene::FreeCamera* camera;
 
 	inline void testInput() {
 		std::printf("input hit\n");
