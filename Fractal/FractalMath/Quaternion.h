@@ -147,7 +147,7 @@ namespace fractal {
 			/// q = q(yaw) * q(pitch) * q(yaw) the result is as follows
 			inline Quaternion& fromEuler(float _yaw, float _pitch, float _roll) {
 
-				double angle;
+				float angle;
 
 				angle = _yaw * 0.5f * DEGREES_TO_RADIANS;
 				const float sr = sinf(angle);

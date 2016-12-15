@@ -33,11 +33,6 @@ void quaternionTest() {
 	using namespace fractal;
 	using namespace fmath;
 
-<<<<<<< HEAD
-	Quaternion q1(0.237f, 0.06f, -0.257f, -0.935f);
-	Quaternion q2(-0.752f, 0.286f, 0.374f, 0.459f);
-
-=======
 	Quaternion q1;
 	q1.fromEuler(10.0f, 5.0f, 90.0f);
 	Quaternion q2;
@@ -45,7 +40,6 @@ void quaternionTest() {
 	q1.print();
 	q2.print();
 	printf(" %f \n",q1.angleBetween(q2));
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 	std::cout << "qdot " << q1.dot(q2) << std::endl;
 	std::cout << "qmag " << q1.magnitude() << std::endl;
 	std::cout << "qinv " << q1.inverse() << std::endl;

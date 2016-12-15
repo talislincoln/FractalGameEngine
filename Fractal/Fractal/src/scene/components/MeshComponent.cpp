@@ -4,11 +4,7 @@
 #include "core\systems\Window.h"
 #include "core\systems\manager\SystemManager.h"
 #include "graphics\Program.h"
-<<<<<<< HEAD
-#include "scene\objects\FreeCamera.h"
-=======
 //#include "scene\objects\FreeCamera.h"
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 #include <FractalMath\Matrix.h>
 #include <SOIL\SOIL.h>
 #include "scene\GameObject.h"
@@ -31,11 +27,6 @@ namespace fractal {
 			m_cubeShader = new Shader("res/shaders/cubeVert.txt", "res/shaders/cubeFrag.txt");
 			//;w; getting the vertices
 			vertices = mesh->getVertices(); //;w; cube attributes
-<<<<<<< HEAD
-			//generating array and buffer
-=======
-											//generating array and buffer
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 			glGenVertexArrays(1, &m_vao);
 			glGenBuffers(1, &m_vbo); //;w; generates 1+ buffers objects, returned to access buffer object
 
@@ -43,11 +34,6 @@ namespace fractal {
 
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(fgraphics::Vertex), &vertices[0], GL_STATIC_DRAW); //;w; copies user-defined data into currently bound buffer
-<<<<<<< HEAD
-			//;w; position attributes
-=======
-																													  //;w; position attributes
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 			glEnableVertexAttribArray(0);
 			//;w; texcoord attribute
@@ -112,11 +98,6 @@ namespace fractal {
 		void MeshComponent::draw() {
 			///;W; THIS SHOULDN'T BE THE ONE DRAWING
 			//;w; clear colour buffer
-<<<<<<< HEAD
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-=======
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 			////////////////////////////////// CAMERA
 			// Create camera transformation
 			//fmath::Matrix4 view;
@@ -152,16 +133,10 @@ namespace fractal {
 			glBindTexture(GL_TEXTURE_2D, m_texture2);
 			glUniform1i(glGetUniformLocation(m_cubeShader->getProgramID(), "ourTexture2"), 1);
 			//;w; transformations new cube
-<<<<<<< HEAD
-			Matrix4 m_model;
-			Matrix4 m_view;
-			Matrix4 m_projection;
-			m_model = Matrix4::rotate(SDL_GetTicks() * 0.1, 0.5f, 1.0f, 0.0f);
-=======
+
 			Matrix4 m_model = transform->getWorldMatrix();
 			Matrix4 m_view;
 			Matrix4 m_projection;
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 			//m_model *= Matrix4::translate(0, 0, /*-0.01 * */SDL_GetTicks()); //;w; joseph made the cube go into the distance as it rotated
 			m_view = Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f));
 			m_projection = Matrix4::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
@@ -177,11 +152,7 @@ namespace fractal {
 			glBindVertexArray(m_vao);
 			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
-<<<<<<< HEAD
 			glBindVertexArray(0);			
-=======
-			glBindVertexArray(0);
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 		}
 		void MeshComponent::update() {
 

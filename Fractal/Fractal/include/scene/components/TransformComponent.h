@@ -21,30 +21,28 @@ namespace fractal {
 			void scale(const fmath::Vector3& scale);
 			void rotate(const fmath::Quaternion& rotation);
 
-<<<<<<< HEAD
-=======
-			void setPosition(float x, float y, float z);
-			void setPosition(const fmath::Vector3& position);
-			void setScale(const fmath::Vector3& scale);
-			void setRotation(const fmath::Quaternion angle);
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
-
 			// ***** setters and getters ***** //
-			inline void setPosition(const fmath::Vector3& position) {
+
+			inline void TransformComponent::setPosition(const fmath::Vector3& position) {
 				this->m_isDirty = true;
+				this->m_physicsChanges = true;
 				this->m_position = position;
 			}
+			inline void TransformComponent::setPosition(float x, float y, float z) {
+				setPosition(fmath::Vector3(x, y, z));
+			}
 
-			void setScale(const fmath::Vector3& scale) {
+			inline void TransformComponent::setScale(const fmath::Vector3& scale) {
 				this->m_isDirty = true;
+				this->m_physicsChanges = true;
 				this->m_scaling = scale;
 			}
 
-			void setRotation(const fmath::Quaternion& angle) {
+			inline void TransformComponent::setRotation(const fmath::Quaternion q) {
 				this->m_isDirty = true;
-				this->m_rotation = angle;
+				this->m_physicsChanges = true;
+				this->m_rotation = q;
 			}
-
 			inline const fmath::Vector3& getPosition() const {
 				return m_position;
 			}

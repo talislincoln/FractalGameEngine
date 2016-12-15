@@ -46,11 +46,9 @@ namespace fractal {
 			GLint m_modelLoc;
 			GLint m_viewLoc;
 			GLint m_projLoc;
-<<<<<<< HEAD
-=======
+
 			TransformComponent* transform;
 			const GameObject* parent;
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 		};
 	}
 }

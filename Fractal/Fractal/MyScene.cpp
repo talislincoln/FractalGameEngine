@@ -4,18 +4,12 @@
 #include "helpers\Singleton.h"
 #include "scene\SceneManager.h"
 #include "scene\components\MeshComponent.h"
-<<<<<<< HEAD
-#include "scene\components\TransformComponent.h"
 
-#include <FractalMath\Vector.h>
-
-=======
 #include "scene\components\PhysicsBodyComponent.h"
 #include "scene\components\PhysicsShapeComponent.h"
 #include "scene\components\TransformComponent.h"
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
 #include "scene\components\TerrainComponent.h"
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 MyScene::MyScene() :
 	Scene("MyScene"), 
 	//camera(nullptr),
@@ -37,11 +31,7 @@ bool MyScene::initialize() {
 	//camera->getTransform()->setPosition(Vector3(0));
 	//;w; setting the points and other attributes and in clock-wise order
 	std::vector<Vertex> vertices;
-<<<<<<< HEAD
-	//;w; side 1
-=======
 
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
 	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
@@ -49,7 +39,6 @@ bool MyScene::initialize() {
 	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
 	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-<<<<<<< HEAD
 	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
 	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
@@ -110,68 +99,6 @@ bool MyScene::initialize() {
 	//;w; side 6 
 	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-=======
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	//;w; side 2
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	//;w; side 3
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	//;w; side 4
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	//;w; side 5
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	//;w; side 6 
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
 	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
@@ -182,11 +109,6 @@ bool MyScene::initialize() {
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
 	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
 	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-<<<<<<< HEAD
-	//;w; adding as gameobject 
-	cubeAttributes = new SceneObject("cubeAttributes");
-	cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
-=======
 
 	cubeAttributes = new SceneObject("cubeAttributes");
 
@@ -207,7 +129,6 @@ bool MyScene::initialize() {
 	terrain->addComponent(new TerrainComponent());
 
 	addGameObject(terrain);
->>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 	addGameObject(cubeAttributes);
 	addGameObject(cubeAttributes2);
 	//Quaternion q;
