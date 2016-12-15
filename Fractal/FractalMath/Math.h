@@ -18,7 +18,7 @@ namespace fractal {
 		#endif	
 
 		inline float toRadians(float degrees) {
-			return degrees * DEGREES_TO_RADIANS;
+			return degrees * (float)DEGREES_TO_RADIANS;
 		}
 
 		//change this to a vec4 and use the right overloaded functions

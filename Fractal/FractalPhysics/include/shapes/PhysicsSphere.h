@@ -9,14 +9,14 @@ namespace fractal {
 	namespace fphysics {
 
 
-		class PhysicsBox : public PhysicsShape {
+		class PhysicsSphere : public PhysicsShape {
 		public:
-			PhysicsBox(const fmath::Vector3 boxVector = Vector3(0.1f));
-			fmath::Vector3 boxVector; // from center of mass
-			
-			
+			PhysicsSphere(fmath::Point3 center = Vector3(0), const float radius = 0.5f);
+			fmath::Vector3 center; // from center of mass
+			float radius;
 
-			virtual std::vector<Point3>getVertices();
+
+
 			void calMass(massData* md) const;
 			void setAABB(const Transform& tx, AABB* aabb);
 		};

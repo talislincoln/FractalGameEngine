@@ -1,19 +1,20 @@
 #ifndef _PHYSICS_BODY
 #define _PHYSICS_BODY
 #include "collision\AABB.h"
+#include <vector>
 #include <FractalMath\Quaternion.h>
+#include "shapes\PhysicsShape.h"
 #include "Transform.h"
 namespace fractal {
 	namespace fphysics {
 
-		class PhysicsBody {
-
+		class PhysicsBody{
 		public:
 			PhysicsBody();
-			//m_flages
-			void getParentTransform();
-		private:
+			void calculateMassData(const std::vector<PhysicsShape*> shapeList, Transform& m_localTransform);
 
+		private:
+			//m_flages
 			enum
 			{
 				AWAKE = 0x001,
@@ -36,39 +37,24 @@ namespace fractal {
 			fmath::Vector3 m_angularVelocity;
 			fmath::Vector3 m_force;
 			fmath::Vector3 m_torque;
-			Transform m_transform;
 			fmath::Quaternion m_quaternion;
 			fmath::Vector3 m_localCenter;
 			fmath::Vector3 m_worldCenter;
-			float m_sleepTime;
 			float m_gravityScale;
-			int m_layers;
 			int m_flags;
-
+			float m_sleepTime;
 			//Body* m_next;
 			//Body* m_prev;
 
 			float m_linearDamping;
 			float m_angularDamping;
 
-			//q3ContactEdge* m_contactList;
-
-			//friend class q3scene;
-			//friend struct q3Manifold;
-			//friend class q3ContactManager;
-			//friend struct q3Island;
-			//friend struct q3Contactsolver;
-
-			//Body(const DefaultBody& def, q3scene* scene);
-
-			void calculateMassData();
-			//void synchronizeProxies();
-
 			friend class PhysicsShapeComponent;
+			friend class PhysicsBodyComponent;
 			friend class PhysicsWorld;
 		};
 
 	}
 }
 
-#endif // !_PHYSICS_BODY
+#endif // !m_PHYSICSm_BODY

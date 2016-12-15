@@ -14,8 +14,8 @@ namespace fractal {
 		inline fmath::Vector3 calLinearAcceleration(float mass, fmath::Vector3 force) {
 			return force / mass;
 		}
-		inline float calAngularVelocity(float avin, float aa, float dTime) {
-			return avin + (aa * dTime);
+		inline fmath::Vector3 calAngularVelocity(fmath::Vector3 avin, fmath::Vector3 aa, float dTime) {
+			return  (aa * dTime) + avin;
 		}
 		inline float calOrientationAngle(float Anglein, float avin, float dTime, float aa) {
 			return Anglein + (avin * dTime) + (0.5f * aa * dTime * dTime);

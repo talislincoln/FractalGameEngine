@@ -7,6 +7,7 @@
 #endif
 namespace fractal {
 	namespace fmath {
+		struct Vector3;
 		struct Point3 {
 			float x, y, z;
 
@@ -123,6 +124,12 @@ namespace fractal {
 
 			inline bool operator!=(const Point3& other) const {
 				return x != other.x || y != other.y || z != other.z;
+			}
+
+			inline const Point3 cross(const Point3& other) const {
+				return Point3(y * other.z - z * other.y,
+					z * other.x - x * other.z,
+					x * other.y - y * other.x);
 			}
 
 			inline operator const float* () const {

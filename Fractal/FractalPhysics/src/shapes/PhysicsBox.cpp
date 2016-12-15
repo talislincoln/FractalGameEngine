@@ -3,7 +3,7 @@
 namespace fractal {
 	namespace fphysics {
 		using namespace fmath;
-		PhysicsBox::PhysicsBox(Vector3 boxVector) :
+		PhysicsBox::PhysicsBox(const Vector3 boxVector) :
 			PhysicsShape() {
 			this->boxVector = boxVector;
 			shape = BOX;
@@ -21,18 +21,18 @@ namespace fractal {
 			Matrix3 I = Matrix3(x, y, z);
 
 			// Transform tensor to local space
-			I = localPosition->rotate.toMatrix3() * I * Matrix3::transpose((localPosition->rotate.toMatrix3()));
+			I = local.rotation.toMatrix3() * I * Matrix3::transpose((local.rotation.toMatrix3()));
 			Matrix3 identity;
 			identity.loadIdentity();
-			I += (identity * localPosition->position.dot(localPosition->position) - Matrix3::outerProduct(localPosition->position, localPosition->position)) * mass;
+			I += (identity * local.position.dot(local.position) - Matrix3::outerProduct(local.position, local.position)) * mass;
 
-			md->center = localPosition->position;
+			md->center = local.position;
 			md->inertia = I;
 			md->mass = mass;
 		}
 		void PhysicsBox::setAABB(const Transform& tx, AABB* aabb) {
 
-			Transform world = tx * (*localPosition);
+			Matrix4 world = tx * (local);
 
 			Point3 p[8];
 			p[0] = Point3(-boxVector.x, -boxVector.y, -boxVector.z);
@@ -45,19 +45,35 @@ namespace fractal {
 			p[7] = Point3(boxVector.x, boxVector.y, boxVector.z);
 
 			for (int i = 0; i < 8; i++)
-				p[i] = world * p[i];
-
-			Vector3 min(FLT_MAX, FLT_MAX, FLT_MAX);
-			Vector3 max(-FLT_MAX, -FLT_MAX, -FLT_MAX);
-
-			for (int i = 0; i < 8; i++)
 			{
-				min = fmath::getMin(min, p[i]);
-				max = fmath::getMax(max, p[i]);
+				p[i] = world * p[i];
+				aabb->min = fmath::getMin(aabb->min, p[i]);
+				aabb->max = fmath::getMax(aabb->max, p[i]);
 			}
+		}
 
-			aabb->min = min;
-			aabb->max = max;
+		std::vector<Point3> PhysicsBox::getVertices() {
+			std::vector<Point3> Vertices;
+			Point3 vertice;
+
+			vertice = Point3(-boxVector.x, -boxVector.y, -boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(-boxVector.x, -boxVector.y, boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(-boxVector.x, boxVector.y, -boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(-boxVector.x, boxVector.y, boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(boxVector.x, -boxVector.y, -boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(boxVector.x, -boxVector.y, boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(boxVector.x, boxVector.y, -boxVector.z);
+			Vertices.push_back(vertice);
+			vertice = Point3(boxVector.x, boxVector.y, boxVector.z);
+			Vertices.push_back(vertice);
+
+			return Vertices;
 		}
 
 	}

@@ -10,12 +10,12 @@ namespace fractal {
 			this->friction = friction;
 			this->restitution = restitution;
 			this->density = density;
+			this->local = Transform();
 		}
-
-
 		PhysicsShape::~PhysicsShape()
 		{
 		}
 
 	}
+
 }

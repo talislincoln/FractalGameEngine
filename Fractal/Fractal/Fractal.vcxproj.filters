@@ -34,6 +34,8 @@
     <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
+    <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
+    <ClCompile Include="scene2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -74,6 +76,8 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />
+    <ClInclude Include="include\scene\components\TerrainComponent.h" />
+    <ClInclude Include="scene2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
@@ -83,7 +87,12 @@
     <Text Include="res\shaders\fragmentShader.txt" />
     <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
+<<<<<<< HEAD
     <Text Include="res\shaders\cubeVert.txt" />
     <Text Include="res\shaders\cubeFrag.txt" />
+=======
+    <Text Include="res\shaders\cubeFrag.txt" />
+    <Text Include="res\shaders\cubeVert.txt" />
+>>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
   </ItemGroup>
 </Project>

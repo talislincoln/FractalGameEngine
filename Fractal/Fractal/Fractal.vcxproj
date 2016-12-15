@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="MyScene.cpp" />
+    <ClCompile Include="scene2.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="src\scene\components\MeshComponent.cpp" />
     <ClCompile Include="src\scene\components\PhysicsBodyComponent.cpp" />
     <ClCompile Include="src\scene\components\PhysicsShapeComponent.cpp" />
+    <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
     <ClCompile Include="src\scene\GameObject.cpp" />
     <ClCompile Include="src\scene\Object.cpp" />
     <ClCompile Include="src\scene\objects\FreeCamera.cpp" />
@@ -197,6 +199,7 @@
     <ClInclude Include="include\scene\components\MeshComponent.h" />
     <ClInclude Include="include\scene\components\PhysicsBodyComponent.h" />
     <ClInclude Include="include\scene\components\PhysicsShapeComponent.h" />
+    <ClInclude Include="include\scene\components\TerrainComponent.h" />
     <ClInclude Include="include\scene\GameObject.h" />
     <ClInclude Include="include\scene\Object.h" />
     <ClInclude Include="include\scene\objects\FreeCamera.h" />
@@ -207,6 +210,7 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyScene.h" />
+    <ClInclude Include="scene2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

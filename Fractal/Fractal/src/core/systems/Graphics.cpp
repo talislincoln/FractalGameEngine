@@ -104,7 +104,11 @@ namespace fractal {
 		}
 
 		void Graphics::draw() {
+<<<<<<< HEAD
 			///;W; LIST OF MESH COMPONENTS TO DECIDE WHETHER IT WILL BE DRAWN OR NOT
+=======
+			// draw the list of mesh component
+>>>>>>> e68834e9c1dd03f1bf056453103d2977b69e5357
 		}
 
 		bool Graphics::shutdown() {
@@ -118,6 +122,11 @@ namespace fractal {
 
 			glClearDepth(1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
+			//get list of mesh need to be drawn
 		}
 
 		void Graphics::endDraw() {
