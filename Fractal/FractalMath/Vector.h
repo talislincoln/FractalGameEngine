@@ -55,9 +55,11 @@ namespace fractal {
 			inline Vector3(const Vector2& xy, float z) {
 				load(xy.x, xy.y, z);
 			}
+
 			inline float dot(const Vector3& other) const {
 				return x * other.x + y * other.y + z * other.z;
 			}
+
 			inline const Vector3 cross(const Vector3& other) const {
 				return Vector3(y * other.z - z * other.y,
 					z * other.x - x * other.z,
@@ -90,19 +92,17 @@ namespace fractal {
 				return Vector3(*this / magnitude);
 			}
 
-
 			inline const float magnitude() const {
 				return float(sqrt(x * x + y * y + z * z));
 			}
 
-			
 			inline const float operator [] (int index) const {
 				return *(&x + index);
 			}
+
 			inline float& operator [] (int index) {
 				return *(&x + index);
 			}
-
 		};
 
 		///Structure that defines a Vector 4, inherits from Vector 3
@@ -173,6 +173,7 @@ namespace fractal {
 
 				return *this /= magnitude;
 			}
+
 			inline const float magnitude() const {
 				return float(sqrt(x * x + y * y + z * z + w * w));
 			}

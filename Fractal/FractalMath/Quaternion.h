@@ -3,7 +3,9 @@
 
 #ifndef _MATRIX_H
 #include "matrix.h"
-#endif // !_POINT_H
+#endif 
+
+#include <algorithm>
 
 namespace fractal {
 	namespace fmath {
@@ -11,15 +13,10 @@ namespace fractal {
 		{
 			float w;
 
-			inline void load(float _w, float _x, float _y, float _z) {
-				w = _w; x = _x; y = _y; z = _z;
-			}
-
 			/// This is the unit quaterion by definition 
 			inline Quaternion() {
 				load(1.0f, 0.0f, 0.0f, 0.0f);
 			}
-
 
 			inline Quaternion(float _w, float _x, float _y, float _z) {
 				load(_w, _x, _y, _z);
@@ -42,6 +39,29 @@ namespace fractal {
 				load(q.w, q.x, q.y, q.z);
 			}
 
+			inline static const Quaternion lerp(const Quaternion& q1, const Quaternion& q2, float t) {
+				Quaternion q = (1-t)*q1 + (q2*t);
+
+				return q.getNormilizedVector();
+			}
+
+			inline static const Quaternion slerp(const Quaternion& q1, const Quaternion& q2, float t) {
+				float dp = q1.dot(q2);
+				//std::clamp(dp, -1.0f, 1.0f);
+
+				return NULL;
+			}
+
+			inline void load(float _w, float _x, float _y, float _z) {
+				w = _w; x = _x; y = _y; z = _z;
+			}
+
+			inline const Quaternion getNormalizedQuarternion() const {
+				float mag = this->mag();
+
+				return Quaternion (w / mag, x / mag, y / mag, z / mag);
+			}
+
 			/// An assignment operator   
 			inline Quaternion& operator = (const Quaternion& q) {
 				load(q.w, q.x, q.y, q.z);
@@ -53,14 +73,32 @@ namespace fractal {
 				return Quaternion(-w, -x, -y, -z);
 			}
 
+			inline const Quaternion operator+(const Quaternion& other) const {
+				return Quaternion(w + other.w, x + other.x, y + other.y, z + other.z);
+			}
+
+			inline const Quaternion operator-(const Quaternion& other) const {
+				return Quaternion(w - other.w,x - other.x, y - other.y, z - other.z);
+			}
+
 			/// Multiply a two quaternions - using the right-hand rule  
 			inline const Quaternion operator * (const Quaternion& q) const {
-				Vector3 ijk(w*q + q.w * (*this) + this->cross(q));
-				return Quaternion(w * q.w - this->dot(q), ijk.x, ijk.y, ijk.z);
+				/*Vector3 ijk(w*q + q.w * (*this) + this->cross(q));
+				return Quaternion(w * q.w - this->dot(q), ijk.x, ijk.y, ijk.z);*/
+
+				Quaternion r(w*q.z + x*q.y - y*q.x + z*q.w,
+							w*q.w - x*q.x - y*q.y - z*q.z,
+							w*q.x + x*q.w + y*q.z + z*q.y,
+							w*q.y - x*q.z + y*q.w + z*q.x
+							);
+
+				return r.getNormalizedQuarternion() ;
 			}
+
 			inline const Quaternion operator / (const float f) const {
 				return Quaternion(w / f, x / f, y / f, z / f);
 			}
+
 			/*inline const Quaternion& scaleQuaternion (const Vector3& scale) const {
 				Quaternion t(w, x, y, z);
 				t.x *= scale.x;
@@ -68,6 +106,15 @@ namespace fractal {
 				t.z *= scale.z;
 				return *this;
 			}*/
+
+			inline const Quaternion operator*(const float s) const {
+				return Quaternion(w * s,x * s, y * s, z * s);
+			}
+
+			inline friend const Quaternion operator*(const float s, const Quaternion& other)  {
+				return other * s;
+			}
+
 			/// Multiply a quaternion by a Vector3 - using the right-hand rule 
 			inline const Quaternion operator * (const Vector4& v) const {
 				Vector3 ijk(w*v + v.w * (*this) + this->cross(v));
@@ -80,7 +127,7 @@ namespace fractal {
 
 			inline const Quaternion inverse() const {
 
-				return Quaternion(w, -x, -y, -z) / (w * w) + (x * x) + (y * y) + (z * z);
+				return Quaternion(w, -x, -y, -z) / ((w * w) + (x * x) + (y * y) + (z * z));
 			}
 
 			inline Vector3 rotate(const Vector3& v) const {
@@ -92,12 +139,19 @@ namespace fractal {
 				return v + v2 * (2.0f * w) + this->cross(v2) * 2.0f;
 			}
 
-			inline const float quaternionDot(Quaternion& q_) const{ 
+			inline const float quaternionDot(const Quaternion& q_) const{ 
 				return (w * q_.w + x * q_.x + y * q_.y + z * q_.z);
 			}
 
-			inline const Matrix3 toMatrix3() const {
+			inline const float getAngleBetween(const Quaternion& q) const {
+				if (this->quaternionDot(q) < 0)
+				{
+					return acos(-this->quaternionDot(q)) * 2 * 180 / 3.14f;
+				}
+				return acos(this->quaternionDot(q)) *2 * 180 / 3.14f;
+			}
 
+			inline const Matrix3 toMatrix3() const {
 				return Matrix3((1.0f - 2.0f*y*y - 2.0f*z*z), (2.0f*x*y + 2.0f * z*w), (2.0f*x*z - 2.0f*y*w),
 					(2.0f*x*y - 2.0f*z*w), (1.0f - 2.0f*x*x - 2.0f*z*z), (2 * y*z + 2 * x*w),
 					(2.0f*x*z + 2.0f*y*w), (2.0f*y*z - 2 * x*w), (1.0f - 2.0f*x*x - 2.0f*y*y));
@@ -127,7 +181,8 @@ namespace fractal {
 
 			/// To work this out you can multipy the three angles as quaternions together. 
 			/// q = q(yaw) * q(pitch) * q(yaw) the result is as follows
-			inline const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
+			inline static const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
+
 				float cosYaw = cos(0.5f *_yaw * DEGREES_TO_RADIANS);
 				float cosPitch = cos(0.5f * _pitch * DEGREES_TO_RADIANS);
 				float cosRoll = cos(0.5f  *_roll * DEGREES_TO_RADIANS);
@@ -136,12 +191,12 @@ namespace fractal {
 				float sinRoll = sin(0.5f  *_roll * DEGREES_TO_RADIANS);
 				return Quaternion(
 					(cosYaw * cosPitch * cosRoll) + (sinYaw * sinPitch * sinRoll),
-					(cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll),
+					(sinYaw * cosPitch * cosRoll) - (cosYaw * sinPitch * sinRoll),
 					(cosYaw * sinPitch * cosRoll) + (sinYaw * cosPitch * sinRoll),
-					(sinYaw * cosPitch * cosRoll) - (cosYaw * sinPitch * sinRoll));
+					(cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll));
 			}
 
-			inline float mag() {
+			inline float mag() const {
 				return(sqrt((w * w) + (x * x) + (y * y) + (z * z)));
 			}
 
