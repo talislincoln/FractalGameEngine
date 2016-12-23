@@ -3,7 +3,9 @@
 
 namespace fractal {
 	namespace fphysics {
-		AABB::AABB()
+		AABB::AABB() :
+			max(-MAX_FLOAT),
+			min(MAX_FLOAT)
 		{
 		}
 

@@ -8,7 +8,8 @@ namespace fractal {
 			m_isDirty(false),
 			m_position(),
 			m_scaling(1),
-			m_rotation()
+			m_rotation(),
+			m_physicsChanges(false)
 		{
 			m_worldMatrix.loadIdentity();
 		}
@@ -37,6 +38,8 @@ namespace fractal {
 		}
 
 		void TransformComponent::translate(const fmath::Vector3& translation) {
+			this->m_isDirty = true;
+			this->m_physicsChanges = true;
 			setPosition(getPosition() + translation);
 
 			for (GameObject* obj : getParent()->getChildren())
@@ -50,7 +53,7 @@ namespace fractal {
 		}
 
 		void TransformComponent::scale(const fmath::Vector3& scale) {
-			setScale(getScale() + scale);
+			setScale(getScale() * scale);
 
 			for (GameObject* obj : getParent()->getChildren())
 			{
@@ -62,7 +65,7 @@ namespace fractal {
 			}
 		}
 
-		void TransformComponent::rotate(const fmath::Quaternion rotation) {
+		void TransformComponent::rotate(const fmath::Quaternion& rotation) {
 			setRotation(getRotation() * rotation);
 
 			for (GameObject* obj : getParent()->getChildren())
@@ -74,5 +77,6 @@ namespace fractal {
 				transform->rotate(rotation);
 			}
 		}
+
 	}
 }

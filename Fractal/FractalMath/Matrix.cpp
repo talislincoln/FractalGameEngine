@@ -36,7 +36,7 @@ namespace fractal {
 
 		Matrix4 Matrix4::rotate(float degrees_, const Vector3& v) {
 			float cosang, sinang, cosm;
-			Vector3 rotAxis(v);
+			Vector3 rotAxis(v.x, v.y, v.z);
 			rotAxis.normalize();
 			degrees_ *= DEGREES_TO_RADIANS;
 			cosang = cos(degrees_);

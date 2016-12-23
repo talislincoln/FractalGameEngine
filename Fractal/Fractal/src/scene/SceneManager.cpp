@@ -50,6 +50,10 @@ namespace fractal {
 
 		void SceneManager::draw()
 		{
+
+			if (!this->m_activeScene->isInitialized()) {
+				this->m_activeScene->initialize();
+			}
 			//Initialize the scene before trying to draw it.
 			assert(this->m_activeScene->isInitialized());
 
@@ -105,6 +109,7 @@ namespace fractal {
 
 			this->m_activeScene = (*it);
 			this->m_activeScene->activate();
+
 
 		}
 

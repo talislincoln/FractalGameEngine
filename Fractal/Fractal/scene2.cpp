@@ -1,35 +1,27 @@
-#include "MyScene.h"
+#include "Scene2.h"
 #include "core\systems\Input.h"
 #include "graphics\Vertex.h"
-#include "helpers\Singleton.h"
-#include "scene\SceneManager.h"
 #include "scene\components\MeshComponent.h"
-
 #include "scene\components\PhysicsBodyComponent.h"
 #include "scene\components\PhysicsShapeComponent.h"
 #include "scene\components\TransformComponent.h"
-#include <FractalPhysics\include\shapes\PhysicsBox.h>
 #include "scene\components\TerrainComponent.h"
-MyScene::MyScene() :
-	Scene("MyScene"), 
-	//camera(nullptr),
-	cubeAttributes(nullptr)
+Scene2::Scene2() :
+	Scene("Scene2"), cubeAttributes(nullptr), direction(1.0)//, indices(nullptr)
 {
 }
 
-MyScene::~MyScene()
+Scene2::~Scene2()
 {
 }
 
-bool MyScene::initialize() {
+bool Scene2::initialize() {
 	using namespace fractal;
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-
-	//this->camera = new FreeCamera("Main Camera");
-	//camera->getTransform()->setPosition(Vector3(0));
-	//;w; setting the points and other attributes and in clock-wise order
+	using namespace fcore;
+	//;w; setting the points and other attributes
 	std::vector<Vertex> vertices;
 
 	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
@@ -112,14 +104,11 @@ bool MyScene::initialize() {
 
 	cubeAttributes = new SceneObject("cubeAttributes");
 
-	cubeAttributes2 = new SceneObject("cubeAttributes2");
 
 	terrain = new SceneObject("terrain");
+
+	addGameObject(cubeAttributes);
 	//;w; 
-	cubeAttributes2->addComponent(new TransformComponent());
-	cubeAttributes2->addComponent(new MeshComponent(new Mesh(vertices)));
-	cubeAttributes2->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
-	cubeAttributes2->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox(fmath::Vector3(0.5f))));
 
 	cubeAttributes->addComponent(new TransformComponent());
 	cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
@@ -129,45 +118,38 @@ bool MyScene::initialize() {
 	terrain->addComponent(new TerrainComponent());
 
 	addGameObject(terrain);
-	addGameObject(cubeAttributes);
-	addGameObject(cubeAttributes2);
 	//Quaternion q;
 	cubeAttributes->getComponent<TransformComponent>()->setScale(Vector3(0.5f, 0.5f, 0.5f));
-	cubeAttributes->getComponent<TransformComponent>()->setPosition(Vector3(1.0f, 0.0f, 0.5f));
-	cubeAttributes2->getComponent<TransformComponent>()->setScale(Vector3(0.5f, 0.5f, 0.5f));
-	cubeAttributes2->getComponent<TransformComponent>()->setPosition(Vector3(-1.0f, 0.5f, 0.5f));
-	cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(-1.0f, 0.0f, 0.0f));
-	cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(-1.0f, 0.0f, 0.0f));
-	cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(1.0f, 0.0f, 0.0f));
+	cubeAttributes->getComponent<TransformComponent>()->setPosition(Vector3(0.0f, 0.0f, -0.5f));
 
-	/*camera->addComponent(new MeshComponent(new Mesh(vertices)));
-	addGameObject(this->camera);*/
-
+	//cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(-1.0f, 0.0f, 0.0f));
+	cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(3.0f, 3.0f, 0.0f));
 	return Scene::initialize();
 }
 
-void MyScene::update() {
-
+void Scene2::update() {
 	using namespace fractal;
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
 	Scene::update();
-	if (!cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->IsAwake()) {
-
-		fractal::fhelpers::Singleton<fractal::fscene::SceneManager>::getInstance().setActiveScene("Scene2");
+	if (cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->isGround()) {
+		//cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(0.0f, 4.0f, 0.0f));
 	}
-
+	if (!cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->IsAwake()) {
+		cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(0, 3.0f , direction));
+		direction *= -1;
+	}
 	//cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->ApplyLinearForce(Vector3(0.0f, 9.8f, 0.0f)); // even out gravity. so we can do some testing.
 	//cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->ApplyLinearForce(Vector3(0.0f, 9.8f, 0.0f)); // even out gravity. so we can do some testing.
 
 
 }
 
-bool MyScene::shutdown() {
+bool Scene2::shutdown() {
 	return Scene::shutdown();
 }
 
-void MyScene::setupInput(fractal::fcore::Input* input) {
-//	camera->setupInput(input);
+void Scene2::setupInput(fractal::fcore::Input* input) {
+	input->bindInput(fractal::fcore::InputBinding(SDL_BUTTON_LEFT, std::bind(&Scene2::testInput, this), fractal::InputStateType::MOUSE_CLICK));
 }

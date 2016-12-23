@@ -4,7 +4,7 @@
 #include "scene\Component.h"
 
 #include <FractalMath\Quaternion.h>
-
+#include <FractalPhysics\include\Transform.h>
 namespace fractal {
 	namespace fscene {
 		class TransformComponent : public Component
@@ -19,25 +19,30 @@ namespace fractal {
 
 			void translate(const fmath::Vector3& translation);
 			void scale(const fmath::Vector3& scale);
-			void rotate(const fmath::Quaternion rotation);
-
+			void rotate(const fmath::Quaternion& rotation);
 
 			// ***** setters and getters ***** //
-			inline void setPosition(const fmath::Vector3& position) {
+
+			inline void TransformComponent::setPosition(const fmath::Vector3& position) {
 				this->m_isDirty = true;
+				this->m_physicsChanges = true;
 				this->m_position = position;
 			}
+			inline void TransformComponent::setPosition(float x, float y, float z) {
+				setPosition(fmath::Vector3(x, y, z));
+			}
 
-			void setScale(const fmath::Vector3& scale) {
+			inline void TransformComponent::setScale(const fmath::Vector3& scale) {
 				this->m_isDirty = true;
+				this->m_physicsChanges = true;
 				this->m_scaling = scale;
 			}
 
-			void setRotation(const fmath::Quaternion& angle) {
+			inline void TransformComponent::setRotation(const fmath::Quaternion q) {
 				this->m_isDirty = true;
-				this->m_rotation = angle;
+				this->m_physicsChanges = true;
+				this->m_rotation = q;
 			}
-
 			inline const fmath::Vector3& getPosition() const {
 				return m_position;
 			}
@@ -54,8 +59,25 @@ namespace fractal {
 				return m_worldMatrix;
 			}
 
+			inline fphysics::Transform getPhysicsTransform() {
+				return fphysics::Transform(this->m_position, this->m_rotation, this->m_scaling);
+			}
+			inline TransformComponent& operator = (const fphysics::Transform& p)
+			{
+				this->m_position = p.position;
+				this->m_rotation = p.rotation;
+				this->m_scaling = p.scale;
+				return *this;
+			}
+			inline bool getPhysicsChanges() {
+				return m_physicsChanges;
+			}
+			inline void donePhysicsChange() {
+				m_physicsChanges = false;
+			}
 		private:
 			bool m_isDirty;
+			bool m_physicsChanges;
 
 			fmath::Vector3 m_position;
 			fmath::Vector3 m_scaling;

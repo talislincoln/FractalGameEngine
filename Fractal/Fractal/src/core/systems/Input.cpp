@@ -50,7 +50,7 @@ namespace fractal {
 					m_currentMousePosition.x = (float)evnt.motion.x;
 					m_currentMousePosition.y = (float)evnt.motion.y;
 
-					//printf("mouse %d,%d\n", m_currentMousePosition.x, m_currentMousePosition.y);
+					//printf("mouse %f,%f\n", m_currentMousePosition.x, m_currentMousePosition.y);
 					//_inputManager.setMouseCoords(evnt.motion.x, evnt.motion.y);
 					break;
 				case SDL_KEYDOWN:
@@ -91,6 +91,11 @@ namespace fractal {
 					}
 					break;
 				case InputStateType::RELEASED:
+					if (wasKeyReleased(binding.keyID)) {
+						binding.execute();
+					}
+					break;
+				case InputStateType::MOUSE_CLICK:
 					if (wasKeyReleased(binding.keyID)) {
 						binding.execute();
 					}

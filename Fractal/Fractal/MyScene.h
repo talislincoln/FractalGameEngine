@@ -2,8 +2,8 @@
 
 #include "scene\Scene.h"
 #include "scene\SceneObject.h"
-#include "scene\objects\FreeCamera.h"
 
+#include <FractalPhysics\include\shapes\PhysicsBox.h>
 class MyScene : public fractal::fscene::Scene
 {
 public:
@@ -18,8 +18,9 @@ public:
 
 private:
 	fractal::fscene::SceneObject* cubeAttributes;
-	fractal::fscene::FreeCamera* camera;
-
+	fractal::fscene::SceneObject* cubeAttributes2;
+	fractal::fscene::SceneObject* terrain;
+	fractal::fphysics::PhysicsBox* box;
 	inline void testInput() {
 		std::printf("input hit\n");
 	}
