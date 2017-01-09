@@ -12,6 +12,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalMath", "FractalMath\FractalMath.vcxproj", "{D9D15335-0205-42FB-A712-16340CC2673B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalGame", "FractalGame\FractalGame.vcxproj", "{72CC52B3-D52F-4935-A142-DD315BAD9F46}"
+	ProjectSection(ProjectDependencies) = postProject
+		{19ADACEA-0314-48D5-B986-E56129C95755} = {19ADACEA-0314-48D5-B986-E56129C95755}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalEvent", "FractalEvent\FractalEvent.vcxproj", "{F1AC58A1-DC5C-4A93-998A-64F085C26F4A}"
 EndProject

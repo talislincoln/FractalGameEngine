@@ -1,6 +1,7 @@
 #ifndef _OBJECT_H
 #define _OBJECT_H
-#include "helpers\ObjectCounter.h"
+
+#include <Fractal\include\helpers\ObjectCounter.h>
 
 #include <string>
 

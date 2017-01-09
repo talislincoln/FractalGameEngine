@@ -1,14 +1,14 @@
-#pragma once
+#ifndef _MSCENE_H
 
-#include "scene\Scene.h"
-#include "scene\SceneObject.h"
+#include <Fractal\include\scene\Scene.h>
+#include <Fractal\include\scene\SceneObject.h>
+#include <Fractal\include\core\systems\Input.h>
 
-#include <FractalPhysics\include\shapes\PhysicsBox.h>
-class MyScene : public fractal::fscene::Scene
+class MScene : public fractal::fscene::Scene
 {
 public:
-	MyScene();
-	virtual ~MyScene();
+	MScene();
+	virtual ~MScene();
 
 	virtual bool initialize();
 	virtual void update();
@@ -20,7 +20,7 @@ private:
 	fractal::fscene::SceneObject* cubeAttributes;
 	fractal::fscene::SceneObject* cubeAttributes2;
 	fractal::fscene::SceneObject* terrain;
-	fractal::fphysics::PhysicsBox* box;
+	//fractal::fphysics::PhysicsBox* box;
 	inline void testInput() {
 		std::printf("input hit\n");
 	}
@@ -29,4 +29,7 @@ private:
 		std::printf("released\n");
 	}
 };
+#endif // !_MSCENE_H
+
+
 

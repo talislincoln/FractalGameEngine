@@ -1,11 +1,12 @@
 #ifndef _MESHCOMPONENT_H
 #define _MESHCOMPONENT_H
 
-#include "graphics\Mesh.h"
-#include "defines\Colour.h"
-#include "scene\Component.h"
-#include "interfaces\IDrawable.h"
-#include "graphics\Program.h"
+#include <Fractal\include\graphics\Mesh.h>
+#include <Fractal\include\defines\Colour.h>
+#include <Fractal\include\scene\Component.h>
+#include <Fractal\include\interfaces\IDrawable.h>
+#include <Fractal\include\graphics\Program.h>
+
 namespace fractal {
 	namespace fscene {
 		class TransformComponent;

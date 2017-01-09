@@ -2,11 +2,12 @@
 #define _PHYSICS_WORLD_H
 #include <vector>
 #include <FractalMath\Quaternion.h>
-#include "core\systems\System.h"
-#include "scene\Component.h"
+#include <Fractal\include\core\systems\System.h>
+#include <Fractal\include\scene\Component.h>
+
 #include <FractalPhysics\include\shapes\PhysicsShape.h>
 #include <FractalPhysics\include\PhysicsMath.h>
-#include "scene\GameObject.h"
+#include <Fractal\include\scene\GameObject.h>
 #include <FractalPhysics\include\Timer.h>
 
 namespace fractal {

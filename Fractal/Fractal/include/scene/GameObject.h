@@ -1,7 +1,7 @@
 #ifndef _GAMEOBJECT_H
 #define _GAMEOBJECT_H
 #include "Object.h"
-#include "core\systems\Input.h"
+#include <Fractal\include\core\systems\Input.h>
 
 namespace fractal {
 	namespace fscene {

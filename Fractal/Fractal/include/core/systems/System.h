@@ -2,7 +2,7 @@
 #define _SYSTEM_H
 
 #ifndef _SYSTEMTYPE_H
-#include "defines\SystemType.h"
+#include <Fractal\include\defines\SystemType.h>
 #endif
 
 /**

@@ -7,7 +7,7 @@
 #endif
 
 #ifndef _DELETEMACROS_H
-#include "defines\deletemacros.h"
+#include <Fractal\include\defines\deletemacros.h>
 #endif
 
 namespace fractal {

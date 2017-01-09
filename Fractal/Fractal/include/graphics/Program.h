@@ -3,8 +3,10 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include "graphics\Mesh.h"
-#include "utils\IOManager.h"
+
+#include <Fractal\include\graphics\Mesh.h>
+#include <Fractal\include\utils\IOManager.h>
+
 
 namespace fractal {
 	class Shader {

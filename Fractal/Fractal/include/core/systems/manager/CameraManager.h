@@ -1,7 +1,6 @@
  #ifndef _CAMERAMANAGER_H
 #define _CAMERAMANAGER_H
-
-#include "helpers\Manager.h"
+#include <Fractal\include\helpers\Manager.h>
 
 #include <vector>
 

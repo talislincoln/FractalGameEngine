@@ -1,7 +1,8 @@
 #ifndef _TRANSFORMCOMPONENT_H
 #define _TRANSFORMCOMPONENT_H
 
-#include "scene\Component.h"
+#include <Fractal\include\scene\Component.h>
+
 
 #include <FractalMath\Quaternion.h>
 #include <FractalPhysics\include\Transform.h>

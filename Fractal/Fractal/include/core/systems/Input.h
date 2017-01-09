@@ -1,8 +1,8 @@
 #ifndef _INPUT_H
 #define _INPUT_H
 
-#include "core\systems\System.h"
-#include "defines\InputStateType.h"
+#include <Fractal\include\core\systems\System.h>
+#include <Fractal\include\defines\InputStateType.h>
 
 #include <unordered_map>
 #ifndef _FUNCTIONAL_

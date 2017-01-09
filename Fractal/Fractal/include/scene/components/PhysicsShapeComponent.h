@@ -3,10 +3,12 @@
 #include <Fractal\include\scene\Component.h>
 #include <FractalMath\Matrix.h>
 #include <FractalPhysics\include\shapes\PhysicsShape.h>
-#include "core\systems\PhysicsWorld.h"
+#include <Fractal\include\core\systems\PhysicsWorld.h>
+
 #include <vector>
-#include "interfaces\IDrawable.h"
-#include "graphics\Vertex.h"
+#include <Fractal\include\interfaces\IDrawable.h>
+#include <Fractal\include\graphics\Vertex.h>
+
 namespace fractal {
 	namespace fscene {
 		class TransformComponent;

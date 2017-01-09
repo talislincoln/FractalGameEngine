@@ -71,8 +71,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediate\</IntDir>
-    <IncludePath>$(SolutionDir)\;$(SolutionDir)deps\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)bin/;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\;$(SolutionDir)\deps\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\bin\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyGame.cpp" />
-    <ClCompile Include="MyScene.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -74,8 +71,6 @@
     <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
-    <ClInclude Include="MyGame.h" />
-    <ClInclude Include="MyScene.h" />
     <ClInclude Include="include\scene\components\TerrainComponent.h" />
     <ClInclude Include="scene2.h" />
   </ItemGroup>
@@ -85,8 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\HUDFrag.txt" />
-    <Text Include="res\shaders\HUDVert.txt" />
     <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
     <Text Include="res\shaders\cubeFrag.txt" />

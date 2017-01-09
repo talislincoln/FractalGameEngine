@@ -1,11 +1,11 @@
 #ifndef _SCENEMANAGER_H
 #define _SCENEMANAGER_H
 
-#include "helpers\Manager.h"
-#include "helpers\Singleton.h"
-#include "interfaces\IDrawable.h"
+#include <Fractal\include\helpers\Manager.h>
+#include <Fractal\include\helpers\Singleton.h>
+#include <Fractal\include\interfaces\IDrawable.h>
 
-#include "core\systems\manager\CameraManager.h"
+#include <Fractal\include\core\systems\manager\CameraManager.h>
 
 #include <string>
 

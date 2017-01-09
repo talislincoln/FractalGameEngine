@@ -2,7 +2,7 @@
 #define _SCENEOBJECT_H
 
 #include "GameObject.h"
-#include "interfaces\IDrawable.h"
+#include <Fractal\include\interfaces\IDrawable.h>
 
 namespace fractal {
 	namespace fscene {

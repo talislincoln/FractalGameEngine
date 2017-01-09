@@ -1,27 +1,31 @@
-#include "MyScene.h"
-#include "core\systems\Input.h"
-#include "graphics\Vertex.h"
-#include "helpers\Singleton.h"
-#include "scene\SceneManager.h"
-#include "scene\components\MeshComponent.h"
+#include "MScene.h"
 
-#include "scene\components\PhysicsBodyComponent.h"
-#include "scene\components\PhysicsShapeComponent.h"
-#include "scene\components\TransformComponent.h"
+#include <Fractal\include\graphics\Vertex.h>
+#include <Fractal\include\helpers\Singleton.h>
+#include <Fractal\include\scene\SceneManager.h>
+#include <Fractal\include\core\systems\Input.h>
+#include <Fractal\include\graphics\Mesh.h>
+#include <Fractal\include\scene\components\MeshComponent.h>
+
+#include <Fractal\include\scene\components\TerrainComponent.h>
+#include <Fractal\include\scene\components\TransformComponent.h>
+#include <Fractal\include\scene\components\PhysicsBodyComponent.h>
+#include <Fractal\include\scene\components\PhysicsShapeComponent.h>
+
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
-#include "scene\components\TerrainComponent.h"
-MyScene::MyScene() :
-	Scene("MyScene"), 
+
+MScene::MScene() :
+	Scene("MyScene"),
 	//camera(nullptr),
 	cubeAttributes(nullptr)
 {
 }
 
-MyScene::~MyScene()
+MScene::~MScene()
 {
 }
 
-bool MyScene::initialize() {
+bool MScene::initialize() {
 	using namespace fractal;
 	using namespace fscene;
 	using namespace fmath;
@@ -146,7 +150,7 @@ bool MyScene::initialize() {
 	return Scene::initialize();
 }
 
-void MyScene::update() {
+void MScene::update() {
 
 	using namespace fractal;
 	using namespace fscene;
@@ -164,10 +168,10 @@ void MyScene::update() {
 
 }
 
-bool MyScene::shutdown() {
+bool MScene::shutdown() {
 	return Scene::shutdown();
 }
 
-void MyScene::setupInput(fractal::fcore::Input* input) {
-//	camera->setupInput(input);
+void MScene::setupInput(fractal::fcore::Input* input) {
+	//	camera->setupInput(input);
 }

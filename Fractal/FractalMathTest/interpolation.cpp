@@ -1,5 +1,4 @@
 #include <FractalMath\Quaternion.h>
-
 int main() {
 	using namespace fractal;
 	using namespace fmath;

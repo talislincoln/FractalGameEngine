@@ -1,9 +1,9 @@
 #ifndef _MESH_H
 #define _MESH_H
 
-#include "graphics\Vertex.h"
-#include "scene\Component.h"
-#include "interfaces\IDrawable.h"
+#include <Fractal\include\graphics\Vertex.h>
+#include <Fractal\include\scene\Component.h>
+#include <Fractal\include\interfaces\IDrawable.h>
 
 #include <GL\glew.h>
 #include <vector>
