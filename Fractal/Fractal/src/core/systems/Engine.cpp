@@ -4,6 +4,7 @@
 #include "core\systems\Window.h"
 #include "core\systems\Logic.h"
 #include "core\systems\Graphics.h"
+#include "core\systems\Timer.h"
 
 #include "core\systems\manager\SystemManager.h"
 #include "scene\SceneManager.h"
@@ -16,7 +17,8 @@ namespace fractal {
 	namespace fcore {
 
 		Engine::Engine(AbstractGame* game) :
-			m_game(game), m_isRunning(false)
+			m_game(game), m_isRunning(false),
+			m_maxFPS(60.f)
 		{
 		}
 
@@ -56,11 +58,23 @@ namespace fractal {
 			//this function will assignt the is running to false
 			//and close the application at the end of it
 
+			Uint32 start32, now32;
+			Uint64 start, now;
+
+			start32 = SDL_GetTicks();
+			start = SDL_GetPerformanceCounter();
+			SDL_Delay(1000);
+			now = SDL_GetPerformanceCounter();
+			now32 = SDL_GetTicks();
+			SDL_Log("Delay 1 second = %d ms in ticks, %f ms according to performance counter", (now32 - start32), (double)((now - start) * 1000) / SDL_GetPerformanceFrequency());
+
 			m_isRunning = true;
 			while (m_isRunning)
 			{
 				update();
 				draw();
+
+				//create the fixed timestep
 			}
 
 			if (!shutDown())
@@ -97,13 +111,13 @@ namespace fractal {
 			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			if (graphics == nullptr)
 				return 0;
-			/*MainTimer* timer = dynamic_cast<MainTimer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
+			Timer* timer = dynamic_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
 			if (timer == nullptr)
-				return FALSE;
-			*/
+				return 0;
+			
 
 			if (!window->initialize())
-				return 0;// error
+				return 0;
 			if (!input->initialize())
 				return 0;
 			if (!graphics->initialize())
@@ -112,10 +126,8 @@ namespace fractal {
 
 			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
 
-			/*if (!timer->initialize())
-				return FALSE;
-
-			*/
+			if (!timer->initialize())
+				return 0;
 
 			logic->setGame(this->m_game);
 			if (!logic->initialize())
@@ -139,14 +151,6 @@ namespace fractal {
 			}
 
 			graphics->endDraw();
-
-			/*//the draw call should be within the beginDraw and endDraw function from the graphics system
-			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
-			{
-				IDrawable* drawable_system = dynamic_cast<IDrawable*>(system);
-				if (drawable_system->getCanDraw())
-					drawable_system->draw();
-			}*/
 		}
 
 		void Engine::update()
@@ -187,7 +191,7 @@ namespace fractal {
 
 			if (!Singleton<SystemManager>::getInstance().shutdown())
 				return false;
-			// sceen manager is shut down in the Logic class
+			// scene manager is shut down in the Logic class
 			//if (!Singleton<WorldSettings>::getInstance().shutdown())
 			//	return false;
 

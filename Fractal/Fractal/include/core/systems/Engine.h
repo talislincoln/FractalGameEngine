@@ -38,6 +38,8 @@ namespace fractal {
 
 			bool m_isRunning; ///< boolean that defines if the engine should break the infinit loop
 
+			float m_maxFPS;
+
 			AbstractGame* m_game; ///< Instance of the game running in the engine
 		};
 	}

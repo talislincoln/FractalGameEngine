@@ -52,6 +52,11 @@ namespace fractal {
 			}
 		}
 
+		void GameObject::fixedUpdate()
+		{
+			//TODO implement this
+		}
+
 		bool GameObject::shutdown()
 		{
 			for (Component* component : this->m_components)

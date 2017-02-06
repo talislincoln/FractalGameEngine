@@ -17,7 +17,8 @@ namespace fractal {
 		}
 
 		CameraObject::~CameraObject() {
-
+			delete m_cameraComponent;
+			delete m_transformComponent;
 		}
 
 		bool CameraObject::initialize() {
@@ -44,6 +45,14 @@ namespace fractal {
 		}
 
 		bool CameraObject::shutdown() {
+			if (!m_cameraComponent->shutdown()) {
+				//error
+			}
+
+			if (!m_transformComponent->shutdown()) {
+				//error
+			}
+			
 			return GameObject::shutdown();
 		}
 

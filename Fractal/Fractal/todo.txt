@@ -1,4 +1,5 @@
 Create a config file
+- add the information in the TimerObject.h class to this configuration file as well
 
 -------------- URGENT ---------------------
 Create a render Manager 

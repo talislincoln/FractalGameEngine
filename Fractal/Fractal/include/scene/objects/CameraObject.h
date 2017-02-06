@@ -13,7 +13,7 @@ namespace fractal {
 
 		class CameraObject : public GameObject, public IDrawable {
 		public:
-			CameraObject(const std::string& name = "", bool setActive = true);
+			CameraObject(const std::string& name = "CameraObject", bool setActive = true);
 			virtual ~CameraObject();
 
 			virtual bool initialize();

@@ -16,6 +16,7 @@ namespace fractal {
 
 			virtual bool initialize();
 			virtual void update();
+			virtual void fixedUpdate();
 			virtual bool shutdown();
 
 			void setScene(Scene* scene);
