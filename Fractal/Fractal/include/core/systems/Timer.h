@@ -23,12 +23,15 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			fscene::TimerObject* getWorldTimer() const;
+			inline fscene::TimerObject* getWorldTimer() const {
+				return m_worldTimer;
+			}
 
 			void addTimer(fscene::TimerObject* timer);
+
 			fscene::TimerObject* getTimer(const std::string& name) const;
 
-			static float m_deltaTime;
+			static float deltaTime;
 
 		private:
 			fscene::TimerObject* m_worldTimer;

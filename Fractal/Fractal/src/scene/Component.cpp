@@ -6,6 +6,7 @@ namespace fractal {
 			: Object(name), m_parent(nullptr), m_orderId(INVALID_ORDER_ID)
 		{
 		}
+
 		Component::~Component()
 		{
 		}

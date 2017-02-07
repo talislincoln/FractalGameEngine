@@ -8,7 +8,6 @@
 #include <FractalPhysics\include\shapes\PhysicsShape.h>
 #include <FractalPhysics\include\PhysicsMath.h>
 #include <Fractal\include\scene\GameObject.h>
-#include <FractalPhysics\include\Timer.h>
 
 namespace fractal {
 	namespace fscene{
@@ -61,7 +60,6 @@ namespace fractal {
 			VelocityState *m_velocities;
 			std::vector<fscene::GameObject*> gameOjbectWithBodyList;
 		private:
-			Timer timer;
 			fscene::TerrainComponent* terrain;
 
 		};

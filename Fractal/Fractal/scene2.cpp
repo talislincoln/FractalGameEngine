@@ -6,6 +6,8 @@
 #include "scene\components\PhysicsShapeComponent.h"
 #include "scene\components\TransformComponent.h"
 #include "scene\components\TerrainComponent.h"
+#include <SDL\SDL.h>
+
 Scene2::Scene2() :
 	Scene("Scene2"), cubeAttributes(nullptr), direction(1.0)//, indices(nullptr)
 {

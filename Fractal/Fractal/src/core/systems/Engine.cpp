@@ -37,7 +37,8 @@ namespace fractal {
 			}
 
 			// Seed the random number generator
-			//srand(GetTickCount());
+			// this will set the the random numbers to be always random (in theory?)
+			srand(SDL_GetTicks());
 
 			//if using message system:
 			//MSG msg = {};
@@ -61,12 +62,12 @@ namespace fractal {
 			Uint32 start32, now32;
 			Uint64 start, now;
 
-			start32 = SDL_GetTicks();
+			/*start32 = SDL_GetTicks();
 			start = SDL_GetPerformanceCounter();
 			SDL_Delay(1000);
 			now = SDL_GetPerformanceCounter();
 			now32 = SDL_GetTicks();
-			SDL_Log("Delay 1 second = %d ms in ticks, %f ms according to performance counter", (now32 - start32), (double)((now - start) * 1000) / SDL_GetPerformanceFrequency());
+			SDL_Log("Delay 1 second = %d ms in ticks, %f ms according to performance counter", (now32 - start32), (double)((now - start) * 1000) / SDL_GetPerformanceFrequency());*/
 
 			m_isRunning = true;
 			while (m_isRunning)

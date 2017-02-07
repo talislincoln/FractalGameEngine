@@ -128,7 +128,6 @@
     <ClInclude Include="include\PhysicsMath.h" />
     <ClInclude Include="include\shapes\PhysicsShape.h" />
     <ClInclude Include="include\shapes\PhysicsSphere.h" />
-    <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -139,7 +138,6 @@
     <ClCompile Include="src\shapes\PhysicsBox.cpp" />
     <ClCompile Include="src\shapes\PhysicsShape.cpp" />
     <ClCompile Include="src\shapes\PhysicsSphere.cpp" />
-    <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

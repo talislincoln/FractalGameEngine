@@ -5,12 +5,16 @@ namespace fractal {
 	namespace fscene {
 		TimerObject::TimerObject(const std::string& name) :
 			Object(name),
-			m_currentTime(0),
+			m_stopped(false),
+			m_baseTime(0),
+			m_pauseTime(0),
+			m_stopTime(0),
 			m_previousTime(0),
-			m_deltaTime(-1),
-			m_stopped(false)
+			m_currentTime(0),
+			m_secondsPerCount(0.0),
+			m_deltaTime(-1.0)
 		{
-			m_previousTime = SDL_GetTicks();
+			m_secondsPerCount = 1.0/static_cast<double>(SDL_GetPerformanceFrequency());
 		}
 
 		TimerObject::~TimerObject() {
@@ -25,18 +29,18 @@ namespace fractal {
 
 		void TimerObject::update() {
 			if (m_stopped) {
-				m_deltaTime = 0.0f;
+				m_deltaTime = 0.0;
 			}
 
-			// Calculate the frameTime in milliseconds
-			float newTicks = SDL_GetTicks();
-			float frameTime = newTicks - m_previousTime;
-			m_previousTime = newTicks;
+			Uint64 currTime = SDL_GetPerformanceCounter();
+			m_currentTime = currTime;
 
-			m_deltaTime = (frameTime / DESIRED_FRAMETIME);
+			m_deltaTime = (m_currentTime - m_previousTime) * m_secondsPerCount;
 
-			if (m_deltaTime < 0.0f) {
-				m_deltaTime = 0.0f;
+			m_previousTime = m_currentTime;
+
+			if (m_deltaTime < 0.0) {
+				m_deltaTime = 0.0;
 			}
 		}
 
@@ -47,25 +51,25 @@ namespace fractal {
 
 		float TimerObject::getTotalTime() const {
 			if (m_stopped) {
-				return (m_stopTime - m_baseTime) / DESIRED_FRAMETIME;
+				return static_cast<float>((m_stopTime - m_baseTime) * m_secondsPerCount);
 			}
 			else {
-				return (m_currentTime - m_pauseTime) / DESIRED_FRAMETIME;
+				return static_cast<float>((m_currentTime - m_pauseTime) * m_secondsPerCount);
 			}
 		}
 
 		void TimerObject::reset() {
-			float currentTime = SDL_GetTicks();
+			Uint64 currentTime = SDL_GetPerformanceCounter();
 
 			m_baseTime = currentTime;
 			m_previousTime = currentTime;
-			m_stopTime = 0.0f;
+			m_stopTime = 0;
 
 			m_stopped = false;
 		}
 
 		void TimerObject::start() {
-			float startTime = SDL_GetTicks();
+			Uint64 startTime = SDL_GetPerformanceCounter();
 
 			m_previousTime = startTime;
 
@@ -74,14 +78,14 @@ namespace fractal {
 
 				m_previousTime = startTime;
 
-				m_stopTime = 0.0f;
+				m_stopTime = 0;
 				m_stopped = false;
 			}
 		}
 
 		void TimerObject::stop() {
 			if (!m_stopped) {
-				float newTicks = SDL_GetTicks();
+				Uint64 newTicks = SDL_GetPerformanceCounter();
 
 				m_stopTime = newTicks;
 				m_stopped = true;

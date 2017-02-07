@@ -6,6 +6,9 @@
 #include "scene\components\TerrainComponent.h"
 #include <FractalPhysics\include\PhysicsMath.h>
 #include <FractalPhysics\include\collision\AABBCollision.h>
+#include <Fractal\include\core\systems\Timer.h>
+#include <helpers\Singleton.h>
+#include <Fractal\include\core\systems\manager\SystemManager.h>
 
 namespace fractal {
 	namespace fphysics {
@@ -16,7 +19,6 @@ namespace fractal {
 
 
 		bool PhysicsWorld::initialize() {
-			timer.Start();
 			return true;
 
 		}
@@ -25,18 +27,19 @@ namespace fractal {
 		}
 
 		void PhysicsWorld::update() {
-			timer.UpdateFrameTicks();
 			simulation();
 			checkCollision();
 
-			SDL_Delay(timer.GetSleepTime(60));
+			//SDL_Delay(timer.GetSleepTime(60));
 		}
 		void PhysicsWorld::destroy() {
 
 		}
 		void PhysicsWorld::simulation() {
+			using namespace fhelpers;
 			int i = 0;
-			dtime = timer.GetDeltaTime() / 2.0f;
+			dtime = dynamic_cast<fcore::Timer*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->deltaTime;
+			//dtime = timer.GetDeltaTime() / 2.0f;
 			for (auto& body : gameOjbectWithBodyList) {
 
 				//VelocityState *vState = m_velocities + ++i; // for collidion with reaction. 

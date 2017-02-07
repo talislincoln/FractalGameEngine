@@ -28,12 +28,12 @@ namespace fractal {
 				this->y = y;
 				this->z = z;
 			}
+
 			inline void load(float x = 0) {
 				this->x = x;
 				this->y = x;
 				this->z = x;
 			}
-
 
 			inline Point3& add(const Point3& other) {
 				x += other.x;
@@ -55,6 +55,7 @@ namespace fractal {
 				z *= other.z;
 				return *this;
 			}
+
 			inline const Point3 operator+(const Point3& other) const {
 				return Point3(x + other.x, y + other.y, z + other.z);
 			}
@@ -87,6 +88,7 @@ namespace fractal {
 				float r = 1.0f / s;
 				return *this * r;
 			}
+
 			inline const Point3 operator - () const {
 				return Point3(-x, -y, -z);
 			}

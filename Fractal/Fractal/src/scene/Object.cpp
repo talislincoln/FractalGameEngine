@@ -53,6 +53,7 @@ namespace fractal {
 		{
 			this->name = name;
 		}
+
 		const std::string& Object::getName() const
 		{
 			return this->name;
