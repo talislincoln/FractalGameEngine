@@ -2,7 +2,6 @@ Create a config file
 - add the information in the TimerObject.h class to this configuration file as well
 
 -------------- URGENT ---------------------
-Create a timer system
 Create a render Manager 
 Craete a camera Manager for the scene
 Create a Debug/Logger system
