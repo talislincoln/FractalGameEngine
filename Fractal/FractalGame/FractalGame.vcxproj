@@ -123,11 +123,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MScene.cpp" />
     <ClCompile Include="MScene2.cpp" />
+    <ClCompile Include="TalisScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="MScene.h" />
     <ClInclude Include="MScene2.h" />
+    <ClInclude Include="TalisScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
