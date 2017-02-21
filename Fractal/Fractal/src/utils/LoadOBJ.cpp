@@ -1,68 +1,75 @@
-#pragma once
+
 #include "utils\LoadOBJ.h"
 #include <iostream>
 #include <fstream>
 namespace fractal {
+	fgraphics::MeshData* LoadOBJ::load(char* fileName) {
+		std::string temp(fileName);
+		return load(temp);
+	}
 	fgraphics::MeshData* LoadOBJ::load(std::string fileName) {
 		using namespace std;
 		using namespace fmath;
 		using namespace fgraphics;
 		ifstream reader;
-		reader.open(fileName, ios::out);
+
+		reader.open("res/meshes/" + fileName + ".obj");
+		if (!reader.is_open())
+			printf("failed"); // need debug~
 		string line;
 		vector<fgraphics::Vertex> vertices;
 		vector<Vector2> textures;
 		vector<Vector3> normals;
 		vector<int> indices;
-		while (true) {
+		while (!reader.eof()) {
 			getline(reader, line);
 			vector<string> currentLine;
-			if (strncmp(line.c_str(), "v ", 2)) {
+			if (strncmp(line.c_str(), "v ", 2) == 0) {
 				currentLine = split(line, ' ');
-				Point3 vertex = Point3((float)stod(currentLine[1]),
-					(float)stod(currentLine[2]), (float)stod(currentLine[3]));
+				Point3 vertex = Point3((float)stod(currentLine[2]),
+					(float)stod(currentLine[3]), (float)stod(currentLine[4]));
 				vertices.push_back(Vertex(vertex, vertices.size()));
-
 			}
-			else if (strncmp(line.c_str(), "vt ", 3)) {
+			else if (strncmp(line.c_str(), "vt ", 3) == 0) {
 				currentLine = split(line, ' ');
-				Vector2 texture = Vector2((float)stod(currentLine[1]),
-					(float)stod(currentLine[2]));
+				Vector2 texture = Vector2((float)stod(currentLine[2]),
+					(float)stod(currentLine[3]));
 				textures.push_back(texture);
 			}
-			else if (strncmp(line.c_str(), "vn ", 3)) {
+			else if (strncmp(line.c_str(), "vn ", 3) == 0) {
 
 				currentLine = split(line, ' ');
 				Vector3 normal = Vector3((float)stod(currentLine[1]),
 					(float)stod(currentLine[2]), (float)stod(currentLine[3]));
 				normals.push_back(normal);
 			}
-			else if (strncmp(line.c_str(), "f ", 2)) {
+			else if (strncmp(line.c_str(), "f ", 2) == 0) {
 				break;
 			}
+			//else  break  // need debug~
 		}
-		while (line.empty() && strncmp(line.c_str(), "f ", 2)) {
-
-			vector<string> currentLine;
-			currentLine = split(line, ' ');
-			vector<string> vertex1;
-			vertex1 = split(currentLine[1], '/');
-			vector<string> vertex2;
-			vertex2 = split(currentLine[2], '/');
-			vector<string> vertex3;
-			vertex3 = split(currentLine[3], '/');
-			processVertex(vertex1, vertices, indices);
-			processVertex(vertex2, vertices, indices);
-			processVertex(vertex3, vertices, indices);
+		while (!reader.eof()) {
+			if (strncmp(line.c_str(), "f ", 2) == 0) {
+				vector<string> currentLine;
+				currentLine = split(line, ' ');
+				vector<string> vertex1;
+				vertex1 = split(currentLine[1], '/');
+				vector<string> vertex2;
+				vertex2 = split(currentLine[2], '/');
+				vector<string> vertex3;
+				vertex3 = split(currentLine[3], '/');
+				processVertex(vertex1, vertices, indices);
+				processVertex(vertex2, vertices, indices);
+				processVertex(vertex3, vertices, indices);
+			}
 			getline(reader, line);
 		}
 		reader.close();
 		removeUnusedVertices(vertices);
-		std::vector<fmath::Point3> position;
-		float furthest = convertDataToArrays(vertices, textures, normals, position);
-		return new MeshData(position, textures, normals, indices, furthest, vertices.size());
+		float furthest = convertDataToArrays(vertices, textures, normals);
+		return new MeshData(vertices, textures, normals, indices, furthest, vertices.size());
 	}
-	fgraphics::Vertex* LoadOBJ::processVertex(std::vector<std::string> vertex, std::vector<fgraphics::Vertex> vertices, std::vector<int> indices) {
+	fgraphics::Vertex* LoadOBJ::processVertex(std::vector<std::string> vertex, std::vector<fgraphics::Vertex> &vertices, std::vector<int> indices) {
 		using namespace fgraphics;
 		int index = std::stoi(vertex[0]) - 1;
 		Vertex* currentVertex = &vertices[index];
@@ -84,7 +91,7 @@ namespace fractal {
 		return &indices[0];
 	}
 
-	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals, std::vector<fmath::Point3>& position) {
+	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals) {
 		using namespace fmath;
 		float furthestPoint = 0;
 		std::vector<fgraphics::Vertex> newVertices;
@@ -102,7 +109,6 @@ namespace fractal {
 			newVertices.push_back(currentVertex);
 			newTexture.push_back(textureCoord);
 			newNormal.push_back(normalVector);
-			position.push_back(currentVertex.position);
 		}
 		vertices = newVertices;
 		textures = newTexture;

@@ -13,10 +13,10 @@
 #include <Fractal\include\scene\components\PhysicsShapeComponent.h>
 
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
-
+#include <Fractal\include\utils\LoadOBJ.h>
 
 TalisScene::TalisScene():
-Scene("TalisScene")
+Scene("TalisScene"), test1(nullptr)
 {
 }
 
@@ -26,6 +26,12 @@ TalisScene::~TalisScene()
 }
 
 bool TalisScene::initialize() {
+	using namespace fractal;
+	using namespace fscene;
+	using namespace fmath;
+	using namespace fgraphics;
+	test1 = new SceneObject("test1");
+	test1->addComponent(new MeshComponent(LoadOBJ::load("test")));
 	return Scene::initialize();
 }
 

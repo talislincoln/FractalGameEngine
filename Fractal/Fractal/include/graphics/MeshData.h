@@ -1,4 +1,7 @@
-#pragma once
+#ifndef MESH_DATA_H
+#define MESH_DATA_H
+
+
 #include <Fractal\include\graphics\Vertex.h>
 #include <FractalMath\Vector.h>
 namespace fractal {
@@ -7,12 +10,12 @@ namespace fractal {
 		private:
 			static const int DIMENSIONS = 3;
 			
-			std::vector<fmath::Point3> m_vertices;
+			std::vector<fgraphics::Vertex> m_vertices;
 			std::vector<fmath::Vector2> m_textureCoords;
 			std::vector<fmath::Vector3> m_normals;
 			std::vector<int>   m_indices;
 			float  m_furthestPoint;
-			int m_size;
+			size_t m_size;
 
 		public:
 
@@ -21,18 +24,22 @@ namespace fractal {
 			MeshData& operator=(const MeshData&) = delete;
 			MeshData& operator=(MeshData&&) = delete;
 
-			MeshData(std::vector<fmath::Point3> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
+			MeshData(std::vector<fgraphics::Vertex> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
 				std::vector<int> indices, float furthestPoint, int size) :
 				m_vertices(vertices), m_textureCoords(textureCoords), m_normals(normals), 
 				m_indices(indices), m_furthestPoint(furthestPoint), m_size(size){
 			}
 
-			inline int getVertexCount() {
-				return m_size / DIMENSIONS;
+			inline size_t getVertexCount() {
+				return m_size;
 			}
 
 			inline std::vector<fmath::Point3> getVertices() {
-				return m_vertices;
+				std::vector<fmath::Point3> temp;
+				for (fgraphics::Vertex it : m_vertices) {
+					temp.push_back(it.getPosition());
+				}
+				return temp;
 			}
 
 			inline std::vector<fmath::Vector2> getTextureCoords() {
@@ -55,3 +62,4 @@ namespace fractal {
 
 	}
 }
+#endif // !MESH_DATA_H

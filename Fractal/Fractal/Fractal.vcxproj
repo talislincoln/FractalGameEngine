@@ -136,7 +136,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="scene2.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -221,7 +220,6 @@
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
-    <ClInclude Include="scene2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

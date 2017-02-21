@@ -11,5 +11,7 @@ public:
 	virtual void update();
 	virtual bool shutdown();
 
+private:
+	fractal::fscene::SceneObject* test1;
 };
 

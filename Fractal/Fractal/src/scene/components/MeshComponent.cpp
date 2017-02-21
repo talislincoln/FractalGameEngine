@@ -15,7 +15,8 @@
 namespace fractal {
 	namespace fscene {
 		using namespace fmath;
-		MeshComponent::MeshComponent(fgraphics::Mesh* mesh) : m_mesh(mesh) {
+		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) :
+			Component( "MeshComponent"), m_mesh(mesh) {
 			///;W; STORES MESH, TEXTURE, SHADERS
 			///;W; SETUP OF VAO, VBO, EBO, TEXTURES
 			///;W; GENERAL CODE
@@ -41,7 +42,7 @@ namespace fractal {
 		void MeshComponent::draw() {
 			glBindVertexArray(m_vao);
 			glEnableVertexAttribArray(0);
-			glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
+			glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertexCount());
 			glDisableVertexAttribArray(0);
 			glBindVertexArray(0);
 		}
@@ -70,7 +71,7 @@ namespace fractal {
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
-			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fgraphics::Vertex), &m_mesh->getVertices(), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fmath::Point3), &m_mesh->getVertices(), GL_STATIC_DRAW);
 
 			// the meaning of each attribute
 			// 1 - attribute position
