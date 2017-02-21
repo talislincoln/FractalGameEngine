@@ -25,6 +25,10 @@ namespace fractal {
 				return m_mesh;
 			}
 		private:
+			void createVAO();
+			void storeDataInVAO();
+			void unbindVAO();
+
 			fgraphics::Mesh* m_mesh;
 			//;w; window dimensions
 			const GLuint WIDTH = 800;
@@ -38,18 +42,10 @@ namespace fractal {
 			GLuint m_vao;
 			GLuint m_vbo;
 			GLuint m_ebo;
-			//;w; textures
-			GLuint m_texture1;
-			GLuint m_texture2;
-			int IMG_WIDTH, IMG_HEIGHT;
-			unsigned char* m_image;
-			//;w; getting uniforms from shaders
-			GLint m_modelLoc;
-			GLint m_viewLoc;
-			GLint m_projLoc;
 
-			TransformComponent* transform;
-			const GameObject* parent;
+			//list of vertices to be deleted from the gpu
+			std::vector<GLuint> m_vaos;
+			std::vector<GLuint> m_vbos;
 		};
 	}
 }

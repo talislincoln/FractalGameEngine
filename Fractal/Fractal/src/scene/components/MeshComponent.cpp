@@ -81,89 +81,63 @@ namespace fractal {
 
 		}
 
-		/**
-		Init the mesh component.
-		*/
 		bool MeshComponent::initialize() {
+			createVAO();
+			storeDataInVAO();
+			unbindVAO();
 
-			parent = this->getParent();
-			if (parent != nullptr) {
-				transform = parent->getComponent<TransformComponent>();
-			}
-			return m_mesh != nullptr;
+			return true;
 		}
-		/**
-		draw the mesh components based on the vertices provided.
-		*/
+
 		void MeshComponent::draw() {
-			///;W; THIS SHOULDN'T BE THE ONE DRAWING
-			//;w; clear colour buffer
-			////////////////////////////////// CAMERA
-			// Create camera transformation
-			//fmath::Matrix4 view;
-			//view.loadIdentity();
-			//fscene::FreeCamera* camera = dynamic_cast<fscene::FreeCamera*>(getParent());
-			//fmath::Matrix4 projection;
-			//projection.loadIdentity();
-
-			//if (camera != nullptr) {
-
-			//	view = camera->getViewMatrix();
-			//	projection = fmath::Matrix4::perspective(camera->Zoom, (float)800 / (float)600, 0.1f, 1000.0f);
-			//}
-			//else {
-			//	view = Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f));
-			//	projection = Matrix4::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
-			//}
-			//// Get the uniform locations
-			//GLint modelLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "model");
-			//GLint viewLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "view");
-			//GLint projLoc = glGetUniformLocation(m_ourProgram->getProgramID(), "projection");
-			//// Pass the matrices to the shader
-			//glUniformMatrix4fv(viewLoc, 1, GL_FALSE, view);
-			//glUniformMatrix4fv(projLoc, 1, GL_FALSE, projection);
-			//////////////////////////////////
-			//;w; shader
-			m_cubeShader->use();
-			//;w; bind texture
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, m_texture1);
-			glUniform1i(glGetUniformLocation(m_cubeShader->getProgramID(), "ourTexture1"), 0);
-			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, m_texture2);
-			glUniform1i(glGetUniformLocation(m_cubeShader->getProgramID(), "ourTexture2"), 1);
-			//;w; transformations new cube
-
-			Matrix4 m_model = transform->getWorldMatrix();
-			Matrix4 m_view;
-			Matrix4 m_projection;
-			//m_model *= Matrix4::translate(0, 0, /*-0.01 * */SDL_GetTicks()); //;w; joseph made the cube go into the distance as it rotated
-			m_view = Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f));
-			m_projection = Matrix4::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
-			//;w; get matrix uniform location
-			m_modelLoc = glGetUniformLocation(m_cubeShader->getProgramID(), "cubemodel");
-			m_viewLoc = glGetUniformLocation(m_cubeShader->getProgramID(), "cubeview");
-			m_projLoc = glGetUniformLocation(m_cubeShader->getProgramID(), "cubeprojection");
-			//pass to shaders
-			glUniformMatrix4fv(m_modelLoc, 1, GL_FALSE, m_model);
-			glUniformMatrix4fv(m_viewLoc, 1, GL_FALSE, m_view);
-			glUniformMatrix4fv(m_projLoc, 1, GL_FALSE, m_projection);
-			//;w; draw container
 			glBindVertexArray(m_vao);
-			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-			glBindVertexArray(0);			
+			glEnableVertexAttribArray(0);
+			glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
+			glDisableVertexAttribArray(0);
+			glBindVertexArray(0);
 		}
+
 		void MeshComponent::update() {
 
 		}
 
 		bool MeshComponent::shutdown() {
-			//cleaning/deleting the buffers and array within the gpu
 			glDeleteVertexArrays(1, &m_vao);
 			glDeleteBuffers(1, &m_vbo);
-			//glDeleteBuffers(1, &m_ebo);
+
 			return true;
+		}
+
+		void MeshComponent::createVAO() {
+			//first argument specifies the number of arrays to generate
+			glGenVertexArrays(1, &m_vao);
+			glBindVertexArray(m_vao);
+		}
+
+		void MeshComponent::storeDataInVAO() {
+			//create 1 vbo
+			glGenBuffers(1, &m_vbo);
+
+			//start using this vbo
+			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+
+			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fgraphics::Vertex), &m_mesh->getVertices(), GL_STATIC_DRAW);
+
+			// the meaning of each attribute
+			// 1 - attribute position
+			// 2 - the size of the array (3 because we only have x,y,z for now
+			// 3 - the type of the data being passed in
+			// 4 - if the data is normalized
+			// 5 - distance between each vertices
+			// 6 - offset (should it start at the begining of the data
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+
+			//unbind
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+		}
+
+		void MeshComponent::unbindVAO() {
+			glBindVertexArray(0);
 		}
 	}
 }

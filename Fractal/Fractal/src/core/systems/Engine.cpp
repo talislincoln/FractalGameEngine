@@ -116,14 +116,12 @@ namespace fractal {
 			if (timer == nullptr)
 				return 0;
 			
-
 			if (!window->initialize())
 				return 0;
 			if (!input->initialize())
 				return 0;
 			if (!graphics->initialize())
 				return 0;
-
 
 			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));
 

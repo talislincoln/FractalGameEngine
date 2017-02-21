@@ -30,7 +30,7 @@ namespace fractal {
 				return false;
 			}
 
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 			//init and setup glew with hardware
 			GLenum error = glewInit();
@@ -120,7 +120,7 @@ namespace fractal {
 
 
 			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
+			//glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
 			//get list of mesh need to be drawn
 		}
 

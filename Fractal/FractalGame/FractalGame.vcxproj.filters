@@ -27,6 +27,9 @@
     <ClCompile Include="MScene2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TalisScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MScene2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TalisScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
