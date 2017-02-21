@@ -22,7 +22,7 @@ namespace fractal {
 		private:
 			std::vector<fmath::Point3> m_vertices;
 			GLuint* indices;
-			std::vector<fgraphics::Vertex> m_vertices;
+			//std::vector<fgraphics::Vertex> m_vertices;
 			//GLuint* indices;
 		};
 	}
