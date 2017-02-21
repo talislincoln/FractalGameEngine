@@ -33,7 +33,7 @@ namespace fractal {
 			glBindVertexArray(m_vao);
 
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(fgraphics::Vertex), &vertices[0], GL_STATIC_DRAW); //;w; copies user-defined data into currently bound buffer
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(fmath::Point3), &vertices[0], GL_STATIC_DRAW); //;w; copies user-defined data into currently bound buffer
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 			glEnableVertexAttribArray(0);
 			//;w; texcoord attribute
