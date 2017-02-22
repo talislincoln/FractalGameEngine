@@ -30,8 +30,6 @@ namespace fractal {
 				return false;
 			}
 
-			//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
 			//init and setup glew with hardware
 			GLenum error = glewInit();
 			if (error != GLEW_OK) {
@@ -89,12 +87,12 @@ namespace fractal {
 			//// ***** ENDING SHADER COMPILATION
 
 			//;w; opengl options
-			glFrontFace(GL_CW); //;w; vertices need to be created in clock wise order or else the normals will make the images render the oppsite direction
-			glCullFace(GL_BACK);
-			glEnable(GL_CULL_FACE);
-			glEnable(GL_DEPTH_TEST);
-			glEnable(GL_TEXTURE_2D);
-			glEnable(GL_FRAMEBUFFER_SRGB);
+			glFrontFace(GL_CCW); //;w; vertices need to be created in clock wise order or else the normals will make the images render the oppsite direction
+			//glCullFace(GL_BACK);
+			//glEnable(GL_CULL_FACE);
+			//glEnable(GL_DEPTH_TEST);
+			//glEnable(GL_TEXTURE_2D);
+			//glEnable(GL_FRAMEBUFFER_SRGB);
 
 			return true;
 		}
@@ -113,13 +111,13 @@ namespace fractal {
 		void Graphics::beginDraw() {
 			///;W; READING THE SHADER FILES FOR EACH MESH COMPONENT
 			///;W; CLEARING THE SCREEN
-			glUseProgram(shaderProgram);
+			//glUseProgram(shaderProgram);
 
-			glClearDepth(1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClearDepth(1.0f);
 
 
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
 			//glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
 			//get list of mesh need to be drawn
 		}

@@ -16,6 +16,8 @@ namespace fractal {
 	namespace fscene {
 		using namespace fmath;
 		MeshComponent::MeshComponent(fgraphics::Mesh* mesh) : m_mesh(mesh) {
+			
+			
 		}
 
 		MeshComponent::~MeshComponent() {
@@ -39,7 +41,6 @@ namespace fractal {
 		}
 
 		void MeshComponent::update() {
-
 		}
 
 		bool MeshComponent::shutdown() {
@@ -62,7 +63,7 @@ namespace fractal {
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
-			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fgraphics::Vertex), &m_mesh->getVertices(), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fgraphics::Vertex), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
 
 			// the meaning of each attribute
 			// 1 - attribute position
