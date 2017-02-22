@@ -10,7 +10,7 @@ namespace fractal {
 		private:
 			static const int DIMENSIONS = 3;
 			
-			std::vector<fgraphics::Vertex> m_vertices;
+			std::vector<fgraphics::Vertex*> m_vertices;
 			std::vector<fmath::Vector2> m_textureCoords;
 			std::vector<fmath::Vector3> m_normals;
 			std::vector<int>   m_indices;
@@ -24,7 +24,7 @@ namespace fractal {
 			MeshData& operator=(const MeshData&) = delete;
 			MeshData& operator=(MeshData&&) = delete;
 
-			MeshData(std::vector<fgraphics::Vertex> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
+			MeshData(std::vector<fgraphics::Vertex*> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
 				std::vector<int> indices, float furthestPoint, int size) :
 				m_vertices(vertices), m_textureCoords(textureCoords), m_normals(normals), 
 				m_indices(indices), m_furthestPoint(furthestPoint), m_size(size){
@@ -34,27 +34,27 @@ namespace fractal {
 				return m_size;
 			}
 
-			inline std::vector<fmath::Point3> getVertices() {
+			inline const std::vector<fmath::Point3>& getVertices() const {
 				std::vector<fmath::Point3> temp;
-				for (fgraphics::Vertex it : m_vertices) {
-					temp.push_back(it.getPosition());
+				for (fgraphics::Vertex* it : m_vertices) {
+					temp.push_back(it->getPosition());
 				}
 				return temp;
 			}
 
-			inline std::vector<fmath::Vector2> getTextureCoords() {
+			inline const std::vector<fmath::Vector2>& getTextureCoords() const{
 				return m_textureCoords;
 			}
 
-			inline std::vector<fmath::Vector3> getNormals() {
+			inline const std::vector<fmath::Vector3>& getNormals() const{
 				return m_normals;
 			}
 
-			inline std::vector<int> getIndices() {
+			inline const std::vector<int>& getIndices() const {
 				return m_indices;
 			}
 
-			inline float getFurthestPoint() {
+			inline const float& getFurthestPoint() const{
 				return m_furthestPoint;
 			}
 

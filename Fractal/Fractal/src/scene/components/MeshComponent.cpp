@@ -71,7 +71,7 @@ namespace fractal {
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
-			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fmath::Point3), &m_mesh->getVertices(), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertexCount() * sizeof(fmath::Point3), &m_mesh->getVertices(), GL_STATIC_DRAW);
 
 			// the meaning of each attribute
 			// 1 - attribute position

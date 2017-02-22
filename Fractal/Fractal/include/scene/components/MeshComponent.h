@@ -31,15 +31,6 @@ namespace fractal {
 			void unbindVAO();
 
 			fgraphics::MeshData* m_mesh;
-			//;w; window dimensions
-			const GLuint WIDTH = 800;
-			const GLuint HEIGHT = 600;
-			//;w; mesh vertices
-			std::vector<fmath::Point3> vertices;
-			//;w; shaders
-			Shader* m_ourProgram;
-			Shader* m_cubeShader;
-			//;w; shader stuff
 			GLuint m_vao;
 			GLuint m_vbo;
 			GLuint m_ebo;
