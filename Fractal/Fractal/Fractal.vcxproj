@@ -136,7 +136,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="scene2.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -170,6 +169,7 @@
     <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
+    <ClCompile Include="src\utils\LoadOBJ.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\cubeFrag.txt" />
@@ -196,6 +196,7 @@
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
+    <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\Program.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
@@ -218,7 +219,7 @@
     <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
-    <ClInclude Include="scene2.h" />
+    <ClInclude Include="include\utils\LoadOBJ.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

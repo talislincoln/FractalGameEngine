@@ -11,7 +11,7 @@
 #include <Fractal\include\scene\components\TransformComponent.h>
 #include <Fractal\include\scene\components\PhysicsBodyComponent.h>
 #include <Fractal\include\scene\components\PhysicsShapeComponent.h>
-
+#include <Fractal\include\utils\LoadOBJ.h>
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
 
 MScene::MScene() :
@@ -34,85 +34,85 @@ bool MScene::initialize() {
 	//this->camera = new FreeCamera("Main Camera");
 	//camera->getTransform()->setPosition(Vector3(0));
 	//;w; setting the points and other attributes and in clock-wise order
-	std::vector<Vertex> vertices;
+	std::vector<Point3> vertices;
 
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
 	//;w; side 2
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
 	//;w; side 3
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
 	//;w; side 4
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
 	//;w; side 5
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, -0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, -0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
 	//;w; side 6 
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 1.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 1.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, 0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 0.0f)));
-	vertices.push_back(Vertex(Point3(-0.5f, 0.5f, -0.5f)));
-	vertices.push_back(Vertex(Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 1.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 1.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, 0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 0.0f)));
+	vertices.push_back( (Point3(-0.5f, 0.5f, -0.5f)));
+	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
 
 	cubeAttributes = new SceneObject("cubeAttributes");
 
@@ -121,12 +121,12 @@ bool MScene::initialize() {
 	terrain = new SceneObject("terrain");
 	//;w; 
 	cubeAttributes2->addComponent(new TransformComponent());
-	cubeAttributes2->addComponent(new MeshComponent(new Mesh(vertices)));
+	cubeAttributes2->addComponent(new MeshComponent(LoadOBJ::load("test")));
 	cubeAttributes2->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
 	cubeAttributes2->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox(fmath::Vector3(0.5f))));
 
 	cubeAttributes->addComponent(new TransformComponent());
-	cubeAttributes->addComponent(new MeshComponent(new Mesh(vertices)));
+	cubeAttributes->addComponent(new MeshComponent(LoadOBJ::load("test")));
 	cubeAttributes->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
 	cubeAttributes->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox(fmath::Vector3(0.5f))));
 	//;w; 
@@ -139,10 +139,10 @@ bool MScene::initialize() {
 	cubeAttributes->getComponent<TransformComponent>()->setScale(Vector3(0.5f, 0.5f, 0.5f));
 	cubeAttributes->getComponent<TransformComponent>()->setPosition(Vector3(1.0f, 0.0f, 0.5f));
 	cubeAttributes2->getComponent<TransformComponent>()->setScale(Vector3(0.5f, 0.5f, 0.5f));
-	cubeAttributes2->getComponent<TransformComponent>()->setPosition(Vector3(-1.0f, 0.5f, 0.5f));
-	cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(-1.0f, 0.0f, 0.0f));
+	cubeAttributes2->getComponent<TransformComponent>()->setPosition(Vector3(-1.0f, 1.5f, 0.5f));
+	cubeAttributes->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(-1.0f, 1.0f, 0.0f));
 	cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(-1.0f, 0.0f, 0.0f));
-	cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(1.0f, 0.0f, 0.0f));
+	cubeAttributes2->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(1.0f, 5.0f, 0.0f));
 
 	/*camera->addComponent(new MeshComponent(new Mesh(vertices)));
 	addGameObject(this->camera);*/

@@ -32,9 +32,9 @@
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
-    <ClCompile Include="scene2.cpp" />
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\scene\objects\TimerObject.cpp" />
+    <ClCompile Include="src\utils\LoadOBJ.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -74,9 +74,10 @@
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\scene\components\TerrainComponent.h" />
-    <ClInclude Include="scene2.h" />
     <ClInclude Include="include\core\systems\Timer.h" />
     <ClInclude Include="include\scene\objects\TimerObject.h" />
+    <ClInclude Include="include\utils\LoadOBJ.h" />
+    <ClInclude Include="include\graphics\MeshData.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

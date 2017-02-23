@@ -6,6 +6,7 @@
 #include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
 #include <Fractal\include\graphics\Program.h>
+#include <Fractal\include\graphics\MeshData.h>
 
 namespace fractal {
 	namespace fscene {
@@ -13,7 +14,7 @@ namespace fractal {
 		using namespace fmath;
 		class MeshComponent : public Component, public IDrawable {
 		public:
-			MeshComponent(fgraphics::Mesh* mesh);
+			MeshComponent(fgraphics::MeshData* mesh);
 			virtual ~MeshComponent();
 
 			virtual bool initialize();
@@ -21,7 +22,7 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			inline fgraphics::Mesh* getMesh() const {
+			inline fgraphics::MeshData* getMesh() const {
 				return m_mesh;
 			}
 		private:
@@ -29,8 +30,7 @@ namespace fractal {
 			void storeDataInVAO();
 			void unbindVAO();
 
-			fgraphics::Mesh* m_mesh;
-
+			fgraphics::MeshData* m_mesh;
 			GLuint m_vao;
 			GLuint m_vbo;
 			GLuint m_ebo;

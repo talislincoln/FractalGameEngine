@@ -2,7 +2,7 @@
 
 namespace fractal {
 	namespace fgraphics {
-		Mesh::Mesh(std::vector<fgraphics::Vertex> vertices) : m_vertices(vertices) {
+		Mesh::Mesh(std::vector<fmath::Point3> vertices) : m_vertices(vertices) {
 		}
 
 		Mesh::~Mesh() {

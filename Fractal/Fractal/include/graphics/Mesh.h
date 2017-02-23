@@ -12,15 +12,17 @@ namespace fractal {
 	namespace fgraphics {
 		class Mesh  {
 		public:
-			Mesh(std::vector<fgraphics::Vertex> vertices);
+			Mesh(std::vector<fmath::Point3> vertices);
 			virtual ~Mesh();
 
-			inline const std::vector<fgraphics::Vertex> getVertices() const {
+			inline const std::vector<fmath::Point3> getVertices() const {
 				return m_vertices;
 			}
 
 		private:
-			std::vector<fgraphics::Vertex> m_vertices;
+			std::vector<fmath::Point3> m_vertices;
+			GLuint* indices;
+			//std::vector<fgraphics::Vertex> m_vertices;
 			//GLuint* indices;
 		};
 	}
