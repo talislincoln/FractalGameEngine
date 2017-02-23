@@ -34,7 +34,7 @@ namespace fractal {
 				return m_size;
 			}
 
-			inline const std::vector<fmath::Point3>& getVertices() const {
+			inline const std::vector<fmath::Point3> getVertices() const {
 				std::vector<fmath::Point3> temp;
 				for (fgraphics::Vertex* it : m_vertices) {
 					temp.push_back(it->getPosition());
