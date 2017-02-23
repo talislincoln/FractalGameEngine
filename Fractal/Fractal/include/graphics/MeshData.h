@@ -24,8 +24,8 @@ namespace fractal {
 			MeshData& operator=(const MeshData&) = delete;
 			MeshData& operator=(MeshData&&) = delete;
 
-			MeshData(std::vector<fgraphics::Vertex*> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
-				std::vector<int> indices, float furthestPoint, int size) :
+			MeshData(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textureCoords, std::vector<fmath::Vector3>& normals,
+				std::vector<int>& indices, float furthestPoint, int size) :
 				m_vertices(vertices), m_textureCoords(textureCoords), m_normals(normals), 
 				m_indices(indices), m_furthestPoint(furthestPoint), m_size(size){
 			}

@@ -31,7 +31,7 @@ bool TalisScene::initialize() {
 	using namespace fmath;
 	using namespace fgraphics;
 	test1 = new SceneObject("test1");
-	test1->addComponent(new MeshComponent(LoadOBJ::load("dragon")));
+	test1->addComponent(new MeshComponent(LoadOBJ::load("test")));
 	return Scene::initialize();
 }
 

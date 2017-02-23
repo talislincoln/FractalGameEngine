@@ -18,8 +18,8 @@ namespace fractal {
 		LoadOBJ& operator=(const LoadOBJ&) = delete;
 		LoadOBJ& operator=(LoadOBJ&&) = delete;
 
-		static fgraphics::MeshData* load(const std::string fileName);
-		static fgraphics::MeshData* load(const char* fileName);
+		static fgraphics::MeshData* load(const std::string& fileName);
+		static fgraphics::MeshData* load(const char*& fileName);
 		static int* convertIndicesVectorToArray(std::vector<int>& indices);
 		static float convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals);
 		static fgraphics::Vertex* processVertex(const std::vector<std::string>& vertex, std::vector<fgraphics::Vertex*>& vertices, std::vector<int>& indices);

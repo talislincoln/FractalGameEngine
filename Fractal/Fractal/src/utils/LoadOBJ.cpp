@@ -4,11 +4,11 @@
 #include <fstream>
 #include <assert.h>
 namespace fractal {
-	fgraphics::MeshData* LoadOBJ::load(const char* fileName) {
+	fgraphics::MeshData* LoadOBJ::load(const char*& fileName) {
 		std::string temp(fileName);
 		return load(temp);
 	}
-	fgraphics::MeshData* LoadOBJ::load(const std::string fileName) {
+	fgraphics::MeshData* LoadOBJ::load(const std::string& fileName) {
 		using namespace std;
 		using namespace fmath;
 		using namespace fgraphics;
@@ -95,9 +95,6 @@ namespace fractal {
 		else {
 			return dealWithAlreadyProcessedVertex(currentVertex, textureIndex, normalIndex, indices, vertices);
 		}
-	}
-	int* LoadOBJ::convertIndicesVectorToArray(std::vector<int>& indices) {
-		return &indices[0];
 	}
 	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals) {
 		using namespace fmath;
