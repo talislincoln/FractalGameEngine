@@ -33,8 +33,17 @@ namespace fractal {
 				return m_vertices.size();
 			}
 
+<<<<<<< HEAD
 			inline const std::vector<fmath::Vector3>& getVertices() const {
 				return m_vertices;
+=======
+			inline const std::vector<fmath::Point3> getVertices() const {
+				std::vector<fmath::Point3> temp;
+				for (fgraphics::Vertex* it : m_vertices) {
+					temp.push_back(it->getPosition());
+				}
+				return temp;
+>>>>>>> origin/newRenderer
 			}
 
 			inline const std::vector<fmath::Vector2>& getTextureCoords() const{
