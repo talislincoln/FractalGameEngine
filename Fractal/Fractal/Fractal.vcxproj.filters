@@ -35,6 +35,9 @@
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\scene\objects\TimerObject.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -78,6 +81,10 @@
     <ClInclude Include="include\scene\objects\TimerObject.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
+    <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\graphics\Texture.h" />
+    <ClInclude Include="include\utils\TextureBuilder.h" />
+    <ClInclude Include="include\utils\picoPNG.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

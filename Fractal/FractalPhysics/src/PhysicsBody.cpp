@@ -31,7 +31,7 @@ namespace fractal {
 			m_mass = (0.0f);
 			float mass = (0.0f);
 
-			if (m_flags & STATIC || m_flags &KINEMATIC)
+			if (m_flags & STATIC || m_flags & KINEMATIC)
 			{
 				m_localCenter.load();
 				m_worldCenter = m_localTransform.position;
