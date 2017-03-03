@@ -170,6 +170,9 @@
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\cubeFrag.txt" />
@@ -223,6 +226,8 @@
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\utils\LoadTexture.h" />
     <ClInclude Include="include\utils\TextureUtils.h" />
+    <ClInclude Include="include\utils\picoPNG.h" />
+    <ClInclude Include="include\utils\TextureBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

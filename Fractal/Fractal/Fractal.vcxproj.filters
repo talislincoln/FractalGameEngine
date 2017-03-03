@@ -35,6 +35,9 @@
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\scene\objects\TimerObject.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
