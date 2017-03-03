@@ -228,6 +228,7 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\TextureUtils.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
   </ItemGroup>

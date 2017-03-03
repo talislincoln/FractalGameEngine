@@ -82,6 +82,7 @@
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\TextureUtils.h" />
     <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
