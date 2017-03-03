@@ -26,6 +26,7 @@ namespace fractal {
 
 		bool MeshComponent::initialize() {
 			createVAO();
+			bindIndicesBuffer();
 			storeDataInVAO();
 			unbindVAO();
 
@@ -35,7 +36,8 @@ namespace fractal {
 		void MeshComponent::draw() {
 			glBindVertexArray(m_vao);
 			glEnableVertexAttribArray(0);
-			glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
+			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
+			glDrawElements(GL_TRIANGLES, m_mesh->getVertices().size(), GL_UNSIGNED_INT, 0);
 			glDisableVertexAttribArray(0);
 			glBindVertexArray(0);
 		}
@@ -45,7 +47,12 @@ namespace fractal {
 
 		bool MeshComponent::shutdown() {
 			glDeleteVertexArrays(1, &m_vao);
-			glDeleteBuffers(1, &m_vbo);
+
+			for (GLuint& vbo : m_vbos) {
+				glDeleteBuffers(1, &vbo);
+			}
+			
+			m_vbos.clear();
 
 			return true;
 		}
@@ -58,10 +65,12 @@ namespace fractal {
 
 		void MeshComponent::storeDataInVAO() {
 			//create 1 vbo
-			glGenBuffers(1, &m_vbo);
+			GLuint vbo = 0;
+			glGenBuffers(1, &vbo);
+			m_vbos.push_back(vbo);
 
 			//start using this vbo
-			glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * 3 * sizeof(GL_FLOAT), &m_mesh->getVertices()[0], GL_STATIC_DRAW);
 
@@ -78,8 +87,19 @@ namespace fractal {
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 
-		void MeshComponent::unbindVAO() {
+		void MeshComponent::unbindVAO() const {
 			glBindVertexArray(0);
+		}
+
+		void MeshComponent::bindIndicesBuffer() {
+			GLuint vbo = 0;
+			glGenBuffers(1, &vbo);
+			m_vbos.push_back(vbo);
+
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo);
+			
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_mesh->getIndices().size() * sizeof(GL_INT), &m_mesh->getIndices()[0], GL_STATIC_DRAW);
 		}
 	}
 }

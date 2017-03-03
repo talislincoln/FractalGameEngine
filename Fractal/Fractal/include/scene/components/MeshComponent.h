@@ -28,12 +28,11 @@ namespace fractal {
 		private:
 			void createVAO();
 			void storeDataInVAO();
-			void unbindVAO();
+			void unbindVAO() const;
+			void bindIndicesBuffer();
 
 			fgraphics::MeshData* m_mesh;
 			GLuint m_vao;
-			GLuint m_vbo;
-			GLuint m_ebo;
 
 			//list of vertices to be deleted from the gpu
 			std::vector<GLuint> m_vaos;
