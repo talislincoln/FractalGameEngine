@@ -5,7 +5,6 @@ namespace fractal {
 	namespace fgraphics {
 
 		class skin {
-
 		};
 	}
 }

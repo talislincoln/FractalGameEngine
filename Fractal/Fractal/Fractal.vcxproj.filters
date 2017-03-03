@@ -85,6 +85,9 @@
     <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
+    <ClInclude Include="include\graphics\Skin.h" />
+    <ClInclude Include="include\graphics\Materials.h" />
+    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

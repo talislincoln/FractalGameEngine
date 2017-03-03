@@ -21,6 +21,10 @@ to know this information yourself to be able to use the data so this only
 works for trusted PNG files. Use LodePNG instead of picoPNG if you need this information.
 return: 0 if success, not 0 if some error occured.
 */
+
+/**************************************************
+made picoPNG to a static function. so when it's call.
+**************************************************/
 int PicoPNG::decodePNG(std::vector<unsigned char>& out_image, unsigned int& image_width, unsigned int& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32)
 {
 	// picoPNG version 20101224
@@ -533,28 +537,3 @@ int PicoPNG::decodePNG(std::vector<unsigned char>& out_image, unsigned int& imag
 }
 
 
-
-//
-//
-////an example using the PNG loading function:
-//
-//#include <iostream>
-//#include <fstream>
-//
-//int main(int argc, char *argv[])
-//{
-//	const char* filename = argc > 1 ? argv[1] : "test.png";
-//
-//	//load and decode
-//	std::vector<unsigned char> buffer, image;
-//	loadFile(buffer, filename);
-//	unsigned long w, h;
-//	int error = decodePNG(image, w, h, buffer.empty() ? 0 : &buffer[0], (unsigned long)buffer.size());
-//
-//	//if there's an error, display it
-//	if (error != 0) std::cout << "error: " << error << std::endl;
-//
-//	//the pixels are now in the vector "image", use it as texture, draw it, ...
-//
-//	if (image.size() > 4) std::cout << "width: " << w << " height: " << h << " first pixel: " << std::hex << int(image[0]) << int(image[1]) << int(image[2]) << int(image[3]) << std::endl;
-//}

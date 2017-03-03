@@ -17,7 +17,7 @@ namespace fractal {
 		using namespace fmath;
 		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
 			Component("MeshComponent"), m_mesh(mesh) {
-			
+			shader = new fgraphics::MeshShader();
 			
 		}
 
@@ -47,7 +47,8 @@ namespace fractal {
 		bool MeshComponent::shutdown() {
 			glDeleteVertexArrays(1, &m_vao);
 			glDeleteBuffers(1, &m_vbo);
-
+			shader->destroy();
+			delete shader;
 			return true;
 		}
 
