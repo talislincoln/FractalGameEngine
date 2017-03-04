@@ -18,7 +18,9 @@ namespace fractal {
 		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
 			Component("MeshComponent"), m_mesh(mesh) {
 			shader = new fgraphics::MeshShader();
-			
+			shader->addAttrib("position");
+			shader->addAttrib("texCoord");
+			shader->addAttrib("normal");
 		}
 
 		MeshComponent::~MeshComponent() {
@@ -35,12 +37,17 @@ namespace fractal {
 		}
 
 		void MeshComponent::draw() {
+			shader->use();
 			glBindVertexArray(m_vao);
 			glEnableVertexAttribArray(0);
+
+			fmath::Matrix4 transformationMatrix = getParent()->getComponent<TransformComponent>()->getWorldMatrix();
+
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
 			glDrawElements(GL_TRIANGLES, m_mesh->getVertices().size(), GL_UNSIGNED_INT, 0);
 			glDisableVertexAttribArray(0);
 			glBindVertexArray(0);
+			shader->unuse();
 		}
 
 		void MeshComponent::update() {

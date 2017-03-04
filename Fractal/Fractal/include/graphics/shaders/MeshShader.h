@@ -11,7 +11,7 @@ namespace fractal {
 			const GLchar* m_fracPath = "res/shaders/fragmentShader.txt";
 			
 		public:
-			inline MeshShader() : Shader(m_vertPath, m_fracPath){
+			inline MeshShader() : Shader("res/shaders/vertexShader.txt", "res/shaders/fragmentShader.txt"){
 
 			}
 

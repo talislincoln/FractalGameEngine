@@ -3,7 +3,9 @@
 #include <iostream>
 
 namespace fractal {
-	Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
+	Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) :
+		m_numAttrib(0)
+	{
 		//get source code from filepath
 
 		//compile shader
@@ -22,9 +24,9 @@ namespace fractal {
 		glGetProgramiv(this->m_programID, GL_LINK_STATUS, &result);
 		if (!result) {
 
-			GLchar* infoLog;
-			glGetProgramInfoLog(this->m_programID, 512, NULL, infoLog);
-			printf("ERROR: LINKING FAILED");
+			GLchar infoLog[512];
+			glGetProgramInfoLog(m_programID, 512, NULL, infoLog);
+			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
 		//delete shaders
 		glDeleteShader(vertexShaderID);
@@ -58,7 +60,7 @@ namespace fractal {
 		const GLchar* ShaderCode = code.c_str();
 
 
-		int ShaderID = glCreateShader(GL_VERTEX_SHADER);
+		int ShaderID = glCreateShader(type);
 		if (ShaderID == 0) {
 			printf("LOAD SHADER FAILED\n");
 		}
@@ -90,6 +92,7 @@ namespace fractal {
 		return location;
 	}
 	void Shader::use() {
+
 		glUseProgram(m_programID);
 	}
 	void Shader::destroy()
