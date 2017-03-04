@@ -4,7 +4,6 @@
 #include <fstream>
 #include <sstream>
 
-#include <Fractal\include\graphics\Mesh.h>
 #include <Fractal\include\utils\IOManager.h>
 
 
@@ -12,23 +11,22 @@ namespace fractal {
 	class Shader {
 	public:
 		Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
-		/*~Shader();
-		void compileShaders(const std::string& vertexPath, const std::string& fragmentPath);
-		void linkShaders();
+		~Shader();
+		int compileShaders(const std::string& Path, const GLuint Type);
 		void addAttrib(const std::string& attribName);
 		GLuint getUniformLocation(const std::string& uniformName);
-		void unuse();*/
+		void unuse();
 		void use();
+		void destroy();
 		inline const GLuint getProgramID() const {
 			return m_programID;
 		}
+	protected:
+		void storeAllAttrib(std::vector<GLuint> uniforms);
 
 	private:
 		GLuint m_programID;
-		/*int m_numAttrib;
-		void m_compileShader(const std::string& filepath, GLuint& id);
-		GLuint m_vertexShaderID;
-		GLuint m_fragShaderID;*/
+		int m_numAttrib;
 	};
 }
 

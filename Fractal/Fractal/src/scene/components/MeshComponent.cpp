@@ -15,8 +15,9 @@
 namespace fractal {
 	namespace fscene {
 		using namespace fmath;
-		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : m_mesh(mesh) {
-			
+		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
+			Component("MeshComponent"), m_mesh(mesh) {
+			shader = new fgraphics::MeshShader();
 			
 		}
 
@@ -54,6 +55,8 @@ namespace fractal {
 			
 			m_vbos.clear();
 
+			shader->destroy();
+			delete shader;
 			return true;
 		}
 

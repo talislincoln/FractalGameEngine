@@ -76,8 +76,10 @@ namespace fractal {
 		}
 		reader.close();
 		removeUnusedVertices(vertices);
-		float furthest = convertDataToArrays(vertices, textures, normals);
-		return new MeshData(vertices, textures, normals, indices, furthest, vertices.size());
+		std::vector<fmath::Vector3> position;
+		float furthest = convertDataToArrays(vertices, textures, normals, position);
+		cleanUp(vertices);
+		return new MeshData(position, textures, normals, indices, furthest, vertices.size());
 	}
 	fgraphics::Vertex* LoadOBJ::processVertex(const std::vector<std::string>& vertex, std::vector<fgraphics::Vertex*> &vertices, std::vector<int>& indices) {
 		using namespace fgraphics;
@@ -96,10 +98,9 @@ namespace fractal {
 			return dealWithAlreadyProcessedVertex(currentVertex, textureIndex, normalIndex, indices, vertices);
 		}
 	}
-	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals) {
+	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals, std::vector<fmath::Vector3>& position) {
 		using namespace fmath;
 		float furthestPoint = 0;
-		std::vector<fgraphics::Vertex*> newVertices;
 		std::vector<Vector2> newTexture;
 		std::vector<Vector3> newNormal;
 
@@ -110,12 +111,12 @@ namespace fractal {
 				furthestPoint = currentVertex->getLength();
 			}
 			Vector2 textureCoord = textures[currentVertex->getTextureIndex()];
+			textureCoord.y = 1 - textureCoord.y;
 			Vector3 normalVector = normals[currentVertex->getNormalIndex()];
-			newVertices.push_back(currentVertex);
+			position.push_back(currentVertex->getPosition());
 			newTexture.push_back(textureCoord);
 			newNormal.push_back(normalVector);
 		}
-		vertices = newVertices;
 		textures = newTexture;
 		normals = newNormal;
 
@@ -154,4 +155,13 @@ namespace fractal {
 			}
 		}
 	}
+
+	void LoadOBJ::cleanUp(std::vector<fgraphics::Vertex*>& vertices)
+	{
+		for (fgraphics::Vertex* temp : vertices) {
+			delete(temp);
+		}
+		vertices.clear();
+	}
+
 }

@@ -5,7 +5,7 @@
 #include <Fractal\include\defines\Colour.h>
 #include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
-#include <Fractal\include\graphics\Program.h>
+#include <Fractal\include\graphics\shaders\MeshShader.h>
 #include <Fractal\include\graphics\MeshData.h>
 
 namespace fractal {
@@ -32,6 +32,7 @@ namespace fractal {
 			void bindIndicesBuffer();
 
 			fgraphics::MeshData* m_mesh;
+			fgraphics::MeshShader* shader;
 			GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu

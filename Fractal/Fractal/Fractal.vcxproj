@@ -170,6 +170,9 @@
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\shaders\cubeFrag.txt" />
@@ -195,9 +198,13 @@
     <ClInclude Include="include\defines\deletemacros.h" />
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
+    <ClInclude Include="include\graphics\Materials.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\Program.h" />
+    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
+    <ClInclude Include="include\graphics\Skin.h" />
+    <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
@@ -220,6 +227,10 @@
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
+    <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\TextureUtils.h" />
+    <ClInclude Include="include\utils\picoPNG.h" />
+    <ClInclude Include="include\utils\TextureBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
