@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -172,6 +173,13 @@
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
     <ClCompile Include="src\utils\LoadTexture.cpp" />
     <ClCompile Include="src\utils\picoPNG.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\Uniform.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformFloat.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformMatrix.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformSampler.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
     <ClCompile Include="src\utils\TextureBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -228,9 +236,17 @@
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformBool.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformFloat.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformMatrix.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformSampler.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector2.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
     <ClInclude Include="include\utils\TextureUtils.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
+    <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
