@@ -8,10 +8,10 @@
 
 
 namespace fractal {
-	class Shader {
+	class ShaderProgram {
 	public:
-		Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
-		~Shader();
+		ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath);
+		~ShaderProgram();
 		int compileShaders(const std::string& Path, const GLuint Type);
 		void addAttrib(const std::string& attribName);
 		GLuint getUniformLocation(const std::string& uniformName);
@@ -26,6 +26,8 @@ namespace fractal {
 
 	private:
 		GLuint m_programID;
+		GLuint m_vertexShaderID;
+		GLuint m_fragmentShaderID;
 		int m_numAttrib;
 	};
 }

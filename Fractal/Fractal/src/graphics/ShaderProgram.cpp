@@ -1,20 +1,22 @@
 #include "graphics\Mesh.h"
-#include "graphics\Program.h"
+#include "graphics\ShaderProgram.h"
 #include <iostream>
 
 namespace fractal {
-	Shader::Shader(const char* vertexPath, const char* fragmentPath) {
+	ShaderProgram::ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath) :
+		m_numAttrib(0)
+	{
 		//get source code from filepath
 
 		//compile shader
-		GLuint vertexShaderID = compileShaders(vertexPath, GL_VERTEX_SHADER);;
-		GLuint fragmentShaderID = compileShaders(fragmentPath, GL_FRAGMENT_SHADER);
+		m_vertexShaderID = compileShaders(vertexPath, GL_VERTEX_SHADER);;
+		m_fragmentShaderID = compileShaders(fragmentPath, GL_FRAGMENT_SHADER);
 
 		this->m_programID = glCreateProgram();
 
 		//shader program
-		glAttachShader(this->m_programID, vertexShaderID);
-		glAttachShader(this->m_programID, fragmentShaderID);
+		glAttachShader(this->m_programID, m_vertexShaderID);
+		glAttachShader(this->m_programID, m_fragmentShaderID);
 
 		glLinkProgram(this->m_programID);
 		//print linking errors
@@ -22,24 +24,16 @@ namespace fractal {
 		glGetProgramiv(this->m_programID, GL_LINK_STATUS, &result);
 		if (!result) {
 
-			GLint maxLength = 0;
-			glGetProgramiv(this->m_programID, GL_INFO_LOG_LENGTH, &maxLength);
-
-			// The maxLength includes the NULL character
-			std::vector<char> infoLog(maxLength);
-			glGetProgramInfoLog(this->m_programID, maxLength, &maxLength, &infoLog[0]);
-			printf("ERROR: LINKING FAILED");
-			glDeleteProgram(m_programID);
-			return;
+			GLchar infoLog[512];
+			glGetProgramInfoLog(m_programID, 512, NULL, infoLog);
+			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
-		//delete shaders
-		glDeleteShader(vertexShaderID);
-		glDeleteShader(fragmentShaderID);
+		
 	}
-	Shader::~Shader() {
+	ShaderProgram::~ShaderProgram() {
 
 	}
-	int Shader::compileShaders(const std::string& vertexPath, const GLuint type) {
+	int ShaderProgram::compileShaders(const std::string& vertexPath, const GLuint type) {
 
 		std::string code;
 		std::ifstream ShaderFile;
@@ -64,46 +58,57 @@ namespace fractal {
 		const GLchar* ShaderCode = code.c_str();
 
 
-		int ShaderID = glCreateShader(type);
-		if (ShaderID == 0) {
+		int shaderID = glCreateShader(type);
+		if (shaderID == 0) {
 			printf("LOAD SHADER FAILED\n");
 		}
 
 
-		glShaderSource(ShaderID, 1, &ShaderCode, nullptr);
-		glCompileShader(ShaderID);
+		glShaderSource(shaderID, 1, &ShaderCode, nullptr);
+		glCompileShader(shaderID);
 		GLint success = 0;
-		glGetShaderiv(ShaderID, GL_COMPILE_STATUS, &success);
+		glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);
 		if (success == GL_FALSE) {
 			GLint maxLength = 0;
-			glGetShaderiv(ShaderID, GL_INFO_LOG_LENGTH, &maxLength);
+			glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
 			std::vector<char> errorLog(maxLength);
-			glDeleteShader(ShaderID);
+			glDeleteShader(shaderID);
 			//std::printf("%s\n", &(errorLog[0]));
 			printf("SHADER FAILED TO COMPILE\n");
 			return -1;
 		}
-		return ShaderID;
+		return shaderID;
 	}
-	void Shader::addAttrib(const std::string& attribName) {
+	void ShaderProgram::addAttrib(const std::string& attribName) {
 		glBindAttribLocation(m_programID, m_numAttrib++, attribName.c_str());
 	}
-	GLuint Shader::getUniformLocation(const std::string& uniformName) {
+	GLuint ShaderProgram::getUniformLocation(const std::string& uniformName) {
 		GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
 		if (location == GL_INVALID_INDEX) { //returns if it doesn't exist
 			printf("UNIFORM NOT FOUND\n");
 		}
 		return location;
 	}
-	void Shader::use() {
+	void ShaderProgram::use() {
+
 		glUseProgram(m_programID);
 	}
-	void Shader::destroy()
+	void ShaderProgram::destroy()
 	{
 		unuse();
+		
+		//detaching program from gpu
+		glDetachShader(m_programID, m_vertexShaderID);
+		glDetachShader(m_programID, m_fragmentShaderID);
+
+		//delete shaders
+		glDeleteShader(m_vertexShaderID);
+		glDeleteShader(m_fragmentShaderID);
+
+		//deleting program from gpu
 		glDeleteProgram(m_programID);
 	}
-	void Shader::storeAllAttrib(std::vector<GLuint> uniforms)
+	void ShaderProgram::storeAllAttrib(std::vector<GLuint> uniforms)
 	{
 		// TODO: create uniform class to work with shaders
 
@@ -114,7 +119,7 @@ namespace fractal {
 
 
 	}
-	void Shader::unuse() {
+	void ShaderProgram::unuse() {
 		glUseProgram(0);
 		for (int i = 0; i < m_numAttrib; i++) {
 			glDisableVertexAttribArray(i);
