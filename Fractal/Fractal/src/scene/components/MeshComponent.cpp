@@ -16,15 +16,15 @@ namespace fractal {
 	namespace fscene {
 		using namespace fmath;
 		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
-			Component("MeshComponent"), m_mesh(mesh) {
-			shader = new fgraphics::MeshShader();
-			shader->addAttrib("position");
-			shader->addAttrib("texCoord");
-			shader->addAttrib("normal");
+			Component("MeshComponent"), 
+			m_mesh(mesh),
+			m_shader(new fgraphics::MeshShader())
+		{
+			//empty
 		}
 
 		MeshComponent::~MeshComponent() {
-
+			//empty
 		}
 
 		bool MeshComponent::initialize() {
@@ -37,7 +37,7 @@ namespace fractal {
 		}
 
 		void MeshComponent::draw() {
-			shader->use();
+			m_shader->use();
 			glBindVertexArray(m_vao);
 			glEnableVertexAttribArray(0);
 			glEnableVertexAttribArray(1);
@@ -49,7 +49,7 @@ namespace fractal {
 			glDrawElements(GL_TRIANGLES, m_mesh->getVertices().size(), GL_UNSIGNED_INT, 0);
 			glDisableVertexAttribArray(0);
 			glBindVertexArray(0);
-			shader->unuse();
+			m_shader->unuse();
 		}
 
 		void MeshComponent::update() {
@@ -64,8 +64,8 @@ namespace fractal {
 			
 			m_vbos.clear();
 
-			shader->destroy();
-			delete shader;
+			m_shader->destroy();
+			delete m_shader;
 			return true;
 		}
 

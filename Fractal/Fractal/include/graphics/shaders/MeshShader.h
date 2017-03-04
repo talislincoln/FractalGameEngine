@@ -3,18 +3,24 @@
 
 #include <Fractal\include\graphics\ShaderProgram.h>
 #include <GL\glew.h>
+
+#define MESH_VERTEX_SHADER "res/shaders/vertexShader.txt"
+#define MESH_FRAGMENT_SHADER "res/shaders/fragmentShader.txt"
+
 namespace fractal {
 	namespace fgraphics {
 		class MeshShader : public ShaderProgram {
 		private:
-			const GLchar* m_vertPath = "res/shaders/vertexShader.txt";
-			const GLchar* m_fracPath = "res/shaders/fragmentShader.txt";
+			inline void bindAttributes() {
+				addAttrib("position");
+				addAttrib("texCoord");
+				addAttrib("normal");
+			}
 			
 		public:
-			inline MeshShader() : ShaderProgram("res/shaders/vertexShader.txt", "res/shaders/fragmentShader.txt"){
-
+			inline MeshShader() : ShaderProgram(MESH_VERTEX_SHADER, MESH_FRAGMENT_SHADER){
+				bindAttributes();
 			}
-
 		};
 	}
 }

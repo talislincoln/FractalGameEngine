@@ -32,7 +32,7 @@ namespace fractal {
 			void bindIndicesBuffer();
 
 			fgraphics::MeshData* m_mesh;
-			fgraphics::MeshShader* shader;
+			fgraphics::MeshShader* m_shader;
 			GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu
