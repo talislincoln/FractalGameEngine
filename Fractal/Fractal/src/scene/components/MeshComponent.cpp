@@ -3,7 +3,7 @@
 #include "scene\components\MeshComponent.h"
 #include "core\systems\Window.h"
 #include "core\systems\manager\SystemManager.h"
-#include "graphics\Program.h"
+#include "graphics\ShaderProgram.h"
 //#include "scene\objects\FreeCamera.h"
 #include <FractalMath\Matrix.h>
 #include <SOIL\SOIL.h>
@@ -40,6 +40,8 @@ namespace fractal {
 			shader->use();
 			glBindVertexArray(m_vao);
 			glEnableVertexAttribArray(0);
+			glEnableVertexAttribArray(1);
+			glEnableVertexAttribArray(2);
 
 			fmath::Matrix4 transformationMatrix = getParent()->getComponent<TransformComponent>()->getWorldMatrix();
 
