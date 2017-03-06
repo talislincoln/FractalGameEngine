@@ -1,34 +1,11 @@
-Create a config file
-- add the information in the TimerObject.h class to this configuration file as well
-
--------------- URGENT ---------------------
-Create a render Manager 
-Craete a camera Manager for the scene
-Create a Debug/Logger system
--------------------------------------------
 
 -------------- GameObject ---------------------
 create a function to get the rootParent for a gameObject
-create a function to get all components of a type from all parents (physics)
+create a function to get all components of a type from all parents
 create layers
 add transform component for every game object
 get transform function
 -----------------------------------------------
-
-create a shader manager as a dicitionary (maybe?)
-
-create a Manager for managing all managers.
-
-define a world settings class that will hold all application properties
-- window width and height and if its full screen or not
-- window title
-- bits per pixel if that is applied to opengl
-- maybe something similar to the unity's input settings
-
-change the return function that has int to be some sort of define numbers to express sucess of kinds of error
-- exemple: #define SUCESS 1
-	     : #define FAIL_INIT -1
-and so on...
 
 the idea of drawable systems are system that will need a beginDraw and endDraw method
 for now the only system that has the draw method is the window, but the goal is to have
@@ -38,15 +15,9 @@ one drawable system to be the hud
 - maybe this system will have slots to put images to be skills
 - another slot to be the health and mana bar (or sphere)
 
-improve the input system
-- create custom number referent to the sdl key numbers (so we don't have to include the whole sdl library)
-
 take another look about the 'move' semanthics in c++ (move constructor)
 - since c++11 there's a new kind of operator called Class(Class&& c) that is used to pass values when making a copy is not needed	
 
 need to change some of the Matrix4 functions
 - some of them passes a matrix as parameter, but that matrix should be the actual matrix that is calling the function
    -> a solution is either convert the function to static or don't use the parameter anymore.
-
-(for the physics engine)
-have a physics settings file that defines gravity and any other information we may need to hold
