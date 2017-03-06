@@ -15,12 +15,12 @@ namespace fractal {
 			const GLsizei SIZE;
 
 			Texture(GLuint Id, GLsizei size, GLint type = GL_TEXTURE_2D) : TEXTUREID(Id), SIZE(size), TYPE(type) {}
-			void bindToUnit(int unit) {
+			inline void bindToUnit(int unit) {
 				glActiveTexture(GL_TEXTURE0 + unit);
 				glBindTexture(TYPE, TEXTUREID);
 			}
 
-			void destroy() {
+			inline void destroy() {
 				glDeleteTextures(SIZE, &TEXTUREID);
 			}
 

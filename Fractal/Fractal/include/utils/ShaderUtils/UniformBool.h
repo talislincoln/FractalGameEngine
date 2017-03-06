@@ -5,7 +5,7 @@ namespace fractal {
 
 	class UniformBool : public Uniform {
 	public:
-		UniformBool(std::string& name);
+		UniformBool(char* name);
 		void loadBool(bool boolean);
 	private:
 		bool m_currentBool;

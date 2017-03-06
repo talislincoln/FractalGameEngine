@@ -38,6 +38,14 @@
     <ClCompile Include="src\utils\TextureBuilder.cpp" />
     <ClCompile Include="src\utils\picoPNG.cpp" />
     <ClCompile Include="src\graphics\ShaderProgram.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\Uniform.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformFloat.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformMatrix.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformSampler.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -89,16 +97,20 @@
     <ClInclude Include="include\graphics\Materials.h" />
     <ClInclude Include="include\graphics\shaders\MeshShader.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformBool.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformFloat.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformMatrix.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformSampler.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector2.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
+    <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
     <Image Include="res\images\wooden.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
-    <Text Include="res\shaders\cubeFrag.txt" />
-    <Text Include="res\shaders\cubeVert.txt" />
   </ItemGroup>
 </Project>

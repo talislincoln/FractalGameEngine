@@ -3,20 +3,30 @@
 #include <iostream>
 
 namespace fractal {
-	ShaderProgram::ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath) :
+	ShaderProgram::ShaderProgram(const GLchar* vertexPath, const GLchar* fragmentPath, const unsigned int size, ...) :
 		m_numAttrib(0)
 	{
+		va_list ap;
+		std::vector<char*> attribName;
+		va_start(ap, size);
+		for (int i = 0; i < size; i++) {
+			attribName.push_back(va_arg(ap, char*));
+		}
+
+		va_end(ap);
 		//get source code from filepath
 
 		//compile shader
-		m_vertexShaderID = compileShaders(vertexPath, GL_VERTEX_SHADER);;
-		m_fragmentShaderID = compileShaders(fragmentPath, GL_FRAGMENT_SHADER);
+		GLuint m_vertexShaderID = compileShaders(vertexPath, GL_VERTEX_SHADER);;
+		GLuint m_fragmentShaderID = compileShaders(fragmentPath, GL_FRAGMENT_SHADER);
 
 		this->m_programID = glCreateProgram();
 
 		//shader program
 		glAttachShader(this->m_programID, m_vertexShaderID);
 		glAttachShader(this->m_programID, m_fragmentShaderID);
+
+		addAttrib(attribName);
 
 		glLinkProgram(this->m_programID);
 		//print linking errors
@@ -28,7 +38,15 @@ namespace fractal {
 			glGetProgramInfoLog(m_programID, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
-		
+
+		//detaching program from gpu
+		glDetachShader(m_programID, m_vertexShaderID);
+		glDetachShader(m_programID, m_fragmentShaderID);
+
+		//delete shaders
+		glDeleteShader(m_vertexShaderID);
+		glDeleteShader(m_fragmentShaderID);
+
 	}
 	ShaderProgram::~ShaderProgram() {
 
@@ -73,14 +91,17 @@ namespace fractal {
 			glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
 			std::vector<char> errorLog(maxLength);
 			glDeleteShader(shaderID);
-			//std::printf("%s\n", &(errorLog[0]));
+			std::printf("%s\n", &(errorLog[0]));
 			printf("SHADER FAILED TO COMPILE\n");
 			return -1;
 		}
 		return shaderID;
 	}
-	void ShaderProgram::addAttrib(const std::string& attribName) {
-		glBindAttribLocation(m_programID, m_numAttrib++, attribName.c_str());
+	void ShaderProgram::addAttrib(std::vector<char*>& attribName) {
+		for (size_t i = 0; i < attribName.size(); i++) {
+			glBindAttribLocation(m_programID, m_numAttrib, attribName[i]);
+			m_numAttrib++;
+		}
 	}
 	GLuint ShaderProgram::getUniformLocation(const std::string& uniformName) {
 		GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
@@ -92,21 +113,25 @@ namespace fractal {
 	void ShaderProgram::use() {
 
 		glUseProgram(m_programID);
+		for (int i = 0; i < m_numAttrib; i++) {
+			glEnableVertexAttribArray(i);
+		}
 	}
 	void ShaderProgram::destroy()
 	{
 		unuse();
 		
-		//detaching program from gpu
-		glDetachShader(m_programID, m_vertexShaderID);
-		glDetachShader(m_programID, m_fragmentShaderID);
-
-		//delete shaders
-		glDeleteShader(m_vertexShaderID);
-		glDeleteShader(m_fragmentShaderID);
-
 		//deleting program from gpu
 		glDeleteProgram(m_programID);
+	}
+	void ShaderProgram::storeUniformLocations(const unsigned int size, ...)
+	{
+		va_list ap;
+		va_start(ap, size);
+		for (int i = 0; i < size; i++) {
+			(va_arg(ap, Uniform*))->storeUniformLocation(this->m_programID);
+		}
+		va_end(ap);
 	}
 	void ShaderProgram::storeAllAttrib(std::vector<GLuint> uniforms)
 	{
@@ -120,9 +145,9 @@ namespace fractal {
 
 	}
 	void ShaderProgram::unuse() {
-		glUseProgram(0);
 		for (int i = 0; i < m_numAttrib; i++) {
 			glDisableVertexAttribArray(i);
 		}
+		glUseProgram(0);
 	}
 }

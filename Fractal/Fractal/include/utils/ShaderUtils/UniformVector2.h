@@ -6,7 +6,7 @@ namespace fractal {
 
 	class UniformVector2 : public Uniform {
 	public:
-		UniformVector2(std::string& name);
+		UniformVector2(char* name);
 		void loadVector2(float x, float y);
 		void loadVector2(fmath::Vector2& v);
 		void loadVector2(fmath::Vector3& v);

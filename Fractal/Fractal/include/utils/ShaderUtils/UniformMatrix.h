@@ -8,8 +8,8 @@ namespace fractal {
 	class UniformMatrix : public Uniform {
 
 	public:
-		UniformMatrix(std::string& name);
-		void loadMatrix(fmath::Matrix4& matrix);
+		UniformMatrix(const char* name);
+		void loadMatrix(const fmath::Matrix4& matrix);
 	private:
 		fmath::Matrix4 m_matrix;
 	};

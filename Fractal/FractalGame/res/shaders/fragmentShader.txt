@@ -1,13 +1,15 @@
 #version 330 core
 
-//in vec3 ourColour;
-in vec2 TexCoord;
+in vec2 pass_textureCoords;
+in float pass_brightness;
+in vec2 pass_pos;
 
-out vec4 colour;
+out vec4 color;
 
 uniform sampler2D ourTexture1;
 uniform sampler2D ourTexture2;
 
-void main(){
-	colour = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);
+void main()
+{
+    color = mix(texture(ourTexture1, pass_textureCoords), texture(ourTexture2, pass_textureCoords), 0.2);
 }

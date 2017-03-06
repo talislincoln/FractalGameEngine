@@ -6,7 +6,7 @@
 namespace fractal {
 	class Uniform {
 	public:
-		Uniform(std::string& name);
+		Uniform(const char* name);
 		virtual void storeUniformLocation(int programID);
 		virtual inline int getLocation() {
 			return m_location;
@@ -14,7 +14,7 @@ namespace fractal {
 
 	private:
 		static const int NOT_FOUND = -1;
-		std::string m_name;
+		const char* m_name;
 		int m_location;
 
 

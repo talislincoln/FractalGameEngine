@@ -29,8 +29,8 @@ namespace fractal {
 
 		bool MeshComponent::initialize() {
 			createVAO();
-			bindIndicesBuffer();
 			storeDataInVAO();
+			bindIndicesBuffer();
 			unbindVAO();
 
 			return true;
@@ -38,16 +38,14 @@ namespace fractal {
 
 		void MeshComponent::draw() {
 			m_shader->use();
-			glBindVertexArray(m_vao);
-			glEnableVertexAttribArray(0);
-			glEnableVertexAttribArray(1);
-			glEnableVertexAttribArray(2);
+			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f)));
+			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f));
+			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 
-			fmath::Matrix4 transformationMatrix = getParent()->getComponent<TransformComponent>()->getWorldMatrix();
+			glBindVertexArray(m_vao);
 
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
-			glDrawElements(GL_TRIANGLES, m_mesh->getVertices().size(), GL_UNSIGNED_INT, 0);
-			glDisableVertexAttribArray(0);
+			glDrawElements(GL_TRIANGLES, m_mesh->getIndices().size(), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 			m_shader->unuse();
 		}
@@ -84,7 +82,7 @@ namespace fractal {
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * 3 * sizeof(GL_FLOAT), &m_mesh->getVertices()[0], GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fmath::Vector3), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
 
 			// the meaning of each attribute
 			// 1 - attribute position
@@ -111,7 +109,7 @@ namespace fractal {
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo);
 			
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_mesh->getIndices().size() * sizeof(GL_INT), &m_mesh->getIndices()[0], GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_mesh->getIndices().size() * sizeof(GL_INT), &(m_mesh->getIndices()[0]), GL_STATIC_DRAW);
 		}
 	}
 }

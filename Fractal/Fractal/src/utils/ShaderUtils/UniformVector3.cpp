@@ -1,6 +1,6 @@
 #include "utils\ShaderUtils\UniformVector3.h"
 
-fractal::UniformVector3::UniformVector3(std::string & name) : Uniform(name), m_used(false)
+fractal::UniformVector3::UniformVector3(char* name) : Uniform(name), m_used(false)
 {
 }
 
