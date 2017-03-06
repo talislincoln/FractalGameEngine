@@ -8,14 +8,12 @@ namespace fractal {
 	namespace fgraphics {
 		class MeshData {
 		private:
-			static const int DIMENSIONS = 3;
 			
 			std::vector<fmath::Vector3> m_vertices;
 			std::vector<fmath::Vector2> m_textureCoords;
 			std::vector<fmath::Vector3> m_normals;
 			std::vector<int>   m_indices;
 			float  m_furthestPoint;
-
 		public:
 
 			MeshData(const MeshData&) = delete;

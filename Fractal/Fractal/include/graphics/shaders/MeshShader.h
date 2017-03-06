@@ -11,16 +11,18 @@ namespace fractal {
 	namespace fgraphics {
 		class MeshShader : public ShaderProgram {
 		public:
-			UniformMatrix* view = new UniformMatrix("view");
-			UniformMatrix* projectionMatrix = new UniformMatrix("projection");
-			UniformMatrix* modelMatrix = new UniformMatrix("model");
+			UniformMatrix* view;
+			UniformMatrix* projectionMatrix;
+			UniformMatrix* modelMatrix;
 			//UniformBoolean hasExtraMap = new UniformBoolean("hasExtraMap");
-			UniformVector3* lightDirection = new UniformVector3("lightDirection");
+			UniformVector3* lightDirection;
 			//UniformVec4 plane = new UniformVec4("plane");
 
 			//UniformSampler diffuseMap = new UniformSampler("diffuseMap");
 			//UniformSampler extraMap = new UniformSampler("extraMap");
-			inline MeshShader() : ShaderProgram(MESH_VERTEX_SHADER, MESH_FRAGMENT_SHADER, 3, "position", "normal", "texCoord" ) {
+			inline MeshShader() : ShaderProgram(MESH_VERTEX_SHADER, MESH_FRAGMENT_SHADER, 3, "position", "normal", "texCoord" ),
+			view(new UniformMatrix("view")), projectionMatrix(new UniformMatrix("projection")), modelMatrix(new UniformMatrix("model"))
+			, lightDirection ( new UniformVector3("lightDirection")){
 				storeUniformLocations(3, view, projectionMatrix, modelMatrix);
 			}
 		};

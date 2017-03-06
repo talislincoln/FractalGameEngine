@@ -111,13 +111,12 @@ namespace fractal {
 		void Graphics::beginDraw() {
 			///;W; READING THE SHADER FILES FOR EACH MESH COMPONENT
 			///;W; CLEARING THE SCREEN
-			//glUseProgram(shaderProgram);
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glClearDepth(1.0f);
 
 
-			glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
+			glClearColor(1.0f, 0.3f, 0.1f, 1.0f);
 			//glClear(GL_COLOR_BUFFER_BIT); // somewhere else 
 			//get list of mesh need to be drawn
 		}

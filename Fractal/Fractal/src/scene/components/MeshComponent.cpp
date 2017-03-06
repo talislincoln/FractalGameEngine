@@ -37,12 +37,14 @@ namespace fractal {
 		}
 
 		void MeshComponent::draw() {
-			m_shader->use();
-			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, 0.0f, -3.0f)));
-			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f));
-			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
-
 			glBindVertexArray(m_vao);
+
+			m_shader->use();
+
+			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, 0.0f, -10.0f)));
+			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
+
+			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
 			glDrawElements(GL_TRIANGLES, m_mesh->getIndices().size(), GL_UNSIGNED_INT, 0);
@@ -83,6 +85,7 @@ namespace fractal {
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fmath::Vector3), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
+			//TODO:: need to store texture and normal data too.
 
 			// the meaning of each attribute
 			// 1 - attribute position
@@ -90,11 +93,13 @@ namespace fractal {
 			// 3 - the type of the data being passed in
 			// 4 - if the data is normalized
 			// 5 - distance between each vertices
-			// 6 - offset (should it start at the begining of the data
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 			//unbind
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//m_mesh->destroy();
 		}
 
 		void MeshComponent::unbindVAO() const {
