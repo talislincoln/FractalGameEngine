@@ -5,7 +5,8 @@
 #include <Fractal\include\defines\Colour.h>
 #include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
-#include <Fractal\include\graphics\Program.h>
+#include <Fractal\include\graphics\shaders\MeshShader.h>
+#include <Fractal\include\graphics\MeshData.h>
 
 namespace fractal {
 	namespace fscene {
@@ -13,7 +14,7 @@ namespace fractal {
 		using namespace fmath;
 		class MeshComponent : public Component, public IDrawable {
 		public:
-			MeshComponent(fgraphics::Mesh* mesh);
+			MeshComponent(fgraphics::MeshData* mesh);
 			virtual ~MeshComponent();
 
 			virtual bool initialize();
@@ -21,35 +22,22 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			inline fgraphics::Mesh* getMesh() const {
+			inline fgraphics::MeshData* getMesh() const {
 				return m_mesh;
 			}
 		private:
-			fgraphics::Mesh* m_mesh;
-			//;w; window dimensions
-			const GLuint WIDTH = 800;
-			const GLuint HEIGHT = 600;
-			//;w; mesh vertices
-			std::vector<fmath::Point3> vertices;
-			//;w; shaders
-			Shader* m_ourProgram;
-			Shader* m_cubeShader;
-			//;w; shader stuff
-			GLuint m_vao;
-			GLuint m_vbo;
-			GLuint m_ebo;
-			//;w; textures
-			GLuint m_texture1;
-			GLuint m_texture2;
-			int IMG_WIDTH, IMG_HEIGHT;
-			unsigned char* m_image;
-			//;w; getting uniforms from shaders
-			GLint m_modelLoc;
-			GLint m_viewLoc;
-			GLint m_projLoc;
+			void createVAO();
+			void storeDataInVAO();
+			void unbindVAO() const;
+			void bindIndicesBuffer();
 
-			TransformComponent* transform;
-			const GameObject* parent;
+			fgraphics::MeshData* m_mesh;
+			fgraphics::MeshShader* m_shader;
+			GLuint m_vao;
+
+			//list of vertices to be deleted from the gpu
+			std::vector<GLuint> m_vaos;
+			std::vector<GLuint> m_vbos;
 		};
 	}
 }

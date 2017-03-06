@@ -24,7 +24,7 @@
     <ClCompile Include="MScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MScene2.cpp">
+    <ClCompile Include="TalisScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="MScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MScene2.h">
+    <ClInclude Include="TalisScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

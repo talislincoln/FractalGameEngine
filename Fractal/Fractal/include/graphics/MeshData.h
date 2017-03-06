@@ -1,19 +1,19 @@
-#pragma once
+#ifndef MESH_DATA_H
+#define MESH_DATA_H
+
+
 #include <Fractal\include\graphics\Vertex.h>
 #include <FractalMath\Vector.h>
 namespace fractal {
 	namespace fgraphics {
 		class MeshData {
 		private:
-			static const int DIMENSIONS = 3;
 			
-			std::vector<fmath::Point3> m_vertices;
+			std::vector<fmath::Vector3> m_vertices;
 			std::vector<fmath::Vector2> m_textureCoords;
 			std::vector<fmath::Vector3> m_normals;
 			std::vector<int>   m_indices;
 			float  m_furthestPoint;
-			int m_size;
-
 		public:
 
 			MeshData(const MeshData&) = delete;
@@ -21,33 +21,33 @@ namespace fractal {
 			MeshData& operator=(const MeshData&) = delete;
 			MeshData& operator=(MeshData&&) = delete;
 
-			MeshData(std::vector<fmath::Point3> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
+			MeshData(std::vector<fmath::Vector3> vertices, std::vector<fmath::Vector2> textureCoords, std::vector<fmath::Vector3> normals,
 				std::vector<int> indices, float furthestPoint, int size) :
 				m_vertices(vertices), m_textureCoords(textureCoords), m_normals(normals), 
-				m_indices(indices), m_furthestPoint(furthestPoint), m_size(size){
+				m_indices(indices), m_furthestPoint(furthestPoint){
 			}
 
-			inline int getVertexCount() {
-				return m_size / DIMENSIONS;
+			inline size_t getVertexCount() {
+				return m_vertices.size();
 			}
 
-			inline std::vector<fmath::Point3> getVertices() {
+			inline const std::vector<fmath::Vector3> getVertices() const {
 				return m_vertices;
 			}
 
-			inline std::vector<fmath::Vector2> getTextureCoords() {
+			inline const std::vector<fmath::Vector2>& getTextureCoords() const{
 				return m_textureCoords;
 			}
 
-			inline std::vector<fmath::Vector3> getNormals() {
+			inline const std::vector<fmath::Vector3>& getNormals() const{
 				return m_normals;
 			}
 
-			inline std::vector<int> getIndices() {
+			inline const std::vector<int>& getIndices() const {
 				return m_indices;
 			}
 
-			inline float getFurthestPoint() {
+			inline const float& getFurthestPoint() const{
 				return m_furthestPoint;
 			}
 
@@ -55,3 +55,4 @@ namespace fractal {
 
 	}
 }
+#endif // !MESH_DATA_H

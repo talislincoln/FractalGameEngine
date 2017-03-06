@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)\;$(SolutionDir)deps\include\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\bin\;$(SolutionDir)deps\lib\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)bin\;$(SolutionDir)deps\lib\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin</OutDir>
     <IntDir>$(SolutionDir)\bin\$(ProjectName)\inter\</IntDir>
   </PropertyGroup>
@@ -136,7 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="scene2.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
     <ClCompile Include="src\core\systems\Graphics.cpp" />
@@ -150,7 +150,7 @@
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
     <ClCompile Include="src\graphics\Mesh.cpp" />
-    <ClCompile Include="src\graphics\Program.cpp" />
+    <ClCompile Include="src\graphics\ShaderProgram.cpp" />
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
@@ -171,12 +171,18 @@
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\Uniform.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformFloat.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformMatrix.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformSampler.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="res\shaders\cubeFrag.txt" />
-    <Text Include="res\shaders\cubeVert.txt" />
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -196,9 +202,13 @@
     <ClInclude Include="include\defines\deletemacros.h" />
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
+    <ClInclude Include="include\graphics\Materials.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
-    <ClInclude Include="include\graphics\Program.h" />
+    <ClInclude Include="include\graphics\ShaderProgram.h" />
+    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
+    <ClInclude Include="include\graphics\Skin.h" />
+    <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
@@ -221,7 +231,18 @@
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
-    <ClInclude Include="scene2.h" />
+    <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformBool.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformFloat.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformMatrix.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformSampler.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector2.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
+    <ClInclude Include="include\utils\TextureUtils.h" />
+    <ClInclude Include="include\utils\picoPNG.h" />
+    <ClInclude Include="include\utils\TextureBuilder.h" />
+    <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

@@ -1,4 +1,7 @@
-#pragma once
+#ifndef _LOAD_OBJ_H
+#define _LOAD_OBJ_H
+
+
 #include <string>
 #include <sstream>
 #include <vector>
@@ -15,32 +18,34 @@ namespace fractal {
 		LoadOBJ& operator=(const LoadOBJ&) = delete;
 		LoadOBJ& operator=(LoadOBJ&&) = delete;
 
-		static fgraphics::MeshData* load(std::string fileName);
-		static int* convertIndicesVectorToArray(std::vector<int> indices);
-		static float convertDataToArrays(std::vector<fgraphics::Vertex>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals, std::vector<fmath::Point3>& position);
-		static fgraphics::Vertex* processVertex(std::vector<std::string> vertex, std::vector<fgraphics::Vertex> vertices, std::vector<int> indices);
-		static fgraphics::Vertex* dealWithAlreadyProcessedVertex(fgraphics::Vertex* previousVertex, int newTextureIndex, int newNormalIndex,
-			std::vector<int> indices, std::vector<fgraphics::Vertex> vertices);
-		static void removeUnusedVertices(std::vector<fgraphics::Vertex> vertices);
+		static fgraphics::MeshData* load(const std::string& fileName);
+		static fgraphics::MeshData* load(const char*& fileName);
 
+		template<typename Out>
+		static inline void split(const std::string &s, char delim, Out result) {
+			std::stringstream ss;
+			ss.str(s);
+			std::string item;
+			while (std::getline(ss, item, delim)) {
+				if (!item.empty()) {
+					*(result++) = item;
+				}
+			}
+		}
+		static inline std::vector<std::string> split(const std::string &s, char delim) {
+			std::vector<std::string> elems;
+			split(s, delim, std::back_inserter(elems));
+			return elems;
+		}
+	private:
+		static float convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals, std::vector<fmath::Vector3>& position);
+		static fgraphics::Vertex* processVertex(const std::vector<std::string>& vertex, std::vector<fgraphics::Vertex*>& vertices, std::vector<int>& indices);
+		static fgraphics::Vertex* dealWithAlreadyProcessedVertex(fgraphics::Vertex* previousVertex, int newTextureIndex, int newNormalIndex,
+			std::vector<int>& indices, std::vector<fgraphics::Vertex*>& vertices);
+		static void removeUnusedVertices(std::vector<fgraphics::Vertex*>& vertices);
+		static void cleanUp(std::vector<fgraphics::Vertex*>& vertices);
 	};
 	// move this somewhere later
 
-	template<typename Out>
-	void split(const std::string &s, char delim, Out result) {
-		std::stringstream ss;
-		ss.str(s);
-		std::string item;
-		while (std::getline(ss, item, delim)) {
-			*(result++) = item;
-		}
-	}
-
-
-	std::vector<std::string> split(const std::string &s, char delim) {
-		std::vector<std::string> elems;
-		split(s, delim, std::back_inserter(elems));
-		return elems;
-	}
-
 }
+#endif // !_LOAD_OBJ_H

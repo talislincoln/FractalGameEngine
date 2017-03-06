@@ -13,7 +13,6 @@
     <ClCompile Include="src\core\systems\System.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
     <ClCompile Include="src\graphics\Mesh.cpp" />
-    <ClCompile Include="src\graphics\Program.cpp" />
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
@@ -32,10 +31,21 @@
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
-    <ClCompile Include="scene2.cpp" />
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\scene\objects\TimerObject.cpp" />
     <ClCompile Include="src\utils\LoadOBJ.cpp" />
+    <ClCompile Include="src\utils\LoadTexture.cpp" />
+    <ClCompile Include="src\utils\TextureBuilder.cpp" />
+    <ClCompile Include="src\utils\picoPNG.cpp" />
+    <ClCompile Include="src\graphics\ShaderProgram.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\Uniform.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformFloat.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformMatrix.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformSampler.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
+    <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -54,7 +64,6 @@
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
-    <ClInclude Include="include\graphics\Program.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
@@ -75,21 +84,33 @@
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\scene\components\TerrainComponent.h" />
-    <ClInclude Include="scene2.h" />
     <ClInclude Include="include\core\systems\Timer.h" />
     <ClInclude Include="include\scene\objects\TimerObject.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
+    <ClInclude Include="include\utils\LoadTexture.h" />
+    <ClInclude Include="include\utils\TextureUtils.h" />
+    <ClInclude Include="include\graphics\Texture.h" />
+    <ClInclude Include="include\utils\TextureBuilder.h" />
+    <ClInclude Include="include\utils\picoPNG.h" />
+    <ClInclude Include="include\graphics\Skin.h" />
+    <ClInclude Include="include\graphics\Materials.h" />
+    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
+    <ClInclude Include="include\graphics\ShaderProgram.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformBool.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformFloat.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformMatrix.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformSampler.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector2.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
+    <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
+    <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
     <Image Include="res\images\wooden.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="res\shaders\fragmentShader.txt" />
-    <Text Include="res\shaders\vertexShader.txt" />
     <Text Include="todo.txt" />
-    <Text Include="res\shaders\cubeFrag.txt" />
-    <Text Include="res\shaders\cubeVert.txt" />
   </ItemGroup>
 </Project>
