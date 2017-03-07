@@ -17,9 +17,8 @@ namespace fractal {
 			LoadTexture& operator=(const LoadTexture&) = delete;
 			LoadTexture& operator=(LoadTexture&&) = delete;
 
-			static void loadFile(std::vector<unsigned char>& buffer, const std::string& filename);
-			static TextureData decodeTexturePNG(std::string& reader);
-			static GLuint loadTextureToOpenGL(TextureData& data, TextureBuilder& Builder);
+			static TextureData* decodeTexturePNG(const std::string& reader);
+			static GLuint loadTextureToOpenGL(TextureData* data, TextureBuilder& Builder);
 
 		};
 	}

@@ -7,9 +7,10 @@ namespace fractal {
 	namespace fgraphics {
 		class Materials {
 		public:
-
+			Materials(ShaderProgram* Shader): m_shader(Shader) {}
 			//virtual 
 			virtual void bindMaterial();
+			virtual void unbindMaterial();
 			virtual void use();
 			virtual void unuse();
 			virtual void destroy();
@@ -18,7 +19,7 @@ namespace fractal {
 		protected:
 
 			std::vector<Texture*> m_textures;
-			ShaderProgram* Shader;
+			ShaderProgram* m_shader;
 
 		};
 	}

@@ -1,7 +1,7 @@
 #include "utils\ShaderUtils\UniformFloat.h"
 
 using namespace fractal;
-UniformFloat::UniformFloat(char* name) : Uniform(name) {
+UniformFloat::UniformFloat(const char* name) : Uniform(name) {
 
 }
 

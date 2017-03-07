@@ -7,10 +7,6 @@
 namespace fractal {
 	namespace fgraphics {
 		//??
-		struct Texture {
-			unsigned int id;
-			std::string type;
-		};
 
 		struct Colour {
 			int r;

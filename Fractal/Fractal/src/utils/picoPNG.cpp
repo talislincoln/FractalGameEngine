@@ -25,7 +25,7 @@ return: 0 if success, not 0 if some error occured.
 /**************************************************
 made picoPNG to a static function. so when it's call.
 **************************************************/
-int PicoPNG::decodePNG(std::vector<unsigned char>& out_image, unsigned int& image_width, unsigned int& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32)
+int PicoPNG::decodePNG(std::vector<unsigned char>& out_image, unsigned long& image_width, unsigned long& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32)
 {
 	// picoPNG version 20101224
 	// Copyright (c) 2005-2010 Lode Vandevenne

@@ -6,10 +6,9 @@ in vec2 pass_pos;
 
 out vec4 color;
 
-uniform sampler2D ourTexture1;
-uniform sampler2D ourTexture2;
+uniform sampler2D diffuseMap;
 
 void main()
 {
-color = vec4(0.0f,0.0f,0.0f,1.0f);
+color = texture(diffuseMap, pass_textureCoords);
 }

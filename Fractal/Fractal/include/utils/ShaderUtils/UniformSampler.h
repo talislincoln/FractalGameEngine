@@ -6,7 +6,7 @@ namespace fractal {
 
 	class UniformSampler : public Uniform {
 	public:
-		UniformSampler(char* name);
+		UniformSampler(const char* name);
 		void loadTextureUnit(int TextureID);
 	private:
 		int m_currentValue;

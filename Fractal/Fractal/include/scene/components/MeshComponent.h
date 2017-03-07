@@ -7,6 +7,7 @@
 #include <Fractal\include\interfaces\IDrawable.h>
 #include <Fractal\include\graphics\shaders\MeshShader.h>
 #include <Fractal\include\graphics\MeshData.h>
+#include <Fractal\include\graphics\Texture.h>
 
 namespace fractal {
 	namespace fscene {
@@ -30,9 +31,10 @@ namespace fractal {
 			void storeDataInVAO();
 			void unbindVAO() const;
 			void bindIndicesBuffer();
-
+			float test;
 			fgraphics::MeshData* m_mesh;
 			fgraphics::MeshShader* m_shader;
+			fgraphics::Texture* m_texture;// Materials in the future. just need to test it here.
 			GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu

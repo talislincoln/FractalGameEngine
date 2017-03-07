@@ -6,7 +6,7 @@ namespace fractal {
 	class UniformFloat : public Uniform {
 
 	public:
-		UniformFloat(char* name);
+		UniformFloat(const char* name);
 		void loadFloat(float f);
 	private:
 		float m_currentValue;

@@ -1,7 +1,7 @@
 #include "utils\ShaderUtils\UniformBool.h"
 
 using namespace fractal;
-UniformBool::UniformBool(char* name) : Uniform(name) {
+UniformBool::UniformBool(const char* name) : Uniform(name) {
 
 }
 

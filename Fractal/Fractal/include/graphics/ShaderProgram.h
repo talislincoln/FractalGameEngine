@@ -22,7 +22,7 @@ namespace fractal {
 		GLuint getUniformLocation(const std::string& uniformName);
 		void unuse();
 		void use();
-		void destroy();
+		virtual void destroy();
 		void storeUniformLocations(const unsigned int size, ...);
 		inline const GLuint getProgramID() const {
 			return m_programID;

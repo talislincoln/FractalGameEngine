@@ -9,7 +9,7 @@ struct PicoPNG{
 	PicoPNG& operator=(const PicoPNG&) = delete;
 	PicoPNG& operator=(PicoPNG&&) = delete;
 
-	static int decodePNG(std::vector<unsigned char>& out_image, unsigned int& image_width, unsigned int& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32 = true);
+	static int decodePNG(std::vector<unsigned char>& out_image, unsigned long& image_width, unsigned long& image_height, const unsigned char* in_png, size_t in_size, bool convert_to_rgba32 = true);
 
 };
 

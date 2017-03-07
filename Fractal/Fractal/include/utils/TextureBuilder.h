@@ -14,7 +14,7 @@ namespace fractal {
 			bool m_nearest;
 			std::string m_file;
 		public:
-			TextureBuilder(std::string& filePath);
+			TextureBuilder(const char* filePath);
 			~TextureBuilder();
 			Texture* create();
 

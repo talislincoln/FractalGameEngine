@@ -27,6 +27,13 @@ namespace fractal {
 				m_indices(indices), m_furthestPoint(furthestPoint){
 			}
 
+			inline void destroy() {
+				m_vertices.clear();
+				m_textureCoords.clear();
+				m_normals.clear();
+				m_indices.clear();
+			}
+
 			inline size_t getVertexCount() {
 				return m_vertices.size();
 			}

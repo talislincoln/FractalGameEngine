@@ -9,7 +9,7 @@ namespace fractal {
 
 	class UniformVector3 : public Uniform {
 	public:
-		UniformVector3(char* name);
+		UniformVector3(const char* name);
 		void loadVector3(float x, float y, float z);
 		void loadVector3(fmath::Vector3& v);
 

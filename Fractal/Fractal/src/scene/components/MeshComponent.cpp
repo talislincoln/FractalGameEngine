@@ -9,7 +9,6 @@
 #include <SOIL\SOIL.h>
 #include "scene\GameObject.h"
 #include "scene\components\TransformComponent.h"
-
 #include <assert.h>
 
 namespace fractal {
@@ -18,8 +17,10 @@ namespace fractal {
 		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
 			Component("MeshComponent"), 
 			m_mesh(mesh),
-			m_shader(new fgraphics::MeshShader())
+			m_shader(new fgraphics::MeshShader()), 
+			m_texture(fgraphics::Texture::newTexture("res/images/awesome.png").create())
 		{
+			test = 0.0f;
 			//empty
 		}
 
@@ -39,9 +40,9 @@ namespace fractal {
 		void MeshComponent::draw() {
 			glBindVertexArray(m_vao);
 
-			m_shader->use();
-
-			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, 0.0f, -10.0f)));
+			m_shader->use();// all this is going into Materials
+			m_texture->bindToUnit(0);
+			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, test -= 0.00001f, -10.0f)));
 			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
 
 			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
@@ -49,6 +50,8 @@ namespace fractal {
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
 			glDrawElements(GL_TRIANGLES, m_mesh->getIndices().size(), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
+
+			
 			m_shader->unuse();
 		}
 
@@ -96,10 +99,12 @@ namespace fractal {
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
-			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 			//unbind
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			// TODO: I AM DONE WITH MESHDATA!
 			//m_mesh->destroy();
+			//delete m_mesh;
 		}
 
 		void MeshComponent::unbindVAO() const {

@@ -5,7 +5,7 @@
 #include <Fractal\include\graphics\Texture.h>
 namespace fractal {
 	namespace fgraphics {
-		TextureBuilder::TextureBuilder(std::string& filePath) : m_file(filePath) {
+		TextureBuilder::TextureBuilder(const char* filePath) : m_file(filePath) {
 
 			m_clampEdges = false;
 			m_mipMap = false;
@@ -15,14 +15,16 @@ namespace fractal {
 
 		TextureBuilder::~TextureBuilder()
 		{
-			delete this;
 		}
 
 		Texture* TextureBuilder::create()
 		{
-			TextureData textureData = LoadTexture::decodeTexturePNG(m_file);
+			TextureData* textureData = LoadTexture::decodeTexturePNG(m_file);
 			int textureId = LoadTexture::loadTextureToOpenGL(textureData, *this);
-			return new Texture(textureId, textureData.getWidth());
+			int width = textureData->getWidth();
+
+			delete textureData;
+			return new Texture(textureId, width);
 		}
 
 

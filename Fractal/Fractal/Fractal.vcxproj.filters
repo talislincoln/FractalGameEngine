@@ -46,6 +46,7 @@
     <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
+    <ClCompile Include="src\graphics\Materials.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -93,7 +94,6 @@
     <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
-    <ClInclude Include="include\graphics\Skin.h" />
     <ClInclude Include="include\graphics\Materials.h" />
     <ClInclude Include="include\graphics\shaders\MeshShader.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />

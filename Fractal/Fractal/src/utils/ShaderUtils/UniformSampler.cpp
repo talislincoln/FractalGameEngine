@@ -1,6 +1,6 @@
 #include "utils\ShaderUtils\UniformSampler.h"
 
-fractal::UniformSampler::UniformSampler(char* name) : Uniform(name), m_used(false)
+fractal::UniformSampler::UniformSampler(const char* name) : Uniform(name), m_used(false)
 {
 }
 

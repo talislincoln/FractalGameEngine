@@ -6,51 +6,36 @@
 #include <Fractal\include\utils\picoPNG.h>
 #include <Fractal\include\utils\TextureBuilder.h>
 #include <Fractal\include\graphics\Texture.h>
-
+#include <Fractal\include\utils\IOManager.h>
 namespace fractal {
 	namespace fgraphics {
 
 
-		void LoadTexture::loadFile(std::vector<unsigned char>& buffer, const std::string& filename) //designed for loading files from hard disk in an std::vector
+
+		TextureData* LoadTexture::decodeTexturePNG(const std::string& reader)
 		{
-			std::ifstream file(filename.c_str(), std::ios::in | std::ios::binary | std::ios::ate);
-
-			//get filesize
-			std::streamsize size = 0;
-			if (file.seekg(0, std::ios::end).good()) size = file.tellg();
-			if (file.seekg(0, std::ios::beg).good()) size -= file.tellg();
-
-			//read contents of the file into the vector
-			if (size > 0)
-			{
-				buffer.resize((size_t)size);
-				file.read((char*)(&buffer[0]), size);
-			}
-			else buffer.clear();
-		}
-
-		TextureData LoadTexture::decodeTexturePNG(std::string& reader)
-		{
-			unsigned int width = 0;
-			unsigned int height = 0;
+			unsigned long width = 0;
+			unsigned long height = 0;
 			std::vector<unsigned char> buffer, image;
-			loadFile(buffer, reader);
+			if (IOManager::readFileToBuffer(reader, buffer) == false) {
+				std::cout << ("fail loading png file" + reader);
+			}
 
-			int error = PicoPNG::decodePNG(image, width, height, buffer.empty() ? 0 : &buffer[0], (unsigned long)buffer.size());
+			int error = PicoPNG::decodePNG(image, width, height, &buffer[0], buffer.size());
 			if (error != 0)
 				std::cout << ("Tried to load texture " + reader + " , didn't work");
 
-			return TextureData(width, height, buffer);
+			return new TextureData(width, height, image);
 		}
 
-		GLuint LoadTexture::loadTextureToOpenGL(TextureData& data, TextureBuilder& builder)
+		GLuint LoadTexture::loadTextureToOpenGL(TextureData* data, TextureBuilder& builder)
 		{
 			GLuint textureID;
 			glGenTextures( 1, &textureID);
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, textureID);
 			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data.getWidth(), data.getHeight(), 0, GL_BGRA, GL_UNSIGNED_BYTE, &(data.getBuffer()[0]));
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data->getWidth(), data->getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, &(data->getBuffer()[0]));
 			if (builder.isMipmap()) {
 				glGenerateMipmap(GL_TEXTURE_2D);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

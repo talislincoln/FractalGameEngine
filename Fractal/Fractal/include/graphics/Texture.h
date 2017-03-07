@@ -23,6 +23,9 @@ namespace fractal {
 			inline void destroy() {
 				glDeleteTextures(SIZE, &TEXTUREID);
 			}
+			static inline TextureBuilder newTexture(const char* path) {
+				return TextureBuilder(path);
+			}
 
 		private:
 			const GLint TYPE;
@@ -31,18 +34,19 @@ namespace fractal {
 
 		class TextureData {
 		private:
-			int m_width;
-			int m_height;
+			unsigned long m_width;
+			unsigned long m_height;
 			std::vector<unsigned char> m_buffer;
 		public:
-			inline TextureData(int width, int height, std::vector<unsigned char> buffer) : m_width(width), m_height(height), m_buffer(buffer) { }
-			inline int getWidth() {
+			inline TextureData(unsigned long width, unsigned long height, std::vector<unsigned char> buffer)
+				: m_width(width), m_height(height), m_buffer(buffer) { }
+			inline const unsigned long getWidth() const {
 				return m_width;
 			}
-			inline int getHeight() {
+			inline const unsigned long getHeight() const {
 				return m_height;
 			}
-			inline std::vector<unsigned char> getBuffer() {
+			inline std::vector<unsigned char>& getBuffer() {
 				return m_buffer;
 			}
 		};
