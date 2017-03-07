@@ -88,10 +88,10 @@ namespace fractal {
 
 			//;w; opengl options
 			glFrontFace(GL_CCW); //;w; vertices need to be created in clock wise order or else the normals will make the images render the oppsite direction
-			//glCullFace(GL_BACK);
-			//glEnable(GL_CULL_FACE);
-			//glEnable(GL_DEPTH_TEST);
-			//glEnable(GL_TEXTURE_2D);
+			glCullFace(GL_BACK);
+			glEnable(GL_CULL_FACE);
+			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_TEXTURE_2D);
 			//glEnable(GL_FRAMEBUFFER_SRGB);
 
 			return true;

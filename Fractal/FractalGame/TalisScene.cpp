@@ -38,7 +38,7 @@ bool TalisScene::initialize() {
 	test1 = new SceneObject("test1");
 	test1->addComponent(new MeshComponent(LoadOBJ::load("dragon")));
 	test1->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
-	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(-1.0f, 0.0f, 0.0f));
+	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(0.0f, 0.0f, 0.0f));
 	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);
 	addGameObject(test1);
 	return Scene::initialize();

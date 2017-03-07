@@ -18,7 +18,7 @@ namespace fractal {
 
 		Engine::Engine(AbstractGame* game) :
 			m_game(game), m_isRunning(false),
-			m_maxFPS(60.f)
+			m_maxFPS(60.0f)
 		{
 		}
 
@@ -100,19 +100,19 @@ namespace fractal {
 
 			//Create instances for the different types of system
 			//and check if the system is null after creation
-			Window* window = dynamic_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
+			Window* window = static_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
 			if (window == nullptr)
 				return 0; //error
-			Input* input = dynamic_cast<Input*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
+			Input* input = static_cast<Input*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
 			if (input == nullptr)
 				return 0;
-			Logic* logic = dynamic_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
+			Logic* logic = static_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
 			if (logic == nullptr)
 				return 0;
-			Graphics* graphics = dynamic_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = static_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			if (graphics == nullptr)
 				return 0;
-			Timer* timer = dynamic_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
+			Timer* timer = static_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
 			if (timer == nullptr)
 				return 0;
 			
@@ -139,14 +139,13 @@ namespace fractal {
 
 		void Engine::draw()
 		{
-			Graphics* graphics = dynamic_cast<Graphics*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = static_cast<Graphics*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			graphics->beginDraw();
 
-			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
+			for (IDrawable* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())
 			{
-				IDrawable* drawable_system = dynamic_cast<IDrawable*>(system);
-				if (drawable_system->getCanDraw())
-					drawable_system->draw();
+				if (system->getCanDraw())
+					system->draw();
 			}
 
 			graphics->endDraw();

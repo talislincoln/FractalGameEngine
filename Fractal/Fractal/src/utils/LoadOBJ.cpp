@@ -29,10 +29,6 @@ namespace fractal {
 			vector<string> currentLine;
 			if (strncmp(line.c_str(), "v ", 2) == 0) {
 				currentLine = split(line, ' ');
-				//if (strcmp (currentLine[1].c_str, " ")) {
-					//blender has only 1 space inbetween while 3ds max has 2.
-					// pain in the ***;
-				//}
 				Point3 vertex = Point3((float)stod(currentLine[1]),
 					(float)stod(currentLine[2]), (float)stod(currentLine[3]));
 				vertices.push_back(new Vertex(vertex, vertices.size()));

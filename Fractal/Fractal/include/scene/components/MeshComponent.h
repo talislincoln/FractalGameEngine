@@ -31,7 +31,7 @@ namespace fractal {
 			void storeDataInVAO();
 			void unbindVAO() const;
 			void bindIndicesBuffer();
-			float test;
+			size_t m_indicesSize, m_vecticesSize;
 			fgraphics::MeshData* m_mesh;
 			fgraphics::MeshShader* m_shader;
 			fgraphics::Texture* m_texture;// Materials in the future. just need to test it here.

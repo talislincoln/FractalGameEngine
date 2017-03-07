@@ -46,7 +46,7 @@ namespace fractal {
 			@see IDrawable
 			@return All systems that implements that interface
 			*/
-			std::vector<System*>& getDrawableSystems();
+			std::vector<IDrawable*>& getDrawableSystems();
 
 			/**
 			Get all systems.
@@ -60,7 +60,7 @@ namespace fractal {
 			///Vector that holds all the created systems
 			std::vector<System*> m_systems;
 			///Holds a point to the systems that implements the IDrawable interface
-			std::vector<System*> m_drawableSystems;
+			std::vector<IDrawable*> m_drawableSystems;
 
 			SystemFactory* m_factory;
 		};

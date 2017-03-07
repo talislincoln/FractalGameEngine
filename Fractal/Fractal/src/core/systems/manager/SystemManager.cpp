@@ -38,14 +38,14 @@ namespace fractal {
 
 			//cast the new created system to check if it is a drawable system
 			if (dynamic_cast<IDrawable*>(system) != nullptr)
-				this->m_drawableSystems.push_back(system);
+				this->m_drawableSystems.push_back(dynamic_cast<IDrawable*>(system));
 
 			this->m_systems.push_back(system);
 
 			return system;
 		}
 
-		std::vector<System*>& SystemManager::getDrawableSystems()
+		std::vector<IDrawable*>& SystemManager::getDrawableSystems()
 		{
 			return this->m_drawableSystems;
 		}

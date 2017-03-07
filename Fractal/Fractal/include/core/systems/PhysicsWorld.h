@@ -37,7 +37,7 @@ namespace fractal {
 		class PhysicsWorld : public fcore::System
 		{
 		public:
-			PhysicsWorld(const fmath::Vector3 gravity = fmath::Vector3(0, 0, 0));
+			PhysicsWorld(const fmath::Vector3 gravity = fmath::Vector3(0, -9.8f, 0));
 			virtual ~PhysicsWorld() {
 
 			}

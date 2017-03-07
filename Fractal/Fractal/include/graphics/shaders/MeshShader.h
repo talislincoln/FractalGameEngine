@@ -20,9 +20,11 @@ namespace fractal {
 
 			UniformSampler* diffuseMap;
 			//UniformSampler extraMap = new UniformSampler("extraMap");
+
 			inline MeshShader() : ShaderProgram(MESH_VERTEX_SHADER, MESH_FRAGMENT_SHADER, 3, "position", "normal", "texCoord" ),
 			view(new UniformMatrix("view")), projectionMatrix(new UniformMatrix("projection")), modelMatrix(new UniformMatrix("model"))
 			, lightDirection ( new UniformVector3("lightDirection")), diffuseMap (new UniformSampler("diffuseMap")){
+
 				storeUniformLocations(4, view, projectionMatrix, modelMatrix, diffuseMap);
 				loadTexture();
 			}
@@ -30,6 +32,7 @@ namespace fractal {
 				diffuseMap->loadTextureUnit(0);
 			}
 			inline void destroy() {
+
 				delete view;
 				delete projectionMatrix;
 				delete modelMatrix;
