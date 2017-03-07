@@ -13,5 +13,6 @@ public:
 
 private:
 	fractal::fscene::SceneObject* test1;
+	fractal::fscene::SceneObject* terrain;
 };
 
