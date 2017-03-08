@@ -2,7 +2,7 @@
 #define _FREECAMERA_H
 
 #include "CameraObject.h"
-#include "core\systems\Input.h"
+#include <Fractal\include\core\systems\Input.h>
 
 #include <gl\glew.h>
 #include <FractalMath\Math.h>
