@@ -16,7 +16,7 @@ namespace fractal {
 
 		reader.open("res/meshes/" + fileName + ".obj");
 		if (!reader.is_open()) {
-			printf("failed"); // need debug~
+			printf("failed  %s", &fileName[0]); // need debug~
 			assert(reader);
 		}
 		string line;

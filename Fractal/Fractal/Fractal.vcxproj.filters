@@ -105,6 +105,7 @@
     <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
     <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
+    <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

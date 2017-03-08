@@ -173,5 +173,6 @@ bool MScene::shutdown() {
 }
 
 void MScene::setupInput(fractal::fcore::Input* input) {
+	printf("hello there");
 	//	camera->setupInput(input);
 }

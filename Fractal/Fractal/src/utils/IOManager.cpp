@@ -13,12 +13,12 @@ namespace fractal {
 		//seek to the end of the file
 		file.seekg(0, std::ios::end); //zero offset
 									  //get the file size
-		int fileSize = file.tellg();
+		std::streamsize fileSize = file.tellg();
 		file.seekg(0, std::ios::beg);
 		//reduce the file size by any header that might be present
 		fileSize -= file.tellg();
 
-		buffer.resize(fileSize);
+		buffer.resize((unsigned int)fileSize);
 		file.read((char*)&(buffer[0]), fileSize); //converting the vector to a char*
 		file.close();
 
@@ -36,12 +36,12 @@ namespace fractal {
 		//seek to the end of the file
 		file.seekg(0, std::ios::end); //zero offset
 									  //get the file size
-		int fileSize = file.tellg();
+		std::streamsize fileSize = file.tellg();
 		file.seekg(0, std::ios::beg);
 		//reduce the file size by any header that might be present
 		fileSize -= file.tellg();
 
-		buffer.resize(fileSize);
+		buffer.resize((unsigned int)fileSize);
 		file.read((char*)&(buffer[0]), fileSize); //converting the vector to a char*
 		file.close();
 

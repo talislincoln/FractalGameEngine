@@ -12,6 +12,8 @@ public:
 	virtual void update();
 	virtual bool shutdown();
 
+	virtual void setupInput(fractal::fcore::Input* input);
+
 private:
 	fractal::fscene::SceneObject* test1;
 	fractal::fscene::SceneObject* terrain;

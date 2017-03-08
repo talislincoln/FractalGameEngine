@@ -4,9 +4,7 @@
 #include "core\systems\Window.h"
 #include "core\systems\manager\SystemManager.h"
 #include "graphics\ShaderProgram.h"
-//#include "scene\objects\FreeCamera.h"
 #include <FractalMath\Matrix.h>
-#include <SOIL\SOIL.h>
 #include "scene\GameObject.h"
 #include "scene\components\TransformComponent.h"
 #include <assert.h>
@@ -23,7 +21,6 @@ namespace fractal {
 			m_shader(new fgraphics::MeshShader()), 
 			m_texture(fgraphics::Texture::newTexture("res/images/awesome.png").create())
 		{
-			test = 0.0f;
 			//empty
 		}
 

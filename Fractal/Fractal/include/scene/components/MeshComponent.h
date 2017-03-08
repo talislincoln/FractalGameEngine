@@ -1,8 +1,6 @@
 #ifndef _MESHCOMPONENT_H
 #define _MESHCOMPONENT_H
 
-#include <Fractal\include\graphics\Mesh.h>
-#include <Fractal\include\defines\Colour.h>
 #include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
 #include <Fractal\include\graphics\shaders\MeshShader.h>

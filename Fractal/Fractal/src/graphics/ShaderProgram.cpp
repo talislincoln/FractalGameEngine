@@ -9,7 +9,7 @@ namespace fractal {
 		va_list ap;
 		std::vector<char*> attribName;
 		va_start(ap, size);
-		for (int i = 0; i < size; i++) {
+		for (unsigned int i = 0; i < size; i++) {
 			attribName.push_back(va_arg(ap, char*));
 		}
 
@@ -128,7 +128,7 @@ namespace fractal {
 	{
 		va_list ap;
 		va_start(ap, size);
-		for (int i = 0; i < size; i++) {
+		for (unsigned int i = 0; i < size; i++) {
 			(va_arg(ap, Uniform*))->storeUniformLocation(this->m_programID);
 		}
 		va_end(ap);
