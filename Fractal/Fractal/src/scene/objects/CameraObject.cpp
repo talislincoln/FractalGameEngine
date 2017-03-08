@@ -17,8 +17,6 @@ namespace fractal {
 		}
 
 		CameraObject::~CameraObject() {
-			delete m_cameraComponent;
-			delete m_transformComponent;
 		}
 
 		bool CameraObject::initialize() {

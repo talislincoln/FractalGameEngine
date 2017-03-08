@@ -1,8 +1,7 @@
 #ifndef _CAMERAOBJECT_H
 #define _CAMERAOBJECT_H
-
-#include "scene\GameObject.h"
-#include "interfaces\IDrawable.h"
+#include <Fractal\include\scene\GameObject.h>
+#include <Fractal\include\interfaces\IDrawable.h>
 
 namespace fractal {
 	namespace fscene {

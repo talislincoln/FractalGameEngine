@@ -11,6 +11,9 @@
 #include "scene\components\TransformComponent.h"
 #include <assert.h>
 
+#include <Fractal\include\core\systems\manager\CameraManager.h>
+#include <Fractal\include\scene\objects\CameraObject.h>
+
 namespace fractal {
 	namespace fscene {
 		using namespace fmath;
@@ -42,7 +45,11 @@ namespace fractal {
 
 			m_shader->use();// all this is going into Materials
 			m_texture->bindToUnit(0);
-			m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, test -= 0.00001f, -10.0f)));
+
+			fscene::CameraObject* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
+
+			//m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, test -= 0.00001f, -10.0f)));
+			m_shader->view->loadMatrix(camera->getComponent<TransformComponent>()->getWorldMatrix());
 			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
 
 			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());

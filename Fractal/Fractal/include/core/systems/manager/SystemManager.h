@@ -1,9 +1,9 @@
 #ifndef _SYSTEMMANAGER_H
 #define _SYSTEMMANAGER_H
 
-#include "helpers\Manager.h"
-#include "defines\SystemType.h"
-#include "interfaces\IDrawable.h"
+#include <Fractal\include\helpers\Manager.h>
+#include <Fractal\include\defines\SystemType.h>
+#include <Fractal\include\interfaces\IDrawable.h>
 
 #ifndef _VECTOR
 #include<vector>

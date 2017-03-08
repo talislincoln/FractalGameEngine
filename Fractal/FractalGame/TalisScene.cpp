@@ -14,6 +14,8 @@
 
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
 #include <Fractal\include\utils\LoadOBJ.h>
+#include <Fractal\include\core\systems\manager\SystemManager.h>
+
 
 TalisScene::TalisScene():
 Scene("TalisScene"), test1(nullptr)
@@ -31,8 +33,12 @@ bool TalisScene::initialize() {
 	using namespace fmath;
 	using namespace fgraphics;
 	test1 = new SceneObject("test1");
+	camera = new FreeCamera("MainCamera");
+	camera->setupInput(dynamic_cast<fcore::Input*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM)));
 	test1->addComponent(new MeshComponent(LoadOBJ::load("cyl")));
+	//camera->addComponent(new MeshComponent(LoadOBJ::load("cyl")));
 	addGameObject(test1);
+	addGameObject(camera);
 	return Scene::initialize();
 }
 
