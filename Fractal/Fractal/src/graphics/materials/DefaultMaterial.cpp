@@ -11,11 +11,12 @@ namespace fractal {
 			m_uniforms.push_back(new UniformSampler("diffuseMap"));     //4
 			m_textures.push_back(Texture::newTexture(DEFAULT_TEXTURE).anisotropic().create());
 			m_shader->storeUniformLocations(m_uniforms);
+			loadTexture();
 		}
 
 		void fractal::fgraphics::DefaultMaterial::loadTexture()
 		{
-			static_cast<UniformSampler*>(m_uniforms[4])->loadTextureUnit(0);
+			static_cast<UniformSampler*>(m_uniforms[4])->loadTextureUnit(m_textures[0]->TEXTUREID);
 		}
 	}
 }
