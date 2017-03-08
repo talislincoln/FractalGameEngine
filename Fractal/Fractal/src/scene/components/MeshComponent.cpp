@@ -54,8 +54,6 @@ namespace fractal {
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
 			glDrawElements(GL_TRIANGLES, m_indicesSize, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
-
-			
 			m_shader->unuse();
 		}
 
@@ -70,7 +68,8 @@ namespace fractal {
 			}
 			
 			m_vbos.clear();
-
+			m_texture->destroy();
+			delete m_texture;
 			m_shader->destroy();
 			delete m_shader;
 			return true;
@@ -115,7 +114,6 @@ namespace fractal {
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 			//unbind
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			// TODO: I AM DONE WITH MESHDATA!
 		}
 
 		void MeshComponent::unbindVAO() const {

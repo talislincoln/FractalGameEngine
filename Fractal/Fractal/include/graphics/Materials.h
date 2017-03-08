@@ -14,7 +14,6 @@ namespace fractal {
 			virtual void use();
 			virtual void unuse();
 			virtual void destroy();
-		private:
 
 		protected:
 

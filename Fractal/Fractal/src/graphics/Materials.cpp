@@ -16,7 +16,6 @@ using namespace fgraphics;
 
 	void Materials::unuse()
 	{
-
 		m_shader->unuse();
 	}
 
