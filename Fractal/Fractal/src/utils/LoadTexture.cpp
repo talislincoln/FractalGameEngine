@@ -14,16 +14,17 @@ namespace fractal {
 
 		TextureData* LoadTexture::decodeTexturePNG(const std::string& reader)
 		{
+			std::string path = "res/" + reader + ".png";
 			unsigned long width = 0;
 			unsigned long height = 0;
 			std::vector<unsigned char> buffer, image;
-			if (IOManager::readFileToBuffer(reader, buffer) == false) {
-				std::cout << ("fail loading png file" + reader);
+			if (IOManager::readFileToBuffer(path, buffer) == false) {
+				std::cout << ("fail loading png file" + path);
 			}
 
 			int error = PicoPNG::decodePNG(image, width, height, &buffer[0], buffer.size());
 			if (error != 0)
-				std::cout << ("Tried to load texture " + reader + " , didn't work");
+				std::cout << ("Tried to load texture " + path + " , didn't work");
 
 			return new TextureData(width, height, image);
 		}

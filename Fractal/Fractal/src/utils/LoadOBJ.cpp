@@ -14,7 +14,7 @@ namespace fractal {
 		using namespace fgraphics;
 		ifstream reader;
 
-		reader.open("res/meshes/" + fileName + ".obj");
+		reader.open("res/" + fileName + ".obj");
 		if (!reader.is_open()) {
 			printf("failed  %s", &fileName[0]); // need debug~
 			assert(reader);

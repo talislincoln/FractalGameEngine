@@ -3,9 +3,8 @@
 
 #include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
-#include <Fractal\include\graphics\shaders\MeshShader.h>
 #include <Fractal\include\graphics\MeshData.h>
-#include <Fractal\include\graphics\Texture.h>
+#include "graphics\materials\DefaultMaterial.h"
 
 namespace fractal {
 	namespace fscene {
@@ -13,7 +12,7 @@ namespace fractal {
 		using namespace fmath;
 		class MeshComponent : public Component, public IDrawable {
 		public:
-			MeshComponent(fgraphics::MeshData* mesh);
+			MeshComponent(fgraphics::MeshData* mesh, fgraphics::Material* m = new fgraphics::DefaultMaterial());
 			virtual ~MeshComponent();
 
 			virtual bool initialize();
@@ -31,8 +30,9 @@ namespace fractal {
 			void bindIndicesBuffer();
 			size_t m_indicesSize, m_vecticesSize;
 			fgraphics::MeshData* m_mesh;
-			fgraphics::MeshShader* m_shader;
-			fgraphics::Texture* m_texture;// Materials in the future. just need to test it here.
+			fgraphics::Material* m_material;
+			//fgraphics::MeshShader* m_shader;
+			//fgraphics::Texture* m_texture;// Materials in the future. just need to test it here.
 			GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu

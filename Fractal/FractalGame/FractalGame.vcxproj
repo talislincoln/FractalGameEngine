@@ -138,6 +138,10 @@
     <ClInclude Include="MScene.h" />
     <ClInclude Include="TalisScene.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Defaults\Materials\Shaders\DefaultShader.frag" />
+    <None Include="res\Defaults\Materials\Shaders\DefaultShader.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

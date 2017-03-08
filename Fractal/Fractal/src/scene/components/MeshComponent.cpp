@@ -11,15 +11,15 @@
 
 #include <Fractal\include\core\systems\manager\CameraManager.h>
 #include <Fractal\include\scene\objects\CameraObject.h>
-
 namespace fractal {
 	namespace fscene {
 		using namespace fmath;
-		MeshComponent::MeshComponent(fgraphics::MeshData* mesh) : 
+		MeshComponent::MeshComponent(fgraphics::MeshData* mesh, fgraphics::Material* m) : 
 			Component("MeshComponent"), 
 			m_mesh(mesh),
-			m_shader(new fgraphics::MeshShader()), 
-			m_texture(fgraphics::Texture::newTexture("res/images/awesome.png").create())
+			m_material(m)
+			//m_shader(new fgraphics::MeshShader()), 
+			//m_texture(fgraphics::Texture::newTexture("res/images/awesome.png").create())
 		{
 			//empty
 		}
@@ -40,23 +40,26 @@ namespace fractal {
 		void MeshComponent::draw() {
 			glBindVertexArray(m_vao);
 
-			m_shader->use();// all this is going into Materials
-			m_texture->bindToUnit(0);
+			m_material->use();// pass in 4 matrix
+			//m_shader->use();// all this is going into Materials
+			//m_texture->bindToUnit(0);
 
 			fscene::CameraObject* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
 
-			//m_shader->view->loadMatrix(fmath::Matrix4::translate(Vector3(0.0f, test -= 0.00001f, -10.0f)));
-			m_shader->view->loadMatrix(camera->getComponent<TransformComponent>()->getWorldMatrix());
-			m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
+			m_material->loadCamera(camera->getTransform()->getWorldMatrix(), 
+				fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f),  //get that from camera too?
+				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
+			//m_shader->view->loadMatrix(camera->getComponent<TransformComponent>()->getWorldMatrix());
+			//m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
 
-			m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
+			//m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 
 			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
 			glDrawElements(GL_TRIANGLES, m_mesh->getIndices().size(), GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 
-			
-			m_shader->unuse();
+			m_material->unuse();
+			//m_shader->unuse();
 		}
 
 		void MeshComponent::update() {
@@ -70,9 +73,9 @@ namespace fractal {
 			}
 			
 			m_vbos.clear();
-
-			m_shader->destroy();
-			delete m_shader;
+			m_material->destroy();
+			//m_shader->destroy();
+			//delete m_shader;
 			return true;
 		}
 

@@ -17,8 +17,10 @@ namespace fractal {
 		//get source code from filepath
 
 		//compile shader
-		GLuint m_vertexShaderID = compileShaders(vertexPath, GL_VERTEX_SHADER);;
-		GLuint m_fragmentShaderID = compileShaders(fragmentPath, GL_FRAGMENT_SHADER);
+		std::string path = "res/" + (std::string)vertexPath + ".vert";
+		GLuint m_vertexShaderID = compileShaders(path, GL_VERTEX_SHADER);
+		path = "res/" + (std::string)fragmentPath + ".frag";
+		GLuint m_fragmentShaderID = compileShaders(path, GL_FRAGMENT_SHADER);
 
 		this->m_programID = glCreateProgram();
 
@@ -124,14 +126,11 @@ namespace fractal {
 		//deleting program from gpu
 		glDeleteProgram(m_programID);
 	}
-	void ShaderProgram::storeUniformLocations(const unsigned int size, ...)
+	void ShaderProgram::storeUniformLocations(const std::vector<Uniform*> uniforms)
 	{
-		va_list ap;
-		va_start(ap, size);
-		for (unsigned int i = 0; i < size; i++) {
-			(va_arg(ap, Uniform*))->storeUniformLocation(this->m_programID);
+		for (unsigned int i = 0; i < uniforms.size(); i++) {
+			uniforms[i]->storeUniformLocation(this->m_programID);
 		}
-		va_end(ap);
 	}
 	void ShaderProgram::storeAllAttrib(std::vector<GLuint> uniforms)
 	{

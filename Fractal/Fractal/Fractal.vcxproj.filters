@@ -12,7 +12,6 @@
     <ClCompile Include="src\core\systems\PhysicsWorld.cpp" />
     <ClCompile Include="src\core\systems\System.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
-    <ClCompile Include="src\graphics\Mesh.cpp" />
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
     <ClCompile Include="src\interfaces\IDrawable.cpp" />
@@ -46,7 +45,8 @@
     <ClCompile Include="src\utils\ShaderUtils\UniformVector2.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
-    <ClCompile Include="src\graphics\Materials.cpp" />
+    <ClCompile Include="src\graphics\Material.cpp" />
+    <ClCompile Include="src\graphics\Materials\DefaultMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -94,8 +94,6 @@
     <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
-    <ClInclude Include="include\graphics\Materials.h" />
-    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformBool.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformFloat.h" />
@@ -106,6 +104,7 @@
     <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
     <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
     <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
+    <ClInclude Include="include\graphics\Material.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

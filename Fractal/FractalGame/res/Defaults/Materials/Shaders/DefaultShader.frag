@@ -10,5 +10,5 @@ uniform sampler2D diffuseMap;
 
 void main()
 {
-color = texture(diffuseMap, pass_textureCoords);
+	color = texture(diffuseMap, pass_textureCoords);
 }

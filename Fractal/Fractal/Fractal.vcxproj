@@ -142,7 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\graphics\Materials.cpp" />
+    <ClCompile Include="src\graphics\Material.cpp" />
+    <ClCompile Include="src\graphics\Materials\DefaultMaterial.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
@@ -156,7 +157,6 @@
     <ClCompile Include="src\core\systems\System.cpp" />
     <ClCompile Include="src\core\systems\Timer.cpp" />
     <ClCompile Include="src\core\systems\Window.cpp" />
-    <ClCompile Include="src\graphics\Mesh.cpp" />
     <ClCompile Include="src\graphics\ShaderProgram.cpp" />
     <ClCompile Include="src\helpers\Manager.cpp" />
     <ClCompile Include="src\helpers\Singleton.cpp" />
@@ -209,12 +209,11 @@
     <ClInclude Include="include\defines\deletemacros.h" />
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
-    <ClInclude Include="include\graphics\Materials.h" />
+    <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
     <ClInclude Include="include\graphics\Mesh.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
-    <ClInclude Include="include\graphics\shaders\MeshShader.h" />
     <ClInclude Include="include\graphics\Texture.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
