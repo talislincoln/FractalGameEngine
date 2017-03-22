@@ -20,11 +20,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalEvent", "FractalEven
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalPhysics", "FractalPhysics\FractalPhysics.vcxproj", "{C25A56D4-0FB7-4F5F-BF97-E6D7C925E9EE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FractalMathTest", "FractalMathTest\FractalMathTest.vcxproj", "{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D9D15335-0205-42FB-A712-16340CC2673B} = {D9D15335-0205-42FB-A712-16340CC2673B}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -73,14 +68,6 @@ Global
 		{C25A56D4-0FB7-4F5F-BF97-E6D7C925E9EE}.Release|x64.Build.0 = Release|x64
 		{C25A56D4-0FB7-4F5F-BF97-E6D7C925E9EE}.Release|x86.ActiveCfg = Release|Win32
 		{C25A56D4-0FB7-4F5F-BF97-E6D7C925E9EE}.Release|x86.Build.0 = Release|Win32
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Debug|x64.ActiveCfg = Debug|x64
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Debug|x64.Build.0 = Debug|x64
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Debug|x86.ActiveCfg = Debug|Win32
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Debug|x86.Build.0 = Debug|Win32
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Release|x64.ActiveCfg = Release|x64
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Release|x64.Build.0 = Release|x64
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Release|x86.ActiveCfg = Release|Win32
-		{4A0835C1-19C6-44F5-B6B7-A2CFD4A87FA7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
