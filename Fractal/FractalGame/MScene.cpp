@@ -4,7 +4,6 @@
 #include <Fractal\include\helpers\Singleton.h>
 #include <Fractal\include\scene\SceneManager.h>
 #include <Fractal\include\core\systems\Input.h>
-#include <Fractal\include\graphics\Mesh.h>
 #include <Fractal\include\scene\components\MeshComponent.h>
 
 #include <Fractal\include\scene\components\TerrainComponent.h>

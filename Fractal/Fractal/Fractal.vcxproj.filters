@@ -64,7 +64,6 @@
     <ClInclude Include="include\defines\deletemacros.h" />
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
-    <ClInclude Include="include\graphics\Mesh.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
@@ -112,5 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
