@@ -1,4 +1,3 @@
-#include "graphics\Mesh.h"
 #include "graphics\ShaderProgram.h"
 #include <iostream>
 

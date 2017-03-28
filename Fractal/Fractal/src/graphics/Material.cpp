@@ -21,10 +21,13 @@ using namespace fgraphics;
 		for (unsigned int i = 0; i < m_uniforms.size(); i++) {
 			delete m_uniforms[i];
 		}
+		m_uniforms.clear();
 		for (unsigned int i = 0; i < m_textures.size(); i++) {
 			m_textures[i]->destroy();
 		}
+		m_textures.clear();
 		m_shader->destroy();
+		m_shader = nullptr;
 	}
 
 	void Material::loadCamera(const fmath::Matrix4& view,const fmath::Matrix4& projection, const fmath::Matrix4& model)

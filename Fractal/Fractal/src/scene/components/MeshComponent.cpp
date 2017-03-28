@@ -1,12 +1,10 @@
-#include "graphics\Mesh.h"
-#include "helpers\Singleton.h"
 #include "scene\components\MeshComponent.h"
-#include "core\systems\Window.h"
+
+#include "helpers\Singleton.h"
+#include "scene\components\TransformComponent.h"
 #include "core\systems\manager\SystemManager.h"
-#include "graphics\ShaderProgram.h"
 #include <FractalMath\Matrix.h>
 #include "scene\GameObject.h"
-#include "scene\components\TransformComponent.h"
 #include <assert.h>
 
 #include <Fractal\include\core\systems\manager\CameraManager.h>
@@ -18,8 +16,6 @@ namespace fractal {
 			Component("MeshComponent"), 
 			m_mesh(mesh),
 			m_material(m)
-			//m_shader(new fgraphics::MeshShader()), 
-			//m_texture(fgraphics::Texture::newTexture("res/images/awesome.png").create())
 		{
 			//empty
 		}
@@ -29,11 +25,16 @@ namespace fractal {
 		}
 
 		bool MeshComponent::initialize() {
+			m_indicesSize = m_mesh->getIndices().size();
+			m_vecticesSize = m_mesh->getVertexCount();
 			createVAO();
 			storeDataInVAO();
 			bindIndicesBuffer();
 			unbindVAO();
 
+			m_mesh->destroy();
+			delete m_mesh;
+			m_mesh = nullptr;
 			return true;
 		}
 
@@ -41,25 +42,17 @@ namespace fractal {
 			glBindVertexArray(m_vao);
 
 			m_material->use();// pass in 4 matrix
-			//m_shader->use();// all this is going into Materials
-			//m_texture->bindToUnit(0);
-
+			
 			fscene::CameraObject* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
 
-			m_material->loadCamera(camera->getTransform()->getWorldMatrix(), 
+			m_material->loadCamera(camera->getTransform()->getWorldMatrix(),
 				fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f),  //get that from camera too?
 				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
-			//m_shader->view->loadMatrix(camera->getComponent<TransformComponent>()->getWorldMatrix());
-			//m_shader->projectionMatrix->loadMatrix(fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f)); // camera matrix = projection * view
-
-			//m_shader->modelMatrix->loadMatrix(this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
-
-			//glDrawArrays(GL_TRIANGLES, 0, m_mesh->getVertices().size());
-			glDrawElements(GL_TRIANGLES, m_mesh->getIndices().size(), GL_UNSIGNED_INT, 0);
+			
+			glDrawElements(GL_TRIANGLES, m_indicesSize, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
 
 			m_material->unuse();
-			//m_shader->unuse();
 		}
 
 		void MeshComponent::update() {
@@ -73,9 +66,9 @@ namespace fractal {
 			}
 			
 			m_vbos.clear();
+
 			m_material->destroy();
-			//m_shader->destroy();
-			//delete m_shader;
+			m_material = nullptr;
 			return true;
 		}
 
@@ -94,7 +87,7 @@ namespace fractal {
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-			glBufferData(GL_ARRAY_BUFFER, m_mesh->getVertices().size() * sizeof(fmath::Vector3), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector3), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
 			//TODO:: need to store texture and normal data too.
 
 			// the meaning of each attribute
@@ -104,14 +97,26 @@ namespace fractal {
 			// 4 - if the data is normalized
 			// 5 - distance between each vertices
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+			glGenBuffers(1, &vbo);
+			m_vbos.push_back(vbo);
+
+			//start using this vbo
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector3), &(m_mesh->getNormals()[0]), GL_STATIC_DRAW);
 
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+			glGenBuffers(1, &vbo);
+			m_vbos.push_back(vbo);
+
+			//start using this vbo
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector2), &(m_mesh->getTextureCoords()[0]), GL_STATIC_DRAW);
+
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 			//unbind
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			// TODO: I AM DONE WITH MESHDATA!
-			//m_mesh->destroy();
-			//delete m_mesh;
 		}
 
 		void MeshComponent::unbindVAO() const {
@@ -126,7 +131,7 @@ namespace fractal {
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo);
 			
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_mesh->getIndices().size() * sizeof(GL_INT), &(m_mesh->getIndices()[0]), GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indicesSize * sizeof(GL_INT), &(m_mesh->getIndices()[0]), GL_STATIC_DRAW);
 		}
 	}
 }

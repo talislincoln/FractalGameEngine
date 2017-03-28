@@ -4,7 +4,7 @@
 #include <Fractal\include\helpers\Singleton.h>
 #include <Fractal\include\scene\SceneManager.h>
 #include <Fractal\include\core\systems\Input.h>
-#include <Fractal\include\graphics\Mesh.h>
+
 #include <Fractal\include\scene\components\MeshComponent.h>
 
 #include <Fractal\include\scene\components\TerrainComponent.h>
@@ -40,8 +40,9 @@ bool TalisScene::initialize() {
 	test1 = new SceneObject("test1");
 	test1->addComponent(new MeshComponent(LoadOBJ::load("meshes/cyl")));
 	test1->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
-	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(1.0f, 0.0f, 0.0f));
-	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);
+	test1->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
+	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(1.0f, 1.0f, 0.0f));
+	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(1.0f);
 	camera = new FreeCamera("MainCamera");
 	//camera->addComponent(new MeshComponent(LoadOBJ::load("cyl")));
 	addGameObject(test1);
@@ -56,6 +57,9 @@ void TalisScene::update() {
 	using namespace fmath;
 	using namespace fgraphics;
 	Scene::update();
+	if (test1->getComponent<fphysics::PhysicsBodyComponent>()->isGround()) {
+		test1->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(0, 10.0f, 0));
+	}
 }
 
 bool TalisScene::shutdown() {

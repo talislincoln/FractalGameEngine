@@ -28,11 +28,11 @@ namespace fractal {
 			void storeDataInVAO();
 			void unbindVAO() const;
 			void bindIndicesBuffer();
+
 			size_t m_indicesSize, m_vecticesSize;
 			fgraphics::MeshData* m_mesh;
 			fgraphics::Material* m_material;
-			//fgraphics::MeshShader* m_shader;
-			//fgraphics::Texture* m_texture;// Materials in the future. just need to test it here.
+
 			GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu
