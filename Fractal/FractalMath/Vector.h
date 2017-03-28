@@ -27,6 +27,21 @@ namespace fractal {
 				this->x = x;
 				this->y = y;
 			}
+			inline const Vector2 operator*(const float s) const {
+				return Vector2(s*x, s*y);
+			}
+			inline const Vector2 operator=(const Vector2& v) {
+				load(v.x, v.y);
+				return *this;
+			}
+			inline operator const float* () const {
+				return static_cast<const float*>(&x);
+			}
+
+			inline operator float* () {
+				return static_cast<float*>(&x);
+			}
+
 		};
 
 		///Structure that defines a Vector 3 (x, y, z)

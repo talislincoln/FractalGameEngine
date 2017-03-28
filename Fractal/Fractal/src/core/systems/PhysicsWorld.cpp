@@ -40,7 +40,7 @@ namespace fractal {
 			int i = 0;
 			dtime = dynamic_cast<fcore::Timer*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->deltaTime;
 			//dtime = timer.GetDeltaTime() / 2.0f;
-			for (auto& body : gameOjbectWithBodyList) {
+			for (fscene::GameObject* body : gameOjbectWithBodyList) {
 
 				//VelocityState *vState = m_velocities + ++i; // for collidion with reaction. 
 

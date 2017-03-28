@@ -34,6 +34,8 @@ namespace fractal {
 			m_keyMap[SDL_QUIT * 2] = false;
 
 
+			m_oldMousePosition.x = m_currentMousePosition.x;
+			m_oldMousePosition.y = m_currentMousePosition.y;
 			SDL_Event evnt;
 			//Will keep looping until there are no more events to process
 			while (SDL_PollEvent(&evnt)) {
@@ -45,8 +47,6 @@ namespace fractal {
 					break;
 				case SDL_MOUSEMOTION:
 					// TODO create a custom event type for mouse motion since there's none
-					m_oldMousePosition.x = m_currentMousePosition.x;
-					m_oldMousePosition.y = m_currentMousePosition.y;
 					m_currentMousePosition.x = (float)evnt.motion.x;
 					m_currentMousePosition.y = (float)evnt.motion.y;
 

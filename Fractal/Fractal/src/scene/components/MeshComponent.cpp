@@ -43,10 +43,10 @@ namespace fractal {
 
 			m_material->use();// pass in 4 matrix
 			
-			fscene::CameraObject* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
+			fscene::CameraComponent* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
 
-			m_material->loadCamera(camera->getTransform()->getWorldMatrix(),
-				fmath::Matrix4::perspective(45.0f, 800.0f / 500.0f, 0.1f, 100.0f),  //get that from camera too?
+			m_material->loadCamera(camera->getViewMatrix(),
+				fmath::Matrix4::perspective(50.0f, 800.0f / 500.0f, 0.1f, 1000.0f),  //get that from camera too?
 				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 			
 			glDrawElements(GL_TRIANGLES, m_indicesSize, GL_UNSIGNED_INT, 0);

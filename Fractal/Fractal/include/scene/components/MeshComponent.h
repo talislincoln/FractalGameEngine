@@ -19,7 +19,9 @@ namespace fractal {
 			virtual void draw();
 			virtual void update();
 			virtual bool shutdown();
-
+			inline void setMaterial(fractal::fgraphics::Material* m) {
+				m_material = m;
+			}
 			inline fgraphics::MeshData* getMesh() const {
 				return m_mesh;
 			}
