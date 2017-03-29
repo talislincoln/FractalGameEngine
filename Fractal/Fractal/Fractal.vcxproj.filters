@@ -47,6 +47,7 @@
     <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMaterial.cpp" />
+    <ClCompile Include="src\core\systems\HUD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -104,6 +105,8 @@
     <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
     <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
     <ClInclude Include="include\graphics\Material.h" />
+    <ClInclude Include="include\core\systems\HUD.h" />
+    <ClInclude Include="include\core\systems\manager\UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

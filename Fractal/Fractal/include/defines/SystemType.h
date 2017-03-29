@@ -9,7 +9,8 @@ namespace fractal {
 		GRAPHICS_SYSTEM,
 		TIMER_SYSTEM,
 		LOGIC_SYSTEM,
-		PHYSICS_SYSTEM
+		PHYSICS_SYSTEM,
+		HUD_SYSTEM
 	};
 }
 

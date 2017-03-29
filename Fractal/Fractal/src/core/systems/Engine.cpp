@@ -5,6 +5,8 @@
 #include "core\systems\Logic.h"
 #include "core\systems\Graphics.h"
 #include "core\systems\Timer.h"
+#include "core\systems\HUD.h"
+#include "core\systems\PhysicsWorld.h"
 
 #include "core\systems\manager\SystemManager.h"
 #include "scene\SceneManager.h"
@@ -115,7 +117,19 @@ namespace fractal {
 			Timer* timer = static_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
 			if (timer == nullptr)
 				return 0;
-			
+
+			//HUDs system need to be after Graphics system
+			HUD* HUDs = static_cast<HUD*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::HUD_SYSTEM));
+			if (HUDs == nullptr)
+				return 0;
+			fphysics::PhysicsWorld* physics = static_cast<fphysics::PhysicsWorld*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM));
+			if (physics == nullptr)
+				return 0;
+
+			if (!HUDs->initialize())
+				return 0;
+			if (!physics->initialize())
+				return 0;
 			if (!window->initialize())
 				return 0;
 			if (!input->initialize())
