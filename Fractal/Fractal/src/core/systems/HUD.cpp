@@ -10,16 +10,16 @@ void HUD::update()
 {
 }
 
-void HUD::destroy()
+void HUD::draw()
 {
 }
 
 bool HUD::initialize()
 {
-	return false;
+	return true;
 }
 
 bool HUD::shutdown()
 {
-	return false;
+	return true;
 }

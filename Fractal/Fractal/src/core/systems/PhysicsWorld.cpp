@@ -32,9 +32,6 @@ namespace fractal {
 
 			//SDL_Delay(timer.GetSleepTime(60));
 		}
-		void PhysicsWorld::destroy() {
-
-		}
 		void PhysicsWorld::simulation() {
 			using namespace fhelpers;
 			int i = 0;

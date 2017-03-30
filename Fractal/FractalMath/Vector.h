@@ -16,24 +16,104 @@ namespace fractal {
 #ifndef DEGREES_TO_RADIANS
 #define DEGREES_TO_RADIANS (float)(M_PI / 180.0f)
 #endif	
+
 		///Structure that defines a Vector 2 (x, y)
 		struct Vector2 {
 			float x, y;
 
-			inline Vector2(float x = 0.0f, float y = 0.0f) {
+			inline Vector2(float s = 0.0f) {
+				load(s, s);
+			}
+
+			inline Vector2(float x, float y) {
 				load(x, y);
 			}
-			inline void load(const float x, const float y) {
+			inline Vector2(const Vector2& v) {
+				load(v.x, v.y);
+			}
+			inline void load(float x, float y) {
 				this->x = x;
 				this->y = y;
 			}
-			inline const Vector2 operator*(const float s) const {
+
+			inline void load(float s = 0) {
+				this->x = s;
+				this->y = s;
+			}
+
+			inline Vector2& add(const Vector2& other) {
+				x += other.x;
+				y += other.y;
+				return *this;
+			}
+
+			inline Vector2& subtract(const Vector2& other) {
+				x -= other.x;
+				y -= other.y;
+				return *this;
+			}
+
+			inline Vector2& multiply(const Vector2& other) {
+				x *= other.x;
+				y *= other.y;
+				return *this;
+			}
+			inline const Vector2 operator+(const Vector2& other) const {
+				return Vector2(x + other.x, y + other.y);
+			}
+
+			inline const Vector2 operator-(const Vector2& other) const {
+				return Vector2(x - other.x, y - other.y);
+			}
+
+			inline const Vector2 operator*(const Vector2& other) const {
+				return Vector2(x * other.x, y * other.y);
+			}
+
+			inline const Vector2 operator*(float s) const {
 				return Vector2(s*x, s*y);
 			}
-			inline const Vector2 operator=(const Vector2& v) {
+			inline const Vector2 operator/(const float s) const {
+#ifdef _DEBUG
+				if (fabs(s) < VERY_SMALL) {
+					std::string errorMsg("Divide by nearly zero! ");
+					throw errorMsg;
+				}
+#endif
+
+				float r = 1.0f / s;
+				return *this * r;
+			}
+			inline friend const Vector2 operator*(const float s, const Vector2& other) {
+				return other * s;
+			}
+			inline const Vector2 operator - () const {
+				return Vector2(-x, -y);
+			}
+			inline Vector2& operator+=(const Vector2& other) {
+				return add(other);
+			}
+			inline Vector2& operator-=(const Vector2& other) {
+				return subtract(other);
+			}
+			inline Vector2& operator*=(const Vector2& other) {
+				return multiply(other);
+			}
+			inline const Vector2& operator=(const Vector2& v) {
 				load(v.x, v.y);
 				return *this;
 			}
+
+
+
+			inline bool operator==(const Point3& other) const {
+				return x == other.x && y == other.y;
+			}
+
+			inline bool operator!=(const Point3& other) const {
+				return x != other.x || y != other.y;
+			}
+
 			inline operator const float* () const {
 				return static_cast<const float*>(&x);
 			}
@@ -120,6 +200,9 @@ namespace fractal {
 			inline float& operator [] (int index) {
 				return *(&x + index);
 			}
+
+			static const Vector3 UP;
+			static const Vector3 FRONT;
 		};
 
 		///Structure that defines a Vector 4, inherits from Vector 3

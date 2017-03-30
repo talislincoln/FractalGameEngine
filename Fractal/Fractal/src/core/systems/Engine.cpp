@@ -61,8 +61,8 @@ namespace fractal {
 			//this function will assignt the is running to false
 			//and close the application at the end of it
 
-			Uint32 start32, now32;
-			Uint64 start, now;
+			//Uint32 start32, now32;
+			//Uint64 start, now;
 
 			/*start32 = SDL_GetTicks();
 			start = SDL_GetPerformanceCounter();
@@ -118,16 +118,14 @@ namespace fractal {
 			if (timer == nullptr)
 				return 0;
 
+			fphysics::PhysicsWorld* physics = static_cast<fphysics::PhysicsWorld*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM));
+			if (physics == nullptr)
+				return 0;
 			//HUDs system need to be after Graphics system
 			HUD* HUDs = static_cast<HUD*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::HUD_SYSTEM));
 			if (HUDs == nullptr)
 				return 0;
-			fphysics::PhysicsWorld* physics = static_cast<fphysics::PhysicsWorld*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM));
-			if (physics == nullptr)
-				return 0;
 
-			if (!HUDs->initialize())
-				return 0;
 			if (!physics->initialize())
 				return 0;
 			if (!window->initialize())
@@ -135,6 +133,8 @@ namespace fractal {
 			if (!input->initialize())
 				return 0;
 			if (!graphics->initialize())
+				return 0;
+			if (!HUDs->initialize())
 				return 0;
 
 			input->bindInput(InputBinding(SDL_QUIT * 2, std::bind(&Engine::closeRequested, this), InputStateType::PRESSED));

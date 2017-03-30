@@ -4,7 +4,7 @@
 
 namespace fractal {
 	namespace fcore {
-		class CameraManager : public Manager {
+		class UIManager : public Manager {
 
 		}
 #endif // !UIMANAGER_H

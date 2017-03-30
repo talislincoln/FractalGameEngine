@@ -7,11 +7,12 @@ namespace fractal {
 		class HUD : public System, public IDrawable {
 		public:
 			HUD();
-			void update();
-			void destroy();
+			virtual void update();
 
-			bool initialize();
-			bool shutdown();
+			virtual void draw();
+
+			virtual bool initialize();
+			virtual bool shutdown();
 
 		};
 	}

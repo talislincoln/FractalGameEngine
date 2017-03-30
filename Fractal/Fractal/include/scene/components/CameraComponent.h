@@ -13,8 +13,7 @@ namespace fractal {
 		class CameraComponent : public Component
 		{
 		public:
-			CameraComponent(const std::string& name = "", GLfloat yaw = -90.0f, GLfloat pitch = 0.0f, GLfloat roll = 0.0f
-				, GLfloat zoom = 45.0f);
+			CameraComponent(const std::string& name = "");
 			virtual ~CameraComponent();
 
 			virtual bool initialize();
@@ -29,18 +28,15 @@ namespace fractal {
 				return m_front;
 			}
 			inline fmath::Vector3 getRight() {
-				return m_right;
+				return m_front.cross(m_up);
 			}
 			inline fmath::Vector3 getUp() {
 				return m_up;
 			}
 		private:
 			TransformComponent* m_transformComponent;
-			GLfloat m_roll;
-			GLfloat m_pitch;
-			GLfloat m_yaw;
 			GLfloat m_zoom;
-			fmath::Vector3 m_front, m_right, m_up;
+			fmath::Vector3 m_front, m_up;
 		};
 	}
 }

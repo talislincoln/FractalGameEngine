@@ -7,7 +7,7 @@
 
 namespace fractal {
 	namespace fscene {
-		CameraComponent::CameraComponent(const std::string& name, GLfloat yaw, GLfloat pitch, GLfloat roll, GLfloat zoom) :
+		CameraComponent::CameraComponent(const std::string& name) :
 			Component(name == "" ? "CameraComponent" : name), 
 			m_transformComponent(nullptr)
 		{
@@ -33,12 +33,13 @@ namespace fractal {
 
 		void CameraComponent::update() {
 
-			fractal::fmath::Vector3 front = fmath::Vector3(0.0f, 0.0f, -1.0f);
-			front = m_transformComponent->getRotation().rotate(front);
-			this->m_front = front.normalize();
+			this->m_front = m_transformComponent->getRotation().rotate(fmath::Vector3::FRONT);
+			//this->m_front.normalize();
+			//  unit vector rotate with unit Q should be a unit vector.  no need to normalize;
+
 			// Also re-calculate the Right and Up vector
-			this->m_right = m_front.cross(fmath::Vector3(0.0f, 1.0f, 0.0f)).getNormilizedVector();  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-			this->m_up = m_right.cross(this->m_front).getNormilizedVector();
+			//do we need right?
+			this->m_up = m_front.cross(fmath::Vector3::UP).cross(this->m_front).getNormilizedVector();  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
 			// Calculate the new Front vector 
 			//empty
 		}
@@ -47,6 +48,7 @@ namespace fractal {
 		}
 
 		const fmath::Matrix4 CameraComponent::getViewMatrix() const {
+
 			return fmath::Matrix4::lookAt(this->m_transformComponent->getPosition(),
 				this->m_transformComponent->getPosition() + m_front, m_up);
 			//fmath::Matrix4 m = this->m_transformComponent->getWorldMatrix();
