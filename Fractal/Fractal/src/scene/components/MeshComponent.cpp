@@ -32,7 +32,6 @@ namespace fractal {
 
 		void MeshComponent::draw() {
 			m_vao->bind();
-
 			m_material->use();// pass in 4 matrix
 			
 			fscene::CameraComponent* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
