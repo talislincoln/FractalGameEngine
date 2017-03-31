@@ -46,9 +46,10 @@
     <ClCompile Include="src\utils\ShaderUtils\UniformVector3.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformVector4.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
-    <ClCompile Include="src\graphics\Materials\DefaultMaterial.cpp" />
     <ClCompile Include="src\core\systems\HUD.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
+    <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
+    <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -104,11 +105,13 @@
     <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
     <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
-    <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
     <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\core\systems\HUD.h" />
     <ClInclude Include="include\core\systems\manager\UIManager.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
+    <ClInclude Include="include\graphics\Terrain.h" />
+    <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
+    <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

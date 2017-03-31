@@ -28,7 +28,7 @@ namespace fractal {
 				return m_front;
 			}
 			inline fmath::Vector3 getRight() {
-				return m_front.cross(m_up);
+				return m_right;
 			}
 			inline fmath::Vector3 getUp() {
 				return m_up;
@@ -36,7 +36,7 @@ namespace fractal {
 		private:
 			TransformComponent* m_transformComponent;
 			GLfloat m_zoom;
-			fmath::Vector3 m_front, m_up;
+			fmath::Vector3 m_front, m_up, m_right;
 		};
 	}
 }

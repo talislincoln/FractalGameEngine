@@ -5,17 +5,28 @@
 namespace fractal {
 	namespace fscene {
 
-		TerrainComponent::TerrainComponent(float height, const std::string& name) :
-			Component(name == "" ? "TerrainComponent" : name) , normal(0.0f,1.0f,0.0f) {
+		TerrainComponent::TerrainComponent( const std::string& name, const fgraphics::Material* m, float height) :
+			Component(name == "" ? "TerrainComponent" : name),m_TerrainMaterial(m), m_normal(fmath::Vector3::UP){
 			this->height = height;
 		}
 		TerrainComponent::~TerrainComponent() {
 
 		}
+
+		void TerrainComponent::update()
+		{
+		}
 		bool TerrainComponent::initialize() {
 
-			dynamic_cast<fphysics::PhysicsWorld*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM))->setTerrainComponent(this);
+			static_cast<fphysics::PhysicsWorld*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM))->setTerrainComponent(this);
 			return true;
+		}
+		bool TerrainComponent::shutdown()
+		{
+			return false;
+		}
+		void TerrainComponent::draw()
+		{
 		}
 	}
 }

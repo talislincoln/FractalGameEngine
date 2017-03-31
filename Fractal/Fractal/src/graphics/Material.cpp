@@ -30,9 +30,16 @@ using namespace fgraphics;
 		m_shader = nullptr;
 	}
 
-	void Material::loadCamera(const fmath::Matrix4& view,const fmath::Matrix4& projection, const fmath::Matrix4& model)
+	void fractal::fgraphics::Material::loadCamera(const fmath::Matrix4 & view, const fmath::Matrix4 & projection, const fmath::Matrix4 & model)
 	{
 		static_cast<UniformMatrix*>(m_uniforms[0])->loadMatrix(view);
 		static_cast<UniformMatrix*>(m_uniforms[1])->loadMatrix(projection);
 		static_cast<UniformMatrix*>(m_uniforms[2])->loadMatrix(model);
 	}
+
+	void fractal::fgraphics::Material::load2DMatrix(int index, const fmath::Vector2 & t, float rolate, const fmath::Vector2 & scale)
+	{
+		fmath::Matrix4 m = fmath::Matrix4::create2Dmatrix(t, rolate, scale);
+		static_cast<UniformMatrix*>(m_uniforms[index])->loadMatrix(m);
+	}
+

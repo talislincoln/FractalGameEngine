@@ -33,14 +33,17 @@ namespace fractal {
 
 		void CameraComponent::update() {
 
+			// Calculate the new Front vector 
 			this->m_front = m_transformComponent->getRotation().rotate(fmath::Vector3::FRONT);
 			//this->m_front.normalize();
 			//  unit vector rotate with unit Q should be a unit vector.  no need to normalize;
 
 			// Also re-calculate the Right and Up vector
 			//do we need right?
-			this->m_up = m_front.cross(fmath::Vector3::UP).cross(this->m_front).getNormilizedVector();  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-			// Calculate the new Front vector 
+			this->m_right = m_front.cross(fmath::Vector3::UP).getNormilizedVector();
+			this->m_up = m_right.cross(this->m_front).getNormilizedVector();  
+			// Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
+			
 			//empty
 		}
 		bool CameraComponent::shutdown() {

@@ -88,7 +88,6 @@ namespace fractal {
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector3), &(m_mesh->getVertices()[0]), GL_STATIC_DRAW);
-			//TODO:: need to store texture and normal data too.
 
 			// the meaning of each attribute
 			// 1 - attribute position
@@ -97,24 +96,20 @@ namespace fractal {
 			// 4 - if the data is normalized
 			// 5 - distance between each vertices
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+
 			glGenBuffers(1, &vbo);
 			m_vbos.push_back(vbo);
-
 			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
 			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector3), &(m_mesh->getNormals()[0]), GL_STATIC_DRAW);
-
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+
 			glGenBuffers(1, &vbo);
 			m_vbos.push_back(vbo);
-
-			//start using this vbo
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
 			glBufferData(GL_ARRAY_BUFFER, m_vecticesSize * sizeof(fmath::Vector2), &(m_mesh->getTextureCoords()[0]), GL_STATIC_DRAW);
-
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+
 			//unbind
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
