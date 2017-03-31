@@ -5,7 +5,7 @@
 #include <Fractal\include\interfaces\IDrawable.h>
 #include <Fractal\include\graphics\MeshData.h>
 #include "graphics\materials\DefaultMeshMaterial.h"
-
+#include "graphics\vao.h"
 namespace fractal {
 	namespace fscene {
 		class TransformComponent;
@@ -23,20 +23,15 @@ namespace fractal {
 				m_material = m;
 			}
 		private:
-			void createVAO();
-			void storeDataInVAO();
-			void unbindVAO() const;
-			void bindIndicesBuffer();
-
-			size_t m_indicesSize, m_vecticesSize;
-			fgraphics::MeshData* m_mesh;
+			//size_t m_indicesSize, m_vecticesSize;
+			//fgraphics::MeshData* m_mesh;
 			fgraphics::Material* m_material;
-
-			GLuint m_vao;
+			fgraphics::Vao* m_vao;
+			//GLuint m_vao;
 
 			//list of vertices to be deleted from the gpu
 			//std::vector<GLuint> m_vaos;
-			std::vector<GLuint> m_vbos;
+			//std::vector<GLuint> m_vbos;
 		};
 	}
 }

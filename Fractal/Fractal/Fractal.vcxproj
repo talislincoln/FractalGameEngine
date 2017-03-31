@@ -146,6 +146,7 @@
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
+    <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
     <ClInclude Include="include\graphics\Texture.h" />
+    <ClInclude Include="include\graphics\vao.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />

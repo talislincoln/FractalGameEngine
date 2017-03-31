@@ -50,6 +50,7 @@
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
+    <ClCompile Include="src\graphics\Vao.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="include\graphics\Terrain.h" />
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
+    <ClInclude Include="include\graphics\vao.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
