@@ -1,4 +1,4 @@
-#include "graphics\vao.h"
+#include "graphics\Vao.h"
 #include "graphics\MeshData.h"
 namespace fractal{
 	namespace fgraphics {
