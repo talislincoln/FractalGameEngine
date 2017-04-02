@@ -16,10 +16,9 @@ namespace fractal {
 			Component("MeshComponent"), 
 			m_material(m)
 		{
-
+			//should be empty
 			m_vao = new fgraphics::Vao();
 			m_vao->loadMeshIntoOpenGL(mesh);
-			//empty
 		}
 
 		MeshComponent::~MeshComponent() {
@@ -56,6 +55,10 @@ namespace fractal {
 			m_material->destroy();
 			m_material = nullptr;
 			return true;
+		}
+		void MeshComponent::setTexture(fgraphics::Texture * texture)
+		{
+			m_material->loadNewTexture(texture);
 		}
 	}
 }

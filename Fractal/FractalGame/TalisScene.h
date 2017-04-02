@@ -16,6 +16,7 @@ public:
 
 private:
 	fractal::fscene::SceneObject* test1;
+	fractal::fscene::GameObject* test2;
 	fractal::fscene::SceneObject* terrain;
 	fractal::fscene::FreeCamera* camera;
 };

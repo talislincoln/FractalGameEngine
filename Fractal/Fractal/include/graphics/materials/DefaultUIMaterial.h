@@ -14,7 +14,7 @@ namespace fractal {
 			virtual void loadCamera(const fmath::Matrix4& view, const fmath::Matrix4& projection, const fmath::Matrix4& model) override {};
 			// need to set up default one for all material
 		private:
-			void loadTexture();
+			virtual void loadTexture();
 		};
 	}
 }

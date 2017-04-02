@@ -2,7 +2,7 @@
 
 in vec2 position;
 
-out vec2 pass_textureCoords;
+out vec2 textureCoords;
 
 uniform mat4 transformationMatrix;
 

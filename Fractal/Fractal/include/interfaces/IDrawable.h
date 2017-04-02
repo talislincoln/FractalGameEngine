@@ -1,8 +1,8 @@
 #ifndef _IDRAWABLE_H
 #define _IDRAWABLE_H
-
+#include "IMaster.h"
 namespace fractal {
-	class IDrawable
+	class IDrawable : public IMaster
 	{
 	public:
 		IDrawable();

@@ -22,6 +22,7 @@ namespace fractal {
 			inline void setMaterial(fractal::fgraphics::Material* m) {
 				m_material = m;
 			}
+			void setTexture(fgraphics::Texture* texture);
 		private:
 			fgraphics::Material* m_material;
 			fgraphics::Vao* m_vao;

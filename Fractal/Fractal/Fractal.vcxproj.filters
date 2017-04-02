@@ -51,6 +51,9 @@
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
+    <ClCompile Include="src\interfaces\IMaster.cpp" />
+    <ClCompile Include="src\interfaces\IUserInterface.cpp" />
+    <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -114,6 +117,10 @@
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
     <ClInclude Include="include\graphics\Vao.h" />
+    <ClInclude Include="include\interfaces\IPhysicsBody.h" />
+    <ClInclude Include="include\interfaces\ICollision.h" />
+    <ClInclude Include="include\interfaces\IUserInterface.h" />
+    <ClInclude Include="include\interfaces\IMaster.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

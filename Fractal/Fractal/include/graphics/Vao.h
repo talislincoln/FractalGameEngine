@@ -9,7 +9,7 @@ namespace fractal {
 		class Vao {
 		public:
 			Vao();
-			const GLuint vao;
+			const GLuint VAO;
 			size_t indicesSize, vecticesSize;
 			GLfloat  furthestPoint;
 
@@ -19,10 +19,10 @@ namespace fractal {
 			void loadMeshIntoOpenGL(MeshData* meshData);
 			void loadMeshIntoOpenGL(const std::vector<fmath::Vector3>& positions,
 				const std::vector<fmath::Vector3>& normals, const std::vector<fmath::Vector2>& UVs, const std::vector<int>& indices);
-			void loadUIIntoOpenGL(const std::vector<fmath::Vector2>& position);
+			void loadUIIntoOpenGL();
 			void destroy();
 		private:
-			void loadVboIntoOpenGL(const GLuint type, const void* data, size_t size, size_t Dimension);
+			void loadVboIntoOpenGL(const GLuint type, const void* data, size_t size, size_t dimension);
 			void loadIndexIntoOpenGL(const GLuint type, const int* position, size_t size);
 			static const GLuint create();
 		};

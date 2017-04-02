@@ -9,12 +9,12 @@ namespace fractal{
 			glGenVertexArrays(1, &m_vao);
 			return m_vao;
 		}
-		Vao::Vao() : vao(create())
+		Vao::Vao() : VAO(create())
 		{
 		}
 		void Vao::bind()
 		{
-			glBindVertexArray(vao);
+			glBindVertexArray(VAO);
 		}
 		void Vao::unbind()
 		{
@@ -45,20 +45,29 @@ namespace fractal{
 
 			unbind();
 		}
-		void Vao::loadUIIntoOpenGL(const std::vector<fmath::Vector2>& position)
+		void Vao::loadUIIntoOpenGL()
 		{
-			bind();
+			std::vector<fmath::Vector2> position = {
+				fmath::Vector2(-1, 1),
+				fmath::Vector2(-1, -1),
+				fmath::Vector2(1, 1),
+				fmath::Vector2(1, -1) };
+				bind();
 
-			unbind();
+				indicesSize = position.size();
+				vecticesSize = position.size();
+					loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(position[0]), vecticesSize, 2);
+				unbind();
+				
 		}
-		void Vao::loadVboIntoOpenGL(const GLuint type,const void* data, size_t size, size_t Dimension)
+		void Vao::loadVboIntoOpenGL(const GLuint type,const void* data, size_t size, size_t dimension)
 		{
 			GLuint vbo = 0;
 			glGenBuffers(1, &vbo);
 
 			//start using this vbo
 			glBindBuffer(type, vbo);
-			glBufferData(type, size * Dimension * sizeof(GL_FLOAT), data, GL_STATIC_DRAW);
+			glBufferData(type, size * dimension * sizeof(GL_FLOAT), data, GL_STATIC_DRAW);
 
 			// the meaning of each attribute
 			// 1 - attribute position
@@ -66,7 +75,7 @@ namespace fractal{
 			// 3 - the type of the data being passed in
 			// 4 - if the data is normalized
 			// 5 - distance between each vertices
-			glVertexAttribPointer(vbos.size(), Dimension, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
+			glVertexAttribPointer(vbos.size(), dimension, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 
 			vbos.push_back(vbo);
 		}
@@ -81,7 +90,7 @@ namespace fractal{
 		}
 		void Vao::destroy()
 		{
-			glDeleteVertexArrays(1, &vao);
+			glDeleteVertexArrays(1, &VAO);
 
 			for (GLuint& vbo : vbos) {
 				glDeleteBuffers(1, &vbo);

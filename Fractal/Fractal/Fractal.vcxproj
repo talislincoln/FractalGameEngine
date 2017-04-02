@@ -143,10 +143,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\core\systems\HUD.cpp" />
+    <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
+    <ClCompile Include="src\interfaces\IMaster.cpp" />
+    <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
@@ -226,7 +229,11 @@
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
     <ClInclude Include="include\helpers\Singleton.h" />
+    <ClInclude Include="include\interfaces\ICollision.h" />
     <ClInclude Include="include\interfaces\IDrawable.h" />
+    <ClInclude Include="include\interfaces\IMaster.h" />
+    <ClInclude Include="include\interfaces\IPhysicsBody.h" />
+    <ClInclude Include="include\interfaces\IUserInterface.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\objects\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />

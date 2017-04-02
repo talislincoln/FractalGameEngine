@@ -10,7 +10,7 @@ namespace fractal {
 		public:
 			DefaultMaterial();
 		private:
-			void loadTexture();
+			virtual void loadTexture();
 		};
 	}
 }

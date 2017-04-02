@@ -49,6 +49,10 @@ namespace fractal {
 			glFrontFace(GL_CCW); //;w; vertices need to be created in clock wise order or else the normals will make the images render the oppsite direction
 			glCullFace(GL_BACK);
 
+			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_CULL_FACE);
+			glEnable(GL_TEXTURE_2D);
+			glEnable(GL_FRAMEBUFFER_SRGB);
 			return true;
 		}
 
@@ -67,11 +71,6 @@ namespace fractal {
 			///;W; READING THE SHADER FILES FOR EACH MESH COMPONENT
 			///;W; CLEARING THE SCREEN
 
-			glEnable(GL_CULL_FACE);
-			glEnable(GL_DEPTH_TEST);
-			glEnable(GL_TEXTURE_2D);
-			glEnable(GL_FRAMEBUFFER_SRGB);
-
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glClearDepth(1.0f);
 
@@ -84,8 +83,6 @@ namespace fractal {
 		void Graphics::endDraw() {
 			///;W; DESTROY EVERYTHING
 			///;W; SWITCH BUFFERS
-			//;w; delete/unbind vao, vbo, ebo
-
 			//glDisable(GL_CULL_FACE);
 			//glDisable(GL_DEPTH_TEST);
 			//glDisable(GL_TEXTURE_2D);

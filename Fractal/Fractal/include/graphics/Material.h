@@ -19,8 +19,10 @@ namespace fractal {
 			virtual void destroy();
 			virtual void loadCamera(const fmath::Matrix4& view,const fmath::Matrix4& projection,const fmath::Matrix4& model);
 			// need to set up default one for all material
-			virtual void load2DMatrix(int index = 0, const fmath::Vector2& t = fmath::Vector2(), float rolate = 0, const fmath::Vector2& scale = fmath::Vector2(1));
+			virtual void load2DMatrix(const fmath::Vector2& t = fmath::Vector2(), float rolate = 0, const fmath::Vector2& scale = fmath::Vector2(1), int index = 0 );
+			virtual void loadNewTexture(Texture* newTexture, const unsigned int location = 0);
 
+			virtual void loadTexture() = 0;
 		protected:
 			std::vector<Uniform*> m_uniforms;
 			std::vector<Texture*> m_textures;
