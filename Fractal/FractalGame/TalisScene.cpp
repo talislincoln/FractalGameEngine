@@ -18,7 +18,7 @@
 #include "scene\components\UIComponent.h"
 
 TalisScene::TalisScene():
-Scene("TalisScene"), test1(nullptr)
+Scene("TalisScene"), test1(nullptr), test2(nullptr)
 {
 }
 
@@ -45,12 +45,15 @@ bool TalisScene::initialize() {
 	test1->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
 	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(1.0f, 1.0f, 0.0f));
 	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(1.0f);
+	test1->addComponent(new fHUD::UIComponent());
 	//test1->getComponent<MeshComponent>()->setTexture(Texture::newTexture("images/awesome").create());
 	camera = new FreeCamera("MainCamera");
 	//camera->addComponent(new MeshComponent(LoadOBJ::load("cyl")));
+
+	test1->addChild(test2);
+
 	addGameObject(test1);
 	addGameObject(camera);
-	addGameObject(test2);
 
 	return Scene::initialize();
 }

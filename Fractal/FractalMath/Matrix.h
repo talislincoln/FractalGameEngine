@@ -153,7 +153,7 @@ namespace fractal {
 			inline operator const float* () const { return static_cast<const float*>(&m[0]); }
 
 
-			static Matrix4 create2Dmatrix(const Vector2& translate = Vector2(), float degree = 0, const Vector2& scale  = Vector2(1.0f));
+			static Matrix4 create2Dmatrix(const Vector2& translate, float degree, const Vector2& scale);
 			static Matrix4 rotate(const float degrees_, const float x_, const float y_, const float z_);
 			static Matrix4 rotate(float degrees_, const Vector3& v);
 			static Matrix4 translate(const float x_, const float y_, const float z_);

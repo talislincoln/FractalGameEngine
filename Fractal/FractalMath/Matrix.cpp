@@ -4,15 +4,17 @@ namespace fractal {
 	namespace fmath {
 		Matrix4 Matrix4::create2Dmatrix(const Vector2 & translate, float degree, const Vector2 & scale)
 		{
-		
-			Matrix4 m;
-			m.loadIdentity();
-			m.translate(Vector3(translate, 0));
-			if(degree)
-				m.rotate(degree, 0.0f, 0.0f, 1.0f);
 
-			m.scale(Vector3(scale, 1));
-			return m;
+			Matrix4 m1;
+			Matrix4 m2;
+			Matrix4 m3;
+			m1 = Matrix4::translate(Vector3(translate, 0));
+			m2.loadIdentity();
+			if(degree)
+				m2 = Matrix4::rotate(degree, 0.0f, 0.0f, 1.0f);
+
+			m3 = Matrix4::scale(Vector3(scale, 1));
+			return m3 * m2 * m1;
 		}
 		///Tested Feb 2 2013 SSF
 		Matrix4 Matrix4::rotate(float degrees_, float x_, float y_, float z_) {

@@ -42,7 +42,6 @@ using namespace fgraphics;
 		fmath::Matrix4 m = fmath::Matrix4::create2Dmatrix(t, rolate, scale);
 		static_cast<UniformMatrix*>(m_uniforms[index])->loadMatrix(m);
 	}
-
 	void Material::loadNewTexture(Texture * newTexture, const unsigned int location)
 	{
 		if (location < m_textures.size()) {
@@ -52,5 +51,11 @@ using namespace fgraphics;
 			it = m_textures.insert(it, newTexture);
 			this->loadTexture();
 		}
+	}
+
+	void fractal::fgraphics::Material::loadTransform(const fmath::Matrix4& TransformMatrix, unsigned int location)
+	{
+
+		static_cast<UniformMatrix*>(m_uniforms[location])->loadMatrix(TransformMatrix);
 	}
 

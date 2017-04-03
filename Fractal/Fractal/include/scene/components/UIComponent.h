@@ -14,12 +14,36 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 			virtual void draw2D();
+			enum {
+				eCENTERX = 0x001,
+				eCENTERY = 0x002,
+				eLEFT = 0x004,
+				eRIGHT = 0x0010,
+				eTOP = 0x020,
+				eBOTTOM = 0x040
+			};
+			void AnchorCenter(bool x, bool y);
+			void AnchorLeft();
+			void AnchorRight();
+			void AnchorTop();
+			void AnchorBottom();
+
+			void setOffset(const fmath::Vector2& v);
+			void setScale(const fmath::Vector2& s);
+			void setRolate(float r);
+			void setTranform(const fmath::Vector2& v, float r, const fmath::Vector2& s);
+
 		protected:
+
+			fmath::Vector2 m_offset, m_scale;
+			float m_rolation;
+			fmath::Matrix4 m_UITranform;
 			fgraphics::Material* m_material;
 			fgraphics::Vao* m_vao;
-			fmath::Vector2 m_offset; // from center, value between -1, 1
-			float m_rolation; // in degrees;
-			fmath::Vector2 m_scale;// from center, value between 0, 1
+		private:
+			void updateMatrix();
+			void updateChildren();
+			bool isDirty;
 		};
 	}
 }

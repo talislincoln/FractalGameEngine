@@ -11,8 +11,8 @@ namespace fractal {
 	namespace fHUD {
 		using namespace fmath;
 		UIComponent::UIComponent(fgraphics::Material* m) :
-			Component("UIComponent"),
-			m_material(m), m_offset(fmath::Vector2()), m_rolation(0.0f), m_scale(Vector2(1.0f)), m_vao(new fgraphics::Vao())
+			Component("UIComponent"), isDirty(true),
+			m_material(m), m_offset(fmath::Vector2(0.0f, 0.0f)), m_rolation(0.0f), m_scale(Vector2(0.8f)), m_vao(new fgraphics::Vao())
 		{
 			//empty
 		}
@@ -24,6 +24,7 @@ namespace fractal {
 		bool UIComponent::initialize() {
 			fhelpers::Singleton<fcore::UIManager>::getInstance().addUiList(getParent()->getDepth(), this);
 			m_vao->loadUIIntoOpenGL();
+			updateMatrix();
 			return true;
 		}
 
@@ -31,7 +32,7 @@ namespace fractal {
 			glBindVertexArray(m_vao->VAO);
 
 			m_material->use();// pass in 4 matrix
-			m_material->load2DMatrix(m_offset, m_rolation, m_scale);
+			m_material->loadTransform(m_UITranform);
 			// 4 is the size of elements
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 			glBindVertexArray(0);
@@ -51,6 +52,79 @@ namespace fractal {
 			delete(m_material);
 			m_material = nullptr;
 			return true;
+		}
+
+		void UIComponent::updateMatrix()
+		{
+				m_UITranform = fmath::Matrix4::create2Dmatrix(m_offset, m_rolation, m_scale);
+				if (getParent()->getParent() != nullptr) {
+					UIComponent* UI = getParent()->getParent()->getComponent<UIComponent>();
+					if (UI) {
+						UI->updateMatrix();
+						this->m_UITranform *= UI->m_UITranform;
+					}
+			}
+		}
+
+		void UIComponent::updateChildren()
+		{
+			for (fscene::GameObject* it : this->getParent()->getChildren())
+			{
+			}
+		}
+
+		void UIComponent::AnchorCenter(bool x, bool y)
+		{
+			if (x)
+			{
+
+			}
+			if (y)
+			{
+
+			}
+		}
+
+		void UIComponent::AnchorLeft()
+		{
+		}
+
+		void UIComponent::AnchorRight()
+		{
+		}
+
+		void UIComponent::AnchorTop()
+		{
+		}
+
+		void UIComponent::AnchorBottom()
+		{
+		}
+
+		void UIComponent::setOffset(const fmath::Vector2 & v)
+		{
+			m_offset = v;
+			updateMatrix();
+		}
+
+		void UIComponent::setScale(const fmath::Vector2 & s)
+		{
+			m_scale = s;
+			updateMatrix();
+		}
+
+		void UIComponent::setRolate(float r)
+		{
+			m_rolation = r;
+			updateMatrix();
+		}
+
+		void UIComponent::setTranform(const fmath::Vector2 & v, float r, const fmath::Vector2 & s)
+		{
+			m_offset = v;
+			m_rolation = r;
+			m_scale = s;
+			updateMatrix();
 		}
 
 	}

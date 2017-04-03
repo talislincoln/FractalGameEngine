@@ -21,6 +21,7 @@ namespace fractal {
 			// need to set up default one for all material
 			virtual void load2DMatrix(const fmath::Vector2& t = fmath::Vector2(), float rolate = 0, const fmath::Vector2& scale = fmath::Vector2(1), int index = 0 );
 			virtual void loadNewTexture(Texture* newTexture, const unsigned int location = 0);
+			virtual void loadTransform(const fmath::Matrix4& TransformMatrix, unsigned int location = 0);
 
 			virtual void loadTexture() = 0;
 		protected:

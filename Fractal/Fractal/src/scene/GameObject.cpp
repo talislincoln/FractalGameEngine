@@ -27,7 +27,7 @@ namespace fractal {
 
 			for (GameObject* child : this->m_children)
 			{
-				if (child->initialize())
+				if (child->isInitialized())
 					continue;
 
 				if (!child->initialize())
@@ -120,7 +120,7 @@ namespace fractal {
 			{
 				this->m_components.push_back(component);
 				component->setParent(this);
-				component->initialize(); // component should be initialize when it's added?
+				//component->initialize(); // component should be initialize when it's added?
 				if (component->getOrderValue() == Component::INVALID_ORDER_ID)
 					component->setOrderValue(this->m_components.size());
 			}

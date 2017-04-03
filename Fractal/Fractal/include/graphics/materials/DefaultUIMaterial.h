@@ -11,7 +11,7 @@ namespace fractal {
 		class DefaultUIMaterial : public Material {
 		public:
 			DefaultUIMaterial();
-			virtual void loadCamera(const fmath::Matrix4& view, const fmath::Matrix4& projection, const fmath::Matrix4& model) override {};
+			//virtual void loadCamera(const fmath::Matrix4& view, const fmath::Matrix4& projection, const fmath::Matrix4& model) override {};
 			// need to set up default one for all material
 		private:
 			virtual void loadTexture();
