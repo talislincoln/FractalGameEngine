@@ -27,7 +27,7 @@ namespace fractal {
 
 			for (GameObject* child : this->m_children)
 			{
-				if (child->initialize())
+				if (child->isInitialized())
 					continue;
 
 				if (!child->initialize())
@@ -86,8 +86,15 @@ namespace fractal {
 			return this->m_currentScene;
 		}
 
+		const GameObject* GameObject::getRootParent() const {
+			if (getParent() == nullptr)
+				return this;
+			else 
+				return getParent()->getRootParent();
+		}
 		void GameObject::setParent(GameObject* parent)
 		{
+			m_depth = parent->getDepth() + 1;
 			this->m_parent = parent;
 		}
 
@@ -113,6 +120,7 @@ namespace fractal {
 			{
 				this->m_components.push_back(component);
 				component->setParent(this);
+				//component->initialize(); // component should be initialize when it's added?
 				if (component->getOrderValue() == Component::INVALID_ORDER_ID)
 					component->setOrderValue(this->m_components.size());
 			}
@@ -138,12 +146,16 @@ namespace fractal {
 				child->setScene(getScene());
 			}
 		}
-
+		unsigned int GameObject::getDepth() const
+		{
+			return m_depth;
+		}
 		void GameObject::removeChild(GameObject* child)
 		{
 			std::vector<GameObject*>::iterator it = std::find(this->m_children.begin(), this->m_children.end(), child);
 			if (it != this->m_children.end())
 			{
+				//child->destroy();  when removing child. should destroy.. somehow
 				this->m_children.erase(it);
 				SafeDelete((*it));
 			}

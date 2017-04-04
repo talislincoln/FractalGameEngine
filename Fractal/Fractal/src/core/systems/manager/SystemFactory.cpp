@@ -5,7 +5,7 @@
 #include "core\systems\Graphics.h"
 #include "core\systems\PhysicsWorld.h"
 #include "core\systems\Timer.h"
-
+#include "core\systems\HUD.h"
 namespace fractal {
 	namespace fcore {
 		SystemFactory::SystemFactory()
@@ -26,6 +26,7 @@ namespace fractal {
 				case SystemType::GRAPHICS_SYSTEM: return new Graphics();
 				case SystemType::PHYSICS_SYSTEM: return new fphysics::PhysicsWorld();
 				case SystemType::TIMER_SYSTEM: return new Timer();
+				case SystemType::HUD_SYSTEM: return new HUD();
 			}
 
 			return nullptr;

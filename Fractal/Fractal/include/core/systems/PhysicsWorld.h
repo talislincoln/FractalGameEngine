@@ -41,11 +41,9 @@ namespace fractal {
 			virtual ~PhysicsWorld() {
 
 			}
-			void update();
-			void destroy();
-
-			bool initialize();
-			bool shutdown();
+			virtual void update();
+			virtual bool initialize();
+			virtual bool shutdown();
 
 			void simulation();
 			bool checkCollision();

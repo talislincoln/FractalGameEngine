@@ -41,13 +41,14 @@ namespace fractal {
 
 			//void setRenderer(Renderer* renderer);
 			//Renderer* getRenderer() const;
-			void setCameraManager(fcore::CameraManager* manager);
-			fcore::CameraManager* getCameraManager() const;
+			//void setCameraManager(fcore::CameraManager* manager);
+			//fcore::CameraManager* getCameraManager() const;
+			// i dont see the need of this when are are using singleton to search for manager
 
 			fcore::Input* input;
 		private:
 			//Renderer* renderer;
-			fcore::CameraManager* m_cameraManager;
+			//fcore::CameraManager* m_cameraManager;
 			std::vector<GameObject*> m_objects;
 		};
 	}

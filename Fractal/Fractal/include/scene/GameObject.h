@@ -23,7 +23,7 @@ namespace fractal {
 			Scene* getScene() const;
 			void setParent(GameObject* parent);
 			GameObject* getParent() const;
-
+			const GameObject* getRootParent() const;
 			std::vector<GameObject*> getChildren() const;
 
 			template <typename T> T* getComponent() const;
@@ -35,7 +35,9 @@ namespace fractal {
 			void addChild(GameObject* object);
 			void removeChild(GameObject* object);
 
+			unsigned int getDepth() const;
 		private:
+			unsigned int m_depth;
 			std::vector<GameObject*> m_children;
 			std::vector<Component*> m_components;
 

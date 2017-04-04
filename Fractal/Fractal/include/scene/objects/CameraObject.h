@@ -2,24 +2,33 @@
 #define _CAMERAOBJECT_H
 #include <Fractal\include\scene\GameObject.h>
 #include <Fractal\include\interfaces\IDrawable.h>
-
+#include "scene\components\CameraComponent.h"
 namespace fractal {
 	namespace fscene {
 
 		//Forward declarations
-		class CameraComponent;
 		class TransformComponent;
 
-		class CameraObject : public GameObject, public IDrawable {
+		class CameraObject : public GameObject{
 		public:
 			CameraObject(const std::string& name = "CameraObject", bool setActive = true);
 			virtual ~CameraObject();
 
 			virtual bool initialize();
 			virtual void update();
-			virtual void draw();
 			virtual bool shutdown();
 
+			virtual fmath::Matrix4 getViewMatrix() const;
+
+			inline fmath::Vector3 getFront() {
+				return m_cameraComponent->getFront();
+			}
+			inline fmath::Vector3 getRight() {
+				return m_cameraComponent->getRight();
+			}
+			inline fmath::Vector3 getUp() {
+				return m_cameraComponent->getUp();
+			}
 			CameraComponent* getCamera() const;
 			TransformComponent* getTransform() const;
 

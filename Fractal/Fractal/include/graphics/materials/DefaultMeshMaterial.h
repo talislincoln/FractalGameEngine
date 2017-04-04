@@ -6,12 +6,11 @@ namespace fractal {
 	namespace fgraphics {
 
 #define DEFAULT_SHADER "Defaults/Materials/Shaders/DefaultShader"
-#define DEFAULT_TEXTURE "Defaults/Materials/Textures/defaultTexture"
 		class DefaultMaterial : public Material {
 		public:
 			DefaultMaterial();
 		private:
-			void loadTexture();
+			virtual void loadTexture();
 		};
 	}
 }

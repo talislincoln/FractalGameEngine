@@ -3,8 +3,6 @@
 #include "scene\components\CameraComponent.h"
 #include "scene\components\TransformComponent.h"
 
-#include "helpers\Singleton.h"
-#include "core\systems\manager\CameraManager.h"
 
 namespace fractal {
 	namespace fscene {
@@ -13,7 +11,6 @@ namespace fractal {
 			m_cameraComponent(new CameraComponent()),
 			m_transformComponent(new TransformComponent())
 		{
-			fhelpers::Singleton<fcore::CameraManager>::getInstance().addCamera(this, setActive);
 		}
 
 		CameraObject::~CameraObject() {
@@ -30,17 +27,6 @@ namespace fractal {
 			GameObject::update();
 		}
 
-		void CameraObject::draw() {
-			for (Component* obj : getComponents())
-			{
-				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
-				if (drawable_obj == nullptr)
-					continue;
-
-				if (drawable_obj->getCanDraw())
-					drawable_obj->draw();
-			}
-		}
 
 		bool CameraObject::shutdown() {
 			if (!m_cameraComponent->shutdown()) {
@@ -52,6 +38,11 @@ namespace fractal {
 			}
 			
 			return GameObject::shutdown();
+		}
+
+		fmath::Matrix4 CameraObject::getViewMatrix() const
+		{
+			return m_cameraComponent->getViewMatrix();
 		}
 
 		CameraComponent* CameraObject::getCamera() const {

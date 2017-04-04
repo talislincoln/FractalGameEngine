@@ -1,4 +1,4 @@
-#include "graphics\materials\DefaultMaterial.h"
+#include "graphics\materials\DefaultMeshMaterial.h"
 namespace fractal {
 	namespace fgraphics {
 
@@ -9,6 +9,7 @@ namespace fractal {
 			m_uniforms.push_back(new UniformMatrix("model"));           //2
 			m_uniforms.push_back(new UniformVector3("lightDirection")); //3
 			m_uniforms.push_back(new UniformSampler("diffuseMap"));     //4
+			//need to setup texture so i can use DefaultMaterial and just add textures
 			m_textures.push_back(Texture::newTexture(DEFAULT_TEXTURE).anisotropic().create());
 			m_shader->storeUniformLocations(m_uniforms);
 			loadTexture();
@@ -18,5 +19,7 @@ namespace fractal {
 		{
 			static_cast<UniformSampler*>(m_uniforms[4])->loadTextureUnit(m_textures[0]->TEXTUREID);
 		}
+
+
 	}
 }

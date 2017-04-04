@@ -4,17 +4,14 @@
 #include "helpers\Singleton.h"
 #include "scene\components\TransformComponent.h"
 
-#include <SDL\SDL.h>
+#include <FractalMath\Quaternion.h>
 
 namespace fractal {
 	namespace fscene {
 		FreeCamera::FreeCamera(const std::string& name, float speed) :
 			CameraObject("FreeCamera"),
-			WorldUp(fmath::Vector3(0.0f,1.0f,0.0f)),
-			Front(fmath::Vector3(0.0f, 0.0f, -1.0f)),
-			Yaw(YAW), Pitch(PITCH), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)//, Camera options
+			MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY)//, Camera options
 		{
-			updateCameraVectors();
 
 		}
 
@@ -28,6 +25,8 @@ namespace fractal {
 
 		void FreeCamera::update() {
 			CameraObject::update();
+			this->mouse = this->m_input->getMouseMovement() * MouseSensitivity;
+			this->getTransform()->rotate(fmath::Quaternion::fromEuler(mouse.y ,mouse.x , 0.0f ));
 		}
 
 		bool FreeCamera::shutdown() {
@@ -36,7 +35,7 @@ namespace fractal {
 
 		void FreeCamera::setupInput(fractal::fcore::Input* input) {
 			using namespace fcore;
-
+			m_input = input;
 			input->bindInput(InputBinding(SDLK_w, std::bind(&FreeCamera::moveUp, this), InputStateType::DOWN));
 			input->bindInput(InputBinding(SDLK_s, std::bind(&FreeCamera::moveDown, this), InputStateType::DOWN));
 			input->bindInput(InputBinding(SDLK_a, std::bind(&FreeCamera::moveLeft, this), InputStateType::DOWN));
@@ -50,41 +49,32 @@ namespace fractal {
 		float FreeCamera::getSpeed() const {
 			return m_speed;
 		}
-
-		void FreeCamera::updateCameraVectors()
-		{
-			// Calculate the new Front vector
-			fractal::fmath::Vector3 front;
-			front.x = cos(fmath::toRadians(Yaw)) * cos(fmath::toRadians(Pitch));
-			front.y = sin(fmath::toRadians(Pitch));
-			front.z = sin(fmath::toRadians(Yaw)) * cos(fmath::toRadians(Pitch));
-			this->Front = front.normalize();
-			// Also re-calculate the Right and Up vector
-			this->Right = Front.cross(this->WorldUp).getNormilizedVector();  // Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-			this->Up = Right.cross(this->Front).getNormilizedVector();
-		}
-
-		fmath::Matrix4 FreeCamera::getViewMatrix() {
-			return fmath::Matrix4::lookAt(this->getTransform()->getPosition(), this->getTransform()->getPosition() + Front, this->Up);
+		fmath::Matrix4 FreeCamera::getViewMatrix() const {
+			return CameraObject::getViewMatrix();
+			//return fmath::Matrix4::lookAt(this->getTransform()->getPosition(), this->getTransform()->getPosition() + Front, this->Up);
 		}
 
 		void FreeCamera::moveUp() {
 			GLfloat velocity = this->MovementSpeed * 0.01f;
-			this->getTransform()->setPosition(this->getTransform()->getPosition() + this->Front * velocity);
+			this->getTransform()->translate(this->getFront() * velocity);
 		}
 		void FreeCamera::moveDown() {
 			GLfloat velocity = this->MovementSpeed * 0.01f;
-			this->getTransform()->setPosition(this->getTransform()->getPosition() - this->Front * velocity);
+			this->getTransform()->translate(-this->getFront() * velocity);
 		}
 
 		void FreeCamera::moveLeft() {
 			GLfloat velocity = this->MovementSpeed * 0.01f;
-			this->getTransform()->setPosition(this->getTransform()->getPosition() - this->Right * velocity);
+			this->getTransform()->translate(-this->getRight() * velocity);
 		}
 
 		void FreeCamera::moveRight() {
 			GLfloat velocity = this->MovementSpeed * 0.01f;
-			this->getTransform()->setPosition(this->getTransform()->getPosition() + this->Right * velocity);
+			this->getTransform()->translate(this->getRight() * velocity);
 		}
+
+		void FreeCamera::lookRight() {
+		}
+
 	}
 }

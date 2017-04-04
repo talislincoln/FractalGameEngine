@@ -3,10 +3,8 @@
 
 #include "CameraObject.h"
 #include <Fractal\include\core\systems\Input.h>
-
-#include <gl\glew.h>
-#include <FractalMath\Math.h>
 #include <FractalMath\Matrix.h>
+#include <gl\glew.h>
 
 namespace fractal {
 	namespace fscene {
@@ -20,11 +18,8 @@ namespace fractal {
 		};
 
 		// Default camera values
-		const GLfloat YAW = -90.0f;
-		const GLfloat PITCH = 0.0f;
 		const GLfloat SPEED = 3.0f;
 		const GLfloat SENSITIVTY = 0.25f;
-		const GLfloat ZOOM = 45.0f;
 
 		class FreeCamera : public CameraObject {
 		public:
@@ -44,27 +39,19 @@ namespace fractal {
 			void moveDown();
 			void moveLeft();
 			void moveRight();
-
 			//new functions
-			void updateCameraVectors();
-			fmath::Matrix4 getViewMatrix();
+			fmath::Matrix4 getViewMatrix() const;
 
 		private:
+			void lookRight();
 			float m_speed;
 
 		public:
-			GLfloat Yaw;
-			GLfloat Pitch;
 			// Camera options
 			GLfloat MovementSpeed;
 			GLfloat MouseSensitivity;
-			GLfloat Zoom;
-
-			// Camera Attributes
-			fmath::Vector3 Front;
-			fmath::Vector3 Up;
-			fmath::Vector3 Right;
-			fmath::Vector3 WorldUp;
+			fmath::Vector2 mouse;
+			fractal::fcore::Input* m_input;
 		};
 	}
 }

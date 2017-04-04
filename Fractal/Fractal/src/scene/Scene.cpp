@@ -8,8 +8,8 @@
 namespace fractal {
 	namespace fscene {
 		Scene::Scene(const std::string& name) :
-			Object(name),
-			m_cameraManager(nullptr)
+			Object(name)
+			//, m_cameraManager(nullptr)
 			//, renderer(nullptr)
 		{
 		}
@@ -111,12 +111,12 @@ namespace fractal {
 			}
 		}
 
-		void Scene::setCameraManager(fcore::CameraManager* manager) {
+		/*void Scene::setCameraManager(fcore::CameraManager* manager) {
 			m_cameraManager = manager;
 		}
 
 		fcore::CameraManager* Scene::getCameraManager() const {
 			return m_cameraManager;
-		}
+		}*/
 	}
 }

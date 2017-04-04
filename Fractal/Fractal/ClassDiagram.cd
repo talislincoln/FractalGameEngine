@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="fractal::fcore::AbstractGame" Collapsed="true">
+    <Position X="35.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAEAAAAAAAAAQAAAAAAAACAAAAA=</HashCode>
+      <FileName>include\core\game\AbstractGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Engine" Collapsed="true">
+    <Position X="37" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAgAAAAQAAAAAAAMAQgAAAAAAAAABBAAAAAAEBCA=</HashCode>
+      <FileName>include\core\systems\Engine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Window" Collapsed="true">
+    <Position X="18.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAQAAAAAAABAAUAAAAAAQAAAACAAAAACAAEAAA=</HashCode>
+      <FileName>include\core\systems\Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Graphics" Collapsed="true">
+    <Position X="11.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAABAAMAAAAACQAAAAAAAAAAAIAEAAE=</HashCode>
+      <FileName>include\core\systems\Graphics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Input" Collapsed="true">
+    <Position X="16" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAABACCAEAABCgkACJQAEAABAIBAAAABAgAEAAA=</HashCode>
+      <FileName>include\core\systems\Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Logic" Collapsed="true">
+    <Position X="13.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAABAAAAABAAMAAAAAAAAAAAAAACAAAIAEAAA=</HashCode>
+      <FileName>include\core\systems\Logic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::CameraManager" Collapsed="true">
+    <Position X="32.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAAAIgBAAEAAAAAAAAAgAAAAAAAAAAgABA=</HashCode>
+      <FileName>include\core\systems\manager\CameraManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::HUD" Collapsed="true">
+    <Position X="9.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAMAAAAAASAAAAAAAAAAAIAEAAA=</HashCode>
+      <FileName>include\core\systems\HUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::System" Collapsed="true">
+    <Position X="16.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABAIAAAAABEIEAQAAAAQAAgAAAAAAAAAAEAAA=</HashCode>
+      <FileName>include\core\systems\System.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::SystemFactory" Collapsed="true">
+    <Position X="38.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\core\systems\manager\SystemFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::SystemManager" Collapsed="true">
+    <Position X="26.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DAAAAAAAAAAAAwABAgEAAAAAAABAAAAAAIAAAAAAgAA=</HashCode>
+      <FileName>include\core\systems\manager\SystemManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::UIManager" Collapsed="true">
+    <Position X="30.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAIAIAABAAEAAAAAAAADAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\core\systems\manager\UIManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fcore::Timer" Collapsed="true">
+    <Position X="22.5" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="fractal::fcore::System" FixedToPoint="true">
+      <Path>
+        <Point X="17.25" Y="6.562" />
+        <Point X="17.25" Y="6.875" />
+        <Point X="19.917" Y="6.875" Type="JumpStart" />
+        <Point X="20.083" Y="6.875" Type="JumpEnd" />
+        <Point X="20.167" Y="6.875" Type="JumpStart" />
+        <Point X="20.333" Y="6.875" Type="JumpEnd" />
+        <Point X="23.25" Y="6.875" />
+        <Point X="23.25" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAEAAAABAQEAAAAAIAAAAAAAQCAAAEAEAAA=</HashCode>
+      <FileName>include\core\systems\Timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::CameraComponent" Collapsed="true">
+    <Position X="20.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAgEAAIAABAAEAAQAAAARAAQAggAABAAAGAAA=</HashCode>
+      <FileName>include\scene\components\CameraComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::TerrainComponent" Collapsed="true">
+    <Position X="16.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAQQBAAcAQAAAAQAAQAAMAAAAAEIEAAA=</HashCode>
+      <FileName>include\scene\components\TerrainComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::TimerObject" Collapsed="true">
+    <Position X="22.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAEAAFAAAAAAAhAAEAAAAAABIgIAQAAAIAABAMAAA=</HashCode>
+      <FileName>include\scene\objects\TimerObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::TransformComponent" Collapsed="true">
+    <Position X="22.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIJQAAHAAABABAAkQAgCCCAggAABCAAAgAAEEBAA=</HashCode>
+      <FileName>include\scene\components\TransformComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::CameraObject" Collapsed="true">
+    <Position X="25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAABEAhQAEAARAAAAAAAQAggAAAAAAEAAA=</HashCode>
+      <FileName>include\scene\objects\CameraObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::GameObject" Collapsed="true">
+    <Position X="25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="fractal::fscene::Object" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="19.25" Y="2.375" />
+        <Point X="19.25" Y="2.917" />
+        <Point X="21.419" Y="2.917" />
+        <Point X="21.419" Y="3.375" />
+        <Point X="25" Y="3.375" />
+        <Point X="25" Y="4.096" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BBACHAAACAAAAAgFCBEAAAAAAACIIoIAAEAAAAJEAAI=</HashCode>
+      <FileName>include\scene\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::Component" Collapsed="true">
+    <Position X="20.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgACAAABAAAAABAAEAAAABEAAAIAAAAABAAABEAAA=</HashCode>
+      <FileName>include\scene\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::MeshComponent" Collapsed="true">
+    <Position X="14.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAACAAAABAAMAAAAAAAwAAAAgAEAAAAAEAAA=</HashCode>
+      <FileName>include\scene\components\MeshComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::Scene" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIABgAMAQkAIQAAAABAgAAAAAAAEQAA=</HashCode>
+      <FileName>include\scene\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::Object" Collapsed="true">
+    <Position X="17.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQERAAAIAhFIEAQFAAAAAEAABEAAAEAAAAAAA=</HashCode>
+      <FileName>include\scene\Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::FreeCamera" Collapsed="true">
+    <Position X="25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAAAAAABAAkAAkAAAIgQAgAxAgAACEAEAAA=</HashCode>
+      <FileName>include\scene\objects\FreeCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::SceneManager" Collapsed="true">
+    <Position X="28.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAEABAAMAABAAQAAAAAAABABAAAAEAKQ=</HashCode>
+      <FileName>include\scene\SceneManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fscene::SceneObject" Collapsed="true">
+    <Position X="22.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAEABAAMCAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>include\scene\SceneObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fHUD::UIComponent" Collapsed="true">
+    <Position X="25.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAKAgCABIAEAAACghAggIAACAEAQIAAEBgA=</HashCode>
+      <FileName>include\scene\components\UIComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fphysics::PhysicsWorld" Collapsed="true">
+    <Position X="20.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIAAABAAAAEABAAMAAAQAAIEAAAAkBAAAQABECAA=</HashCode>
+      <FileName>include\core\systems\PhysicsWorld.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fphysics::PhysicsBodyComponent" Collapsed="true">
+    <Position X="20.75" Y="11.5" Width="1.5" />
+    <InheritanceLine Type="fractal::fscene::Component" FixedToPoint="true">
+      <Path>
+        <Point X="21.5" Y="10.691" />
+        <Point X="21.5" Y="11.125" />
+        <Point X="22.062" Y="11.125" />
+        <Point X="22.062" Y="11.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>pSAIAAIEAYAAAADBAAFQIIAAAgIFAAEggAAAAAIEFQA=</HashCode>
+      <FileName>include\scene\components\PhysicsBodyComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fphysics::PhysicsShapeComponent" Collapsed="true">
+    <Position X="18.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAJBAAMAAAAAAQAUAAAAAAAAACAEBAA=</HashCode>
+      <FileName>include\scene\components\PhysicsShapeComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::ShaderProgram" Collapsed="true">
+    <Position X="35.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAIAAAIACEBAAAgIAAAIBAABIAAAAAA=</HashCode>
+      <FileName>include\graphics\ShaderProgram.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::Manager" Collapsed="true">
+    <Position X="30.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAEAAAAAAAAABAAAAAAAAAAAgAA=</HashCode>
+      <FileName>include\helpers\Manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::IDrawable" Collapsed="true">
+    <Position X="17.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAARAAAAAAAAIAAAIAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>include\interfaces\IDrawable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::IMaster" Collapsed="true">
+    <Position X="31.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAIAACAA=</HashCode>
+      <FileName>include\interfaces\IMaster.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::IUserInterface">
+    <Position X="25.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAIAAAABhA=</HashCode>
+      <FileName>include\interfaces\IUserInterface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::IOManager" Collapsed="true">
+    <Position X="38.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\utils\IOManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformBool" Collapsed="true">
+    <Position X="14.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAABABAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformBool.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformFloat" Collapsed="true">
+    <Position X="1.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAIAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformFloat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformMatrix" Collapsed="true">
+    <Position X="3.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformMatrix.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformSampler" Collapsed="true">
+    <Position X="5.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAgAAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformSampler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformVector2" Collapsed="true">
+    <Position X="8" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAADAAAAAAAAAAAAAQAAAAAQAAAAAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformVector2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformVector3" Collapsed="true">
+    <Position X="10.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAADgAQAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformVector3.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::UniformVector4" Collapsed="true">
+    <Position X="12.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAADAASAAAAAAAAAAAAAAAAQAABAAAAE=</HashCode>
+      <FileName>include\utils\ShaderUtils\UniformVector4.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::Uniform" Collapsed="true">
+    <Position X="8" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAAAAgA=</HashCode>
+      <FileName>include\utils\ShaderUtils\Uniform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::Material">
+    <Position X="29.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAABEAACAAAAAIAAEIAAEAAAAAABAAAIABAAAg=</HashCode>
+      <FileName>include\graphics\Material.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::DefaultMaterial" Collapsed="true">
+    <Position X="32.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\graphics\materials\DefaultMeshMaterial.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::DefaultUIMaterial">
+    <Position X="27.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\graphics\materials\DefaultUIMaterial.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::MeshData" Collapsed="true">
+    <Position X="40.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABBAABAAAAgAAQAEAABAEAAAEAACAgAEAQAAA=</HashCode>
+      <FileName>include\graphics\MeshData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::Texture" Collapsed="true">
+    <Position X="40.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAQABAAAAAAAAAEAAAAAAEAAAAAIAAAAAAgA=</HashCode>
+      <FileName>include\graphics\Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::TextureData" Collapsed="true">
+    <Position X="37" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAAAABAAAAAAAAAAAQQACAAAAAAAAEAAA=</HashCode>
+      <FileName>include\graphics\Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::Vao" Collapsed="true">
+    <Position X="38.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgBAAICAIAAAAAgAAEAAAAAAAAAACQBAAAABDAA=</HashCode>
+      <FileName>include\graphics\Vao.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fgraphics::TextureBuilder" Collapsed="true">
+    <Position X="35.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAACAAAQAACAYAAQAABAAAFAAEFFAAA=</HashCode>
+      <FileName>include\utils\TextureBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fhelpers::ObjectCounter&lt;T&gt;" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAACAAIAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>include\helpers\ObjectCounter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="fractal::fhelpers::Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="37" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAIAAAAACABAAAAAAAAAUIAAAgAAAAAAA=</HashCode>
+      <FileName>include\helpers\Singleton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="fractal::fcore::InputBinding" Collapsed="true">
+    <Position X="38.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAEAAAQAAAAAAAAAAAgKAAAAAA=</HashCode>
+      <FileName>include\core\systems\Input.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="fractal::fphysics::VelocityState" Collapsed="true">
+    <Position X="38.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAA=</HashCode>
+      <FileName>include\core\systems\PhysicsWorld.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Colour" Collapsed="true">
+    <Position X="35.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQABABAAAAA=</HashCode>
+      <FileName>include\defines\Colour.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PicoPNG" Collapsed="true">
+    <Position X="37" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAgAAAAAQA=</HashCode>
+      <FileName>include\utils\picoPNG.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="fractal::LoadOBJ" Collapsed="true">
+    <Position X="40.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAAIAIAAAAAAAAAAEAABAAAAEAAAAgAAgAAAA=</HashCode>
+      <FileName>include\utils\LoadOBJ.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="fractal::fgraphics::Colour" Collapsed="true">
+    <Position X="37" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQAhABAAAAA=</HashCode>
+      <FileName>include\graphics\Vertex.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="fractal::fgraphics::Vertex" Collapsed="true">
+    <Position X="40.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAIACAUAgNAAAAACAAMDAAAwgQIAAAAqAgAAQAAAA=</HashCode>
+      <FileName>include\graphics\Vertex.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="fractal::fgraphics::LoadTexture" Collapsed="true">
+    <Position X="35.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAgAAAAAAA=</HashCode>
+      <FileName>include\utils\LoadTexture.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="fractal::fscene::Camera_Movement" Collapsed="true">
+    <Position X="35.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAIAAAAAAAAA=</HashCode>
+      <FileName>include\scene\objects\FreeCamera.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="fractal::InputStateType" Collapsed="true">
+    <Position X="37" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAEAAAAAAAAAAAAAAAEAAICAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>include\defines\InputStateType.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="fractal::SystemType" Collapsed="true">
+    <Position X="38.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAEAIAAAAAAgAgAAAAAAAAAAAAAAAAEAgAAA=</HashCode>
+      <FileName>include\defines\SystemType.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
