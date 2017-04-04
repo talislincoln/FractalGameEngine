@@ -4,6 +4,8 @@
 #include <Fractal\include\core\systems\System.h>
 #include <Fractal\include\defines\InputStateType.h>
 
+#include <SDL\SDL.h>
+
 #include <unordered_map>
 #ifndef _FUNCTIONAL_
 #include <functional>
@@ -16,6 +18,7 @@
 #include <FractalMath\Vector.h>
 
 namespace fractal {
+	class IInput;
 	namespace fcore {
 		struct InputBinding {
 			InputBinding(unsigned int keyID, std::function<void()> fn, InputStateType inputState) :
@@ -45,6 +48,34 @@ namespace fractal {
 			InputStateType inputStateType;
 		};
 
+		struct MouseBinding {
+			MouseBinding(unsigned int keyID, std::function<void(const fmath::Vector2&)> fn, InputStateType inputState) :
+				keyID(keyID), callbackFunction(fn), inputStateType(inputState)
+			{
+				//empty
+			}
+
+			MouseBinding(const MouseBinding& inputBinding) :
+				keyID(inputBinding.keyID), callbackFunction(inputBinding.callbackFunction),
+				inputStateType(inputBinding.inputStateType)
+			{
+				//empty
+			}
+			MouseBinding operator= (const MouseBinding& ref) {
+				this->keyID = ref.keyID;
+				this->callbackFunction = ref.callbackFunction;
+				this->inputStateType = ref.inputStateType;
+			}
+
+			void execute(const fmath::Vector2& mousePosition) {
+				callbackFunction(mousePosition);
+			}
+
+			unsigned int keyID;
+			std::function<void(const fmath::Vector2&)> callbackFunction;
+			InputStateType inputStateType;
+		};
+
 		class Input : public System {
 		public:
 			Input();
@@ -57,13 +88,17 @@ namespace fractal {
 			//bool GetKey(unsigned int keyID);
 
 			void bindInput(InputBinding binding);
+			void bindInput(MouseBinding binding);
 
+			void addInputComponent(IInput* component);
 			/**
 			\brief Get the mouse position.
 			\param previousFrame If true, returns the mouse position on the last frame
 			*/
 			fmath::Vector2 getMousePosition(bool previousFrame = false) const;
 			fmath::Vector2 getMouseMovement() const;
+			bool isMouseClicked(unsigned int keyID) const;
+			bool isMouseDoubleClicked(unsigned int keyID) const;
 
 			bool isKeyDown(unsigned int keyID) const;
 			bool isKeyUp(unsigned int keyID) const;
@@ -78,8 +113,11 @@ namespace fractal {
 
 			std::unordered_map<unsigned int, bool> m_keyMap;
 			std::unordered_map<unsigned int, bool> m_previousKeyMap;
-			std::vector<InputBinding> m_bindings;
 
+			std::vector<InputBinding> m_keyboardBindings;
+			std::vector<MouseBinding> m_mouseBindings;
+
+			std::vector<IInput*> m_inputComponents;
 			fmath::Vector2 m_mouseCoordinates;
 
 			fmath::Vector2 m_currentMousePosition;

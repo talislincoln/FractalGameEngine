@@ -11,7 +11,7 @@ namespace fractal {
 	namespace fHUD {
 		using namespace fmath;
 		UIComponent::UIComponent(fgraphics::Material* m) :
-			Component("UIComponent"), isDirty(true),
+			Component("UIComponent"), m_isDirty(true), m_UIParent(nullptr), 
 			m_material(m), m_offset(fmath::Vector2(0.0f, 0.0f)), m_rolation(0.0f), m_scale(Vector2(0.8f)), m_vao(new fgraphics::Vao())
 		{
 			//empty
@@ -24,6 +24,11 @@ namespace fractal {
 		bool UIComponent::initialize() {
 			fhelpers::Singleton<fcore::UIManager>::getInstance().addUiList(getParent()->getDepth(), this);
 			m_vao->loadUIIntoOpenGL();
+
+			fscene::GameObject* parent = getParent()->getParent();
+			if (parent != nullptr) {
+				m_UIParent = parent->getComponent<UIComponent>();
+			}
 			updateMatrix();
 			return true;
 		}
@@ -41,6 +46,7 @@ namespace fractal {
 		}
 
 		void UIComponent::update() {
+			updateMatrix();
 		}
 
 		bool UIComponent::shutdown() {
@@ -52,26 +58,22 @@ namespace fractal {
 			delete(m_material);
 			m_material = nullptr;
 			return true;
+
 		}
 
 		void UIComponent::updateMatrix()
 		{
+			if (m_isDirty) {
 				m_UITranform = fmath::Matrix4::create2Dmatrix(m_offset, m_rolation, m_scale);
-				if (getParent()->getParent() != nullptr) {
-					UIComponent* UI = getParent()->getParent()->getComponent<UIComponent>();
-					if (UI) {
-						UI->updateMatrix();
-						this->m_UITranform *= UI->m_UITranform;
-					}
+				m_isDirty = false;
+				if (m_UIParent) {
+					//this is for recursion. 
+					//UI->updateMatrix();
+					this->m_UITranform *= m_UIParent->m_UITranform;
+				}
 			}
 		}
 
-		void UIComponent::updateChildren()
-		{
-			for (fscene::GameObject* it : this->getParent()->getChildren())
-			{
-			}
-		}
 
 		void UIComponent::AnchorCenter(bool x, bool y)
 		{
@@ -104,19 +106,19 @@ namespace fractal {
 		void UIComponent::setOffset(const fmath::Vector2 & v)
 		{
 			m_offset = v;
-			updateMatrix();
+			makeDirty();
 		}
 
 		void UIComponent::setScale(const fmath::Vector2 & s)
 		{
 			m_scale = s;
-			updateMatrix();
+			makeDirty();
 		}
 
 		void UIComponent::setRolate(float r)
 		{
 			m_rolation = r;
-			updateMatrix();
+			makeDirty();
 		}
 
 		void UIComponent::setTranform(const fmath::Vector2 & v, float r, const fmath::Vector2 & s)
@@ -124,7 +126,19 @@ namespace fractal {
 			m_offset = v;
 			m_rolation = r;
 			m_scale = s;
-			updateMatrix();
+			m_isDirty = true;
+		}
+
+		void UIComponent::makeDirty()
+		{
+			for (fscene::GameObject* obj : getParent()->getChildren())
+			{
+				UIComponent* UIComp = obj->getComponent<UIComponent>();
+				if (!UIComp)
+					continue;
+
+				UIComp->m_isDirty = true;
+			}
 		}
 
 	}

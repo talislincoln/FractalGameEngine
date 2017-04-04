@@ -148,8 +148,8 @@
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
-    <ClCompile Include="src\interfaces\IMaster.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
+    <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
@@ -231,9 +231,10 @@
     <ClInclude Include="include\helpers\Singleton.h" />
     <ClInclude Include="include\interfaces\ICollision.h" />
     <ClInclude Include="include\interfaces\IDrawable.h" />
-    <ClInclude Include="include\interfaces\IMaster.h" />
+    <ClInclude Include="include\interfaces\IInput.h" />
     <ClInclude Include="include\interfaces\IPhysicsBody.h" />
     <ClInclude Include="include\interfaces\IUserInterface.h" />
+    <ClInclude Include="include\scene\components\UIButtonComponent.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\objects\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />
@@ -269,6 +270,9 @@
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
     <Image Include="res\images\wooden.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

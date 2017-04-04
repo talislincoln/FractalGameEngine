@@ -1,7 +1,6 @@
 #include "interfaces\IDrawable.h"
 namespace fractal {
-	IDrawable::IDrawable()
-		:IMaster(), m_canDraw(true)
+	IDrawable::IDrawable(): m_canDraw(true)
 	{
 	}
 

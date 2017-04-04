@@ -1,10 +1,9 @@
 #ifndef _IUSERINTERFACE_H
 #define _IUSERINTERFACE_H
 
-#include "IMaster.h"
 #include <vector>
 namespace fractal {
-	class IUserInterface : public IMaster
+	class IUserInterface
 	{
 	public:
 		IUserInterface();

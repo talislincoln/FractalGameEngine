@@ -28,7 +28,8 @@ namespace fractal {
 			virtual bool shutdown();
 
 			inline SDL_Window* getSDLWindow() { return m_Window; }
-
+			inline int getWidth() { return m_width; }
+			inline int getHeight() { return m_height; }
 		private:
 			int m_width; ///< Window width
 			int m_height; ///< Window height

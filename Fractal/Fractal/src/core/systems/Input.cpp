@@ -4,6 +4,7 @@
 
 //I really don't like this include since this is here just because I need the keyCodes
 #include <SDL\SDL.h>
+#include "interfaces\IInput.h"
 
 namespace fractal {
 	namespace fcore {
@@ -20,6 +21,9 @@ namespace fractal {
 
 		bool Input::initialize() {
 			//nothing to init for now
+			for (IInput* it : m_inputComponents) {
+				it->setupInput(this);
+			}
 			return true;
 		}
 
@@ -34,8 +38,7 @@ namespace fractal {
 			m_keyMap[SDL_QUIT * 2] = false;
 
 
-			m_oldMousePosition.x = m_currentMousePosition.x;
-			m_oldMousePosition.y = m_currentMousePosition.y;
+			m_oldMousePosition = m_currentMousePosition;
 			SDL_Event evnt;
 			//Will keep looping until there are no more events to process
 			while (SDL_PollEvent(&evnt)) {
@@ -71,8 +74,52 @@ namespace fractal {
 					break;
 				}
 			}
+			for (MouseBinding binding : m_mouseBindings) {
+				switch (binding.inputStateType)
+				{
+				case InputStateType::MOUSE_DOWN:
+					if (isKeyDown(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
+					break;
+				case InputStateType::MOUSE_UP:
+					if (isKeyUp(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
+					break;
+				case InputStateType::MOUSE_PRESSED:
+					if (wasKeyPressed(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
+					break;
+				case InputStateType::MOUSE_RELEASED:
+					if (wasKeyReleased(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
 
-			for (InputBinding binding : m_bindings) {
+				case InputStateType::MOUSE_MOTION:
+					// this suck?
+						binding.execute(getMousePosition());
+					break;
+
+					//doesn't work yet.
+				case InputStateType::MOUSE_CLICK:
+					if (wasKeyReleased(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
+					break;
+					//doesn't work yet.
+				case InputStateType::MOUSE_DOUBLECLICK:
+					if (wasKeyReleased(binding.keyID)) {
+						binding.execute(getMousePosition());
+					}
+					break;
+
+				default:
+					break;
+				}
+			}
+			for (InputBinding binding : m_keyboardBindings) {
 				switch (binding.inputStateType)
 				{
 				case InputStateType::DOWN:
@@ -95,11 +142,6 @@ namespace fractal {
 						binding.execute();
 					}
 					break;
-				case InputStateType::MOUSE_CLICK:
-					if (wasKeyReleased(binding.keyID)) {
-						binding.execute();
-					}
-					break;
 				default:
 					break;
 				}
@@ -108,12 +150,24 @@ namespace fractal {
 
 		bool Input::shutdown() {
 
-			m_bindings.clear();
+			m_keyboardBindings.clear();
+			m_mouseBindings.clear();
 			return true;
 		}
 
 		void Input::bindInput(InputBinding binding) {
-			m_bindings.push_back(binding);
+			m_keyboardBindings.push_back(binding);
+		}
+
+		void Input::bindInput(MouseBinding binding)
+		{
+			m_mouseBindings.push_back(binding);
+		}
+
+		void Input::addInputComponent(IInput* component)
+		{
+			if(component != nullptr)
+				m_inputComponents.push_back(component);
 		}
 
 		fmath::Vector2 Input::getMousePosition(bool previousFrame) const {
@@ -122,6 +176,16 @@ namespace fractal {
 
 		fmath::Vector2 Input::getMouseMovement() const {
 			return fmath::Vector2(m_currentMousePosition.x - m_oldMousePosition.x, m_currentMousePosition.y - m_oldMousePosition.y);
+		}
+
+		bool Input::isMouseClicked(unsigned int keyID) const
+		{
+			return false;
+		}
+
+		bool Input::isMouseDoubleClicked(unsigned int keyID) const
+		{
+			return false;
 		}
 
 		bool Input::isKeyDown(unsigned int keyID) const {

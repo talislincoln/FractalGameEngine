@@ -15,6 +15,7 @@ void HUD::update()
 
 void HUD::draw()
 {
+
 	beginDraw();
 	std::multimap<unsigned int, IUserInterface*>::iterator it;
 	for (it = fhelpers::Singleton<UIManager>::getInstance().getUIList().begin(); it != fhelpers::Singleton<UIManager>::getInstance().getUIList().end(); ++it) {

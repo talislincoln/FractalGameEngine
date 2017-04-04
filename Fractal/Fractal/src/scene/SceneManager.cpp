@@ -25,6 +25,7 @@ namespace fractal {
 			//define wheather or not we need those managers
 			//setupManager<Renderer>();
 			setupManager<CameraManager>();
+			// setup would call shut down function too. could use it for changing scene.
 			setupManager<UIManager>();
 			if (!this->m_activeScene->isInitialized())
 			{

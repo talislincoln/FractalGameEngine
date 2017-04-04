@@ -4,7 +4,6 @@
 #include "helpers\Singleton.h"
 #include "scene\components\TransformComponent.h"
 
-#include <SDL\SDL.h>
 #include <FractalMath\Quaternion.h>
 
 namespace fractal {

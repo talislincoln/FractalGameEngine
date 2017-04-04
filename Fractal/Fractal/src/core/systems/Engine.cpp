@@ -102,14 +102,14 @@ namespace fractal {
 
 			//Create instances for the different types of system
 			//and check if the system is null after creation
+			Logic* logic = static_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
+			if (logic == nullptr)
+				return 0;
 			Window* window = static_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
 			if (window == nullptr)
 				return 0; //error
 			Input* input = static_cast<Input*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
 			if (input == nullptr)
-				return 0;
-			Logic* logic = static_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
-			if (logic == nullptr)
 				return 0;
 			Graphics* graphics = static_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			if (graphics == nullptr)
@@ -125,12 +125,10 @@ namespace fractal {
 			HUD* HUDs = static_cast<HUD*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::HUD_SYSTEM));
 			if (HUDs == nullptr)
 				return 0;
-
+			
 			if (!physics->initialize())
 				return 0;
 			if (!window->initialize())
-				return 0;
-			if (!input->initialize())
 				return 0;
 			if (!graphics->initialize())
 				return 0;
@@ -144,6 +142,9 @@ namespace fractal {
 
 			logic->setGame(this->m_game);
 			if (!logic->initialize())
+				return 0;
+
+			if (!input->initialize())
 				return 0;
 
 			printf("input succeeded initializing");

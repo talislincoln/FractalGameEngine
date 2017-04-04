@@ -14,14 +14,7 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 			virtual void draw2D();
-			enum {
-				eCENTERX = 0x001,
-				eCENTERY = 0x002,
-				eLEFT = 0x004,
-				eRIGHT = 0x0010,
-				eTOP = 0x020,
-				eBOTTOM = 0x040
-			};
+
 			void AnchorCenter(bool x, bool y);
 			void AnchorLeft();
 			void AnchorRight();
@@ -32,6 +25,7 @@ namespace fractal {
 			void setScale(const fmath::Vector2& s);
 			void setRolate(float r);
 			void setTranform(const fmath::Vector2& v, float r, const fmath::Vector2& s);
+			void makeDirty();
 
 		protected:
 
@@ -41,9 +35,9 @@ namespace fractal {
 			fgraphics::Material* m_material;
 			fgraphics::Vao* m_vao;
 		private:
+			UIComponent* m_UIParent;
 			void updateMatrix();
-			void updateChildren();
-			bool isDirty;
+			bool m_isDirty;
 		};
 	}
 }
