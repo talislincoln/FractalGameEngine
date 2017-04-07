@@ -21,6 +21,7 @@ namespace fractal {
 
 			virtual bool initialize();
 			virtual void update();
+			virtual bool fixedUpdate();
 			virtual bool shutdown();
 
 			inline fscene::TimerObject* getWorldTimer() const {
@@ -31,9 +32,12 @@ namespace fractal {
 
 			fscene::TimerObject* getTimer(const std::string& name) const;
 
-			static float deltaTime;
+			inline float getDeltaTime() {
+				return deltaTime;
+			}
 
 		private:
+			static float deltaTime;
 			fscene::TimerObject* m_worldTimer;
 			std::vector<fscene::TimerObject*> m_timerObjects;
 		};

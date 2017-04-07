@@ -39,6 +39,10 @@ namespace fractal {
 			}
 		}
 
+		bool Timer::fixedUpdate() {
+			return true;
+		}
+
 		bool Timer::shutdown() {
 			SafeDelete(m_worldTimer);
 

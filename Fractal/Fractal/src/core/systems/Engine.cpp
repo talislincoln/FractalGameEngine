@@ -59,15 +59,6 @@ namespace fractal {
 			//this function will assignt the is running to false
 			//and close the application at the end of it
 
-			Uint32 start32, now32;
-			Uint64 start, now;
-
-			/*start32 = SDL_GetTicks();
-			start = SDL_GetPerformanceCounter();
-			SDL_Delay(1000);
-			now = SDL_GetPerformanceCounter();
-			now32 = SDL_GetTicks();
-			SDL_Log("Delay 1 second = %d ms in ticks, %f ms according to performance counter", (now32 - start32), (double)((now - start) * 1000) / SDL_GetPerformanceFrequency());*/
 
 			m_isRunning = true;
 			while (m_isRunning)
@@ -76,6 +67,10 @@ namespace fractal {
 				draw();
 
 				//create the fixed timestep
+				//while(timer->fixedupdate()) {
+				//  physicsworld->fixedupdate();
+				//	logic->fixedupdate();
+				//}
 			}
 
 			if (!shutDown())
@@ -100,6 +95,10 @@ namespace fractal {
 
 			//Create instances for the different types of system
 			//and check if the system is null after creation
+			//timer system has to be the first one create!!!
+			Timer* timer = static_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
+			if (timer == nullptr)
+				return 0;
 			Window* window = static_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
 			if (window == nullptr)
 				return 0; //error
@@ -111,9 +110,6 @@ namespace fractal {
 				return 0;
 			Graphics* graphics = static_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
 			if (graphics == nullptr)
-				return 0;
-			Timer* timer = static_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
-			if (timer == nullptr)
 				return 0;
 			
 			if (!window->initialize())
@@ -155,6 +151,8 @@ namespace fractal {
 		{
 			for (System* system : fhelpers::Singleton<SystemManager>::getInstance().getSystems())
 				system->update();
+
+			
 		}
 
 		int Engine::shutDown()
