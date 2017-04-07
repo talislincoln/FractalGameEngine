@@ -22,6 +22,7 @@ namespace fractal {
 			void setParent(GameObject* parent);
 			GameObject* getParent() const;
 
+
 			static const int INVALID_ORDER_ID = -1;
 
 		private:

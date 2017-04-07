@@ -1,6 +1,5 @@
 #ifndef _IDRAWABLE_H
 #define _IDRAWABLE_H
-
 namespace fractal {
 	class IDrawable
 	{

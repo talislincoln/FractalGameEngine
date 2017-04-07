@@ -38,7 +38,7 @@ namespace fractal {
 				return m_vertices.size();
 			}
 
-			inline const std::vector<fmath::Vector3> getVertices() const {
+			inline const std::vector<fmath::Vector3>& getVertices() const {
 				return m_vertices;
 			}
 

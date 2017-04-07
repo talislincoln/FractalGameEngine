@@ -142,9 +142,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\systems\HUD.cpp" />
+    <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
-    <ClCompile Include="src\graphics\Materials\DefaultMaterial.cpp" />
-    <ClCompile Include="src\scene\components\CameraMovementComponent.cpp" />
+    <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
+    <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
+    <ClCompile Include="src\graphics\Vao.cpp" />
+    <ClCompile Include="src\interfaces\IUserInterface.cpp" />
+    <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
+    <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
@@ -200,8 +206,10 @@
     <ClInclude Include="include\core\systems\Input.h" />
     <ClInclude Include="include\core\systems\Logic.h" />
     <ClInclude Include="include\core\systems\manager\CameraManager.h" />
+    <ClInclude Include="include\core\systems\HUD.h" />
     <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
     <ClInclude Include="include\core\systems\manager\SystemManager.h" />
+    <ClInclude Include="include\core\systems\manager\UIManager.h" />
     <ClInclude Include="include\core\systems\PhysicsWorld.h" />
     <ClInclude Include="include\core\systems\System.h" />
     <ClInclude Include="include\core\systems\Timer.h" />
@@ -211,16 +219,23 @@
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Material.h" />
-    <ClInclude Include="include\graphics\materials\DefaultMaterial.h" />
+    <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
+    <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
     <ClInclude Include="include\graphics\Texture.h" />
+    <ClInclude Include="include\graphics\Vao.h" />
     <ClInclude Include="include\graphics\Vertex.h" />
     <ClInclude Include="include\helpers\Manager.h" />
     <ClInclude Include="include\helpers\ObjectCounter.h" />
     <ClInclude Include="include\helpers\Singleton.h" />
+    <ClInclude Include="include\interfaces\ICollision.h" />
     <ClInclude Include="include\interfaces\IDrawable.h" />
-    <ClInclude Include="include\scene\components\CameraMovementComponent.h" />
+    <ClInclude Include="include\interfaces\IInput.h" />
+    <ClInclude Include="include\interfaces\IPhysicsBody.h" />
+    <ClInclude Include="include\interfaces\IUserInterface.h" />
+    <ClInclude Include="include\scene\components\UIButtonComponent.h" />
+    <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\objects\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />
     <ClInclude Include="include\scene\components\CameraComponent.h" />
@@ -246,6 +261,7 @@
     <ClInclude Include="include\utils\ShaderUtils\UniformVector2.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformVector3.h" />
     <ClInclude Include="include\utils\ShaderUtils\UniformVector4.h" />
+    <ClInclude Include="include\graphics\Terrain.h" />
     <ClInclude Include="include\utils\TextureUtils.h" />
     <ClInclude Include="include\utils\picoPNG.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
@@ -254,6 +270,9 @@
   <ItemGroup>
     <Image Include="res\images\awesome.png" />
     <Image Include="res\images\wooden.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
