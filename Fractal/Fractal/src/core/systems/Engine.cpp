@@ -42,40 +42,13 @@ namespace fractal {
 			// this will set the the random numbers to be always random (in theory?)
 			srand(SDL_GetTicks());
 
-			//if using message system:
-			//MSG msg = {};
-			/*while (msg.message != WM_QUIT)
-			{
-				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
-				{
-					TranslateMessage(&msg);
-					DispatchMessage(&msg);
-				}
-
-				update();
-				draw();
-			}
-			*/
-
-			//subscribe a function to the event to close the window
-			//this function will assignt the is running to false
-			//and close the application at the end of it
-
-			//Uint32 start32, now32;
-			//Uint64 start, now;
-
-			/*start32 = SDL_GetTicks();
-			start = SDL_GetPerformanceCounter();
-			SDL_Delay(1000);
-			now = SDL_GetPerformanceCounter();
-			now32 = SDL_GetTicks();
-			SDL_Log("Delay 1 second = %d ms in ticks, %f ms according to performance counter", (now32 - start32), (double)((now - start) * 1000) / SDL_GetPerformanceFrequency());*/
-
 			m_isRunning = true;
 			while (m_isRunning)
 			{
+				static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->startFPS();
 				update();
 				draw();
+				printf("fps: %f\n", static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->endFPS());
 
 				//create the fixed timestep
 			}

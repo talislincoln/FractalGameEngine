@@ -35,7 +35,7 @@ namespace fractal {
 		void PhysicsWorld::simulation() {
 			using namespace fhelpers;
 			int i = 0;
-			dtime = dynamic_cast<fcore::Timer*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->deltaTime;
+			dtime = dynamic_cast<fcore::Timer*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->getDeltaTime();
 			//dtime = timer.GetDeltaTime() / 2.0f;
 			for (fscene::GameObject* body : gameOjbectWithBodyList) {
 
