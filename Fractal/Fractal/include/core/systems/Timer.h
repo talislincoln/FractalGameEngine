@@ -21,7 +21,11 @@ namespace fractal {
 
 			virtual bool initialize();
 			virtual void update();
+			virtual bool fixedUpdate();
 			virtual bool shutdown();
+
+			void startFPS();
+			float endFPS();
 
 			inline fscene::TimerObject* getWorldTimer() const {
 				return m_worldTimer;
@@ -31,11 +35,19 @@ namespace fractal {
 
 			fscene::TimerObject* getTimer(const std::string& name) const;
 
-			static float deltaTime;
+			inline float getDeltaTime() {
+				return deltaTime;
+			}
 
 		private:
+			static float deltaTime;
 			fscene::TimerObject* m_worldTimer;
 			std::vector<fscene::TimerObject*> m_timerObjects;
+
+			unsigned int m_startTicks;
+			float m_fps; ///< current fps
+			float m_maxFPS; ///< max desired fps
+			float m_frameTime; ///< the time it took for a single frame
 		};
 	}
 }
