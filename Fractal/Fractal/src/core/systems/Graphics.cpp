@@ -20,8 +20,8 @@ namespace fractal {
 		}
 
 		bool Graphics::initialize() {
-			this->m_window = dynamic_cast<Window*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
-
+			this->m_window = static_cast<Window*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
+			
 			//opengl context store all opengl related things such as buffers and so on
 			SDL_GLContext glContext = SDL_GL_CreateContext(m_window->getSDLWindow());
 			if (glContext == nullptr) {
@@ -61,6 +61,12 @@ namespace fractal {
 		}
 
 		void Graphics::draw() {
+			// all should be draw here. 
+			// draw should be in order of 
+			/// shader program ( the material id?)
+			/// texture
+			/// vao
+
 		}
 
 		bool Graphics::shutdown() {

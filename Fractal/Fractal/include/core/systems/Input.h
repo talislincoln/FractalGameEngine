@@ -16,9 +16,7 @@
 #endif // !_VECTOR_H
 
 #include <FractalMath\Vector.h>
-
 namespace fractal {
-	class IInput;
 	namespace fcore {
 		struct InputBinding {
 			InputBinding(unsigned int keyID, std::function<void()> fn, InputStateType inputState) :
@@ -90,7 +88,6 @@ namespace fractal {
 			void bindInput(InputBinding binding);
 			void bindInput(MouseBinding binding);
 
-			void addInputComponent(IInput* component);
 			/**
 			\brief Get the mouse position.
 			\param previousFrame If true, returns the mouse position on the last frame
@@ -116,9 +113,6 @@ namespace fractal {
 
 			std::vector<InputBinding> m_keyboardBindings;
 			std::vector<MouseBinding> m_mouseBindings;
-
-			std::vector<IInput*> m_inputComponents;
-			fmath::Vector2 m_mouseCoordinates;
 
 			fmath::Vector2 m_currentMousePosition;
 			fmath::Vector2 m_oldMousePosition;

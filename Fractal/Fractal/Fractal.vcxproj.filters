@@ -54,6 +54,8 @@
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
+    <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
+    <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -122,6 +124,13 @@
     <ClInclude Include="include\interfaces\IUserInterface.h" />
     <ClInclude Include="include\interfaces\IInput.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
+    <ClInclude Include="include\core\systems\manager\InputManager.h" />
+    <ClInclude Include="src\core\systems\manager\InputManager.h" />
+    <ClInclude Include="include\scene\components\UIFontComponent.h" />
+    <ClInclude Include="include\utils\FontUtils\FontCharacter.h" />
+    <ClInclude Include="include\utils\FontUtils\FontType.h" />
+    <ClInclude Include="include\utils\FontUtils\FontLine.h" />
+    <ClInclude Include="include\utils\FontUtils\FontWord.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

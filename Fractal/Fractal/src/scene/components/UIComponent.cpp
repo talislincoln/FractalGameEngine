@@ -22,20 +22,23 @@ namespace fractal {
 		}
 
 		bool UIComponent::initialize() {
-			fhelpers::Singleton<fcore::UIManager>::getInstance().addUiList(getParent()->getDepth(), this);
-			m_vao->loadUIIntoOpenGL();
 
 			fscene::GameObject* parent = getParent()->getParent();
 			if (parent != nullptr) {
 				m_UIParent = parent->getComponent<UIComponent>();
 			}
+			else {
+				fhelpers::Singleton<fcore::UIManager>::getInstance().addUiList(getParent()->getDepth(), this);
+			}
+			m_vao->loadUIIntoOpenGL();
+
 			updateMatrix();
 			return true;
 		}
 
 		void UIComponent::draw2D() {
-			glBindVertexArray(m_vao->VAO);
 
+			glBindVertexArray(m_vao->VAO);
 			m_material->use();// pass in 4 matrix
 			m_material->loadTransform(m_UITranform);
 			// 4 is the size of elements
@@ -43,6 +46,15 @@ namespace fractal {
 			glBindVertexArray(0);
 
 			m_material->unuse();
+
+			for (fscene::GameObject* obj : getParent()->getChildren())
+			{
+				UIComponent* UIComp = obj->getComponent<UIComponent>();
+				if (!UIComp)
+					continue;
+
+				UIComp->draw2D();
+			}
 		}
 
 		void UIComponent::update() {

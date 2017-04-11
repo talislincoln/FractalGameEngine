@@ -5,7 +5,7 @@
 #include "interfaces\IInput.h"
 namespace fractal {
 	namespace fHUD {
-		class UIButtonComponent : public UIComponent , public IInput {
+		class UIButtonComponent : public UIComponent , public IMouseInput {
 		public:
 			UIButtonComponent();
 			virtual ~UIButtonComponent();
@@ -13,7 +13,7 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 			virtual void draw2D();
-			virtual void setupInput(fcore::Input* input);
+			virtual void setupMouseInput(fcore::Input* input);
 		private:
 			void mouseMotion(const fmath::Vector2& mouseCoord);
 			void mouseClick(const fmath::Vector2& mouseCoord);

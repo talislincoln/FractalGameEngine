@@ -14,10 +14,10 @@ namespace fractal {
 			virtual ~UIManager();
 			virtual bool initialize();
 			virtual bool shutdown();
-			std::multimap<unsigned int, IUserInterface*>& getUIList();
+			std::map<unsigned int, IUserInterface*>& getUIList();
 			void addUiList(unsigned int depth, IUserInterface*);
 		private:
-			std::multimap<unsigned int, IUserInterface*> m_UIList;
+			std::map<unsigned int, IUserInterface*> m_UIList;
 		};
 	}
 }

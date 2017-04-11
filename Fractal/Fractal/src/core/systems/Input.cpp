@@ -5,7 +5,7 @@
 //I really don't like this include since this is here just because I need the keyCodes
 #include <SDL\SDL.h>
 #include "interfaces\IInput.h"
-
+#include "core\systems\manager\InputManager.h"
 namespace fractal {
 	namespace fcore {
 		Input::Input() :
@@ -20,10 +20,6 @@ namespace fractal {
 		}
 
 		bool Input::initialize() {
-			//nothing to init for now
-			for (IInput* it : m_inputComponents) {
-				it->setupInput(this);
-			}
 			return true;
 		}
 
@@ -162,12 +158,6 @@ namespace fractal {
 		void Input::bindInput(MouseBinding binding)
 		{
 			m_mouseBindings.push_back(binding);
-		}
-
-		void Input::addInputComponent(IInput* component)
-		{
-			if(component != nullptr)
-				m_inputComponents.push_back(component);
 		}
 
 		fmath::Vector2 Input::getMousePosition(bool previousFrame) const {
