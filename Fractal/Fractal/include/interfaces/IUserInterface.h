@@ -2,6 +2,7 @@
 #define _IUSERINTERFACE_H
 
 #include <vector>
+#include <SDL\SDL.h>
 namespace fractal {
 	class IUserInterface
 	{

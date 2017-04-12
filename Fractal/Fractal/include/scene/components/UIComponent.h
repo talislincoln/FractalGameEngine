@@ -4,6 +4,7 @@
 #include "interfaces\IUserInterface.h"
 #include "graphics\materials\DefaultUIMaterial.h"
 #include "graphics\Vao.h"
+
 namespace fractal {
 	namespace fHUD {
 		class UIComponent : public fscene::Component, public IUserInterface {

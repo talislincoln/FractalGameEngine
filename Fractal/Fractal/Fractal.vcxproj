@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
     <ClCompile Include="src\core\systems\HUD.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="src\scene\components\LightComponent.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
+    <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
     <ClCompile Include="src\core\game\AbstractGame.cpp" />
     <ClCompile Include="src\core\systems\Engine.cpp" />
@@ -208,6 +210,7 @@
     <ClInclude Include="include\core\systems\Logic.h" />
     <ClInclude Include="include\core\systems\manager\CameraManager.h" />
     <ClInclude Include="include\core\systems\HUD.h" />
+    <ClInclude Include="include\core\systems\manager\InputManager.h" />
     <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
     <ClInclude Include="include\core\systems\manager\SystemManager.h" />
     <ClInclude Include="include\core\systems\manager\UIManager.h" />
@@ -238,6 +241,7 @@
     <ClInclude Include="include\scene\components\LightComponent.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
+    <ClInclude Include="include\scene\components\UIFontComponent.h" />
     <ClInclude Include="include\scene\objects\CameraObject.h" />
     <ClInclude Include="include\scene\Component.h" />
     <ClInclude Include="include\scene\components\CameraComponent.h" />
@@ -253,6 +257,10 @@
     <ClInclude Include="include\scene\SceneManager.h" />
     <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\components\TransformComponent.h" />
+    <ClInclude Include="include\utils\FontUtils\FontCharacter.h" />
+    <ClInclude Include="include\utils\FontUtils\FontLine.h" />
+    <ClInclude Include="include\utils\FontUtils\FontType.h" />
+    <ClInclude Include="include\utils\FontUtils\FontWord.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\utils\LoadOBJ.h" />
     <ClInclude Include="include\utils\LoadTexture.h" />
@@ -268,6 +276,7 @@
     <ClInclude Include="include\utils\picoPNG.h" />
     <ClInclude Include="include\utils\TextureBuilder.h" />
     <ClInclude Include="include\utils\ShaderUtils\Uniform.h" />
+    <ClInclude Include="src\core\systems\manager\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

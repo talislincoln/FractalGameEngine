@@ -19,7 +19,7 @@ bool fractal::fcore::UIManager::shutdown()
 	return false;
 }
 
-std::multimap<unsigned int, IUserInterface*>& fractal::fcore::UIManager::getUIList()
+std::map<unsigned int, IUserInterface*>& fractal::fcore::UIManager::getUIList()
 {
 	return m_UIList;
 }
