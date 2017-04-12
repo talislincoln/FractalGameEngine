@@ -11,7 +11,7 @@ namespace fractal {
 	public:
 		UniformVector3(const char* name);
 		void loadVector3(float x, float y, float z);
-		void loadVector3(fmath::Vector3& v);
+		void loadVector3(const fmath::Vector3& v);
 
 
 	private:

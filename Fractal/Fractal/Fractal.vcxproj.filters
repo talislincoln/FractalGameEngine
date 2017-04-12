@@ -54,6 +54,7 @@
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
+    <ClCompile Include="src\scene\components\LightComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -122,6 +123,7 @@
     <ClInclude Include="include\interfaces\IUserInterface.h" />
     <ClInclude Include="include\interfaces\IInput.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
+    <ClInclude Include="include\scene\components\LightComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

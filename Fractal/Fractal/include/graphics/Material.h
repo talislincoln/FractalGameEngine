@@ -9,6 +9,10 @@
 #include <Fractal\include\graphics\ShaderProgram.h>
 
 namespace fractal {
+	namespace fscene {
+		class LightComponent;
+	}
+
 	namespace fgraphics {
 		class Material {
 		public:
@@ -22,6 +26,7 @@ namespace fractal {
 			virtual void load2DMatrix(const fmath::Vector2& t = fmath::Vector2(), float rolate = 0, const fmath::Vector2& scale = fmath::Vector2(1), int index = 0 );
 			virtual void loadNewTexture(Texture* newTexture, const unsigned int location = 0);
 			virtual void loadTransform(const fmath::Matrix4& TransformMatrix, unsigned int location = 0);
+			virtual void loadLight(const fmath::Vector3& lightPos, const fmath::Vector3& lightColour);
 
 			virtual void loadTexture() = 0;
 		protected:

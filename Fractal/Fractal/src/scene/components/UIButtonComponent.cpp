@@ -1,12 +1,15 @@
 #include "scene\components\UIButtonComponent.h"
 #include "helpers\Singleton.h"
 #include "core\systems\manager\SystemManager.h"
+
 fractal::fHUD::UIButtonComponent::UIButtonComponent() : fractal::fHUD::UIComponent()
 {
 }
+
 fractal::fHUD::UIButtonComponent::~UIButtonComponent()
 {
 }
+
 bool fractal::fHUD::UIButtonComponent::initialize()
 {
 	static_cast<fcore::Input*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM))->addInputComponent(this);

@@ -149,6 +149,7 @@
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
+    <ClCompile Include="src\scene\components\LightComponent.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\ShaderUtils\UniformBool.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="include\interfaces\IInput.h" />
     <ClInclude Include="include\interfaces\IPhysicsBody.h" />
     <ClInclude Include="include\interfaces\IUserInterface.h" />
+    <ClInclude Include="include\scene\components\LightComponent.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\objects\CameraObject.h" />

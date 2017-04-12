@@ -15,7 +15,7 @@ void fractal::UniformVector3::loadVector3(float x, float y, float z)
 	}
 }
 
-void fractal::UniformVector3::loadVector3(fmath::Vector3& v)
+void fractal::UniformVector3::loadVector3(const fmath::Vector3& v)
 {
 	loadVector3(v.x, v.y, v.z);
 }

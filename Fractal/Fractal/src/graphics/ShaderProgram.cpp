@@ -34,7 +34,6 @@ namespace fractal {
 		GLint result;
 		glGetProgramiv(this->m_programID, GL_LINK_STATUS, &result);
 		if (!result) {
-
 			GLchar infoLog[512];
 			glGetProgramInfoLog(m_programID, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;

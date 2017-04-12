@@ -38,6 +38,9 @@ namespace fractal {
 			m_material->loadCamera(camera->getViewMatrix(),
 				fmath::Matrix4::perspective(50.0f, 800.0f / 500.0f, 0.1f, 1000.0f),  //get that from camera too?
 				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
+
+			///TODO NEED TO ACTUALLY IMPORT THE LIGHTING HERE!!!
+			m_material->loadLight(fmath::Vector3(5.0f, 5.0f, 5.0f), fmath::Vector3(1.0f,1.0f,1.0f));
 			
 			glDrawElements(GL_TRIANGLES, m_vao->indicesSize, GL_UNSIGNED_INT, 0);
 			m_vao->unbind();
