@@ -45,6 +45,11 @@ using namespace fgraphics;
 		static_cast<UniformMatrix*>(m_uniforms[index])->loadMatrix(m);
 	}
 
+	void fractal::fgraphics::Material::loadShineVariables(float damper, float reflectivity, int damperIndex, int reflectivityIndex) {
+		static_cast<UniformFloat*>(m_uniforms[damperIndex])->loadFloat(damper);
+		static_cast<UniformFloat*>(m_uniforms[reflectivityIndex])->loadFloat(reflectivity);
+	}
+
 	void Material::loadNewTexture(Texture * newTexture, const unsigned int location)
 	{
 		if (location < m_textures.size()) {

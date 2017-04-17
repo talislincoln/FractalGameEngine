@@ -6,7 +6,9 @@
 #include <GL\glew.h>
 #include <Fractal\include\utils\LoadTexture.h>
 #include <Fractal\include\utils\TextureBuilder.h>
+
 namespace fractal {
+
 	namespace fgraphics {
 
 		class Texture {

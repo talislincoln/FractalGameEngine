@@ -12,6 +12,9 @@ namespace fractal {
 			m_uniforms.push_back(new UniformVector3("lightColour"));	//3
 			m_uniforms.push_back(new UniformVector3("lightPosition"));  //4
 			m_uniforms.push_back(new UniformSampler("diffuseMap"));     //5
+			m_uniforms.push_back(new UniformFloat("shineDamper"));		//6
+			m_uniforms.push_back(new UniformFloat("reflectivity"));		//7
+
 			//m_uniforms.push_back(new UniformVector3("lightDirection")); //6
 			//need to setup texture so i can use DefaultMaterial and just add textures
 			m_textures.push_back(Texture::newTexture(DEFAULT_TEXTURE).anisotropic().create());
