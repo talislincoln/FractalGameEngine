@@ -17,6 +17,7 @@ namespace fractal {
 			const GLsizei SIZE;
 
 			Texture(GLuint Id, GLsizei size, GLint type = GL_TEXTURE_2D) : TEXTUREID(Id), SIZE(size), TYPE(type) {}
+
 			inline void bindToUnit(int unit) {
 				glActiveTexture(GL_TEXTURE0 + unit);
 				glBindTexture(TYPE, TEXTUREID);
@@ -25,6 +26,7 @@ namespace fractal {
 			inline void destroy() {
 				glDeleteTextures(SIZE, &TEXTUREID);
 			}
+
 			static inline TextureBuilder newTexture(const char* path) {
 				return TextureBuilder(path);
 			}
@@ -32,7 +34,6 @@ namespace fractal {
 		private:
 			const GLint TYPE;
 		};
-
 
 		class TextureData {
 		private:
@@ -42,13 +43,16 @@ namespace fractal {
 		public:
 			inline TextureData(unsigned long width, unsigned long height, std::vector<unsigned char> buffer)
 				: m_width(width), m_height(height), m_buffer(buffer) { }
+
 			inline const unsigned long getWidth() const {
 				return m_width;
 			}
+
 			inline const unsigned long getHeight() const {
 				return m_height;
 			}
-			inline std::vector<unsigned char>& getBuffer() {
+
+			inline const std::vector<unsigned char>& getBuffer() {
 				return m_buffer;
 			}
 		};

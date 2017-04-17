@@ -56,7 +56,7 @@ namespace fractal {
 			std::vector<Texture*> m_textures;
 			ShaderProgram* m_shader;
 
-			float m_shineDamper = 10.0f;
+			float m_shineDamper = 5.0f;
 			float m_reflectivity = 1.0f;
 
 		};

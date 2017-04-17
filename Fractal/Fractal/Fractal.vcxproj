@@ -147,6 +147,7 @@
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
+    <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
+    <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
