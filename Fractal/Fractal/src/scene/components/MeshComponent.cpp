@@ -42,7 +42,7 @@ namespace fractal {
 			m_material->loadShineVariables(m_material->getShineDamper(), m_material->getReflectivity());
 
 			///TODO NEED TO ACTUALLY IMPORT THE LIGHTING HERE!!!
-			m_material->loadLight(fmath::Vector3(5.0f, 5.0f, 5.0f), fmath::Vector3(1.0f,1.0f,1.0f));
+			m_material->loadLight(camera->getPosition(), fmath::Vector3(1.0f,1.0f,1.0f));
 			
 			glDrawElements(GL_TRIANGLES, m_vao->indicesSize, GL_UNSIGNED_INT, 0);
 			m_vao->unbind();

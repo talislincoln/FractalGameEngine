@@ -4,11 +4,12 @@
 #include <FractalMath\Matrix.h>
 
 #include "scene\Component.h"
+#include "scene\components\TransformComponent.h"
 
 #include <gl\glew.h>
 namespace fractal {
 	namespace fscene {
-		class TransformComponent;
+		//class TransformComponent;
 
 		class CameraComponent : public Component
 		{
@@ -32,6 +33,10 @@ namespace fractal {
 			}
 			inline fmath::Vector3 getUp() {
 				return m_up;
+			}
+
+			inline const fmath::Vector3& getPosition() const {
+				return m_transformComponent->getPosition();
 			}
 		private:
 			TransformComponent* m_transformComponent;

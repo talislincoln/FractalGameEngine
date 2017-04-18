@@ -26,7 +26,7 @@ namespace fractal {
 		void FreeCamera::update() {
 			CameraObject::update();
 			//this->mouse = this->m_input->getMouseMovement() * MouseSensitivity;
-			//this->getTransform()->rotate(fmath::Quaternion::fromEuler(mouse.y ,mouse.x , 0.0f ));
+			//this->getTransform()->rotate(fmath::Quaternion::fromEuler(0.0f ,mouse.x , 0.0f ));
 		}
 
 		bool FreeCamera::shutdown() {

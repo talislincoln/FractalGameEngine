@@ -139,8 +139,6 @@ namespace fractal {
 		 //	uniform.storeUniformLocation(m_programID);
 		 //}
 		glValidateProgram(m_programID);
-
-
 	}
 	void ShaderProgram::unuse() {
 		for (int i = 0; i < m_numAttrib; i++) {
