@@ -1,0 +1,6 @@
+#ifndef _SKYBOX_COMPONENT_H
+#define _SKYBOX_COMPONENT_H
+
+//13:50
+
+#endif // !_SKYBOX_COMPONENT_H

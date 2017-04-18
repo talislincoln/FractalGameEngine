@@ -241,6 +241,7 @@
     <ClInclude Include="include\interfaces\IPhysicsBody.h" />
     <ClInclude Include="include\interfaces\IUserInterface.h" />
     <ClInclude Include="include\scene\components\LightComponent.h" />
+    <ClInclude Include="include\scene\components\SkyboxComponent.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\components\UIFontComponent.h" />

@@ -19,56 +19,7 @@ namespace fractal {
 		public:
 			DefaultSkyboxMaterial();
 		private:
-			virtual void loadTexture();
-
-			static const float SIZE;
-			static const float VERTICES[];
-		};
-
-		const float DefaultSkyboxMaterial::SIZE = 500.0f;
-
-		const float DefaultSkyboxMaterial::VERTICES[] = {
-			-SIZE,  SIZE, -SIZE,
-			-SIZE, -SIZE, -SIZE,
-			SIZE, -SIZE, -SIZE,
-			SIZE, -SIZE, -SIZE,
-			SIZE,  SIZE, -SIZE,
-			-SIZE,  SIZE, -SIZE,
-
-			-SIZE, -SIZE,  SIZE,
-			-SIZE, -SIZE, -SIZE,
-			-SIZE,  SIZE, -SIZE,
-			-SIZE,  SIZE, -SIZE,
-			-SIZE,  SIZE,  SIZE,
-			-SIZE, -SIZE,  SIZE,
-
-			SIZE, -SIZE, -SIZE,
-			SIZE, -SIZE,  SIZE,
-			SIZE,  SIZE,  SIZE,
-			SIZE,  SIZE,  SIZE,
-			SIZE,  SIZE, -SIZE,
-			SIZE, -SIZE, -SIZE,
-
-			-SIZE, -SIZE,  SIZE,
-			-SIZE,  SIZE,  SIZE,
-			SIZE,  SIZE,  SIZE,
-			SIZE,  SIZE,  SIZE,
-			SIZE, -SIZE,  SIZE,
-			-SIZE, -SIZE,  SIZE,
-
-			-SIZE,  SIZE, -SIZE,
-			SIZE,  SIZE, -SIZE,
-			SIZE,  SIZE,  SIZE,
-			SIZE,  SIZE,  SIZE,
-			-SIZE,  SIZE,  SIZE,
-			-SIZE,  SIZE, -SIZE,
-
-			-SIZE, -SIZE, -SIZE,
-			-SIZE, -SIZE,  SIZE,
-			SIZE, -SIZE, -SIZE,
-			SIZE, -SIZE, -SIZE,
-			-SIZE, -SIZE,  SIZE,
-			SIZE, -SIZE,  SIZE
+			virtual void loadCubemap(std::string* textureFiles, int numOfFiles);
 		};
 	}
 }

@@ -22,6 +22,8 @@ namespace fractal {
 			virtual void unuse();
 			virtual void destroy();
 			virtual void loadCamera(const fmath::Matrix4& view,const fmath::Matrix4& projection,const fmath::Matrix4& model);
+			virtual void loadProjectionMatrix(const fmath::Matrix4& projection);
+			virtual void loadViewMatrix(const fmath::Matrix4& view);
 			// need to set up default one for all material
 			virtual void load2DMatrix(const fmath::Vector2& t = fmath::Vector2(), float rolate = 0, const fmath::Vector2& scale = fmath::Vector2(1), int index = 0 );
 			virtual void loadNewTexture(Texture* newTexture, const unsigned int location = 0);
@@ -58,7 +60,6 @@ namespace fractal {
 
 			float m_shineDamper = 5.0f;
 			float m_reflectivity = 1.0f;
-
 		};
 	}
 }
