@@ -53,7 +53,6 @@ namespace fractal {
 		}
 
 		bool MeshComponent::shutdown() {
-
 			m_vao->destroy();
 			delete(m_vao);
 			m_vao = nullptr;
@@ -61,6 +60,7 @@ namespace fractal {
 			m_material = nullptr;
 			return true;
 		}
+
 		void MeshComponent::setTexture(fgraphics::Texture * texture)
 		{
 			m_material->loadNewTexture(texture);
