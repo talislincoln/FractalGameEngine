@@ -18,7 +18,12 @@ namespace fractal {
 		class DefaultSkyboxMaterial : public Material {
 		public:
 			DefaultSkyboxMaterial();
+
+			int textureID;
 		private:
+			virtual void loadTexture() {
+
+			}
 			virtual void loadCubemap(std::string* textureFiles, int numOfFiles);
 		};
 	}

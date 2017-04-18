@@ -8,6 +8,7 @@ namespace fractal {
 		{
 			m_uniforms.push_back(new UniformMatrix("projectionMatrix"));     //0
 			m_uniforms.push_back(new UniformMatrix("viewMatrix"));           //1
+			m_uniforms.push_back(new UniformSampler("cubeMap"));
 			m_shader->storeUniformLocations(m_uniforms);
 
 			/*m_textures.push_back(Texture::newTexture(DEFAULT_SKYBOX_TEXTURE_RIGHT).anisotropic().create());
@@ -39,8 +40,11 @@ namespace fractal {
 			}
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
+			
+			textureID = texID;
 			///maybe this is leaking memory for the textures created in OPENGL!!!!!
+
+			static_cast<UniformSampler*>(m_uniforms[2])->loadTextureUnit(textureID);
 		}
 	}
 }

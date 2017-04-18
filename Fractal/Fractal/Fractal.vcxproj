@@ -152,6 +152,7 @@
     <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\scene\components\LightComponent.cpp" />
+    <ClCompile Include="src\scene\components\SkyboxComponent.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />

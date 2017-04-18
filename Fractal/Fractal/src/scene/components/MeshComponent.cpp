@@ -36,7 +36,7 @@ namespace fractal {
 			fscene::CameraComponent* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
 
 			m_material->loadCamera(camera->getViewMatrix(),
-				fmath::Matrix4::perspective(50.0f, 800.0f / 500.0f, 0.1f, 1000.0f),  //get that from camera too?
+				fmath::Matrix4::perspective(30.0f, 800.0f / 500.0f, 0.1f, 1000.0f),  //get that from camera too?
 				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 
 			m_material->loadShineVariables(m_material->getShineDamper(), m_material->getReflectivity());

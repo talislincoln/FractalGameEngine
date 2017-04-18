@@ -15,6 +15,8 @@
 #include <Fractal\include\utils\LoadOBJ.h>
 #include <Fractal\include\core\systems\manager\SystemManager.h>
 
+#include <Fractal\include\scene\components\SkyboxComponent.h>
+
 #include "scene\components\UIComponent.h"
 
 TalisScene::TalisScene():
@@ -34,20 +36,33 @@ bool TalisScene::initialize() {
 	using namespace fgraphics;
 	terrain = new SceneObject("terrain");
 
+	skybox = new SceneObject("skybox");
+
 	terrain->addComponent(new TerrainComponent());
 
 	addGameObject(terrain);
 	//test2 = new GameObject("test2");
 	//test2->addComponent(new fHUD::UIComponent());
 	test1 = new SceneObject("test1");
-	test1->addComponent(new MeshComponent(LoadOBJ::load("meshes/dragon")));
+	test1->addComponent(new MeshComponent(LoadOBJ::load("meshes/cyl")));
 	test1->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
 	test1->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
-	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(1.0f, 1.0f, 0.0f));
+	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(1.0f, 1.0f, -1.0f));
 	test1->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);
+
+
+	/*SceneObject* test2 = new SceneObject("test2");
+	test2->getTransform()->setPosition(fmath::Vector3(15.0f, -30.0f, 0.0f));
+	test2->addComponent(new MeshComponent(LoadOBJ::load("meshes/Character")));
+	test2->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
+	test2->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
+	test2->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(0.0f, -1.0f, 0.0f));
+	test2->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);*/
 	//test1->addComponent(new fHUD::UIComponent());
 	//test1->getComponent<MeshComponent>()->setTexture(Texture::newTexture("images/awesome").create());
 	camera = new FreeCamera("MainCamera");
+	skybox->addComponent(new SkyboxComponent());
+	camera->getTransform()->setPosition(fmath::Vector3(7.0f, 4.0f, 15.0f));
 	//camera->addComponent(new MeshComponent(LoadOBJ::load("cyl")));
 	//camera->addComponent(new fHUD::UIButtonComponent());
 	//camera->getComponent<fHUD::UIButtonComponent>()->setOffset(fmath::Vector2(-1.0f, 0.0f));
@@ -56,6 +71,8 @@ bool TalisScene::initialize() {
 	//test1->addChild(test2);
 	test1->addChild(camera);
 	addGameObject(test1);
+	addGameObject(skybox);
+	//addGameObject(test2);
 	//camera->getComponent<TransformComponent>()->translate(fmath::Vector3(0.0f,0.0f,-10.0f));
 
 	return Scene::initialize();

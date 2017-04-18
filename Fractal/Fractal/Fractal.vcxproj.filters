@@ -58,6 +58,7 @@
     <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
     <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
+    <ClCompile Include="src\scene\components\SkyboxComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />

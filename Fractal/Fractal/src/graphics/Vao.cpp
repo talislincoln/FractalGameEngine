@@ -51,13 +51,14 @@ namespace fractal{
 				fmath::Vector2(-1, 1),
 				fmath::Vector2(-1, -1),
 				fmath::Vector2(1, 1),
-				fmath::Vector2(1, -1) };
-				bind();
-
-				indicesSize = position.size();
-				vecticesSize = position.size();
-				loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(position[0]), vecticesSize, 2);
-				unbind();
+				fmath::Vector2(1, -1) 
+			};
+			
+			bind();
+			indicesSize = position.size();
+			vecticesSize = position.size();
+			loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(position[0]), vecticesSize, 2);
+			unbind();
 		}
 
 		void Vao::loadSkybox() {
@@ -108,6 +109,8 @@ namespace fractal{
 			}; //36 vert3
 
 			bind();
+			indicesSize = 36;
+			vecticesSize = 36;
 			loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(VERTICES[0]), 36, 3);
 			unbind();
 		}

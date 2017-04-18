@@ -1,12 +1,17 @@
 #ifndef _SKYBOX_COMPONENT_H
 #define _SKYBOX_COMPONENT_H
 
+#include <Fractal\include\graphics\Vao.h>
+#include <Fractal\include\scene\Component.h>
 #include <Fractal\include\interfaces\IDrawable.h>
-//13:50
+#include <Fractal\include\graphics\materials\DefaultSkyboxMaterial.h>
 
 namespace fractal {
 	namespace fscene {
-		class SkyboxComponent : public Component, public IDrawable {
+
+		class CameraComponent;
+
+		class SkyboxComponent : public Component, public IDrawable{
 		public:
 			SkyboxComponent(fgraphics::Material* m = new fgraphics::DefaultSkyboxMaterial());
 			~SkyboxComponent();
@@ -18,7 +23,10 @@ namespace fractal {
 			virtual void draw();
 
 		private:
+			fgraphics::Material* m_material;
+			fgraphics::Vao* m_vao;
 
+			CameraComponent* m_camera;
 		};
 	}
 }
