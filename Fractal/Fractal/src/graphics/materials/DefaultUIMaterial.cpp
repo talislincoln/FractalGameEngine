@@ -6,7 +6,7 @@ namespace fractal {
 		DefaultUIMaterial::DefaultUIMaterial() : Material(new ShaderProgram(DEFAULT_UI_SHADER, DEFAULT_UI_SHADER,
 			1, "position")) {
 			m_uniforms.push_back(new UniformMatrix("transformationMatrix"));           //0
-			m_uniforms.push_back(new UniformSampler("UITexture"));      //1
+			m_uniforms.push_back(new UniformSampler("UITexture"));      //1           
 			//need to setup texture so i can use DefaultUIMaterial and just add textures
 			m_textures.push_back(Texture::newTexture(DEFAULT_TEXTURE).create());
 			m_shader->storeUniformLocations(m_uniforms);

@@ -28,6 +28,10 @@ namespace fractal {
 			void setTranform(const fmath::Vector2& v, float r, const fmath::Vector2& s);
 			void makeDirty();
 
+			inline fgraphics::Material* getMaterial() {
+				return m_material;
+			}
+
 		protected:
 
 			fmath::Vector2 m_offset, m_scale;

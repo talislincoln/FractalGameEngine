@@ -1,4 +1,6 @@
 #include "graphics\Material.h"
+#include "scene\components\LightComponent.h"
+
 using namespace fractal;
 using namespace fgraphics;
 
@@ -37,11 +39,27 @@ using namespace fgraphics;
 		static_cast<UniformMatrix*>(m_uniforms[2])->loadMatrix(model);
 	}
 
+	void fractal::fgraphics::Material::loadProjectionMatrix(const fmath::Matrix4 & projection)
+	{
+		static_cast<UniformMatrix*>(m_uniforms[0])->loadMatrix(projection);
+	}
+
+	void fractal::fgraphics::Material::loadViewMatrix(const fmath::Matrix4 & view)
+	{
+		static_cast<UniformMatrix*>(m_uniforms[1])->loadMatrix(view);
+	}
+
 	void fractal::fgraphics::Material::load2DMatrix(const fmath::Vector2 & t, float rolate, const fmath::Vector2 & scale, int index)
 	{
 		fmath::Matrix4 m = fmath::Matrix4::create2Dmatrix(t, rolate, scale);
 		static_cast<UniformMatrix*>(m_uniforms[index])->loadMatrix(m);
 	}
+
+	void fractal::fgraphics::Material::loadShineVariables(float damper, float reflectivity, int damperIndex, int reflectivityIndex) {
+		static_cast<UniformFloat*>(m_uniforms[damperIndex])->loadFloat(damper);
+		static_cast<UniformFloat*>(m_uniforms[reflectivityIndex])->loadFloat(reflectivity);
+	}
+
 	void Material::loadNewTexture(Texture * newTexture, const unsigned int location)
 	{
 		if (location < m_textures.size()) {
@@ -55,7 +73,12 @@ using namespace fgraphics;
 
 	void fractal::fgraphics::Material::loadTransform(const fmath::Matrix4& TransformMatrix, unsigned int location)
 	{
-
 		static_cast<UniformMatrix*>(m_uniforms[location])->loadMatrix(TransformMatrix);
+	}
+
+	void fractal::fgraphics::Material::loadLight(const fmath::Vector3& lightPos, const fmath::Vector3& lightColour)
+	{
+		static_cast<UniformVector3*>(m_uniforms[4])->loadVector3(lightPos);
+		static_cast<UniformVector3*>(m_uniforms[3])->loadVector3(lightColour);
 	}
 

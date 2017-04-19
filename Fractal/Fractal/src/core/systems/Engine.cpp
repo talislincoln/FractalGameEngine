@@ -48,7 +48,7 @@ namespace fractal {
 				static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->startFPS();
 				update();
 				draw();
-				printf("fps: %f\n", static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->endFPS());
+				//printf("fps: %f\n", static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->endFPS());
 
 				//create the fixed timestep
 			}

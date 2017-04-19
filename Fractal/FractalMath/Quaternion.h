@@ -187,7 +187,7 @@ namespace fractal {
 					(cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll));
 			}*/
 
-			inline static Quaternion& fromEuler(float _yaw, float _pitch, float _roll) {
+			inline static const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
 
 				float angle;
 

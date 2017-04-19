@@ -22,6 +22,7 @@ namespace fractal {
 			void loadMeshIntoOpenGL(const std::vector<fmath::Vector3>& positions,
 				const std::vector<fmath::Vector3>& normals, const std::vector<fmath::Vector2>& UVs, const std::vector<int>& indices);
 			void loadUIIntoOpenGL();
+			void loadSkybox();
 			void destroy();
 		private:
 			void loadVboIntoOpenGL(const GLuint type, const void* data, size_t size, size_t dimension);

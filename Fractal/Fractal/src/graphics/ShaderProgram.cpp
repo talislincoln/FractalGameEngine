@@ -34,7 +34,6 @@ namespace fractal {
 		GLint result;
 		glGetProgramiv(this->m_programID, GL_LINK_STATUS, &result);
 		if (!result) {
-
 			GLchar infoLog[512];
 			glGetProgramInfoLog(m_programID, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
@@ -91,6 +90,7 @@ namespace fractal {
 			GLint maxLength = 0;
 			glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
 			std::vector<char> errorLog(maxLength);
+			glGetShaderInfoLog(shaderID, maxLength, &maxLength, &errorLog[0]);
 			glDeleteShader(shaderID);
 			std::printf("%s\n", &(errorLog[0]));
 			printf("SHADER FAILED TO COMPILE\n");
@@ -139,8 +139,6 @@ namespace fractal {
 		 //	uniform.storeUniformLocation(m_programID);
 		 //}
 		glValidateProgram(m_programID);
-
-
 	}
 	void ShaderProgram::unuse() {
 		for (int i = 0; i < m_numAttrib; i++) {

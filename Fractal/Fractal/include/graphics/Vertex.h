@@ -15,7 +15,6 @@ namespace fractal {
 			int a;
 			Colour(int r = 0, int g = 0, int b = 0, int a = 1) : r(r), g(g), b(b), a(a) {}
 
-
 			inline Colour& operator= (const Colour& other) {
 				this->r = other.r;
 				this->g = other.g;
@@ -23,8 +22,8 @@ namespace fractal {
 				this->a = other.a;
 				return *this;
 			}
-
 		};
+
 		struct Vertex {
 			fmath::Point3 position;
 			static const int NO_INDEX = -1;
@@ -42,51 +41,67 @@ namespace fractal {
 			 inline void addTangent(fmath::Vector3 tangent) {
 				m_tangents.push_back(tangent);
 			}
-			 inline void averageTangents() {
+
+			inline void averageTangents() {
 				if (m_tangents.empty()) {
 					return;
 				}
+
 				for (fmath::Vector3 tangent : m_tangents) {
 					m_averagedTangent += tangent + m_averagedTangent;
 				}
+
 				m_averagedTangent.normalize();
 			}
-			 inline fmath::Vector3 getAverageTangent() {
+
+			inline fmath::Vector3 getAverageTangent() {
 				return m_averagedTangent;
 			}
-			 inline int getIndex() {
+			
+			inline int getIndex() {
 				return m_index;
 			}
-			 inline float getLength() {
+			
+			inline float getLength() {
 				return m_length;
 			}
-			 inline bool isSet() {
+			
+			inline bool isSet() {
 				return m_textureIndex != NO_INDEX && m_normalIndex != NO_INDEX;
 			}
-			 inline bool hasSameTextureAndNormal(int m_textureIndexOther, int m_normalIndexOther) {
+			
+			inline bool hasSameTextureAndNormal(int m_textureIndexOther, int m_normalIndexOther) {
 				return m_textureIndexOther == m_textureIndex && m_normalIndexOther == m_normalIndex;
 			}
-			 inline void setTextureIndex(int m_textureIndex) {
+			
+			inline void setTextureIndex(int m_textureIndex) {
 				 this->m_textureIndex = m_textureIndex;
 			}
-			 inline void setNormalIndex(int m_normalIndex) {
+			
+			inline void setNormalIndex(int m_normalIndex) {
 				this->m_normalIndex = m_normalIndex;
 			}
-			 inline fmath::Vector3 getPosition() {
+			
+			inline fmath::Vector3 getPosition() {
 				return position;
 			}
-			 inline int getTextureIndex() {
+			
+			inline int getTextureIndex() {
 				return m_textureIndex;
 			}
-			 int getNormalIndex() {
+			
+			int getNormalIndex() {
 				return m_normalIndex;
 			}
-			 inline Vertex* getDuplicateVertex() {
+			
+			inline Vertex* getDuplicateVertex() {
 				return m_duplicateVertex;
 			}
-			 inline void setDuplicateVertex(Vertex* m_duplicateVertex) {
+			
+			inline void setDuplicateVertex(Vertex* m_duplicateVertex) {
 				this->m_duplicateVertex = m_duplicateVertex;
 			}
+			
 			inline Vertex& operator= (const Vertex& other) {
 				this->m_textureIndex = other.m_textureIndex;
 				this->m_normalIndex = other.m_normalIndex;
