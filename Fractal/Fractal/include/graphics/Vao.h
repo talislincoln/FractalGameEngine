@@ -12,14 +12,17 @@ namespace fractal {
 			const GLuint VAO;
 			size_t indicesSize, vecticesSize;
 			GLfloat  furthestPoint;
-
 			std::vector<GLuint> vbos;
+
 			void bind();
 			void unbind();
 			void loadMeshIntoOpenGL(MeshData* meshData);
+			void loadFontIntoOpenGL(const std::vector<fmath::Vector2>& positions,
+				const std::vector<fmath::Vector2>& textCoords);
 			void loadMeshIntoOpenGL(const std::vector<fmath::Vector3>& positions,
 				const std::vector<fmath::Vector3>& normals, const std::vector<fmath::Vector2>& UVs, const std::vector<int>& indices);
 			void loadUIIntoOpenGL();
+			void loadSkybox();
 			void destroy();
 		private:
 			void loadVboIntoOpenGL(const GLuint type, const void* data, size_t size, size_t dimension);

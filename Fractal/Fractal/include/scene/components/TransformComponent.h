@@ -39,7 +39,7 @@ namespace fractal {
 				this->m_scaling = scale;
 			}
 
-			inline void TransformComponent::setRotation(const fmath::Quaternion q) {
+			inline void TransformComponent::setRotation(const fmath::Quaternion& q) {
 				this->m_isDirty = true;
 				this->m_physicsChanges = true;
 				this->m_rotation = q;

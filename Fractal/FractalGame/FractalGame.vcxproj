@@ -141,6 +141,8 @@
   <ItemGroup>
     <None Include="res\Defaults\Materials\Shaders\DefaultShader.frag" />
     <None Include="res\Defaults\Materials\Shaders\DefaultShader.vert" />
+    <None Include="res\Defaults\Materials\Shaders\DefaultSkybox.frag" />
+    <None Include="res\Defaults\Materials\Shaders\DefaultSkybox.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

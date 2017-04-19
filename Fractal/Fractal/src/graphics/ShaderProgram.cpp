@@ -90,6 +90,7 @@ namespace fractal {
 			GLint maxLength = 0;
 			glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
 			std::vector<char> errorLog(maxLength);
+			glGetShaderInfoLog(shaderID, maxLength, &maxLength, &errorLog[0]);
 			glDeleteShader(shaderID);
 			std::printf("%s\n", &(errorLog[0]));
 			printf("SHADER FAILED TO COMPILE\n");
@@ -138,8 +139,6 @@ namespace fractal {
 		 //	uniform.storeUniformLocation(m_programID);
 		 //}
 		glValidateProgram(m_programID);
-
-
 	}
 	void ShaderProgram::unuse() {
 		for (int i = 0; i < m_numAttrib; i++) {

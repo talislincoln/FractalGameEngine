@@ -147,10 +147,12 @@
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
+    <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\scene\components\LightComponent.cpp" />
+    <ClCompile Include="src\scene\components\SkyboxComponent.cpp" />
     <ClCompile Include="src\scene\components\UIButtonComponent.cpp" />
     <ClCompile Include="src\scene\components\UIComponent.cpp" />
     <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
@@ -224,6 +226,7 @@
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
+    <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultUIMaterial.h" />
     <ClInclude Include="include\graphics\MeshData.h" />
     <ClInclude Include="include\graphics\ShaderProgram.h" />
@@ -239,6 +242,7 @@
     <ClInclude Include="include\interfaces\IPhysicsBody.h" />
     <ClInclude Include="include\interfaces\IUserInterface.h" />
     <ClInclude Include="include\scene\components\LightComponent.h" />
+    <ClInclude Include="include\scene\components\SkyboxComponent.h" />
     <ClInclude Include="include\scene\components\UIButtonComponent.h" />
     <ClInclude Include="include\scene\components\UIComponent.h" />
     <ClInclude Include="include\scene\components\UIFontComponent.h" />

@@ -39,8 +39,6 @@ namespace fractal {
 			void moveDown();
 			void moveLeft();
 			void moveRight();
-			//new functions
-			fmath::Matrix4 getViewMatrix() const;
 
 		private:
 			void lookRight();

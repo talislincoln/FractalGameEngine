@@ -19,7 +19,7 @@ namespace fractal {
 
 			static TextureData* decodeTexturePNG(const std::string& reader);
 			static GLuint loadTextureToOpenGL(TextureData* data, TextureBuilder& Builder);
-
+			static GLuint loadCubemap();
 		};
 	}
 }

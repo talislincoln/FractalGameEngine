@@ -14,12 +14,12 @@ void fractal::UniformVector2::loadVector2(float x, float y)
 	}
 }
 
-void fractal::UniformVector2::loadVector2(fmath::Vector2& v)
+void fractal::UniformVector2::loadVector2(const fmath::Vector2& v)
 {
 	loadVector2(v.x, v.y);
 }
 
-void fractal::UniformVector2::loadVector2(fmath::Vector3& v)
+void fractal::UniformVector2::loadVector2(const fmath::Vector3& v)
 {
 	loadVector2(v.x, v.y);
 }

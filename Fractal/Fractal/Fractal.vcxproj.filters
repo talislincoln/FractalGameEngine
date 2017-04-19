@@ -57,6 +57,8 @@
     <ClCompile Include="src\scene\components\LightComponent.cpp" />
     <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
     <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
+    <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
+    <ClCompile Include="src\scene\components\SkyboxComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -133,6 +135,8 @@
     <ClInclude Include="include\utils\FontUtils\FontType.h" />
     <ClInclude Include="include\utils\FontUtils\FontLine.h" />
     <ClInclude Include="include\utils\FontUtils\FontWord.h" />
+    <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
+    <ClInclude Include="include\scene\components\SkyboxComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

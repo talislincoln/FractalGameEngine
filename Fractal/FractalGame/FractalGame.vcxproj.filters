@@ -42,5 +42,7 @@
   <ItemGroup>
     <None Include="res\Defaults\Materials\Shaders\DefaultShader.vert" />
     <None Include="res\Defaults\Materials\Shaders\DefaultShader.frag" />
+    <None Include="res\Defaults\Materials\Shaders\DefaultSkybox.vert" />
+    <None Include="res\Defaults\Materials\Shaders\DefaultSkybox.frag" />
   </ItemGroup>
 </Project>

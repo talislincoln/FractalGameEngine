@@ -25,8 +25,8 @@ namespace fractal {
 
 		void FreeCamera::update() {
 			CameraObject::update();
-			//this->mouse = this->m_input->getMouseMovement() * MouseSensitivity;
-			//this->getTransform()->rotate(fmath::Quaternion::fromEuler(mouse.y ,mouse.x , 0.0f ));
+			this->mouse = this->m_input->getMouseMovement() * MouseSensitivity;
+			this->getTransform()->rotate(fmath::Quaternion::fromEuler(0.0f ,mouse.x , 0.0f ));
 		}
 
 		bool FreeCamera::shutdown() {
@@ -48,10 +48,6 @@ namespace fractal {
 
 		float FreeCamera::getSpeed() const {
 			return m_speed;
-		}
-		fmath::Matrix4 FreeCamera::getViewMatrix() const {
-			return CameraObject::getViewMatrix();
-			//return fmath::Matrix4::lookAt(this->getTransform()->getPosition(), this->getTransform()->getPosition() + Front, this->Up);
 		}
 
 		void FreeCamera::moveUp() {

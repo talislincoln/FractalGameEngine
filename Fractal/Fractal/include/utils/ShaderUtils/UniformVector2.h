@@ -8,8 +8,8 @@ namespace fractal {
 	public:
 		UniformVector2(const char* name);
 		void loadVector2(float x, float y);
-		void loadVector2(fmath::Vector2& v);
-		void loadVector2(fmath::Vector3& v);
+		void loadVector2(const fmath::Vector2& v);
+		void loadVector2(const fmath::Vector3& v);
 
 
 	private:
