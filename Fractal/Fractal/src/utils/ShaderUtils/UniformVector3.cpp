@@ -6,18 +6,18 @@ fractal::UniformVector3::UniformVector3(const char* name) : Uniform(name), m_use
 
 void fractal::UniformVector3::loadVector3(float x, float y, float z)
 {
-	if (!m_used || x != m_currentX || y != m_currentY || z != m_currentZ) {
-		m_currentX = x;
-		m_currentY = y;
-		m_currentZ = z;
-		m_used = true;
-		glUniform3f(getLocation(), x, y , z);
-	}
+	loadVector3(fmath::Vector3(x, y, z));
 }
 
-void fractal::UniformVector3::loadVector3(fmath::Vector3& v)
+void fractal::UniformVector3::loadVector3(const fmath::Vector3& v)
 {
-	loadVector3(v.x, v.y, v.z);
+	if (!m_used || v.x != m_currentX || v.y != m_currentY || v.z != m_currentZ) {
+		m_currentX = v.x;
+		m_currentY = v.y;
+		m_currentZ = v.z;
+		m_used = true;
+		glUniform3f(getLocation(), v.x, v.y, v.z);
+	}
 }
 
 

@@ -45,6 +45,22 @@ namespace fractal{
 
 			unbind();
 		}
+
+		void Vao::loadFontIntoOpenGL(const std::vector<fmath::Vector2>& positions
+			, const std::vector<fmath::Vector2>& textCoords)
+		{
+			indicesSize = -1;
+			vecticesSize = positions.size();
+			bind();
+			// magic~
+			//make vector into class* by doing &class[0]. then make Vector3* into float* by doing *(Vector3)
+			loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(positions[0]), vecticesSize, 2);
+			loadVboIntoOpenGL(GL_ARRAY_BUFFER, &(textCoords[0]), vecticesSize, 2);
+
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			unbind();
+		}
 		void Vao::loadUIIntoOpenGL()
 		{
 			std::vector<fmath::Vector2> position = {
