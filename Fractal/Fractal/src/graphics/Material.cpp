@@ -66,4 +66,17 @@ using namespace fgraphics;
 		static_cast<UniformVector3*>(m_uniforms[4])->loadVector3(lightPos);
 		static_cast<UniformVector3*>(m_uniforms[3])->loadVector3(lightColour);
 	}
-
+	void fractal::fgraphics::Material::loadTest(const fmath::Vector3& lightAmbient, const fmath::Vector3& lightDiffuse, const fmath::Vector3& lightSpecular,
+		const float lightConstant, const float lightLinear, const float lightQuadratic, const float materialDiffuse, const float materialSpecular, const float materialLuster) {
+		static_cast<UniformVector3*>(m_uniforms[7])->loadVector3(lightAmbient);
+		static_cast<UniformVector3*>(m_uniforms[8])->loadVector3(lightDiffuse);
+		static_cast<UniformVector3*>(m_uniforms[9])->loadVector3(lightSpecular);
+		static_cast<UniformFloat*>(m_uniforms[10])->loadFloat (lightConstant);
+		static_cast<UniformFloat*>(m_uniforms[11])->loadFloat(lightLinear);
+		static_cast<UniformFloat*>(m_uniforms[12])->loadFloat(lightQuadratic);
+		static_cast<UniformFloat*>(m_uniforms[6])->loadFloat(materialLuster);
+	}
+	void fractal::fgraphics::Material::loadTest2(const fmath::Vector3& lightPos, const fmath::Vector3& ViewPos) {
+		static_cast<UniformVector3*>(m_uniforms[13])->loadVector3(lightPos);
+		static_cast<UniformVector3*>(m_uniforms[3])->loadVector3(ViewPos);
+	}

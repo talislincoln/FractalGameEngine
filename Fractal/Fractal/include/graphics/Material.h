@@ -27,7 +27,10 @@ namespace fractal {
 			virtual void loadNewTexture(Texture* newTexture, const unsigned int location = 0);
 			virtual void loadTransform(const fmath::Matrix4& TransformMatrix, unsigned int location = 0);
 			virtual void loadLight(const fmath::Vector3& lightPos, const fmath::Vector3& lightColour);
-
+			//;w; test
+			virtual void loadTest(const fmath::Vector3& lightAmbient, const fmath::Vector3& lightDiffuse, const fmath::Vector3& lightSpecular,
+				const float lightConstant, const float lightLinear, const float lightQuadratic, const float materialDiffuse, const float materialSpecular, const float materialLuster);
+			virtual void fractal::fgraphics::Material::loadTest2(const fmath::Vector3& lightPos, const fmath::Vector3& ViewPos );
 			virtual void loadTexture() = 0;
 		protected:
 			std::vector<Uniform*> m_uniforms;
