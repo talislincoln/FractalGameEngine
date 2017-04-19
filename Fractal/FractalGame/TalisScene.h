@@ -15,6 +15,7 @@ public:
 	virtual void setupInput(fractal::fcore::Input* input);
 
 private:
+	std::vector<fractal::fscene::SceneObject*> objects;
 	fractal::fscene::SceneObject* dragon;
 	fractal::fscene::SceneObject* terrain;
 	fractal::fscene::SceneObject* skybox;
