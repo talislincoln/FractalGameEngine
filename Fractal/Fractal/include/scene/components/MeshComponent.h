@@ -12,7 +12,11 @@ namespace fractal {
 		using namespace fmath;
 		class MeshComponent : public Component, public IDrawable {
 		public:
-			MeshComponent(fgraphics::MeshData* mesh, fgraphics::Material* m = new fgraphics::DefaultMaterial());
+			MeshComponent( fgraphics::MeshData* md_, 
+				fgraphics::Material* m = new fgraphics::DefaultMaterial()
+			);
+			MeshComponent(fgraphics::Material* m = new fgraphics::DefaultMaterial()
+			, fgraphics::Vao* vao_ = new fgraphics::Vao());
 			virtual ~MeshComponent();
 
 			virtual bool initialize();

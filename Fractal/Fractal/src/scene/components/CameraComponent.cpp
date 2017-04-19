@@ -51,9 +51,28 @@ namespace fractal {
 		}
 
 		const fmath::Matrix4 CameraComponent::getViewMatrix() const {
+			fmath::Matrix4 result;
 
-			return fmath::Matrix4::lookAt(this->m_transformComponent->getPosition(),
-				this->m_transformComponent->getPosition() + m_front, m_up);
+			result[0] = m_right.x;
+			result[1] = m_right.y;
+			result[2] = m_right.z;
+			result[3] = 0.0;
+
+			result[4] = m_up.x;
+			result[5] = m_up.y;
+			result[6] = m_up.z;
+			result[7] = 0.0;
+
+			result[8] = -m_front.x;
+			result[9] = -m_front.y;
+			result[10] = -m_front.z;
+			result[11] = 0.0;
+			fmath::Vector3 eye = -this->m_transformComponent->getPosition();
+			result[12] = (m_right.dot(eye));
+			result[13] = (m_up.dot(eye));
+			result[14] = (m_front.dot(eye));
+			result[15] = 1.0;
+			return result;
 			//fmath::Matrix4 m = this->m_transformComponent->getWorldMatrix();
 			//return fmath::Matrix4::inverse(m);
 		}
