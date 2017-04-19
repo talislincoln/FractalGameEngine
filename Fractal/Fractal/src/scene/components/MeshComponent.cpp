@@ -6,19 +6,25 @@
 #include <FractalMath\Matrix.h>
 #include "scene\GameObject.h"
 #include <assert.h>
-
+#include "core\systems\Window.h"
 #include <Fractal\include\core\systems\manager\CameraManager.h>
 #include <Fractal\include\scene\objects\CameraObject.h>
 namespace fractal {
 	namespace fscene {
 		using namespace fmath;
-		MeshComponent::MeshComponent(fgraphics::MeshData* mesh, fgraphics::Material* m) : 
+		MeshComponent::MeshComponent(fgraphics::Material* m, fgraphics::Vao* vao_) : 
 			Component("MeshComponent"), 
-			m_material(m)
+			m_material(m), m_vao(vao_)
 		{
 			//should be empty
+		}
+		MeshComponent::MeshComponent(fgraphics::MeshData* md_ , fgraphics::Material* m) :
+			Component("MeshComponent"),
+			m_material(m)
+		{
 			m_vao = new fgraphics::Vao();
-			m_vao->loadMeshIntoOpenGL(mesh);
+			m_vao->loadMeshIntoOpenGL(md_);
+			//should be empty
 		}
 
 		MeshComponent::~MeshComponent() {
@@ -36,7 +42,7 @@ namespace fractal {
 			fscene::CameraComponent* camera = fhelpers::Singleton<fcore::CameraManager>::getInstance().getActiveCamera();
 
 			m_material->loadCamera(camera->getViewMatrix(),
-				fmath::Matrix4::perspective(30.0f, 800.0f / 500.0f, 0.1f, 1000.0f),  //get that from camera too?
+				fmath::Matrix4::perspective(30.0f, WWIDTH / WHEIGHT, 0.1f, 1000.0f),  //get that from camera too?
 				this->getParent()->getComponent<TransformComponent>()->getWorldMatrix());
 
 			m_material->loadShineVariables(m_material->getShineDamper(), m_material->getReflectivity());
@@ -46,7 +52,7 @@ namespace fractal {
 			//;w; test
 			m_material->loadTest(fmath::Vector3(0.2f, 0.2f, 0.2f), fmath::Vector3(0.5f, 0.5f, 0.5f), fmath::Vector3(1.0f, 1.0f, 1.0f), 0.01f, 0.09f, 0.032f, 0.0f, 1.0f, 32.0f);
 			m_material->loadTest2(camera->getParent()->getComponent<TransformComponent>()->getPosition(), camera->getParent()->getComponent<TransformComponent>()->getPosition());
-			m_material->loadLight(camera->getPosition(), fmath::Vector3(1.0f,1.0f,1.0f));
+			//m_material->loadLight(camera->getPosition(), fmath::Vector3(1.0f,1.0f,1.0f));
 			
 			glDrawElements(GL_TRIANGLES, m_vao->indicesSize, GL_UNSIGNED_INT, 0);
 			m_vao->unbind();
@@ -57,11 +63,15 @@ namespace fractal {
 		}
 
 		bool MeshComponent::shutdown() {
-			m_vao->destroy();
-			delete(m_vao);
-			m_vao = nullptr;
-			m_material->destroy();
-			m_material = nullptr;
+			if (m_vao != nullptr) {
+				m_vao->destroy();
+				delete(m_vao);
+				m_vao = nullptr;
+			}
+			if (m_material != nullptr) {
+				m_material->destroy();
+				m_material = nullptr;
+			}
 			return true;
 		}
 

@@ -91,7 +91,7 @@ namespace fractal {
 
 			/// Multiply a two quaternions - using the right-hand rule  
 			inline const Quaternion operator * (const Quaternion& q) const {
-				Vector3 ijk((Vector3)(w * q) + q.w * (Vector3)(*this) + this->cross(q));
+				Vector3 ijk((w * (Vector3)q) + q.w * (Vector3)(*this) + this->cross(q));
 				return Quaternion(w * q.w - this->dot(q), ijk.x, ijk.y, ijk.z);
 			}
 
@@ -174,6 +174,7 @@ namespace fractal {
 
 			/*inline static const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
 
+
 				float cosYaw = cos(0.5f *_yaw * DEGREES_TO_RADIANS);
 				float cosPitch = cos(0.5f * _pitch * DEGREES_TO_RADIANS);
 				float cosRoll = cos(0.5f  *_roll * DEGREES_TO_RADIANS);
@@ -182,11 +183,11 @@ namespace fractal {
 				float sinRoll = sin(0.5f  *_roll * DEGREES_TO_RADIANS);
 				return Quaternion(
 					(cosYaw * cosPitch * cosRoll) + (sinYaw * sinPitch * sinRoll),
-					(sinYaw * cosPitch * cosRoll) - (cosYaw * sinPitch * sinRoll),
+					(cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll),
 					(cosYaw * sinPitch * cosRoll) + (sinYaw * cosPitch * sinRoll),
-					(cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll));
+					(sinYaw * cosPitch * cosRoll) - (cosYaw * sinPitch * sinRoll));
 			}*/
-
+			
 			inline static const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
 
 				float angle;
@@ -218,6 +219,7 @@ namespace fractal {
 
 				return q.normalize();
 			}
+			
 
 			inline Quaternion& normalize() {
 				return *this /= mag();

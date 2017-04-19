@@ -246,7 +246,7 @@ namespace fractal {
 
 			result[12] = -(side.dot(eye));
 			result[13] = -(up.dot(eye));
-			result[14] = (forward.dot(eye));
+			result[14] = -(forward.dot(eye));
 			result[15] = 1.0;
 
 			return result;

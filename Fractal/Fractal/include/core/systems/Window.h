@@ -9,8 +9,8 @@
 
 #define WTITLE "Fractal GE"
 //;w; changed them a little
-#define WWIDTH 800
-#define WHEIGHT 600
+#define WWIDTH 1920
+#define WHEIGHT 1080
 
 /**
 the parameters will hardcode for now, the idea is to read them all from a configuration file

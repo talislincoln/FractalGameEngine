@@ -5,6 +5,7 @@
 #include <Fractal\include\scene\GameObject.h>
 #include <Fractal\include\core\systems\manager\CameraManager.h>
 #include <Fractal\include\scene\components\CameraComponent.h>
+#include "core\systems\Window.h"
 namespace fractal {
 	namespace fscene {
 		SkyboxComponent::SkyboxComponent(fgraphics::Material* m) :
@@ -27,7 +28,7 @@ namespace fractal {
 			glBindVertexArray(m_vao->VAO);
 			m_material->use();
 			//load projection matrix			
-			m_material->loadProjectionMatrix(fmath::Matrix4::perspective(50.0f, 800.0f / 500.0f, 0.1f, 1000.0f));
+			m_material->loadProjectionMatrix(fmath::Matrix4::perspective(50.0f, WWIDTH / WHEIGHT, 0.1f, 1000.0f));
 			m_material->unuse();
 
 			return true;
