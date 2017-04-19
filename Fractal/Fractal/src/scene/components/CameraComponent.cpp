@@ -67,10 +67,10 @@ namespace fractal {
 			result[9] = -m_front.y;
 			result[10] = -m_front.z;
 			result[11] = 0.0;
-			fmath::Vector3 eye = this->m_transformComponent->getPosition();
-			result[12] = -(m_right.dot(eye));
-			result[13] = -(m_up.dot(eye));
-			result[14] = -(m_front.dot(eye));
+			fmath::Vector3 eye = -this->m_transformComponent->getPosition();
+			result[12] = (m_right.dot(eye));
+			result[13] = (m_up.dot(eye));
+			result[14] = (m_front.dot(eye));
 			result[15] = 1.0;
 			return result;
 			//fmath::Matrix4 m = this->m_transformComponent->getWorldMatrix();

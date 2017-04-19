@@ -50,7 +50,7 @@ namespace fractal {
 			///TODO NEED TO ACTUALLY IMPORT THE LIGHTING HERE!!!
 			//m_material->loadLight(fmath::Vector3(5.0f, 5.0f, 5.0f), fmath::Vector3(1.0f,1.0f,1.0f));
 			//;w; test
-			m_material->loadTest(fmath::Vector3(0.2f, 0.2f, 0.2f), fmath::Vector3(0.5f, 0.5f, 0.5f), fmath::Vector3(1.0f, 1.0f, 1.0f), 0.01f, 0.09f, 0.032f, 0.0f, 1.0f, 32.0f);
+			m_material->loadTest(fmath::Vector3(1.0f, 1.0f, 1.0f), fmath::Vector3(0.5f, 0.5f, 0.5f), fmath::Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.022f, 0.0019f, 0.0f, 1.0f, 80.0f);
 			m_material->loadTest2(camera->getParent()->getComponent<TransformComponent>()->getPosition(), camera->getParent()->getComponent<TransformComponent>()->getPosition());
 			//m_material->loadLight(camera->getPosition(), fmath::Vector3(1.0f,1.0f,1.0f));
 			

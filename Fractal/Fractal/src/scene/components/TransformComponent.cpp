@@ -42,28 +42,31 @@ namespace fractal {
 			this->m_isDirty = true;
 			this->m_physicsChanges = true;
 			this->m_rotation = q;
-			for (GameObject* obj : getParent()->getChildren())
+			/*for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
 				if (!transform)
 					continue;
 
 				transform->setRotation(q);
-			}
+			}*/
 		}
 		void TransformComponent::setScale(const fmath::Vector3& scale)
 		{
 			this->m_isDirty = true;
 			this->m_physicsChanges = true;
 			this->m_scaling = scale;
-			for (GameObject* obj : getParent()->getChildren())
+			/*for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
 				if (!transform)
 					continue;
 
 				transform->setScale(scale);
-			}
+			}*/
+		}
+		void TransformComponent::setPosition(float x, float y, float z) {
+			setPosition(fmath::Vector3(x,y,z));
 		}
 		void TransformComponent::setPosition(const fmath::Vector3& position)
 		{
@@ -71,7 +74,7 @@ namespace fractal {
 			this->m_physicsChanges = true;
 			this->m_position = position;
 			//setPosition(getPosition() + translation);
-
+/*
 			for (GameObject* obj : getParent()->getChildren())
 			{
 				TransformComponent* transform = obj->getComponent<TransformComponent>();
@@ -79,7 +82,7 @@ namespace fractal {
 					continue;
 
 				transform->setPosition(position);
-			}
+			}*/
 		}
 		void TransformComponent::translate(const fmath::Vector3& translation) {
 			this->m_isDirty = true;

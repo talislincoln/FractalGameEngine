@@ -26,10 +26,7 @@ namespace fractal {
 
 			void setPosition(const fmath::Vector3& position);
 			
-			inline void setPosition(float x, float y, float z) {
-				setPosition(fmath::Vector3(x, y, z));
-
-			}
+			void setPosition(float x, float y, float z);
 
 			void setScale(const fmath::Vector3& scale);
 			
