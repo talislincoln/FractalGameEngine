@@ -54,7 +54,7 @@ namespace fractal {
 			m_material->loadMaterial(0.0f, 1.0f, 32.0f);
 			m_material->loadDirectional(fmath::Vector3(-0.2f, -1.0f, -0.3f), fmath::Vector3(0.05f, 0.05f, 0.05f), fmath::Vector3(0.4f, 0.4f, 0.4f), fmath::Vector3(0.5f, 0.5f, 0.5f));
 			m_material->loadPoint(fmath::Vector3(0.7f, 0.2f, 2.0f), fmath::Vector3(0.05f, 0.05f, 0.05f), fmath::Vector3(0.8f, 0.8f, 0.8f), fmath::Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032f);
-			m_material->loadSpot(camera->getParent()->getComponent<TransformComponent>()->getPosition(), camera->getParent()->getComponent<TransformComponent>()->getPosition(), fmath::Vector3(0.0f, 0.0f, 0.0f), fmath::Vector3(1.0f, 1.0f, 1.0f), fmath::Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032, cos(toRadians(12.5f)), cos(toRadians(15.0f)));
+			m_material->loadSpot(fmath::Vector3(0.7f, 0.2f, 2.0f), camera->getParent()->getComponent<TransformComponent>()->getPosition().FRONT, fmath::Vector3(0.0f, 0.0f, 0.0f), fmath::Vector3(1.0f, 1.0f, 1.0f), fmath::Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.09f, 0.032, cos(toRadians(12.5f)), cos(toRadians(15.0f)));
 			//;w; ^ change the second one to front?
 
 			//m_material->loadTest(fmath::Vector3(1.0f, 1.0f, 1.0f), fmath::Vector3(0.5f, 0.5f, 0.5f), fmath::Vector3(1.0f, 1.0f, 1.0f), 1.0f, 0.022f, 0.0019f, 0.0f, 1.0f, 80.0f);
