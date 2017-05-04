@@ -34,7 +34,7 @@ bool TalisScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	MeshData* md = LoadOBJ::load("meshes/wall_e");
+	MeshData* md = LoadOBJ::load("meshes/cyl");
 	fgraphics::Vao* box = new Vao();
 	box->loadMeshIntoOpenGL(md);
 	Material* mat = new DefaultMaterial();
@@ -58,7 +58,7 @@ bool TalisScene::initialize() {
 
 	dragon = new SceneObject("test1");
 	addGameObject(dragon);
-	dragon->addComponent(new MeshComponent(LoadOBJ::load("meshes/dragon")));
+	dragon->addComponent(new MeshComponent(LoadOBJ::load("meshes/cyl")));
 	dragon->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
 	dragon->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
 	dragon->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(0.0f, 1.0f, 0.0f));
