@@ -224,6 +224,7 @@
     <ClInclude Include="include\defines\deletemacros.h" />
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
+    <ClInclude Include="include\graphics\Light.h" />
     <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
