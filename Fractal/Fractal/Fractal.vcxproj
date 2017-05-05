@@ -145,6 +145,9 @@
     <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
     <ClCompile Include="src\core\systems\HUD.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
+    <ClCompile Include="src\graphics\lights\DirectionLight.cpp" />
+    <ClCompile Include="src\graphics\lights\PointLight.cpp" />
+    <ClCompile Include="src\graphics\lights\SpotLight.cpp" />
     <ClCompile Include="src\graphics\Material.cpp" />
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
@@ -225,6 +228,9 @@
     <ClInclude Include="include\defines\InputStateType.h" />
     <ClInclude Include="include\defines\SystemType.h" />
     <ClInclude Include="include\graphics\Light.h" />
+    <ClInclude Include="include\graphics\lights\DirectionLight.h" />
+    <ClInclude Include="include\graphics\lights\PointLight.h" />
+    <ClInclude Include="include\graphics\lights\SpotLight.h" />
     <ClInclude Include="include\graphics\Material.h" />
     <ClInclude Include="include\graphics\materials\DefaultMeshMaterial.h" />
     <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />

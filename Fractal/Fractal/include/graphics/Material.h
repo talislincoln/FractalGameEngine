@@ -59,6 +59,7 @@ namespace fractal {
 				return m_reflectivity;
 			}
 		protected:
+			// should use map 
 			std::vector<Uniform*> m_uniforms;
 			std::vector<Texture*> m_textures;
 			ShaderProgram* m_shader;
