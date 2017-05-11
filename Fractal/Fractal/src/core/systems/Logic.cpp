@@ -35,7 +35,7 @@ namespace fractal {
 			fhelpers::Singleton<fscene::SceneManager>::getInstance().update();
 		}
 
-		void Logic::draw() {
+		void Logic::draw() const {
 			if (fhelpers::Singleton<fscene::SceneManager>::getInstance().getCanDraw())
 				fhelpers::Singleton<fscene::SceneManager>::getInstance().draw();
 		}

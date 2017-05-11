@@ -1,6 +1,5 @@
 #pragma once
 #include <Fractal\include\scene\Scene.h>
-#include <Fractal\include\scene\SceneObject.h>
 #include <Fractal\include\scene\objects\FreeCamera.h>
 class TalisScene : public fractal::fscene::Scene
 {
@@ -15,10 +14,10 @@ public:
 	virtual void setupInput(fractal::fcore::Input* input);
 
 private:
-	std::vector<fractal::fscene::SceneObject*> objects;
-	fractal::fscene::SceneObject* dragon;
-	fractal::fscene::SceneObject* terrain;
-	fractal::fscene::SceneObject* skybox;
+	std::vector<fractal::fscene::GameObject*> objects;
+	fractal::fscene::GameObject* dragon;
+	fractal::fscene::GameObject* terrain;
+	fractal::fscene::GameObject* skybox;
 	fractal::fscene::FreeCamera* camera;
 };
 

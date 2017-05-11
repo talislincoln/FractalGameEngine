@@ -26,7 +26,6 @@
     <ClCompile Include="src\scene\objects\FreeCamera.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\scene\SceneManager.cpp" />
-    <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
@@ -95,7 +94,6 @@
     <ClInclude Include="include\scene\objects\FreeCamera.h" />
     <ClInclude Include="include\scene\Scene.h" />
     <ClInclude Include="include\scene\SceneManager.h" />
-    <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\scene\components\TerrainComponent.h" />

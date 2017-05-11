@@ -42,13 +42,13 @@ bool TalisScene::initialize() {
 	mat->loadNewTexture((Texture::newTexture("images/wall_e").anisotropic().create()), 1);
 
 	for (unsigned int i = 0; i < 10; i++) {
-		objects.push_back(new SceneObject());
+		objects.push_back(new GameObject());
 		objects[i]->addComponent(new MeshComponent(mat, box));
 		addGameObject(objects[i]);
-		objects[i]->getTransform()->setPosition(Vector3(rand() % 25 - 12, rand() % 25 - 10, rand() % 25 - 12));
+		objects[i]->getTransform()->setPosition(Vector3(rand() % 25 - 12.0f, rand() % 25 - 10.0f, rand() % 25 - 12.0f));
 		objects[i]->getTransform()->setScale(Vector3(rand() % 100 / 1000.0f));
 	}
-	terrain = new SceneObject("terrain");
+	terrain = new GameObject("terrain");
 	terrain->addComponent(new TerrainComponent());
 	addGameObject(terrain);
 
@@ -56,7 +56,7 @@ bool TalisScene::initialize() {
 	objects[0]->addComponent(new fphysics::PhysicsShapeComponent(new fphysics::PhysicsBox()));
 	objects[0]->getComponent<fphysics::PhysicsBodyComponent>()->SetAngularVelocity(Vector3(0.0f, 1.0f, 0.0f));
 
-	dragon = new SceneObject("test1");
+	dragon = new GameObject("test1");
 	addGameObject(dragon);
 	dragon->addComponent(new MeshComponent(LoadOBJ::load("meshes/cyl")));
 	dragon->addComponent(new fphysics::PhysicsBodyComponent(new fphysics::PhysicsBody()));
@@ -65,7 +65,7 @@ bool TalisScene::initialize() {
 	dragon->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);
 	//dragon->addComponent(new fscene::CameraComponent());
 
-	skybox = new SceneObject("skybox");
+	skybox = new GameObject("skybox");
 	skybox->addComponent(new SkyboxComponent());
 	addGameObject(skybox);
 

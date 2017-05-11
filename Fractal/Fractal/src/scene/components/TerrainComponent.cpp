@@ -25,7 +25,7 @@ namespace fractal {
 		{
 			return false;
 		}
-		void TerrainComponent::draw()
+		void TerrainComponent::draw() const
 		{
 		}
 	}

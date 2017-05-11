@@ -8,13 +8,13 @@ namespace fractal {
 		public:
 			HUD();
 			virtual void update();
-			virtual void draw();
+			virtual void draw() const;
 
 			virtual bool initialize();
 			virtual bool shutdown();
 
-			void beginDraw();
-			void endDraw();
+			void beginDraw() const;
+			void endDraw() const;
 		};
 	}
 }

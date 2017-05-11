@@ -20,7 +20,7 @@ namespace fractal {
 			virtual ~MeshComponent();
 
 			virtual bool initialize();
-			virtual void draw();
+			virtual void draw() const;
 			virtual void update();
 			virtual bool shutdown();
 			inline void setMaterial(fractal::fgraphics::Material* m) {

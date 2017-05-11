@@ -28,7 +28,7 @@ namespace fractal
 
 			virtual bool initialize();
 			void update();
-			virtual void draw();
+			virtual void draw() const;
 			virtual bool shutdown();
 
 			void addScene(Scene* scene);

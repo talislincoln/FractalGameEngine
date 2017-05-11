@@ -49,7 +49,7 @@ namespace fractal {
 				this->m_activeScene->update();
 		}
 
-		void SceneManager::draw()
+		void SceneManager::draw() const
 		{
 			if (!this->m_activeScene->isInitialized()) {
 				this->m_activeScene->initialize();

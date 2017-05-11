@@ -1,17 +1,4 @@
-#include "core\systems\Input.h"
 #include "core\systems\Engine.h"
-#include "core\systems\System.h"
-#include "core\systems\Window.h"
-#include "core\systems\Logic.h"
-#include "core\systems\Graphics.h"
-#include "core\systems\Timer.h"
-#include "core\systems\HUD.h"
-#include "core\systems\PhysicsWorld.h"
-
-#include "core\systems\manager\SystemManager.h"
-#include "scene\SceneManager.h"
-
-#include "helpers\Singleton.h"
 
 #include <iostream>
 
@@ -45,7 +32,7 @@ namespace fractal {
 			m_isRunning = true;
 			while (m_isRunning)
 			{
-				static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->startFPS();
+				TIMER_SYSTEM->startFPS();
 				update();
 				draw();
 				//printf("fps: %f\n", static_cast<Timer*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM))->endFPS());
@@ -71,31 +58,30 @@ namespace fractal {
 			if (!createManagers())
 				return -1;
 
-			using namespace fhelpers;
-
 			//Create instances for the different types of system
 			//and check if the system is null after creation
-			Logic* logic = static_cast<Logic*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::LOGIC_SYSTEM));
+			Logic* logic = LOGIC_SYSTEM;
 			if (logic == nullptr)
 				return 0;
-			Window* window = static_cast<Window*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::WINDOW_SYSTEM));
+			Window* window = WINDOW_SYSTEM;
 			if (window == nullptr)
 				return 0; //error
-			Input* input = static_cast<Input*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
+			Input* input = INPUT_SYSTEM;
 			if (input == nullptr)
 				return 0;
-			Graphics* graphics = static_cast<Graphics*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = GRAPHICS_SYSTEM;
 			if (graphics == nullptr)
 				return 0;
-			Timer* timer = static_cast<Timer*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::TIMER_SYSTEM));
+			Timer* timer = TIMER_SYSTEM;
 			if (timer == nullptr)
 				return 0;
 
-			fphysics::PhysicsWorld* physics = static_cast<fphysics::PhysicsWorld*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::PHYSICS_SYSTEM));
+			fphysics::PhysicsWorld* physics = PHYSICS_SYSTEM;
 			if (physics == nullptr)
 				return 0;
+
 			//HUDs system need to be after Graphics system
-			HUD* HUDs = static_cast<HUD*>(Singleton<SystemManager>::getInstance().getSystem(SystemType::HUD_SYSTEM));
+			HUD* HUDs = HUD_SYSTEM;
 			if (HUDs == nullptr)
 				return 0;
 			
@@ -127,7 +113,7 @@ namespace fractal {
 
 		void Engine::draw()
 		{
-			Graphics* graphics = static_cast<Graphics*>(fhelpers::Singleton<SystemManager>::getInstance().getSystem(SystemType::GRAPHICS_SYSTEM));
+			Graphics* graphics = GRAPHICS_SYSTEM;
 			graphics->beginDraw();
 
 			for (IDrawable* system : fhelpers::Singleton<SystemManager>::getInstance().getDrawableSystems())

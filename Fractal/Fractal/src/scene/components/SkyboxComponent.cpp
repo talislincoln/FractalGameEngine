@@ -51,7 +51,7 @@ namespace fractal {
 			return true;
 		}
 
-		void SkyboxComponent::draw() {
+		void SkyboxComponent::draw() const {
 			glBindVertexArray(m_vao->VAO);
 			m_material->use();
 			fmath::Matrix4 viewMatrix = m_camera->getViewMatrix();

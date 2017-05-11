@@ -8,10 +8,6 @@
 
 #include <vector>
 
-
-
-
-
 namespace fractal {
 	namespace fcore {
 		class Renderer;
@@ -26,7 +22,7 @@ namespace fractal {
 
 			virtual bool initialize();
 			virtual void update();
-			virtual void draw();
+			virtual void draw() const;
 			virtual bool shutdown();
 
 			virtual void setupInput(fcore::Input* input);

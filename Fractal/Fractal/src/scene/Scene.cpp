@@ -5,6 +5,8 @@
 #include "core\systems\Input.h"
 #include "core\systems\manager\SystemManager.h"
 
+#include <core\systems\Engine.h>
+
 namespace fractal {
 	namespace fscene {
 		Scene::Scene(const std::string& name) :
@@ -20,7 +22,7 @@ namespace fractal {
 
 		bool Scene::initialize()
 		{
-			input = dynamic_cast<fcore::Input*>(fhelpers::Singleton<fcore::SystemManager>::getInstance().getSystem(SystemType::INPUT_SYSTEM));
+			input = INPUT_SYSTEM;
 			this->setupInput(input);
 
 			for (GameObject* obj : this->m_objects)
@@ -44,18 +46,13 @@ namespace fractal {
 			}
 		}
 
-		void Scene::draw()
+		void Scene::draw() const
 		{
 			for (GameObject* obj : this->m_objects)
 			{
-				//checking if the objects inherits from the IDrawable class
-				//if not, then continue to the next object; draw it otherwise
-				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
-				if (drawable_obj == nullptr)
-					continue;
 
-				if (drawable_obj->getCanDraw())
-					drawable_obj->draw();
+				if (obj->getCanDraw())
+					obj->draw();
 			}
 		}
 
