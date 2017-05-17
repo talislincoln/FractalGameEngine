@@ -49,6 +49,16 @@ uniform Material material;
 uniform DirLight dirlight;
 uniform PointLight pointlight;
 uniform SpotLight spotlight;
+
+//depth testing
+float near = 1.0;
+float far = 100.0;
+//depth test function
+float linearizeDepth(float depth){
+	float z = depth * 2.0 - 1.0; //back to NDC
+	return (2.0 * near * far) / (far + near - z * (far - near));
+}
+
 //functions
 vec3 CalcDirLight(DirLight light);
 vec3 CalcPointLight(PointLight light);
@@ -61,8 +71,11 @@ void main(){
 	result += CalcPointLight(pointlight);
 	//spec
 	result += CalcSpotLight(spotlight);
+	//depth
+	float depth = linearizeDepth(gl_FragCoord.z) / far;
 	//result
-	colour = vec4(result, 1.0);
+	//colour = vec4(result, 1.0);
+	colour = vec4(vec3(depth), 1.0); //depth result!
 }
 vec3 CalcDirLight(DirLight light){
 	//ambient 
