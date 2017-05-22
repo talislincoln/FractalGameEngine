@@ -137,6 +137,7 @@
     <ClInclude Include="include\utils\FontUtils\FontWord.h" />
     <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
     <ClInclude Include="include\scene\components\SkyboxComponent.h" />
+    <ClInclude Include="include\defines\ResourceType.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

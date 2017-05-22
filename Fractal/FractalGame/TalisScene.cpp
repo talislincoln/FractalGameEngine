@@ -34,12 +34,12 @@ bool TalisScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	MeshData* md = LoadOBJ::load("meshes/wall_e");
+	MeshData* md = LoadOBJ::load("meshes/barrel");
 	fgraphics::Vao* box = new Vao();
 	box->loadMeshIntoOpenGL(md);
 	Material* mat = new DefaultMaterial();
-	mat->loadNewTexture((Texture::newTexture("images/wall_e").anisotropic().create()));
-	mat->loadNewTexture((Texture::newTexture("images/wall_e").anisotropic().create()), 1);
+	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
+	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1);
 
 	for (unsigned int i = 0; i < 10; i++) {
 		objects.push_back(new SceneObject());
