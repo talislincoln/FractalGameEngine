@@ -60,7 +60,7 @@ namespace fractal {
 			//empty
 		}
 
-		void Graphics::draw() {
+		void Graphics::draw() const {
 			// all should be draw here. 
 			// draw should be in order of 
 			/// shader program ( the material id?)
@@ -74,12 +74,10 @@ namespace fractal {
 		}
 
 		void Graphics::beginDraw() {
-			///;W; READING THE SHADER FILES FOR EACH MESH COMPONENT
 			///;W; CLEARING THE SCREEN
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			glClearDepth(1.0f);
-
 
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			//glClear(GL_COLOR_BUFFER_BIT); // somewhere else 

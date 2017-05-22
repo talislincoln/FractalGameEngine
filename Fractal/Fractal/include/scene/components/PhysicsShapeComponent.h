@@ -22,7 +22,7 @@ namespace fractal {
 			PhysicsShapeComponent::PhysicsShapeComponent(PhysicsShape* shapeDef, const std::string& name = "");
 			~PhysicsShapeComponent();
 			virtual bool initialize();
-			virtual void draw();
+			virtual void draw() const;
 			virtual void update();
 			virtual bool shutdown();
 

@@ -6,7 +6,8 @@
 namespace fractal {
 	namespace fscene {
 		GameObject::GameObject(const std::string& name)
-			: Object(name), m_currentScene(nullptr), m_parent(nullptr)
+			: Object(name), m_currentScene(nullptr), m_parent(nullptr),
+			m_transformComponent(new TransformComponent())
 		{
 		}
 
@@ -16,6 +17,9 @@ namespace fractal {
 
 		bool GameObject::initialize()
 		{
+			//every game object has a Transform component by default
+			addComponent(m_transformComponent);
+
 			for (Component* component : this->m_components)
 			{
 				if (component->isInitialized())
@@ -49,6 +53,28 @@ namespace fractal {
 			{
 				if (child->isActive())
 					child->update();
+			}
+		}
+
+		void GameObject::draw() const {
+			for (Component* obj : getComponents())
+			{
+				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
+				if (drawable_obj == nullptr)
+					continue;
+
+				if (drawable_obj->getCanDraw())
+					drawable_obj->draw();
+			}
+
+			for (GameObject* obj : getChildren())
+			{
+				IDrawable* drawable_obj = dynamic_cast<IDrawable*>(obj);
+				if (drawable_obj == nullptr)
+					continue;
+
+				if (drawable_obj->getCanDraw())
+					drawable_obj->draw();
 			}
 		}
 
@@ -113,6 +139,10 @@ namespace fractal {
 			return this->m_components;
 		}
 
+		TransformComponent* GameObject::getTransform() const {
+			return m_transformComponent;
+		}
+
 		void GameObject::addComponent(Component* component)
 		{
 			std::vector<Component*>::iterator it = std::find(this->m_components.begin(), this->m_components.end(), component);
@@ -120,7 +150,12 @@ namespace fractal {
 			{
 				this->m_components.push_back(component);
 				component->setParent(this);
-				//component->initialize(); // component should be initialize when it's added?
+
+				//init component whenever you it gets added
+				//need to check for erros here!!!
+				if (!component->isInitialized())
+					component->initialize();
+
 				if (component->getOrderValue() == Component::INVALID_ORDER_ID)
 					component->setOrderValue(this->m_components.size());
 			}

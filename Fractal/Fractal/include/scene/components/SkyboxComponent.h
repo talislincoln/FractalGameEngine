@@ -20,7 +20,7 @@ namespace fractal {
 			virtual void update();
 			virtual bool shutdown();
 
-			virtual void draw();
+			virtual void draw() const;
 
 		private:
 			fgraphics::Material* m_material;

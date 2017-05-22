@@ -2,13 +2,15 @@
 #define _GAMEOBJECT_H
 #include "Object.h"
 #include <Fractal\include\core\systems\Input.h>
+#include <Fractal\include\interfaces\IDrawable.h>
+#include <Fractal\include\scene\components\TransformComponent.h>
 
 namespace fractal {
 	namespace fscene {
 		class Component;
 		class Scene;
 
-		class GameObject : public Object//, public IInput
+		class GameObject : public Object, public IDrawable//, public IInput
 		{
 		public:
 			GameObject(const std::string& name = "");
@@ -16,6 +18,7 @@ namespace fractal {
 
 			virtual bool initialize();
 			virtual void update();
+			virtual void draw() const;
 			virtual void fixedUpdate();
 			virtual bool shutdown();
 
@@ -28,6 +31,8 @@ namespace fractal {
 
 			template <typename T> T* getComponent() const;
 			std::vector<Component*> getComponents() const;
+
+			TransformComponent* GameObject::getTransform() const;
 
 			void addComponent(Component* component);
 			void removeComponent(Component* component);
@@ -42,6 +47,8 @@ namespace fractal {
 			std::vector<Component*> m_components;
 
 			GameObject* m_parent;
+
+			TransformComponent* m_transformComponent;
 
 			Scene* m_currentScene;
 		};

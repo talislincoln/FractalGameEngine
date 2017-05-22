@@ -67,7 +67,7 @@ namespace fractal {
 				}
 			}
 		}
-		void PhysicsShapeComponent::draw() {
+		void PhysicsShapeComponent::draw() const {
 			transform->getWorldMatrix();
 			vertices;
 		}

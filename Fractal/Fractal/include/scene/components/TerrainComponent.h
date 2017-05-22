@@ -17,7 +17,7 @@ namespace fractal {
 			virtual void update();
 			virtual bool initialize();
 			virtual bool shutdown();
-			virtual void draw();
+			virtual void draw() const;
 			virtual ~TerrainComponent();
 
 

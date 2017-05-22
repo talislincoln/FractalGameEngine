@@ -15,7 +15,7 @@ void HUD::update()
 {
 }
 
-void HUD::draw()
+void HUD::draw() const
 {
 	//NTS: need to sort data base one shader as well.  UI should all have the same shader
 	//     therefore. just need to make sure it's the same. and only use 1 shader for all UI component unless more is added
@@ -38,14 +38,14 @@ bool HUD::shutdown()
 	return true;
 }
 
-void HUD::beginDraw()
+void HUD::beginDraw() const
 {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDisable(GL_DEPTH_TEST);
 }
 
-void HUD::endDraw()
+void HUD::endDraw() const
 {
 	glDisable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);

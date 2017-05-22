@@ -59,6 +59,9 @@
     <ClCompile Include="src\utils\FontUtils\FontCharacter.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
     <ClCompile Include="src\scene\components\SkyboxComponent.cpp" />
+    <ClCompile Include="src\graphics\lights\SpotLight.cpp" />
+    <ClCompile Include="src\graphics\lights\DirectionLight.cpp" />
+    <ClCompile Include="src\graphics\lights\PointLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -92,7 +95,6 @@
     <ClInclude Include="include\scene\objects\FreeCamera.h" />
     <ClInclude Include="include\scene\Scene.h" />
     <ClInclude Include="include\scene\SceneManager.h" />
-    <ClInclude Include="include\scene\SceneObject.h" />
     <ClInclude Include="include\scene\components\TransformComponent.h" />
     <ClInclude Include="include\utils\IOManager.h" />
     <ClInclude Include="include\scene\components\TerrainComponent.h" />
@@ -138,6 +140,10 @@
     <ClInclude Include="include\graphics\materials\DefaultSkyboxMaterial.h" />
     <ClInclude Include="include\scene\components\SkyboxComponent.h" />
     <ClInclude Include="include\defines\ResourceType.h" />
+    <ClInclude Include="include\graphics\Light.h" />
+    <ClInclude Include="include\graphics\lights\PointLight.h" />
+    <ClInclude Include="include\graphics\lights\DirectionLight.h" />
+    <ClInclude Include="include\graphics\lights\SpotLight.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

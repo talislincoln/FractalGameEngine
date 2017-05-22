@@ -10,7 +10,7 @@ namespace fractal {
 		//we'll probably create two private functions:
 		//beginDraw and endDraw
 		//it seems to be something required to draw in sdl
-		virtual void draw() = 0;
+		virtual void draw() const = 0;
 
 		void setCanDraw(bool canDraw);
 		bool getCanDraw() const;

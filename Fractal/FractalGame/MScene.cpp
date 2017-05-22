@@ -113,11 +113,11 @@ bool MScene::initialize() {
 	vertices.push_back( (Point3(-0.5f, 0.5f, -0.5f)));
 	vertices.push_back( (Point3(0.0f, 0.0f, 1.0f)));
 
-	cubeAttributes = new SceneObject("cubeAttributes");
+	cubeAttributes = new GameObject("cubeAttributes");
 
-	cubeAttributes2 = new SceneObject("cubeAttributes2");
+	cubeAttributes2 = new GameObject("cubeAttributes2");
 
-	terrain = new SceneObject("terrain");
+	terrain = new GameObject("terrain");
 	//;w; 
 	cubeAttributes2->addComponent(new TransformComponent());
 	cubeAttributes2->addComponent(new MeshComponent(LoadOBJ::load("test")));

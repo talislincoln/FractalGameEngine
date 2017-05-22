@@ -15,7 +15,7 @@ namespace fractal {
 
 			virtual bool initialize();
 			void update();
-			void draw();
+			void draw() const;
 			virtual bool shutdown();
 
 			void setGame(AbstractGame* game);

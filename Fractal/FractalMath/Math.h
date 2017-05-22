@@ -131,6 +131,36 @@ namespace fractal {
 				return x;
 			return y;
 		}
+		inline float clamp(float num, const float max = 1, const float min = 0) {
+#ifdef _DEBUG
+			if (max <= min) {
+				std::string errorMsg("Clamp failed. min greater than max");
+				throw errorMsg;
+			}
+#endif
+			if (num >= max) {
+				num = max;
+			}
+			if (num <= min) {
+				num = min;
+			}
+			return num;
+		}
+		inline int clamp(int num, const int max = 1, const int min = 0) {
+#ifdef _DEBUG
+			if (max <= min) {
+				std::string errorMsg("Clamp failed. min greater than max");
+				throw errorMsg;
+			}
+#endif
+			if (num >= max) {
+				num = max;
+			}
+			if (num <= min) {
+				num = min;
+			}
+			return num;
+		}
 		inline float getMax(const float x, const float y) {
 			if (x > y)
 				return x;
@@ -146,11 +176,14 @@ namespace fractal {
 				return x;
 			return y;
 		}
-		inline Point3 getMax(Point3 x, Point3 y) {
+		inline Point3 getMax(Point3& x, Point3& y) {
 			return Point3(getMax(x.x, y.x), getMax(x.y, y.y), getMax(x.z, y.z));
 		}
-		inline Point3 getMin(Point3 x, Point3 y) {
+		inline Point3 getMin(Point3& x, Point3& y) {
 			return Point3(getMin(x.x, y.x), getMin(x.y, y.y), getMin(x.z, y.z));
+		}
+		inline Point3 clamp(Point3& p, float max = 1, float min = 0) {
+			return Point3(clamp(p.x, max, min), clamp(p.y, max, min), clamp(p.z, max, min));
 		}
 	}
 }
