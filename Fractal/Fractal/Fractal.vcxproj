@@ -144,7 +144,9 @@
   <ItemGroup>
     <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
     <ClCompile Include="src\core\systems\HUD.cpp" />
+    <ClCompile Include="src\core\systems\manager\ResourceManager.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
+    <ClCompile Include="src\core\resource\Resource.cpp" />
     <ClCompile Include="src\graphics\lights\DirectionLight.cpp" />
     <ClCompile Include="src\graphics\lights\PointLight.cpp" />
     <ClCompile Include="src\graphics\lights\SpotLight.cpp" />
@@ -215,10 +217,12 @@
     <ClInclude Include="include\core\systems\manager\CameraManager.h" />
     <ClInclude Include="include\core\systems\HUD.h" />
     <ClInclude Include="include\core\systems\manager\InputManager.h" />
+    <ClInclude Include="include\core\systems\manager\ResourceManager.h" />
     <ClInclude Include="include\core\systems\manager\SystemFactory.h" />
     <ClInclude Include="include\core\systems\manager\SystemManager.h" />
     <ClInclude Include="include\core\systems\manager\UIManager.h" />
     <ClInclude Include="include\core\systems\PhysicsWorld.h" />
+    <ClInclude Include="include\core\resources\Resource.h" />
     <ClInclude Include="include\core\systems\System.h" />
     <ClInclude Include="include\core\systems\Timer.h" />
     <ClInclude Include="include\core\systems\Window.h" />

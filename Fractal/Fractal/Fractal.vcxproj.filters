@@ -26,7 +26,6 @@
     <ClCompile Include="src\scene\objects\FreeCamera.cpp" />
     <ClCompile Include="src\scene\Scene.cpp" />
     <ClCompile Include="src\scene\SceneManager.cpp" />
-    <ClCompile Include="src\scene\SceneObject.cpp" />
     <ClCompile Include="src\scene\components\TransformComponent.cpp" />
     <ClCompile Include="src\utils\IOManager.cpp" />
     <ClCompile Include="src\scene\components\TerrainComponent.cpp" />
@@ -62,6 +61,8 @@
     <ClCompile Include="src\graphics\lights\SpotLight.cpp" />
     <ClCompile Include="src\graphics\lights\DirectionLight.cpp" />
     <ClCompile Include="src\graphics\lights\PointLight.cpp" />
+    <ClCompile Include="src\core\resource\Resource.cpp" />
+    <ClCompile Include="src\core\systems\manager\ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -144,6 +145,8 @@
     <ClInclude Include="include\graphics\lights\PointLight.h" />
     <ClInclude Include="include\graphics\lights\DirectionLight.h" />
     <ClInclude Include="include\graphics\lights\SpotLight.h" />
+    <ClInclude Include="include\core\systems\manager\ResourceManager.h" />
+    <ClInclude Include="include\core\resources\Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

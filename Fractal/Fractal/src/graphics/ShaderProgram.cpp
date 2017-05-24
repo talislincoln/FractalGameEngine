@@ -98,12 +98,14 @@ namespace fractal {
 		}
 		return shaderID;
 	}
+
 	void ShaderProgram::addAttrib(std::vector<char*>& attribName) {
 		for (size_t i = 0; i < attribName.size(); i++) {
 			glBindAttribLocation(m_programID, m_numAttrib, attribName[i]);
 			m_numAttrib++;
 		}
 	}
+
 	GLuint ShaderProgram::getUniformLocation(const std::string& uniformName) {
 		GLint location = glGetUniformLocation(m_programID, uniformName.c_str());
 		if (location == GL_INVALID_INDEX) { //returns if it doesn't exist
@@ -111,6 +113,7 @@ namespace fractal {
 		}
 		return location;
 	}
+
 	void ShaderProgram::use() {
 
 		glUseProgram(m_programID);
@@ -118,6 +121,7 @@ namespace fractal {
 			glEnableVertexAttribArray(i);
 		}
 	}
+
 	void ShaderProgram::destroy()
 	{
 		unuse();
@@ -125,12 +129,14 @@ namespace fractal {
 		//deleting program from gpu
 		glDeleteProgram(m_programID);
 	}
+
 	void ShaderProgram::storeUniformLocations(const std::vector<Uniform*> uniforms)
 	{
 		for (unsigned int i = 0; i < uniforms.size(); i++) {
 			uniforms[i]->storeUniformLocation(this->m_programID);
 		}
 	}
+
 	void ShaderProgram::storeAllAttrib(std::vector<GLuint> uniforms)
 	{
 		// TODO: create uniform class to work with shaders
@@ -140,6 +146,7 @@ namespace fractal {
 		 //}
 		glValidateProgram(m_programID);
 	}
+
 	void ShaderProgram::unuse() {
 		for (int i = 0; i < m_numAttrib; i++) {
 			glDisableVertexAttribArray(i);
