@@ -5,7 +5,7 @@ namespace fractal {
 	enum class ResourceType
 	{
 		MODEL_RESOURCE,
-		IMAGE_RESOURCE,
+		TEXTURE_RESOURCE,
 		AUDIO_RESOURCE
 	};
 }

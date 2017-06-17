@@ -63,6 +63,7 @@
     <ClCompile Include="src\graphics\lights\PointLight.cpp" />
     <ClCompile Include="src\core\resource\Resource.cpp" />
     <ClCompile Include="src\core\systems\manager\ResourceManager.cpp" />
+    <ClCompile Include="src\core\resource\TextureResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
@@ -147,6 +148,8 @@
     <ClInclude Include="include\graphics\lights\SpotLight.h" />
     <ClInclude Include="include\core\systems\manager\ResourceManager.h" />
     <ClInclude Include="include\core\resources\Resource.h" />
+    <ClInclude Include="include\core\resources\MeshResource.h" />
+    <ClInclude Include="include\core\resources\TextureResource.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\images\awesome.png" />

@@ -2,6 +2,7 @@
 #define _RESOURCE_H
 
 #include <string>
+#include <GL\glew.h>
 #include "defines\ResourceType.h"
 
 namespace fractal {
@@ -21,11 +22,18 @@ namespace fractal {
 
 				ResourceType getResourceType();
 
+				inline const int getId() const {
+					return m_id;
+				}
+
 			private:
 				std::string m_resourcePath;
 				std::string m_resourceName;
 
 				ResourceType m_resourceType;
+
+			protected:
+				GLuint m_id;
 			};
 		}
 	}

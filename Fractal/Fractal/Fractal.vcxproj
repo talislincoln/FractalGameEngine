@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\core\systems\manager\InputManager.cpp" />
+    <ClCompile Include="src\core\resource\TextureResource.cpp" />
     <ClCompile Include="src\core\systems\HUD.cpp" />
     <ClCompile Include="src\core\systems\manager\ResourceManager.cpp" />
     <ClCompile Include="src\core\systems\manager\UIManager.cpp" />
@@ -210,6 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\game\AbstractGame.h" />
+    <ClInclude Include="include\core\resources\MeshResource.h" />
+    <ClInclude Include="include\core\resources\TextureResource.h" />
     <ClInclude Include="include\core\systems\Engine.h" />
     <ClInclude Include="include\core\systems\Graphics.h" />
     <ClInclude Include="include\core\systems\Input.h" />
