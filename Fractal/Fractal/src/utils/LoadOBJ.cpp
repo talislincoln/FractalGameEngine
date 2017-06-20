@@ -8,6 +8,7 @@ namespace fractal {
 		std::string temp(fileName);
 		return load(temp);
 	}
+
 	fgraphics::MeshData* LoadOBJ::load(const std::string& fileName) {
 		using namespace std;
 		using namespace fmath;
@@ -54,6 +55,7 @@ namespace fractal {
 			}
 			//else  break  // need debug~
 		}
+
 		while (!reader.eof()) {
 			if (strncmp(line.c_str(), "f ", 2) == 0) {
 				vector<string> currentLine;
@@ -94,6 +96,7 @@ namespace fractal {
 			return dealWithAlreadyProcessedVertex(currentVertex, textureIndex, normalIndex, indices, vertices);
 		}
 	}
+
 	float LoadOBJ::convertDataToArrays(std::vector<fgraphics::Vertex*>& vertices, std::vector<fmath::Vector2>& textures, std::vector<fmath::Vector3>& normals, std::vector<fmath::Vector3>& position) {
 		using namespace fmath;
 		float furthestPoint = 0;
@@ -118,6 +121,7 @@ namespace fractal {
 
 		return furthestPoint;
 	}
+
 	fgraphics::Vertex* LoadOBJ::dealWithAlreadyProcessedVertex(fgraphics::Vertex* previousVertex, int newTextureIndex, int newNormalIndex,
 		std::vector<int>& indices, std::vector<fgraphics::Vertex*>& vertices) {
 		if (previousVertex->hasSameTextureAndNormal(newTextureIndex, newNormalIndex)) {
@@ -159,5 +163,4 @@ namespace fractal {
 		}
 		vertices.clear();
 	}
-
 }

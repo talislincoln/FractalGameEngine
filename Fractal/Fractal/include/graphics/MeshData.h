@@ -57,9 +57,7 @@ namespace fractal {
 			inline const float& getFurthestPoint() const{
 				return m_furthestPoint;
 			}
-
 		};
-
 	}
 }
 #endif // !MESH_DATA_H

@@ -2,6 +2,7 @@
 #define _TEXTURERESOURCE_H
 
 #include <string>
+#include <vector>
 #include "core\resources\Resource.h"
 
 namespace fractal {
@@ -15,8 +16,17 @@ namespace fractal {
 				virtual bool initialize();
 				virtual bool shutdown();
 			private:
-				unsigned int m_width;
-				unsigned int m_height;
+
+				std::vector<unsigned char> decodeTexturePNG();
+				void loadTextureToOpenGL(std::vector<unsigned char> imageBuffer);
+
+				unsigned long m_width;
+				unsigned long m_height;
+
+				bool m_clampEdges;
+				bool m_mipMap;
+				bool m_anisotropic;
+				bool m_nearest;
 			};
 		}
 	}

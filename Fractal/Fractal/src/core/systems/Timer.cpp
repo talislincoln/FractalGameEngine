@@ -67,9 +67,9 @@ namespace fractal {
 			static const int NUM_SAMPLES = 10;
 			static float frameTimes[NUM_SAMPLES];
 			static int currentFrame = 0;
-			static float previousTicks = SDL_GetTicks();
+			static Uint32 previousTicks = SDL_GetTicks();
 
-			float currentTicks;
+			Uint32 currentTicks;
 			currentTicks = SDL_GetTicks();
 
 			m_frameTime = currentTicks - previousTicks;

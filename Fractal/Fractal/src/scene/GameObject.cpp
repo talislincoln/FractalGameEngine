@@ -80,7 +80,7 @@ namespace fractal {
 
 		void GameObject::fixedUpdate()
 		{
-			//TODO implement this
+			// TODO: implement this
 		}
 
 		bool GameObject::shutdown()

@@ -26,13 +26,11 @@ namespace fractal {
 					return m_id;
 				}
 
-			private:
+			protected:
 				std::string m_resourcePath;
 				std::string m_resourceName;
-
 				ResourceType m_resourceType;
 
-			protected:
 				GLuint m_id;
 			};
 		}

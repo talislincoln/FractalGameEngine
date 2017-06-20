@@ -16,6 +16,8 @@ namespace fractal {
 			const GLuint TEXTUREID;
 			const GLsizei SIZE;
 
+			Texture(std::string name);
+
 			Texture(GLuint Id, GLsizei size, GLint type = GL_TEXTURE_2D) : TEXTUREID(Id), SIZE(size), TYPE(type) {}
 
 			inline void bindToUnit(int unit) {

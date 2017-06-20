@@ -155,6 +155,7 @@
     <ClCompile Include="src\graphics\Materials\DefaultMeshMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultSkyboxMaterial.cpp" />
     <ClCompile Include="src\graphics\materials\DefaultUIMaterial.cpp" />
+    <ClCompile Include="src\graphics\Texture.cpp" />
     <ClCompile Include="src\graphics\Vao.cpp" />
     <ClCompile Include="src\interfaces\IUserInterface.cpp" />
     <ClCompile Include="src\scene\components\LightComponent.cpp" />

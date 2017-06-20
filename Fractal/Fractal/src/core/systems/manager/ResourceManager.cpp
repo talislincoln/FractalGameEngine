@@ -8,6 +8,7 @@ namespace fractal {
 			:Manager()
 		{
 		}
+
 		ResourceManager::~ResourceManager()
 		{
 		}
@@ -22,6 +23,7 @@ namespace fractal {
 
 			return true;
 		}
+
 		bool ResourceManager::shutdown()
 		{
 			for (std::pair<const std::string, fresource::Resource*>& pair : this->m_resources)

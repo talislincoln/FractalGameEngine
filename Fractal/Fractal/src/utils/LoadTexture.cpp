@@ -10,8 +10,6 @@
 namespace fractal {
 	namespace fgraphics {
 
-
-
 		TextureData* LoadTexture::decodeTexturePNG(const std::string& reader)
 		{
 			std::string path = "res/" + reader + ".png";

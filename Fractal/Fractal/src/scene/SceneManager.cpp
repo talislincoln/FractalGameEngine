@@ -22,7 +22,7 @@ namespace fractal {
 
 		bool SceneManager::initialize()
 		{
-			//define wheather or not we need those managers
+			//define whether or not we need those managers
 			//setupManager<Renderer>();
 			setupManager<CameraManager>();
 			// setup would call shut down function too. could use it for changing scene.
