@@ -34,15 +34,18 @@ bool TalisScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	MeshData* md = LoadOBJ::load("meshes/barrel");
-	MeshData* md = LoadOBJ::load("meshes/cyl");
-	fgraphics::Vao* box = new Vao();
-	box->loadMeshIntoOpenGL(md);
-	Material* mat = new DefaultMaterial();
-	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
-	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1);
+	//MeshData* md = LoadOBJ::load("meshes/barrel");
+	MeshData* md = LoadOBJ::load("meshes/cyl"); //;w; loads an obj file
+	fgraphics::Vao* box = new Vao(); //;w; creates a new vao
+	box->loadMeshIntoOpenGL(md); //;w; ??? vao attaches to the model object
+	Material* mat = new DefaultMaterial(); //;w; sets material as default
+	//;w; test with outline
 
-	for (unsigned int i = 0; i < 10; i++) {
+
+	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create())); //;w; loads file for diffuse
+	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1); //;w; loads file for specular
+
+	for (unsigned int i = 0; i < 10; i++) { //;w; renders the model object multiple times
 		objects.push_back(new GameObject());
 		objects[i]->addComponent(new MeshComponent(mat, box));
 		addGameObject(objects[i]);
@@ -66,11 +69,11 @@ bool TalisScene::initialize() {
 	dragon->getComponent<fphysics::PhysicsBodyComponent>()->SetGravityScale(0.0f);
 	//dragon->addComponent(new fscene::CameraComponent());
 
-	skybox = new GameObject("skybox");
+	skybox = new GameObject("skybox"); //;w; loads cubemap
 	skybox->addComponent(new SkyboxComponent());
 	addGameObject(skybox);
 
-	camera = new FreeCamera("MainCamera");
+	camera = new FreeCamera("MainCamera"); //;w; loads camera to the scene
 	camera->getTransform()->setPosition(fmath::Vector3(0.0f, 0.0f, 0.0f));
 	addGameObject(camera);
 
@@ -83,7 +86,7 @@ void TalisScene::update() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	Scene::update();
+	Scene::update(); //;w; update the scene
 
 	if (objects[0]->getComponent<fphysics::PhysicsBodyComponent>()->isGround()) {
 		objects[0]->getComponent<fphysics::PhysicsBodyComponent>()->SetLinearVelocity(Vector3(0, 10.0f, 0));
@@ -96,5 +99,5 @@ bool TalisScene::shutdown() {
 
 void TalisScene::setupInput(fractal::fcore::Input * input)
 {
-	camera->setupInput(input);
+	camera->setupInput(input); //;w; checks for camera input
 }

@@ -19,7 +19,7 @@ namespace fractal {
 
 		// Default camera values
 		const GLfloat SPEED = 3.0f;
-		const GLfloat SENSITIVTY = 1.0f;
+		const GLfloat SENSITIVTY = 0.1f; //originally 1.0f
 
 		class FreeCamera : public CameraObject {
 		public:
