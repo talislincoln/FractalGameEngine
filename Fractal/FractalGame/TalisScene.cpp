@@ -1,5 +1,8 @@
 #include "TalisScene.h"
 
+#include <Fractal\include\core\systems\Engine.h>
+#include <Fractal\include\core\resources\TextureResource.h>
+
 #include <Fractal\include\graphics\Vertex.h>
 #include <Fractal\include\helpers\Singleton.h>
 #include <Fractal\include\scene\SceneManager.h>
@@ -14,6 +17,7 @@
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
 #include <Fractal\include\utils\LoadOBJ.h>
 #include <Fractal\include\core\systems\manager\SystemManager.h>
+#include <Fractal\include\core\systems\manager\ResourceManager.h>
 
 #include <Fractal\include\scene\components\SkyboxComponent.h>
 
@@ -34,13 +38,15 @@ bool TalisScene::initialize() {
 	using namespace fscene;
 	using namespace fmath;
 	using namespace fgraphics;
-	MeshData* md = LoadOBJ::load("meshes/barrel");
+	//MeshData* md = LoadOBJ::load("meshes/barrel");
 	MeshData* md = LoadOBJ::load("meshes/cyl");
 	fgraphics::Vao* box = new Vao();
 	box->loadMeshIntoOpenGL(md);
 	Material* mat = new DefaultMaterial();
+	//mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
 	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
-	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1);
+	//mat->loadNewTexture((Texture::newTexture("Defaults/Materials/Textures/defaultTexture").anisotropic().create()), 1);
+	//mat->loadNewTexture(fhelpers::Singleton<ResourceManager>::getInstance().getResource<fcore::fresource::TextureResource>("Defaults/Materials/Textures/defaultTexture"), 1);
 
 	for (unsigned int i = 0; i < 10; i++) {
 		objects.push_back(new GameObject());
