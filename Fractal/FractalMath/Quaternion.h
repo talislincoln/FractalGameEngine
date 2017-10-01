@@ -192,11 +192,11 @@ namespace fractal {
 
 				float angle;
 
-				angle = _yaw * 0.5f * DEGREES_TO_RADIANS;
+				angle = _yaw * 0.1f * DEGREES_TO_RADIANS;
 				const float sr = sinf(angle);
 				const float cr = cosf(angle);
 
-				angle = _pitch * 0.5f * DEGREES_TO_RADIANS;
+				angle = _pitch * 0.1f * DEGREES_TO_RADIANS; //originally 0.5f
 				const float sp = sinf(angle);
 				const float cp = cosf(angle);
 
