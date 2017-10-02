@@ -70,10 +70,9 @@ namespace fractal {
 		}
 
 		bool MeshComponent::shutdown() {
-			if (m_vao != nullptr) {
-				m_vao->destroy();
-				delete(m_vao);
-				m_vao = nullptr;
+				if (m_vao != nullptr) {
+					m_vao->destroy();
+					//SafeDelete(m_vao);
 			}
 			if (m_material != nullptr) {
 				m_material->destroy();

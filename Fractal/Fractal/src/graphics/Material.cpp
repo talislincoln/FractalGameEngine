@@ -28,7 +28,7 @@ void Material::destroy()
 		m_textures[i]->destroy();
 	}
 	m_textures.clear();
-	m_shader->destroy();
+	//m_shader->destroy();
 	m_shader = nullptr;
 }
 

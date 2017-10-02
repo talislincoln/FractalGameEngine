@@ -74,8 +74,8 @@ void main(){
 	//depth
 	float depth = linearizeDepth(gl_FragCoord.z) / far;
 	//result
-	//colour = vec4(result, 1.0);
-	colour = vec4(vec3(depth), 1.0); //depth result!
+	colour = vec4(result, 1.0);
+	//colour = vec4(vec3(depth), 1.0); //depth result!
 }
 vec3 CalcDirLight(DirLight light){
 	//ambient 
