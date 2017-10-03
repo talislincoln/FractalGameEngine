@@ -191,16 +191,16 @@ namespace fractal {
 			inline static const Quaternion fromEuler(float _yaw, float _pitch, float _roll) {
 
 				float angle;
-
-				angle = _yaw * 0.1f * DEGREES_TO_RADIANS;
+				float temp = 0.5f * DEGREES_TO_RADIANS;
+				angle = _yaw * temp;
 				const float sr = sinf(angle);
 				const float cr = cosf(angle);
 
-				angle = _pitch * 0.1f * DEGREES_TO_RADIANS; //originally 0.5f
+				angle = _pitch * temp; //originally 0.5f
 				const float sp = sinf(angle);
 				const float cp = cosf(angle);
 
-				angle = _roll * 0.5f * DEGREES_TO_RADIANS;
+				angle = _roll * 0.5f * temp;
 				const float sy = sinf(angle);
 				const float cy = cosf(angle);
 

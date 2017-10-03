@@ -1,8 +1,5 @@
 #include "TalisScene.h"
 
-#include <Fractal\include\core\systems\Engine.h>
-#include <Fractal\include\core\resources\TextureResource.h>
-
 #include <Fractal\include\graphics\Vertex.h>
 #include <Fractal\include\helpers\Singleton.h>
 #include <Fractal\include\scene\SceneManager.h>
@@ -17,7 +14,6 @@
 #include <FractalPhysics\include\shapes\PhysicsBox.h>
 #include <Fractal\include\utils\LoadOBJ.h>
 #include <Fractal\include\core\systems\manager\SystemManager.h>
-#include <Fractal\include\core\systems\manager\ResourceManager.h>
 
 #include <Fractal\include\scene\components\SkyboxComponent.h>
 
@@ -39,32 +35,47 @@ bool TalisScene::initialize() {
 	using namespace fmath;
 	using namespace fgraphics;
 	//MeshData* md = LoadOBJ::load("meshes/barrel");
-	MeshData* md = LoadOBJ::load("meshes/cyl");
-	fgraphics::Vao* box = new Vao();
-	box->loadMeshIntoOpenGL(md);
-	Material* mat = new DefaultMaterial();
-	//mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
-	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()));
-	//mat->loadNewTexture((Texture::newTexture("Defaults/Materials/Textures/defaultTexture").anisotropic().create()), 1);
-	//mat->loadNewTexture(fhelpers::Singleton<ResourceManager>::getInstance().getResource<fcore::fresource::TextureResource>("Defaults/Materials/Textures/defaultTexture"), 1);
-
-	for (unsigned int i = 0; i < 10; i++) {
-	MeshData* md = LoadOBJ::load("meshes/cyl"); //;w; loads an obj file
+	MeshData* md = LoadOBJ::load("meshes/barrel"); //;w; loads an obj file
 	fgraphics::Vao* box = new Vao(); //;w; creates a new vao
 	box->loadMeshIntoOpenGL(md); //;w; ??? vao attaches to the model object
 	Material* mat = new DefaultMaterial(); //;w; sets material as default
 	//;w; test with outline
-
-
 	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create())); //;w; loads file for diffuse
-	mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1); //;w; loads file for specular
+	//mat->loadNewTexture((Texture::newTexture("images/barrel").anisotropic().create()), 1); //;w; loads file for specular
+	
+	MeshData* md2 = LoadOBJ::load("meshes/dragon"); //;w; loads an obj file
+	fgraphics::Vao* dragonVao = new Vao(); //;w; creates a new vao
+	dragonVao->loadMeshIntoOpenGL(md2); //;w; ??? vao attaches to the model object
+	Material* mat2 = new DefaultMaterial(); //;w; sets material as default
+
+	MeshData* walle = LoadOBJ::load("meshes/wall_e"); //;w; loads an obj file
+	fgraphics::Vao* walleVao = new Vao(); //;w; creates a new vao
+	walleVao->loadMeshIntoOpenGL(walle); //;w; ??? vao attaches to the model object
+	Material* mat3 = new DefaultMaterial(); //;w; sets material as default
+	mat3->loadNewTexture((Texture::newTexture("images/wall_e").anisotropic().create())); //;w; loads file for diffuse
+	mat3->loadNewTexture((Texture::newTexture("images/wall_e").anisotropic().create()), 1); //;w; loads file for specular
 
 	for (unsigned int i = 0; i < 10; i++) { //;w; renders the model object multiple times
 		objects.push_back(new GameObject());
 		objects[i]->addComponent(new MeshComponent(mat, box));
 		addGameObject(objects[i]);
 		objects[i]->getTransform()->setPosition(Vector3(rand() % 25 - 12.0f, rand() % 25 - 10.0f, rand() % 25 - 12.0f));
-		objects[i]->getTransform()->setScale(Vector3(rand() % 100 / 1000.0f));
+		//objects[i]->getTransform()->setScale(Vector3(rand() % 100 / 1000.0f));
+	}
+	for (unsigned int i = 10; i < 20; i++) { //;w; renders the model object multiple times
+		objects.push_back(new GameObject());
+		objects[i]->addComponent(new MeshComponent(mat2, dragonVao));
+		addGameObject(objects[i]);
+		objects[i]->getTransform()->setPosition(Vector3(rand() % 25 - 12.0f, rand() % 25 - 10.0f, rand() % 25 - 12.0f));
+		objects[i]->getTransform()->setScale(Vector3(0.5f));
+	}
+
+	for (unsigned int i = 20; i < 30; i++) { //;w; renders the model object multiple times
+		objects.push_back(new GameObject());
+		objects[i]->addComponent(new MeshComponent(mat3, walleVao));
+		addGameObject(objects[i]);
+		objects[i]->getTransform()->setPosition(Vector3(rand() % 25 - 12.0f, rand() % 25 - 10.0f, rand() % 25 - 12.0f));
+		objects[i]->getTransform()->setScale(Vector3(0.1f));
 	}
 	terrain = new GameObject("terrain");
 	terrain->addComponent(new TerrainComponent());
@@ -87,7 +98,7 @@ bool TalisScene::initialize() {
 	skybox->addComponent(new SkyboxComponent());
 	addGameObject(skybox);
 
-	camera = new FreeCamera("MainCamera"); //;w; loads camera to the scene
+	camera = new FreeCamera("MainCamera", 0.2f); //;w; loads camera to the scene
 	camera->getTransform()->setPosition(fmath::Vector3(0.0f, 0.0f, 0.0f));
 	addGameObject(camera);
 
